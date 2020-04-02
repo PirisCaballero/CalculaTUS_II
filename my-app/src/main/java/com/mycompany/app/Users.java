@@ -1,4 +1,4 @@
-package objetos;
+package com.mycompany.app;
 
 public class Users {
 	//tipos de attributos que van a componer el proyecto
