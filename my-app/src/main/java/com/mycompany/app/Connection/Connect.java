@@ -160,8 +160,6 @@ public class Connect {
 	
 	public static void main(String[] args) {
 		Connect c = new Connect();
-//		Users Nekane = new Users("Nekane" , "Garcia" , "nekane.garcia@deusto.es" , "mesa123" , 1 , "null");
-//		Users Luis = new Users("Luis", "Gomez", "luis.gomez@deusto.es", "lavadora", 0 , "nekane.garcia@deusto.es");
 		Users Aitor = new Users("Eneko" , "Valero Cuenca" , "eneko.valero@deusto.es" , "mesa555" , 0 , "Iratxe.campo@deusto.es" );
 		c.RegisUser(Aitor);
 	}
