@@ -1,4 +1,4 @@
-package Oficial;
+package com.mycompany.app.ventanas;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
