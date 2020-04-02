@@ -152,7 +152,7 @@ public class Connect {
 			}
 		}else {
 			System.out.println("Usuario ya registrado");
-			return false; 
+			return false;
 		}
 	}
 	
