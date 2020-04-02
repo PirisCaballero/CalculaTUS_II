@@ -12,14 +12,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
-public class ventanaRegistro {
+public class VentanaRegistro {
 
 	JLabel labelNombre, labelApellido, labelCorreo, labelContrasena, labelErrorNombre, labelErrorApellido,
 			labelErrorCorreo, labelErrorContrasena;
 	JTextField textNombre, textApellido, textCorreo, textContrasena;
 	JButton botonAtras, botonSiguiente;
 
-	public ventanaRegistro() {
+	public VentanaRegistro() {
 
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
@@ -165,7 +165,7 @@ public class ventanaRegistro {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new ventanaRegistro();
+				new VentanaRegistro();
 			}
 		});
 	}
