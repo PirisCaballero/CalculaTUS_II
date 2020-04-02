@@ -88,6 +88,7 @@ public Users(String nombre, String apel , String email, String pass , int isAdmi
 	this.email_admin = A_email;
 	
 }
+public Users() {}
 //este constructor se declara para la creación de un administrados añadiendo el parametro de la lista de usuarios que va a tener a su nombre
 //public Users(String nombre, String direccion, String email, String pass,ArrayList<Users>trabajadores) {
 //	super();
