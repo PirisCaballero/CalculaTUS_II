@@ -168,7 +168,7 @@ public class VentanaRegistro {
 				textContrasena.setText("");
 				VentanaLogin vtnLogin = new VentanaLogin();
 				vtnLogin.setVisible(true);
-				frame.setVisible(false);
+				frame.setVisible(false );
 			}
 		});
 
