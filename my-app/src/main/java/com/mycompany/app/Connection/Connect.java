@@ -75,6 +75,47 @@ public class Connect {
 			return false;
 		}
 	}
+	public Users Verificar_usuario(String email , String pass) {
+		Users us = null;
+		String sql = "Select * from users where email = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setString(1, email);
+			ResultSet rs = stmt.executeQuery();
+			us = new Users();
+			int cont =0;
+			while(rs.next()) {
+				us.setNombre(rs.getString(1));
+				us.setApellidos(rs.getString(2));
+				us.setEmail(rs.getString(3));
+				us.setPass(rs.getString(4));
+				us.setAdmin(rs.getInt(5));
+				us.setAdminEmail(rs.getString(6));
+				cont+=1;
+			}
+			System.out.println(cont);
+			if(cont >0) {
+				if( us.getPass().equals(pass) ) {
+					System.out.println("Usuario verificado");
+					return us;
+				}else {
+					System.out.println("Usuario no verificado");
+					Users user = null;
+					return user; 
+				}
+			}
+			else { 
+				Users user = null;
+				return user; 
+			}  
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			Users user = null;
+			return user; 
+		}
+	}
 	private Users Recuperar_usuario(Users user) {
 		Users us = new Users();
 		String sql = "Select * from users where email = ?";

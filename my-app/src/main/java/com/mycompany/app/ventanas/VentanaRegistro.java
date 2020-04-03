@@ -159,18 +159,21 @@ public class VentanaRegistro {
 		botonAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("BOTON ATRAS actionListener");
-				labelErrorNombre.setVisible(false);
-				labelErrorApellido.setVisible(false);
-				labelErrorCorreo.setVisible(false);
-				labelErrorContrasena.setVisible(false);
-				textNombre.setText("");
-				textApellido.setText("");
-				textCorreo.setText("");
-				textContrasena.setText("");
-				VentanaLogin vtnLogin = new VentanaLogin();
-				vtnLogin.setVisible(true);
-				frame.setVisible(false );
+//				System.out.println("BOTON ATRAS actionListener");
+//				labelErrorNombre.setVisible(false);
+//				labelErrorApellido.setVisible(false);
+//				labelErrorCorreo.setVisible(false);
+//				labelErrorContrasena.setVisible(false);
+//				textNombre.setText("");
+//				textApellido.setText("");
+//				textCorreo.setText("");
+//				textContrasena.setText("");
+//				VentanaLogin vtnLogin = new VentanaLogin();
+//				vtnLogin.setVisible(true);
+//				frame.setVisible(false );
+				VentanaLogin VL = new VentanaLogin();
+				VL.setVisible(true);
+				frame.dispose();
 			}
 		});
 
@@ -199,6 +202,8 @@ public class VentanaRegistro {
 					System.out.println(user.toString());
 					Connect conn = new Connect();
 					conn.RegisUser(user);
+					VentanaLogin VL = new VentanaLogin();
+					VL.setVisible(true);
 					frame.dispose();
 				} else if (!textNombre.getText().matches("^[a-zA-Z]*$") || textNombre.getText().isEmpty()) {
 					// nombre mal

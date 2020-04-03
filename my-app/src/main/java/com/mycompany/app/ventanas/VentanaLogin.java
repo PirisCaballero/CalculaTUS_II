@@ -6,8 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import com.mycompany.app.Users;
+import com.mycompany.app.Connection.Connect;
+
 public class VentanaLogin extends JFrame {
 
+	private JLabel lblUser, lblPass;
+	private JButton btnAceptar, btnRegistrar;
+	private JTextField txtUsuario; private JPasswordField txtPassword;
 	public VentanaLogin() {
 		super("Login de usuario");
 		this.setSize(600, 400);
@@ -18,13 +24,13 @@ public class VentanaLogin extends JFrame {
 		ventanaLogin.setLayout(null);
 		getContentPane().add(ventanaLogin);
 		ventanaLogin.setVisible(true);
-		JLabel lblUser = new JLabel();
-		JLabel lblPass = new JLabel();
-		JTextField txtUsuario = new JTextField();
-		JPasswordField txtPassword = new JPasswordField();
+		lblUser = new JLabel();
+		lblPass = new JLabel();
+		txtUsuario = new JTextField();
+		txtPassword = new JPasswordField();
 		
-		JButton btnAceptar = new JButton();
-		JButton btnRegistrar = new JButton();
+		btnAceptar = new JButton();
+		btnRegistrar = new JButton();
 		
 		btnAceptar.setText("Aceptar");
 		btnAceptar.setBounds(100, 40, 120, 30);
@@ -59,10 +65,20 @@ public class VentanaLogin extends JFrame {
 		
 		btnAceptar.addActionListener(new ActionListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				System.out.println("Comprobacion de usuario correcto");
+				Connect conn = new Connect();
+				Users user = conn.Verificar_usuario(txtUsuario.getText() , txtPassword.getText());
+				if( user != null ) {
+					JOptionPane.showMessageDialog(null, "Bienvenido de nuevo "+user.getNombre());
+					System.out.println(user.toString());
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "Usuario no registrado");
+				}
+				
 			}
 		});
 		
@@ -71,8 +87,7 @@ public class VentanaLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaRegistro vtnRegister = new VentanaRegistro();
-				setVisible(false);
-				System.out.println("No tienes cuenta?");
+				dispose();
 			}
 		});
 	
