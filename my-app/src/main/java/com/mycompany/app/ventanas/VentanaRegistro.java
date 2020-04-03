@@ -1,5 +1,6 @@
 package com.mycompany.app.ventanas;
 
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,13 +18,11 @@ import javax.swing.WindowConstants;
 import com.mycompany.app.Users;
 import com.mycompany.app.Connection.Connect;
 
-import java.awt.Choice;
-
 public class VentanaRegistro {
-	
+
 	final JFrame frame;
 	JLabel labelNombre, labelApellido, labelCorreo, labelContrasena, labelErrorNombre, labelErrorApellido,
-			labelErrorCorreo, labelErrorContrasena, lblAdministrador , lblCorreoDelAdministrador;
+			labelErrorCorreo, labelErrorContrasena, lblAdministrador, lblCorreoDelAdministrador;
 	JTextField textNombre, textApellido, textCorreo, textContrasena;
 	JButton botonAtras, botonSiguiente;
 	Choice choiceAdmin;
@@ -122,37 +121,41 @@ public class VentanaRegistro {
 		ventanaRegistro.add(textContrasena);
 		ventanaRegistro.add(botonAtras);
 		ventanaRegistro.add(botonSiguiente);
-		
+
 		choiceAdmin = new Choice();
-		choiceAdmin.add("-----------");choiceAdmin.add("Administrador");choiceAdmin.add("Usuario");
+		choiceAdmin.add("-----------");
+		choiceAdmin.add("Administrador");
+		choiceAdmin.add("Usuario");
 		choiceAdmin.setBounds(400, 256, 250, 32);
 		ventanaRegistro.add(choiceAdmin);
-		
+
 		lblAdministrador = new JLabel("Tipo de cuenta:");
 		lblAdministrador.setBounds(100, 247, 200, 30);
 		ventanaRegistro.add(lblAdministrador);
-		
+
 		lblCorreoDelAdministrador = new JLabel("Correo del Administrador");
 		lblCorreoDelAdministrador.setVisible(false);
 		lblCorreoDelAdministrador.setBounds(100, 288, 200, 30);
 		ventanaRegistro.add(lblCorreoDelAdministrador);
-		
+
 		textField = new JTextField();
 		textField.setVisible(false);
 		textField.setBounds(400, 283, 250, 30);
 		ventanaRegistro.add(textField);
 
 		choiceAdmin.addItemListener(new ItemListener() {
-			
+
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				// TODO Auto-generated method stub
-				if(choiceAdmin.getSelectedIndex()==0 || choiceAdmin.getSelectedIndex()==2  ) {
-					lblCorreoDelAdministrador.setVisible(true);textField.setVisible(true);
-					admin=0;
-				}else {
-					lblCorreoDelAdministrador.setVisible(false);textField.setVisible(false);
-					admin=1;
+				if (choiceAdmin.getSelectedIndex() == 0 || choiceAdmin.getSelectedIndex() == 2) {
+					lblCorreoDelAdministrador.setVisible(true);
+					textField.setVisible(true);
+					admin = 0;
+				} else {
+					lblCorreoDelAdministrador.setVisible(false);
+					textField.setVisible(false);
+					admin = 1;
 				}
 			}
 		});
@@ -193,12 +196,13 @@ public class VentanaRegistro {
 					// todo bien
 					System.out.println("Todo bien!");
 					String correo_admin = "";
-					if( textField.getText().isEmpty() ) {
+					if (textField.getText().isEmpty()) {
 						correo_admin = "null";
-					}else {
-						correo_admin=textField.getText();
+					} else {
+						correo_admin = textField.getText();
 					}
-					Users user = new Users(textNombre.getText() , textApellido.getText() , textCorreo.getText() , textContrasena.getText() , admin , correo_admin);
+					Users user = new Users(textNombre.getText(), textApellido.getText(), textCorreo.getText(),
+							textContrasena.getText(), admin, correo_admin);
 					System.out.println(user.toString());
 					Connect conn = new Connect();
 					conn.RegisUser(user);
