@@ -1,8 +1,12 @@
 package com.mycompany.app.ventanas;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
 import javax.swing.*;
 
@@ -100,6 +104,23 @@ public class VentanaPrincipal extends JFrame {
 		panelContenido.setBounds(240, 100, 530, 360);
 		this.setVisible(true);
 		panelContenido.setVisible(true);
+		
+		//Panel para el logo de Deusto
+		JPanel panelDeusto = new JPanel();
+		add(panelDeusto);
+		panelDeusto.setLayout(null);
+		panelDeusto.setBackground(Color.RED);
+		panelDeusto.setBounds(650, 470, 120, 80);
+		this.setVisible(true);
+		panelDeusto.setVisible(true);
+		
+		JLabel img = new JLabel();
+		ImageIcon image = new ImageIcon("deusto-logo.png");
+		img.setSize(100, 80);
+		img.setVisible(true);
+		img.setIcon(image);
+		panelDeusto.add(img);
+		
 		
 		
 		lblNombreUser = new JLabel();
