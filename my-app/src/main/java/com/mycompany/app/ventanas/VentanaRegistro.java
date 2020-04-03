@@ -20,7 +20,8 @@ import com.mycompany.app.Connection.Connect;
 import java.awt.Choice;
 
 public class VentanaRegistro {
-
+	
+	final JFrame frame;
 	JLabel labelNombre, labelApellido, labelCorreo, labelContrasena, labelErrorNombre, labelErrorApellido,
 			labelErrorCorreo, labelErrorContrasena, lblAdministrador , lblCorreoDelAdministrador;
 	JTextField textNombre, textApellido, textCorreo, textContrasena;
@@ -31,9 +32,10 @@ public class VentanaRegistro {
 
 	public VentanaRegistro() {
 
-		final JFrame frame = new JFrame();
+		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setSize(720, 480);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		// frame.setTitle("TITULO");
 
@@ -197,6 +199,7 @@ public class VentanaRegistro {
 					System.out.println(user.toString());
 					Connect conn = new Connect();
 					conn.RegisUser(user);
+					frame.dispose();
 				} else if (!textNombre.getText().matches("^[a-zA-Z]*$") || textNombre.getText().isEmpty()) {
 					// nombre mal
 					labelErrorNombre.setVisible(true);

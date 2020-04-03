@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import javax.swing.*;
 import com.mycompany.app.Users;
 import com.mysql.cj.protocol.Resultset;
 
@@ -97,6 +97,7 @@ public class Connect {
 				System.out.println("Usuario recuperado");
 				return us;
 			}else {
+				JOptionPane.showMessageDialog(null, "Usuario no encontrado");
 				System.out.println("Usuario no recuperado");
 				return null;
 			}
@@ -117,6 +118,7 @@ public class Connect {
 				System.out.println("El usuario al que hace referencia es admin");
 				return true;
 			}else {
+				//JOptionPane.showMessageDialog(null, "El usuario al que hace referencia no es admin");
 				System.out.println("El usuario al que hace referencia no es admin");
 				return false;
 			}
@@ -140,6 +142,7 @@ public class Connect {
 					/////
 					System.out.println(stmt.executeUpdate());
 					good_by(cn);
+					JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 					return true;
 				}catch (SQLException sqlE) {
 					System.out.println(sqlE);
@@ -147,10 +150,12 @@ public class Connect {
 					return false;
 				}
 			}else {
+				//JOptionPane.showMessageDialog(null, "Ese administrador no existe");
 				System.out.println("Ese administrador no existe");
 				return false;
 			}
 		}else {
+			//JOptionPane.showMessageDialog(null, "Usuario ya registrado");
 			System.out.println("Usuario ya registrado");
 			return false;
 		}

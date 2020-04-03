@@ -12,6 +12,7 @@ public class VentanaLogin extends JFrame {
 		super("Login de usuario");
 		this.setSize(600, 400);
 		this.setLayout(null);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel ventanaLogin = new JPanel();
 		ventanaLogin.setLayout(null);
