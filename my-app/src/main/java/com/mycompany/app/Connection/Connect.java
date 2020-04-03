@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import com.mycompany.app.Users;
-import com.mysql.cj.protocol.Resultset;
 
 public class Connect {
 	
@@ -199,6 +200,37 @@ public class Connect {
 			//JOptionPane.showMessageDialog(null, "Usuario ya registrado");
 			System.out.println("Usuario ya registrado");
 			return false;
+		}
+	}
+	private ArrayList<Users> getUsers(){
+		ArrayList<Users> usersList = new ArrayList<Users>();
+		String sql = "Select * from users";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while( rs.next() ) {
+				Users us = new Users();
+				us.setNombre(rs.getString(1));
+				us.setApellidos(rs.getString(2));
+				us.setEmail(rs.getString(3));
+				us.setPass(rs.getString(4));
+				us.setAdmin(rs.getInt(5));
+				us.setAdminEmail(rs.getString(6));
+				usersList.add(us);
+			}
+			return usersList;
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			ArrayList<Users> r = new ArrayList<Users>();
+			return r;
+		}
+	}
+	public void list_users() {
+		ArrayList<Users> ul = getUsers();
+		for(Users u : ul) {
+			System.out.println( u.toString() );
 		}
 	}
 	

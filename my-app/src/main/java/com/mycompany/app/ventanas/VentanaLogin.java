@@ -1,6 +1,5 @@
 package com.mycompany.app.ventanas;
-import java.awt.Color;
-import java.awt.Rectangle;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +10,10 @@ import com.mycompany.app.Connection.Connect;
 
 public class VentanaLogin extends JFrame {
 
+	/**
+	 * CalculaTUS
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblUser, lblPass;
 	private JButton btnAceptar, btnRegistrar;
 	private JTextField txtUsuario; private JPasswordField txtPassword;
@@ -70,6 +73,7 @@ public class VentanaLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Comprobacion de usuario correcto");
 				Connect conn = new Connect();
+				conn.list_users();
 				Users user = conn.Verificar_usuario(txtUsuario.getText() , txtPassword.getText());
 				if( user != null ) {
 					JOptionPane.showMessageDialog(null, "Bienvenido de nuevo "+user.getNombre());

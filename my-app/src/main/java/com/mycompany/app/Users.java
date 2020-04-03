@@ -74,8 +74,8 @@ public void setAdminEmail(String email) {
 
 @Override
 public String toString() {
-	return "Users [nombre=" + nombre + ", direccion=" + direccion + ", email=" + email + ", pass=" + pass + ", type="
-			+ type + "]";
+	return "Users [nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email + ", pass=" + pass + ", admin="
+			+ admin + "adminemail=]" + email_admin;
 }
 //por defecto va a ser la clase trabajador 
 public Users(String nombre, String apel , String email, String pass , int isAdmin , String A_email) {
