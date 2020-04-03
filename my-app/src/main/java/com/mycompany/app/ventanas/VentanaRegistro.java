@@ -21,7 +21,7 @@ public class VentanaRegistro {
 
 	public VentanaRegistro() {
 
-		JFrame frame = new JFrame();
+		final JFrame frame = new JFrame();
 		frame.setVisible(true);
 		frame.setSize(720, 480);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -123,6 +123,9 @@ public class VentanaRegistro {
 				textApellido.setText("");
 				textCorreo.setText("");
 				textContrasena.setText("");
+				VentanaLogin vtnLogin = new VentanaLogin();
+				vtnLogin.setVisible(true);
+				frame.setVisible(false);
 			}
 		});
 
