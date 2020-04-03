@@ -54,7 +54,7 @@ public class Users {
 	@Override
 	public String toString() {
 	return "Users [nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email + ", pass=" + pass + ", admin="
-			+ admin + "adminemail=]" + email_admin;
+			+ admin + "adminemail=" + email_admin;
 }
 	public String getPass() {
 		return pass;
