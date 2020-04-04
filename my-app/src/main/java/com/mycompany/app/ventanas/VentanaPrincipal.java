@@ -13,14 +13,16 @@ import javax.swing.*;
 public class VentanaPrincipal extends JFrame {
 	
 	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica;
-	JButton btnLogout;
+	JButton btnLogout, btnLocal, btnHacerTicket, btnVerTickets, btnVerProductos, btnVerEstadistica;
 	JTextField txt;
 	JTabbedPane tpTabbed;
+	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerProductos, panelVerEstadisticas;
 	
 	public VentanaPrincipal() {
 		
 		this.setSize(800,600);
 		this.setLayout(null);
+		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("CalculaTUS II");
 		
@@ -31,7 +33,6 @@ public class VentanaPrincipal extends JFrame {
 		panelLogo.setLayout(null);
 		panelLogo.setBackground(Color.CYAN);
 		panelLogo.setBounds(10, 10, 220, 80);
-		this.setVisible(true);
 		panelLogo.setVisible(true);
 		
 		//Creacion del panel superior derecho con el boton de logout y nombre de usuario
@@ -39,41 +40,28 @@ public class VentanaPrincipal extends JFrame {
 		add(panelLogout);
 		panelLogout.setLayout(null);
 		panelLogout.setBounds(550, 10, 220, 80);
-		this.setVisible(true);
 		panelLogout.setVisible(true);
 		
 		
 		//Inicializacion de tabbedpane
 		tpTabbed = new JTabbedPane();
-		tpTabbed.setVisible(true);
-		tpTabbed.setLayout(null);
+		tpTabbed.setBounds(10, 100, 220, 360);
 		
 		//Creacion de paneles que contiene el tabbed pane
 		JPanel panelTabbedUser = new JPanel();
+		panelTabbedUser.setBackground(Color.BLUE);	
 		panelTabbedUser.setLayout(null);
-		panelTabbedUser.setBackground(Color.CYAN);
-		panelTabbedUser.setBounds(10, 100, 220, 360);
-		this.setVisible(true);
-		panelTabbedUser.setVisible(true);
-		panelTabbedUser.add(tpTabbed);
-		
 		
 		
 		JPanel panelTabbedAdmin = new JPanel();
-		panelTabbedAdmin.setLayout(null);
 		panelTabbedAdmin.setBackground(Color.WHITE);
-		panelTabbedAdmin.setBounds(10, 100, 220, 360);
-		this.setVisible(true);
-		panelTabbedAdmin.setVisible(true);
-		tpTabbed.addTab("Admin", panelTabbedAdmin);
 		
 		
 		JPanel panelTabbedFTP = new JPanel();
-		panelTabbedFTP.setLayout(null);
 		panelTabbedFTP.setBackground(Color.ORANGE);
-		panelTabbedFTP.setBounds(10, 100, 220, 360);
-		this.setVisible(true);
-		panelTabbedFTP.setVisible(true);
+		
+		tpTabbed.addTab("User", panelTabbedUser);
+		tpTabbed.addTab("Admin", panelTabbedAdmin);
 		tpTabbed.addTab("FTP", panelTabbedFTP);
 		
 		
@@ -84,7 +72,6 @@ public class VentanaPrincipal extends JFrame {
 		panelAutores.setLayout(null);
 		panelAutores.setBackground(Color.WHITE);
 		panelAutores.setBounds(10, 470, 220, 80);
-		this.setVisible(true);
 		panelAutores.setVisible(true);
 		
 		//Creacion del panel de posibles estadisticas
@@ -93,17 +80,7 @@ public class VentanaPrincipal extends JFrame {
 		panelEstadisticas.setLayout(null);
 		panelEstadisticas.setBackground(Color.WHITE);
 		panelEstadisticas.setBounds(240, 470, 400, 80);
-		this.setVisible(true);
 		panelEstadisticas.setVisible(true);
-				
-		//Creacion del panel de contenido
-		JPanel panelContenido = new JPanel();
-		add(panelContenido);
-		panelContenido.setLayout(null);
-		panelContenido.setBackground(Color.WHITE);
-		panelContenido.setBounds(240, 100, 530, 360);
-		this.setVisible(true);
-		panelContenido.setVisible(true);
 		
 		//Panel para el logo de Deusto
 		JPanel panelDeusto = new JPanel();
@@ -111,8 +88,8 @@ public class VentanaPrincipal extends JFrame {
 		panelDeusto.setLayout(null);
 		panelDeusto.setBackground(Color.RED);
 		panelDeusto.setBounds(650, 470, 120, 80);
-		this.setVisible(true);
 		panelDeusto.setVisible(true);
+		
 		
 		JLabel img = new JLabel();
 		ImageIcon image = new ImageIcon("deusto-logo.png");
@@ -120,7 +97,6 @@ public class VentanaPrincipal extends JFrame {
 		img.setVisible(true);
 		img.setIcon(image);
 		panelDeusto.add(img);
-		
 		
 		
 		lblNombreUser = new JLabel();
@@ -176,6 +152,188 @@ public class VentanaPrincipal extends JFrame {
 		lblEstadistica.setSize(100, 15);
 		
 		
+		//ZONA PARA LOS BOTONES DEL PANEL USUARIO
+		btnLocal = new JButton();
+		btnLocal.setText("Registrar local");
+		btnLocal.setBounds(20, 30, 10, 10);
+		btnLocal.setSize(tpTabbed.getWidth()-45, 30);
+		
+		btnHacerTicket = new JButton();
+		btnHacerTicket.setText("Hacer ticket");
+		btnHacerTicket.setBounds(20, 90, 10, 10);
+		btnHacerTicket.setSize(tpTabbed.getWidth()-45, 30);
+		
+		btnVerTickets = new JButton();
+		btnVerTickets.setText("Ver tickets");
+		btnVerTickets.setBounds(20, 150, 10, 10);
+		btnVerTickets.setSize(tpTabbed.getWidth()-45, 30);
+		
+		btnVerProductos = new JButton();
+		btnVerProductos.setText("Ver productos");
+		btnVerProductos.setBounds(20, 210, 10, 10);
+		btnVerProductos.setSize(tpTabbed.getWidth()-45, 30);
+		
+		btnVerEstadistica = new JButton();
+		btnVerEstadistica.setText("Ver estadistica");
+		btnVerEstadistica.setBounds(20, 270, 10, 10);
+		btnVerEstadistica.setSize(tpTabbed.getWidth()-45, 30);
+		
+		
+		panelLocal = new JPanel();
+		panelLocal.setLayout(null);
+		panelLocal.setBackground(Color.PINK);
+		panelLocal.setBounds(240, 100, 530, 360);
+		
+		panelCrearTicket = new JPanel();
+		panelCrearTicket.setLayout(null);
+		panelCrearTicket.setBackground(Color.BLACK);
+		panelCrearTicket.setBounds(240, 100, 530, 360);
+		
+		panelVerTickets = new JPanel();
+		panelVerTickets.setLayout(null);
+		panelVerTickets.setBackground(Color.WHITE);
+		panelVerTickets.setBounds(240, 100, 530, 360);
+		
+		panelVerProductos = new JPanel();
+		panelVerProductos.setLayout(null);
+		panelVerProductos.setBackground(Color.PINK);
+		panelVerProductos.setBounds(240, 100, 530, 360);
+		
+		panelVerEstadisticas = new JPanel();
+		panelVerEstadisticas.setLayout(null);
+		panelVerEstadisticas.setBackground(Color.BLACK);
+		panelVerEstadisticas.setBounds(240, 100, 530, 360);
+		
+		//FUNCION DE LOS BOTONES
+		btnLocal.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelLocal.setVisible(true);
+				add(panelLocal);
+				repaint();
+				if(panelCrearTicket.isVisible()) {
+					panelCrearTicket.setVisible(false);
+				}
+				else if(panelVerTickets.isVisible()) {
+					panelVerTickets.setVisible(false);
+				}
+				else if(panelVerProductos.isVisible()) {
+					panelVerProductos.setVisible(false);
+				}
+				else if(panelVerEstadisticas.isVisible()) {
+					panelVerEstadisticas.setVisible(false);
+				}
+			}
+		});
+		
+		btnHacerTicket.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCrearTicket.setVisible(true);
+				add(panelCrearTicket);
+				repaint();
+				if(panelLocal.isVisible()) {
+					panelLocal.setVisible(false);
+				}
+				else if(panelVerTickets.isVisible()) {
+					panelVerTickets.setVisible(false);
+				}
+				else if(panelVerProductos.isVisible()) {
+					panelVerProductos.setVisible(false);
+				}
+				else if(panelVerEstadisticas.isVisible()) {
+					panelVerEstadisticas.setVisible(false);
+				}
+			}
+		});
+		
+		btnVerTickets.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelVerTickets.setVisible(true);
+				add(panelVerTickets);
+				repaint();
+				if(panelLocal.isVisible()) {
+					panelLocal.setVisible(false);
+				}else if(panelCrearTicket.isVisible()) {
+					panelCrearTicket.setVisible(false);
+				}
+				else if(panelVerProductos.isVisible()) {
+					panelVerProductos.setVisible(false);
+				}
+				else if(panelVerEstadisticas.isVisible()) {
+					panelVerEstadisticas.setVisible(false);
+				}
+			}
+		});
+		
+		btnVerProductos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelVerProductos.setVisible(true);
+				add(panelVerProductos);
+				repaint();
+				if(panelLocal.isVisible()) {
+					panelLocal.setVisible(false);
+				}else if(panelCrearTicket.isVisible()) {
+					panelCrearTicket.setVisible(false);
+				}
+				else if(panelVerTickets.isVisible()) {
+					panelVerTickets.setVisible(false);
+				}
+				else if(panelVerEstadisticas.isVisible()) {
+					panelVerEstadisticas.setVisible(false);
+				}
+				
+			}
+		});
+		
+		btnVerEstadistica.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelVerEstadisticas.setVisible(true);
+				add(panelVerEstadisticas);
+				repaint();
+				if(panelLocal.isVisible()) {
+					panelLocal.setVisible(false);
+				}else if(panelCrearTicket.isVisible()) {
+					panelCrearTicket.setVisible(false);
+				}
+				else if(panelVerTickets.isVisible()) {
+					panelVerTickets.setVisible(false);
+				}
+				else if(panelVerProductos.isVisible()) {
+					panelVerProductos.setVisible(false);
+				}
+				
+				
+			}
+		});
+		
+		
+		panelTabbedUser.add(btnLocal);
+		panelTabbedUser.add(btnHacerTicket);
+		panelTabbedUser.add(btnVerTickets);
+		panelTabbedUser.add(btnVerProductos);
+		panelTabbedUser.add(btnVerEstadistica);
+		
+		
+		
+		
+		//ZONA PARA BOTONES PANEL ADMIN
+		
+		
+		
+		//ZONA PARA BOTONES PANEL FTP
+		
+		
+		
+		
 		add(tpTabbed);
 
 		panelAutores.add(lblAitor);
@@ -188,6 +346,8 @@ public class VentanaPrincipal extends JFrame {
 		panelLogout.add(lblNombreUser);
 		
 		panelEstadisticas.add(lblEstadistica);
+		repaint();
+		
 	}
 	
 	
