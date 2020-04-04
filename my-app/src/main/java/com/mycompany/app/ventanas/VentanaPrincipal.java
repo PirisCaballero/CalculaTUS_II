@@ -19,12 +19,12 @@ import com.mycompany.app.Users;
 
 public class VentanaPrincipal extends JFrame {
 	
-	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica, lblRegistrarLocal, lblNombreLocal, lblDireccion, lblCodPostal, lblOpinion;
+	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica, lblRegistrarLocal, lblNombreLocal, lblDireccion, lblCodPostal, lblOpinion, lblBienvenida, lblBienvenidaSelect;
 	JButton btnLogout, btnLocal, btnHacerTicket, btnVerTickets, btnVerProductos, btnVerEstadistica, btnLocalCreado;
 	JTextField txtNombreLocal, txtDireccion, txtCodPostal;
 	JTextArea txtOpinion;
 	JTabbedPane tpTabbed;
-	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerProductos, panelVerEstadisticas;
+	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerProductos, panelVerEstadisticas, panelBienvenida;
 	
 	public VentanaPrincipal(Users user) {
 		
@@ -192,36 +192,46 @@ public class VentanaPrincipal extends JFrame {
 		btnVerEstadistica.setBounds(20, 270, 10, 10);
 		btnVerEstadistica.setSize(tpTabbed.getWidth()-45, 30);
 		
+		panelBienvenida = new JPanel();
+		panelBienvenida.setLayout(null);
+		panelBienvenida.setBorder(BorderFactory.createEtchedBorder());
+		panelBienvenida.setBackground(Color.WHITE);
+		panelBienvenida.setBounds(240, 100, 530, 360);
 		
 		panelLocal = new JPanel();
 		panelLocal.setLayout(null);
 		panelLocal.setBorder(BorderFactory.createEtchedBorder());
 		panelLocal.setBackground(Color.WHITE);
 		panelLocal.setBounds(240, 100, 530, 360);
+		panelLocal.setVisible(false);
 		
 		panelCrearTicket = new JPanel();
 		panelCrearTicket.setLayout(null);
 		panelCrearTicket.setBorder(BorderFactory.createEtchedBorder());
 		panelCrearTicket.setBackground(Color.WHITE);
 		panelCrearTicket.setBounds(240, 100, 530, 360);
+		panelCrearTicket.setVisible(false);
 		
 		panelVerTickets = new JPanel();
 		panelVerTickets.setLayout(null);
 		panelVerTickets.setBorder(BorderFactory.createEtchedBorder());
 		panelVerTickets.setBackground(Color.WHITE);
 		panelVerTickets.setBounds(240, 100, 530, 360);
+		panelVerTickets.setVisible(false);
 		
 		panelVerProductos = new JPanel();
 		panelVerProductos.setLayout(null);
 		panelVerProductos.setBorder(BorderFactory.createEtchedBorder());
 		panelVerProductos.setBackground(Color.WHITE);
 		panelVerProductos.setBounds(240, 100, 530, 360);
+		panelVerProductos.setVisible(false);
 		
 		panelVerEstadisticas = new JPanel();
 		panelVerEstadisticas.setLayout(null);
 		panelVerEstadisticas.setBorder(BorderFactory.createEtchedBorder());
 		panelVerEstadisticas.setBackground(Color.WHITE);
 		panelVerEstadisticas.setBounds(240, 100, 530, 360);
+		panelVerEstadisticas.setVisible(false);
 		
 		
 		lblRegistrarLocal = new JLabel();
@@ -266,7 +276,6 @@ public class VentanaPrincipal extends JFrame {
 		lblOpinion.setBounds(30, 200, 160, 30);
 		panelLocal.add(lblOpinion);
 		
-		
 		txtOpinion = new JTextArea();
 		txtOpinion.setText("");
 		txtOpinion.setBounds(20, 230, 480, 80);
@@ -282,6 +291,26 @@ public class VentanaPrincipal extends JFrame {
 		btnLocalCreado.setBounds(panelLocal.getWidth()/2-50, 320, 50, 10);
 		btnLocalCreado.setSize(80, 30);
 		panelLocal.add(btnLocalCreado);
+		
+		lblBienvenida = new JLabel();
+		lblBienvenida.setText("Bienvenido/a a CalculaTUS II");
+		lblBienvenida.setBounds(panelBienvenida.getWidth()/2-140, panelBienvenida.getHeight()/2-30, 280, 30);
+		Font auxFont2=lblBienvenida.getFont();
+		lblBienvenida.setFont(new Font(auxFont2.getFontName(), auxFont.getStyle(), 20));
+		panelBienvenida.add(lblBienvenida);
+		
+		lblBienvenidaSelect = new JLabel();
+		lblBienvenidaSelect.setText("Selecciona una operacion");
+		lblBienvenidaSelect.setBounds(panelBienvenida.getWidth()/2-80, panelBienvenida.getHeight()/2+30, 280, 30);
+		panelBienvenida.add(lblBienvenidaSelect);
+		
+		if(!panelCrearTicket.isVisible()&&!panelVerTickets.isVisible()&&!panelVerEstadisticas.isVisible()&&!panelVerProductos.isVisible()) {
+			add(panelBienvenida);
+			panelBienvenida.setVisible(true);
+			repaint();
+			
+		}
+		
 		
 		
 		//FUNCION DE LOS BOTONES
@@ -303,6 +332,9 @@ public class VentanaPrincipal extends JFrame {
 				}
 				else if(panelVerEstadisticas.isVisible()) {
 					panelVerEstadisticas.setVisible(false);
+				}
+				else if(panelBienvenida.isVisible()) {
+					panelBienvenida.setVisible(false);
 				}
 			}
 		});
@@ -326,6 +358,9 @@ public class VentanaPrincipal extends JFrame {
 				else if(panelVerEstadisticas.isVisible()) {
 					panelVerEstadisticas.setVisible(false);
 				}
+				else if(panelBienvenida.isVisible()) {
+					panelBienvenida.setVisible(false);
+				}
 			}
 		});
 		
@@ -347,6 +382,9 @@ public class VentanaPrincipal extends JFrame {
 				else if(panelVerEstadisticas.isVisible()) {
 					panelVerEstadisticas.setVisible(false);
 				}
+				else if(panelBienvenida.isVisible()) {
+					panelBienvenida.setVisible(false);
+				}
 			}
 		});
 		
@@ -367,6 +405,9 @@ public class VentanaPrincipal extends JFrame {
 				}
 				else if(panelVerEstadisticas.isVisible()) {
 					panelVerEstadisticas.setVisible(false);
+				}
+				else if(panelBienvenida.isVisible()) {
+					panelBienvenida.setVisible(false);
 				}
 				
 			}
@@ -390,7 +431,9 @@ public class VentanaPrincipal extends JFrame {
 				else if(panelVerProductos.isVisible()) {
 					panelVerProductos.setVisible(false);
 				}
-				
+				else if(panelBienvenida.isVisible()) {
+					panelBienvenida.setVisible(false);
+				}
 				
 			}
 		});

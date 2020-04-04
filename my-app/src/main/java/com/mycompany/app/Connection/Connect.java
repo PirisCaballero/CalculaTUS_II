@@ -176,7 +176,7 @@ public class Connect {
 		}
 	}
 	public boolean RegisLocal(Local loc) {
-		
+		return true;
 	}
 	public boolean RegisUser(Users us) {
 		if (!buscar_usuario(us.getEmail())) {
