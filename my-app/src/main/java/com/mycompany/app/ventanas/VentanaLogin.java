@@ -89,11 +89,13 @@ public class VentanaLogin extends JFrame {
 				// TODO Auto-generated method stub
 				System.out.println("Comprobacion de usuario correcto");
 				Connect conn = new Connect();
-				conn.list_users();
+				//conn.list_users();
 				Users user = conn.Verificar_usuario(txtUsuario.getText() , txtPassword.getText());
 				if (user != null) {
 					JOptionPane.showMessageDialog(null, "Bienvenido de nuevo " + user.getNombre());
 					System.out.println(user.toString());
+					VentanaPrincipal VP = new VentanaPrincipal(user);
+					VP.setVisible(true);
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario no registrado");

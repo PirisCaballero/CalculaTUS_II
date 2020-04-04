@@ -12,6 +12,8 @@ import java.awt.image.ImageProducer;
 
 import javax.swing.*;
 
+import com.mycompany.app.Users;
+
 public class VentanaPrincipal extends JFrame {
 	
 	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica, lblRegistrarLocal, lblNombreLocal, lblDireccion, lblCodPostal, lblOpinion;
@@ -21,9 +23,11 @@ public class VentanaPrincipal extends JFrame {
 	JTabbedPane tpTabbed;
 	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerProductos, panelVerEstadisticas;
 	
-	public VentanaPrincipal() {
+	public VentanaPrincipal(Users user) {
 		
 		this.setSize(800,600);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 		this.setLayout(null);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,7 +107,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		
 		lblNombreUser = new JLabel();
-		lblNombreUser.setText("Usuario");
+		lblNombreUser.setText(user.getNombre());
 		lblNombreUser.setBounds(30, 15, 10, 10);
 		lblNombreUser.setSize(50, 30);
 		
@@ -412,11 +416,5 @@ public class VentanaPrincipal extends JFrame {
 		panelEstadisticas.add(lblEstadistica);
 		repaint();
 		
-	}
-	
-	
-	public static void main(String[] args) {
-		VentanaPrincipal pr = new VentanaPrincipal();
-		pr.setVisible(true);
 	}
 }
