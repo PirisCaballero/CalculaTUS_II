@@ -5,14 +5,24 @@ public class Local {
 	private String nombre;
 	private String direccion;
 	private int cp;
+	private String descripcion;
 
 	public Local() {
 	}
 
-	public Local(String nom, String dir, int codPost) {
+	public Local(String nom, String dir, int codPost , String desc) {
 		this.nombre = nom;
 		this.direccion = dir;
 		this.cp = codPost;
+		this.descripcion = desc;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public String getNombre() {

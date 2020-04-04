@@ -14,6 +14,7 @@ import java.awt.image.ImageProducer;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
+import com.mycompany.app.Local;
 import com.mycompany.app.Users;
 
 public class VentanaPrincipal extends JFrame {
@@ -394,6 +395,16 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		
+		btnLocalCreado.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("Crear local");
+				Local loc = new Local( txtNombreLocal.getText() , txtDireccion.getText() , Integer.parseInt(txtCodPostal.getText()) , txtOpinion.getText() );
+			}
+		});
+		
 		
 		panelTabbedUser.add(btnLocal);
 		panelTabbedUser.add(btnHacerTicket);
@@ -427,5 +438,10 @@ public class VentanaPrincipal extends JFrame {
 		panelEstadisticas.add(lblEstadistica);
 		repaint();
 		
+	}
+	public static void main(String[] args) {
+		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
+		VentanaPrincipal VP = new VentanaPrincipal(us);
+		VP.setVisible(true);
 	}
 }

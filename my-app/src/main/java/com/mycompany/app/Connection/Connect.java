@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.JOptionPane;
+
+import com.mycompany.app.Local;
 import com.mycompany.app.Users;
 
 public class Connect {
@@ -173,7 +175,9 @@ public class Connect {
 			}
 		}
 	}
-
+	public boolean RegisLocal(Local loc) {
+		
+	}
 	public boolean RegisUser(Users us) {
 		if (!buscar_usuario(us.getEmail())) {
 			System.out.println("Usuario no registrado");
