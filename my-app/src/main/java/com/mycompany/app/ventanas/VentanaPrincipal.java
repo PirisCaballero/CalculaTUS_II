@@ -1,8 +1,10 @@
 package com.mycompany.app.ventanas;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
@@ -12,9 +14,10 @@ import javax.swing.*;
 
 public class VentanaPrincipal extends JFrame {
 	
-	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica;
-	JButton btnLogout, btnLocal, btnHacerTicket, btnVerTickets, btnVerProductos, btnVerEstadistica;
-	JTextField txt;
+	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica, lblRegistrarLocal, lblNombreLocal, lblDireccion, lblCodPostal, lblOpinion;
+	JButton btnLogout, btnLocal, btnHacerTicket, btnVerTickets, btnVerProductos, btnVerEstadistica, btnLocalCreado;
+	JTextField txtNombreLocal, txtDireccion, txtCodPostal;
+	JTextArea txtOpinion;
 	JTabbedPane tpTabbed;
 	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerProductos, panelVerEstadisticas;
 	
@@ -123,29 +126,29 @@ public class VentanaPrincipal extends JFrame {
 					VentanaLogin vtnLogin = new VentanaLogin();
 					vtnLogin.setVisible(true);
 				}
-				
 			}
 		});
 		
-		lblAitor = new JLabel();
-		lblAitor.setText("Aitor Piris");
-		lblAitor.setBounds(10, 10, 10, 10);
-		lblAitor.setSize(100, 15);
+		lblIratxe = new JLabel();
+		lblIratxe.setText("Iratxe Campo");
+		lblIratxe.setBounds(10, 10, 10, 10);
+		lblIratxe.setSize(100, 15);	
 		
 		lblEneko = new JLabel();
 		lblEneko.setText("Eneko Perez");
 		lblEneko.setBounds(10, 25, 10, 10);
 		lblEneko.setSize(100, 15);
 		
+		lblAitor = new JLabel();
+		lblAitor.setText("Aitor Piris");
+		lblAitor.setBounds(10, 40, 10, 10);
+		lblAitor.setSize(100, 15);
+		
 		lblErik = new JLabel();
 		lblErik.setText("Erik Martinez");
-		lblErik.setBounds(10, 40, 10, 10);
+		lblErik.setBounds(10, 55, 10, 10);
 		lblErik.setSize(100, 15);
 		
-		lblIratxe = new JLabel();
-		lblIratxe.setText("Iratxe Campo");
-		lblIratxe.setBounds(10, 55, 10, 10);
-		lblIratxe.setSize(100, 15);
 		
 		lblEstadistica = new JLabel();
 		lblEstadistica.setText("Estadisticas");
@@ -181,12 +184,12 @@ public class VentanaPrincipal extends JFrame {
 		
 		panelLocal = new JPanel();
 		panelLocal.setLayout(null);
-		panelLocal.setBackground(Color.PINK);
+		panelLocal.setBackground(Color.WHITE);
 		panelLocal.setBounds(240, 100, 530, 360);
 		
 		panelCrearTicket = new JPanel();
 		panelCrearTicket.setLayout(null);
-		panelCrearTicket.setBackground(Color.BLACK);
+		panelCrearTicket.setBackground(Color.WHITE);
 		panelCrearTicket.setBounds(240, 100, 530, 360);
 		
 		panelVerTickets = new JPanel();
@@ -196,13 +199,74 @@ public class VentanaPrincipal extends JFrame {
 		
 		panelVerProductos = new JPanel();
 		panelVerProductos.setLayout(null);
-		panelVerProductos.setBackground(Color.PINK);
+		panelVerProductos.setBackground(Color.WHITE);
 		panelVerProductos.setBounds(240, 100, 530, 360);
 		
 		panelVerEstadisticas = new JPanel();
 		panelVerEstadisticas.setLayout(null);
-		panelVerEstadisticas.setBackground(Color.BLACK);
+		panelVerEstadisticas.setBackground(Color.WHITE);
 		panelVerEstadisticas.setBounds(240, 100, 530, 360);
+		
+		
+		lblRegistrarLocal = new JLabel();
+		lblRegistrarLocal.setText("Registrar local");
+		lblRegistrarLocal.setBounds(panelLocal.getWidth()/2-60, 10, 140, 30);
+		Font auxFont=lblRegistrarLocal.getFont();
+		lblRegistrarLocal.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 20));
+		panelLocal.add(lblRegistrarLocal);
+		
+		lblNombreLocal = new JLabel();
+		lblNombreLocal.setText("Nombre del local:");
+		lblNombreLocal.setBounds(140, 70, 140, 30);
+		panelLocal.add(lblNombreLocal);
+		
+		txtNombreLocal = new JTextField();
+		txtNombreLocal.setText("");
+		txtNombreLocal.setBounds(260, 70, 170, 30);
+		panelLocal.add(txtNombreLocal);
+		
+		lblDireccion = new JLabel();
+		lblDireccion.setText("Introduce la direccion:");
+		lblDireccion.setBounds(111, 120, 140, 30);
+		panelLocal.add(lblDireccion);
+		
+		txtDireccion = new JTextField();
+		txtDireccion.setText("");
+		txtDireccion.setBounds(260, 120, 170, 30);
+		panelLocal.add(txtDireccion);
+		
+		lblCodPostal = new JLabel();
+		lblCodPostal.setText("Introduce el codigo postal:");
+		lblCodPostal.setBounds(88, 170, 160, 30);
+		panelLocal.add(lblCodPostal);
+		
+		txtCodPostal = new JTextField();
+		txtCodPostal.setText("");
+		txtCodPostal.setBounds(260, 170, 170, 30);
+		panelLocal.add(txtCodPostal);
+		
+		lblOpinion = new JLabel();
+		lblOpinion.setText("Deja tu opinion:");
+		lblOpinion.setBounds(30, 200, 160, 30);
+		panelLocal.add(lblOpinion);
+		
+		
+		txtOpinion = new JTextArea();
+		txtOpinion.setText("");
+		txtOpinion.setBounds(20, 230, 480, 80);
+		txtOpinion.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		txtOpinion.setLineWrap(true);
+		txtOpinion.setWrapStyleWord(true);
+		txtOpinion.setMargin(new Insets(10, 10, 10, 10));
+		txtOpinion.setCaretPosition(0);
+		panelLocal.add(txtOpinion);
+		
+		btnLocalCreado = new JButton();
+		btnLocalCreado.setText("Enviar");
+		btnLocalCreado.setBounds(panelLocal.getWidth()/2-50, 320, 50, 10);
+		btnLocalCreado.setSize(80, 30);
+		panelLocal.add(btnLocalCreado);
+		
 		
 		//FUNCION DE LOS BOTONES
 		btnLocal.addActionListener(new ActionListener() {
@@ -336,10 +400,10 @@ public class VentanaPrincipal extends JFrame {
 		
 		add(tpTabbed);
 
-		panelAutores.add(lblAitor);
-		panelAutores.add(lblEneko);
-		panelAutores.add(lblErik);
 		panelAutores.add(lblIratxe);
+		panelAutores.add(lblEneko);
+		panelAutores.add(lblAitor);
+		panelAutores.add(lblErik);
 		
 		panelLogout.add(btnLogout);
 		
