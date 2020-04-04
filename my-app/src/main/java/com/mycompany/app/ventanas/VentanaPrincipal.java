@@ -16,6 +16,7 @@ import javax.swing.border.BevelBorder;
 
 import com.mycompany.app.Local;
 import com.mycompany.app.Users;
+import com.mycompany.app.Connection.Connect;
 
 public class VentanaPrincipal extends JFrame {
 	
@@ -25,8 +26,9 @@ public class VentanaPrincipal extends JFrame {
 	JTextArea txtOpinion;
 	JTabbedPane tpTabbed;
 	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerProductos, panelVerEstadisticas, panelBienvenida;
+	private Users user;
 	
-	public VentanaPrincipal(Users user) {
+	public VentanaPrincipal(Users us) {
 		
 		this.setSize(800,600);
 		this.setLocationRelativeTo(null);
@@ -37,6 +39,7 @@ public class VentanaPrincipal extends JFrame {
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("CalculaTUS II");
+		this.user = us;
 		
 		
 		//Creacion del panel para introducir el logo
@@ -445,6 +448,8 @@ public class VentanaPrincipal extends JFrame {
 				// TODO Auto-generated method stub
 				System.out.println("Crear local");
 				Local loc = new Local( txtNombreLocal.getText() , txtDireccion.getText() , Integer.parseInt(txtCodPostal.getText()) , txtOpinion.getText() );
+				Connect conn = new Connect();
+				System.out.println( conn.RegisLocal(user, loc) );
 			}
 		});
 		

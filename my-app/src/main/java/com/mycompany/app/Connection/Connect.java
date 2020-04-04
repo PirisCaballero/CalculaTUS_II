@@ -82,6 +82,28 @@ public class Connect {
 			return false;
 		}
 	}
+	private boolean buscar_local( Users user , Local loc ) {
+		String sql = "Select * from locales where Nombre = ? and email_duenio = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setString(1, loc.getNombre());
+			stmt.setString(2, user.getEmail());
+			ResultSet rs = stmt.executeQuery();
+			int cont = 0;
+			while (rs.next()) {
+				cont += 1;
+			}
+			if (cont == 0) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (SQLException sqlE) {
+			System.out.println(sqlE);
+			return false;
+		}
+	}
 
 	public Users Verificar_usuario(String email, String pass) {
 		Users us = null;
@@ -175,8 +197,32 @@ public class Connect {
 			}
 		}
 	}
-	public boolean RegisLocal(Local loc) {
-		return true;
+	public boolean RegisLocal(Users user , Local loc) {
+		if( !buscar_local(user, loc) ) {
+			System.out.println("El local no esta registrado");
+			String sql = "Insert into locales Values ( ? , ? , ? , ? , ? , ? )";
+			Connection cn = Open_connection();
+			try {
+				PreparedStatement stmt = cn.prepareStatement(sql);
+				stmt.setInt(1, 0);
+				stmt.setString(2, loc.getNombre());
+				stmt.setString(3, loc.getDireccion());
+				stmt.setInt(4, loc.getCp());
+				stmt.setString(5, loc.getDescripcion());
+				stmt.setString(6, user.getEmail());
+				////////
+				System.out.println(stmt.executeUpdate());
+				good_by(cn);
+				return true;
+			}catch(SQLException sqlE) {
+				System.out.println(sqlE);
+				sqlE.printStackTrace();
+				return false;
+			}
+		}else {
+			JOptionPane.showMessageDialog(null, "Ese local ya esta registrado");
+			return false;
+		}
 	}
 	public boolean RegisUser(Users us) {
 		if (!buscar_usuario(us.getEmail())) {
