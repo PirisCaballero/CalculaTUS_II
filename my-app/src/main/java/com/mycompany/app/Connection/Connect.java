@@ -319,6 +319,27 @@ public class Connect {
 			System.out.println("El usuario " + log_user.getNombre() + "no es administrador");
 		}
 	}
+	public ArrayList<Local> getLocales (Users us){
+		ArrayList<Local> localesList = new ArrayList<Local>();
+		String sql = "Select * from locales where email_duenio = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setString(1, us.getEmail());
+			ResultSet rs = stmt.executeQuery();
+			while( rs.next() ) {
+				Local loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
+				localesList.add(loc);
+				System.out.println(loc.toString());
+			}
+			return localesList;
+		}catch(SQLException sqlE) {
+			localesList = null;
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return localesList;
+		}
+	}
 	
 	public static void main(String[] args) {
 		Connect c = new Connect();

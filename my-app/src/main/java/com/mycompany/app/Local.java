@@ -17,6 +17,11 @@ public class Local {
 		this.descripcion = desc;
 	}
 
+	@Override
+	public String toString() {
+		String local = "Nombre: " + this.getNombre() + " Direccion: " + this.getDireccion() + " codigo postal: " + this.getCp();
+		return local;
+	}
 	public String getDescripcion() {
 		return descripcion;
 	}

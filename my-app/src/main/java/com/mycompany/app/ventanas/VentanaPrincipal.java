@@ -18,6 +18,8 @@ import com.mycompany.app.Local;
 import com.mycompany.app.Users;
 import com.mycompany.app.Connection.Connect;
 
+import paneles.Panel_producto;
+
 public class VentanaPrincipal extends JFrame {
 	
 	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica, lblRegistrarLocal, lblNombreLocal, lblDireccion, lblCodPostal, lblOpinion, lblBienvenida, lblBienvenidaSelect;
@@ -25,7 +27,8 @@ public class VentanaPrincipal extends JFrame {
 	JTextField txtNombreLocal, txtDireccion, txtCodPostal;
 	JTextArea txtOpinion;
 	JTabbedPane tpTabbed;
-	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerProductos, panelVerEstadisticas, panelBienvenida;
+	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerEstadisticas, panelBienvenida;
+	Panel_producto panelVerProductos;
 	private Users user;
 	
 	public VentanaPrincipal(Users us) {
@@ -78,6 +81,15 @@ public class VentanaPrincipal extends JFrame {
 		tpTabbed.addTab("User", panelTabbedUser);
 		tpTabbed.addTab("Admin", panelTabbedAdmin);
 		tpTabbed.addTab("FTP", panelTabbedFTP);
+		if( user.getAdmin() == 1 ) {
+			tpTabbed.setEnabledAt(0, true);
+			tpTabbed.setEnabledAt(1, true);
+			tpTabbed.setEnabledAt(1, true);
+		}else {
+			tpTabbed.setEnabledAt(0, true);
+			tpTabbed.setEnabledAt(1, false);
+			tpTabbed.setEnabledAt(2, false);
+		}
 		
 		
 		
@@ -222,12 +234,6 @@ public class VentanaPrincipal extends JFrame {
 		panelVerTickets.setBounds(240, 100, 530, 360);
 		panelVerTickets.setVisible(false);
 		
-		panelVerProductos = new JPanel();
-		panelVerProductos.setLayout(null);
-		panelVerProductos.setBorder(BorderFactory.createEtchedBorder());
-		panelVerProductos.setBackground(Color.WHITE);
-		panelVerProductos.setBounds(240, 100, 530, 360);
-		panelVerProductos.setVisible(false);
 		
 		panelVerEstadisticas = new JPanel();
 		panelVerEstadisticas.setLayout(null);
@@ -236,6 +242,7 @@ public class VentanaPrincipal extends JFrame {
 		panelVerEstadisticas.setBounds(240, 100, 530, 360);
 		panelVerEstadisticas.setVisible(false);
 		
+		panelVerProductos = new Panel_producto(user);
 		
 		lblRegistrarLocal = new JLabel();
 		lblRegistrarLocal.setText("Registrar local");
@@ -395,6 +402,7 @@ public class VentanaPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				panelVerProductos.refreshList(user);
 				panelVerProductos.setVisible(true);
 				add(panelVerProductos);
 				repaint();
@@ -488,7 +496,7 @@ public class VentanaPrincipal extends JFrame {
 		
 	}
 	public static void main(String[] args) {
-		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
+		Users us = new Users("Admin", "Root", "admin@root.es", "root", 0, "null");
 		VentanaPrincipal VP = new VentanaPrincipal(us);
 		VP.setVisible(true);
 	}
