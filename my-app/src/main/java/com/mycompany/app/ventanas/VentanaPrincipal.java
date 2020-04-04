@@ -1,5 +1,6 @@
 package com.mycompany.app.ventanas;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -11,6 +12,7 @@ import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 
 import com.mycompany.app.Users;
 
@@ -30,6 +32,8 @@ public class VentanaPrincipal extends JFrame {
 		this.setResizable(false);
 		this.setLayout(null);
 		this.setVisible(true);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("CalculaTUS II");
 		
@@ -77,6 +81,7 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panelAutores = new JPanel();
 		add(panelAutores);
 		panelAutores.setLayout(null);
+		panelAutores.setBorder(BorderFactory.createEtchedBorder());
 		panelAutores.setBackground(Color.WHITE);
 		panelAutores.setBounds(10, 470, 220, 80);
 		panelAutores.setVisible(true);
@@ -85,6 +90,7 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panelEstadisticas = new JPanel();
 		add(panelEstadisticas);
 		panelEstadisticas.setLayout(null);
+		panelEstadisticas.setBorder(BorderFactory.createEtchedBorder());
 		panelEstadisticas.setBackground(Color.WHITE);
 		panelEstadisticas.setBounds(240, 470, 400, 80);
 		panelEstadisticas.setVisible(true);
@@ -93,7 +99,7 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panelDeusto = new JPanel();
 		add(panelDeusto);
 		panelDeusto.setLayout(null);
-		panelDeusto.setBackground(Color.RED);
+		panelDeusto.setBackground(Color.PINK);
 		panelDeusto.setBounds(650, 470, 120, 80);
 		panelDeusto.setVisible(true);
 		
@@ -188,26 +194,31 @@ public class VentanaPrincipal extends JFrame {
 		
 		panelLocal = new JPanel();
 		panelLocal.setLayout(null);
+		panelLocal.setBorder(BorderFactory.createEtchedBorder());
 		panelLocal.setBackground(Color.WHITE);
 		panelLocal.setBounds(240, 100, 530, 360);
 		
 		panelCrearTicket = new JPanel();
 		panelCrearTicket.setLayout(null);
+		panelCrearTicket.setBorder(BorderFactory.createEtchedBorder());
 		panelCrearTicket.setBackground(Color.WHITE);
 		panelCrearTicket.setBounds(240, 100, 530, 360);
 		
 		panelVerTickets = new JPanel();
 		panelVerTickets.setLayout(null);
+		panelVerTickets.setBorder(BorderFactory.createEtchedBorder());
 		panelVerTickets.setBackground(Color.WHITE);
 		panelVerTickets.setBounds(240, 100, 530, 360);
 		
 		panelVerProductos = new JPanel();
 		panelVerProductos.setLayout(null);
+		panelVerProductos.setBorder(BorderFactory.createEtchedBorder());
 		panelVerProductos.setBackground(Color.WHITE);
 		panelVerProductos.setBounds(240, 100, 530, 360);
 		
 		panelVerEstadisticas = new JPanel();
 		panelVerEstadisticas.setLayout(null);
+		panelVerEstadisticas.setBorder(BorderFactory.createEtchedBorder());
 		panelVerEstadisticas.setBackground(Color.WHITE);
 		panelVerEstadisticas.setBounds(240, 100, 530, 360);
 		
