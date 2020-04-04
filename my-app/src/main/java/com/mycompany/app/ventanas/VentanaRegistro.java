@@ -34,6 +34,7 @@ public class VentanaRegistro {
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setSize(720, 480);
+		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		// frame.setTitle("TITULO");
