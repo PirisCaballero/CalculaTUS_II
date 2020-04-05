@@ -10,7 +10,7 @@ public class Local {
 	public Local() {
 	}
 
-	public Local(String nom, String dir, int codPost , String desc) {
+	public Local(String nom, String dir, int codPost, String desc) {
 		this.nombre = nom;
 		this.direccion = dir;
 		this.cp = codPost;
@@ -19,9 +19,11 @@ public class Local {
 
 	@Override
 	public String toString() {
-		String local = "Nombre: " + this.getNombre() + " Direccion: " + this.getDireccion() + " codigo postal: " + this.getCp();
+		String local = "Nombre: " + this.getNombre() + " Direccion: " + this.getDireccion() + " codigo postal: "
+				+ this.getCp();
 		return local;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}

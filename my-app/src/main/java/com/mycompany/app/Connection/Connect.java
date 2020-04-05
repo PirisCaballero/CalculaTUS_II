@@ -82,7 +82,8 @@ public class Connect {
 			return false;
 		}
 	}
-	private boolean buscar_local( Users user , Local loc ) {
+
+	private boolean buscar_local(Users user, Local loc) {
 		String sql = "Select * from locales where Nombre = ? and email_duenio = ?";
 		Connection cn = Open_connection();
 		try {
@@ -197,8 +198,9 @@ public class Connect {
 			}
 		}
 	}
-	public boolean RegisLocal(Users user , Local loc) {
-		if( !buscar_local(user, loc) ) {
+
+	public boolean RegisLocal(Users user, Local loc) {
+		if (!buscar_local(user, loc)) {
 			System.out.println("El local no esta registrado");
 			String sql = "Insert into locales Values ( ? , ? , ? , ? , ? , ? )";
 			Connection cn = Open_connection();
@@ -214,16 +216,17 @@ public class Connect {
 				System.out.println(stmt.executeUpdate());
 				good_by(cn);
 				return true;
-			}catch(SQLException sqlE) {
+			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				return false;
 			}
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(null, "Ese local ya esta registrado");
 			return false;
 		}
 	}
+
 	public boolean RegisUser(Users us) {
 		if (!buscar_usuario(us.getEmail())) {
 			System.out.println("Usuario no registrado");
@@ -260,14 +263,15 @@ public class Connect {
 			return false;
 		}
 	}
-	private ArrayList<Users> getUsers(){
+
+	private ArrayList<Users> getUsers() {
 		ArrayList<Users> usersList = new ArrayList<Users>();
 		String sql = "Select * from users";
 		Connection cn = Open_connection();
 		try {
 			PreparedStatement stmt = cn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			while( rs.next() ) {
+			while (rs.next()) {
 				Users us = new Users();
 				us.setNombre(rs.getString(1));
 				us.setApellidos(rs.getString(2));
@@ -278,26 +282,28 @@ public class Connect {
 				usersList.add(us);
 			}
 			return usersList;
-		}catch(SQLException sqlE) {
+		} catch (SQLException sqlE) {
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
 			ArrayList<Users> r = new ArrayList<Users>();
 			return r;
 		}
 	}
+
 	public void list_users() {
 		ArrayList<Users> ul = getUsers();
-		for(Users u : ul) {
-			System.out.println( u.toString() );
+		for (Users u : ul) {
+			System.out.println(u.toString());
 		}
 	}
-	public void cambio_de__tipo_de_usuario( Users log_user , String user_to_change , int cambio ) {
+
+	public void cambio_de__tipo_de_usuario(Users log_user, String user_to_change, int cambio) {
 		Users userChanged = Recuperar_usuario(user_to_change);
 		System.out.println(userChanged.toString());
-		if( log_user.getAdmin() == 1 ) {
+		if (log_user.getAdmin() == 1) {
 			System.out.println("El usuario es admin, OK");
-			System.out.println( log_user.getEmail() + "||" + userChanged.getAdminEmail() );
-			if( log_user.getEmail().equals(userChanged.getAdminEmail()) ) {
+			System.out.println(log_user.getEmail() + "||" + userChanged.getAdminEmail());
+			if (log_user.getEmail().equals(userChanged.getAdminEmail())) {
 				System.out.println("El usuario a cambiar es del usuario administrador");
 				String sql = "Update users set admin = ? , admin_email = ? where email = ?";
 				Connection cn = Open_connection();
@@ -308,18 +314,19 @@ public class Connect {
 					stmt.setString(3, user_to_change);
 					System.out.println(stmt.executeUpdate());
 					good_by(cn);
-				}catch(SQLException sqlE) {
+				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 				}
-				
-			}else {
+
+			} else {
 				System.out.println("El usuario a cambiar no pertenece al usuario administrador");
 			}
-		}else {
+		} else {
 			System.out.println("El usuario " + log_user.getNombre() + "no es administrador");
 		}
 	}
-	public ArrayList<Local> getLocales (Users us){
+
+	public ArrayList<Local> getLocales(Users us) {
 		ArrayList<Local> localesList = new ArrayList<Local>();
 		String sql = "Select * from locales where email_duenio = ?";
 		Connection cn = Open_connection();
@@ -327,24 +334,24 @@ public class Connect {
 			PreparedStatement stmt = cn.prepareStatement(sql);
 			stmt.setString(1, us.getEmail());
 			ResultSet rs = stmt.executeQuery();
-			while( rs.next() ) {
+			while (rs.next()) {
 				Local loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
 				localesList.add(loc);
 				System.out.println(loc.toString());
 			}
 			return localesList;
-		}catch(SQLException sqlE) {
+		} catch (SQLException sqlE) {
 			localesList = null;
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
 			return localesList;
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		Connect c = new Connect();
 		Users Aitor = new Users("Elena", "Alonso", "elena.alonso@deusto.es", "mesa555", 1, "null");
 		c.cambio_de__tipo_de_usuario(Aitor, "eneko@deusto.es", 1);
-		
+
 	}
 }

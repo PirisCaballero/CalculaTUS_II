@@ -231,8 +231,9 @@ public class VentanaRegistro {
 
 	// deberiamos quitarlo y decidir en que clase ponemos el main, lo dejo para
 	// probar ESTA ventana
-/*	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
+
 			@Override
 			public void run() {
 				new VentanaRegistro();

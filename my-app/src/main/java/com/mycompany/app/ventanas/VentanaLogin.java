@@ -73,8 +73,6 @@ public class VentanaLogin extends JFrame {
 		add(btnAceptar);
 		add(btnRegistrar);
 
-	
-
 		btnRegistrar.addActionListener(new ActionListener() {
 
 			@Override
@@ -84,14 +82,14 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 		btnAceptar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("Comprobacion de usuario correcto");
 				Connect conn = new Connect();
-				//conn.list_users();
-				Users user = conn.Verificar_usuario(txtUsuario.getText() , txtPassword.getText());
+				// conn.list_users();
+				Users user = conn.Verificar_usuario(txtUsuario.getText(), txtPassword.getText());
 				if (user != null) {
 					JOptionPane.showMessageDialog(null, "Bienvenido de nuevo " + user.getNombre());
 					System.out.println(user.toString());
@@ -105,6 +103,7 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 	}
+
 	public static void main(String[] args) {
 		VentanaLogin VL = new VentanaLogin();
 		VL.setVisible(true);
