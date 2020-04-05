@@ -23,8 +23,9 @@ import paneles.Panel_producto;
 public class VentanaPrincipal extends JFrame {
 	
 	JLabel lblNombreUser, lblEneko, lblAitor, lblErik, lblIratxe, lblEstadistica, lblRegistrarLocal, lblNombreLocal, lblDireccion, lblCodPostal, lblOpinion, lblBienvenida, lblBienvenidaSelect;
-	JButton btnLogout, btnLocal, btnHacerTicket, btnVerTickets, btnVerProductos, btnVerEstadistica, btnLocalCreado;
-	JTextField txtNombreLocal, txtDireccion, txtCodPostal;
+	JLabel lblFechaEmisionTicket, lblProductosTicket, lblPrecio, lblLocalTicket;
+	JButton btnLogout, btnLocal, btnHacerTicket, btnVerTickets, btnVerProductos, btnVerEstadistica, btnLocalCreado, btnGuardarTicket;
+	JTextField txtNombreLocal, txtDireccion, txtCodPostal, txtFechaEmisionTicket, txtTienda;
 	JTextArea txtOpinion;
 	JTabbedPane tpTabbed;
 	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerEstadisticas, panelBienvenida;
@@ -453,13 +454,51 @@ public class VentanaPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.out.println("Crear local");
 				Local loc = new Local( txtNombreLocal.getText() , txtDireccion.getText() , Integer.parseInt(txtCodPostal.getText()) , txtOpinion.getText() );
 				Connect conn = new Connect();
 				System.out.println( conn.RegisLocal(user, loc) );
 			}
 		});
+		
+		lblFechaEmisionTicket = new JLabel();
+		lblFechaEmisionTicket.setText("Fecha de emision:");
+		lblFechaEmisionTicket.setBounds(80, 70, 140, 30);
+		panelCrearTicket.add(lblFechaEmisionTicket);
+		
+		txtFechaEmisionTicket = new JTextField();
+		txtFechaEmisionTicket.setText("");
+		txtFechaEmisionTicket.setBounds(260, 70, 170, 30);
+		panelCrearTicket.add(txtFechaEmisionTicket);
+		
+		lblLocalTicket = new JLabel();
+		lblLocalTicket.setText("Introduce la tienda de compra:");
+		lblLocalTicket.setBounds(51, 120, 180, 30);
+		panelCrearTicket.add(lblLocalTicket);
+		
+		txtTienda = new JTextField();
+		txtTienda.setText("");
+		txtTienda.setBounds(260, 120, 170, 30);
+		panelCrearTicket.add(txtTienda);
+		
+		lblProductosTicket = new JLabel();
+		lblProductosTicket.setText("Introduce los productos:");
+		lblProductosTicket.setBounds(51, 170, 180, 30);
+		panelCrearTicket.add(lblProductosTicket);
+		
+		btnGuardarTicket = new JButton();
+		btnGuardarTicket.setText("Guardar");
+		btnGuardarTicket.setBounds(panelCrearTicket.getWidth()/2-50, 320, 50, 10);
+		btnGuardarTicket.setSize(80, 30);
+		panelCrearTicket.add(btnGuardarTicket);
+		
+		/*
+		txtProductos = new JTextField();
+		txtCodPostal.setText("");
+		txtCodPostal.setBounds(260, 170, 170, 30);
+		panelCrearTicket.add(txtCodPostal);
+		*/
+		
 		
 		
 		panelTabbedUser.add(btnLocal);
