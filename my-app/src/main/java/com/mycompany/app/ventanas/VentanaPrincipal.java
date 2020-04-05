@@ -26,12 +26,14 @@ public class VentanaPrincipal extends JFrame {
 			lblDireccion, lblCodPostal, lblOpinion, lblBienvenida, lblBienvenidaSelect;
 	JLabel lblFechaEmisionTicket, lblProductosTicket, lblPrecio, lblLocalTicket;
 	JButton btnLogout, btnLocal, btnHacerTicket, btnVerTickets, btnVerProductos, btnVerEstadistica, btnLocalCreado,
-			btnGuardarTicket;
+			btnGuardarTicket, btnCambiarTipo;
 	JTextField txtNombreLocal, txtDireccion, txtCodPostal, txtFechaEmisionTicket, txtTienda;
 	JTextArea txtOpinion;
 	JTabbedPane tpTabbed;
 	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerEstadisticas, panelBienvenida;
 	Panel_producto panelVerProductos;
+	PanelAdmin panelAdmin;
+	
 	private Users user;
 
 	public VentanaPrincipal(Users us) {
@@ -335,6 +337,9 @@ public class VentanaPrincipal extends JFrame {
 				} else if (panelBienvenida.isVisible()) {
 					panelBienvenida.setVisible(false);
 				}
+				else if (panelAdmin.isVisible()) {
+					panelAdmin.setVisible(false);
+				}
 			}
 		});
 
@@ -356,6 +361,9 @@ public class VentanaPrincipal extends JFrame {
 				} else if (panelBienvenida.isVisible()) {
 					panelBienvenida.setVisible(false);
 				}
+				else if (panelAdmin.isVisible()) {
+					panelAdmin.setVisible(false);
+				}
 			}
 		});
 
@@ -376,6 +384,9 @@ public class VentanaPrincipal extends JFrame {
 					panelVerEstadisticas.setVisible(false);
 				} else if (panelBienvenida.isVisible()) {
 					panelBienvenida.setVisible(false);
+				}
+				else if (panelAdmin.isVisible()) {
+					panelAdmin.setVisible(false);
 				}
 			}
 		});
@@ -399,6 +410,9 @@ public class VentanaPrincipal extends JFrame {
 				} else if (panelBienvenida.isVisible()) {
 					panelBienvenida.setVisible(false);
 				}
+				else if (panelAdmin.isVisible()) {
+					panelAdmin.setVisible(false);
+				}
 
 			}
 		});
@@ -420,6 +434,9 @@ public class VentanaPrincipal extends JFrame {
 					panelVerProductos.setVisible(false);
 				} else if (panelBienvenida.isVisible()) {
 					panelBienvenida.setVisible(false);
+				}
+				else if (panelAdmin.isVisible()) {
+					panelAdmin.setVisible(false);
 				}
 
 			}
@@ -468,13 +485,6 @@ public class VentanaPrincipal extends JFrame {
 		btnGuardarTicket.setSize(80, 30);
 		panelCrearTicket.add(btnGuardarTicket);
 
-		/*
-		txtProductos = new JTextField(); 
-		txtCodPostal.setText("");
-		txtCodPostal.setBounds(260, 170, 170, 30);
-		panelCrearTicket.add(txtCodPostal);
-		 */
-
 		panelTabbedUser.add(btnLocal);
 		panelTabbedUser.add(btnHacerTicket);
 		panelTabbedUser.add(btnVerTickets);
@@ -482,8 +492,46 @@ public class VentanaPrincipal extends JFrame {
 		panelTabbedUser.add(btnVerEstadistica);
 
 		// ZONA PARA BOTONES PANEL ADMIN
-
+		
+		btnCambiarTipo = new JButton();
+		btnCambiarTipo.setText("Cambiar tipo de usuario");
+		btnCambiarTipo.setBounds(20, 70, 10, 10);
+		btnCambiarTipo.setSize(tpTabbed.getWidth() - 45, 30);
+		
+		btnCambiarTipo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (panelLocal.isVisible()) {
+					panelLocal.setVisible(false);
+				} else if (panelCrearTicket.isVisible()) {
+					panelCrearTicket.setVisible(false);
+				} else if (panelVerTickets.isVisible()) {
+					panelVerTickets.setVisible(false);
+				} else if (panelVerProductos.isVisible()) {
+					panelVerProductos.setVisible(false);
+				}
+				else if (panelBienvenida.isVisible()) {
+					panelBienvenida.setVisible(false);
+				}
+				else if (panelVerEstadisticas.isVisible()) {
+					panelVerEstadisticas.setVisible(false);
+				}
+				panelAdmin = new PanelAdmin(user);
+				
+				add(panelAdmin);
+				panelAdmin.setVisible(true);
+				repaint();
+			}
+		});
+		
+		
+		panelTabbedAdmin.add(btnCambiarTipo);
+		
 		// ZONA PARA BOTONES PANEL FTP
+		
+		
+		
 
 		add(tpTabbed);
 
@@ -502,7 +550,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		Users us = new Users("Admin", "Root", "admin@root.es", "root", 0, "null");
+		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		VentanaPrincipal VP = new VentanaPrincipal(us);
 		VP.setVisible(true);
 	}
