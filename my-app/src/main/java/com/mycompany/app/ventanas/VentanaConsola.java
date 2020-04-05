@@ -16,7 +16,7 @@ import javax.swing.WindowConstants;
 
 public class VentanaConsola {
 
-	JButton botonAtras, botonSiguiente;
+	JButton botonAtras, botonEjecutar;
 	JTextArea consola;
 	JCheckBox checkConsola;
 
@@ -57,13 +57,13 @@ public class VentanaConsola {
 		botonAtras.setText("Atras");
 		botonAtras.setBounds(10, 340, 200, 30);
 
-		botonSiguiente = new JButton();
-		botonSiguiente.setText("Siguiente/PonemosBuscar?");
-		botonSiguiente.setBounds(500, 340, 200, 30);
+		botonEjecutar = new JButton();
+		botonEjecutar.setText("Ejecutar?");
+		botonEjecutar.setBounds(500, 340, 200, 30);
 
 		ventanaConsola.add(consola);
 		ventanaConsola.add(botonAtras);
-		ventanaConsola.add(botonSiguiente);
+		ventanaConsola.add(botonEjecutar);
 		ventanaConsola.add(checkConsola);
 
 		checkConsola.addActionListener(new ActionListener() {
@@ -96,23 +96,23 @@ public class VentanaConsola {
 			}
 		});
 
-		botonSiguiente.addActionListener(new ActionListener() {
+		botonEjecutar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("BOTON SIGUIENTE");
+				System.out.println("BOTON EJECUTAR");
 			}
 		});
 	}
 
 	// deberiamos quitarlo y decidir en que clase ponemos el main, lo dejo para
 	// probar ESTA ventana
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				new VentanaConsola();
 			}
 		});
-	}
+	}*/
 
 }
