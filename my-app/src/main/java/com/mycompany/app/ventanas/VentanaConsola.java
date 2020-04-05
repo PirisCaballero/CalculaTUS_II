@@ -29,6 +29,7 @@ public class VentanaConsola {
 		frame.setSize(720, 480);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		// frame.setTitle("TITULO");
+		frame.setResizable(false);
 
 		JPanel ventanaConsola = new JPanel();
 		ventanaConsola.setLayout(null);

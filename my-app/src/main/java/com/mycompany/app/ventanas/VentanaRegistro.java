@@ -38,6 +38,7 @@ public class VentanaRegistro {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		// frame.setTitle("TITULO");
+		frame.setResizable(false);
 
 		JPanel ventanaRegistro = new JPanel();
 		ventanaRegistro.setLayout(null);
@@ -188,8 +189,8 @@ public class VentanaRegistro {
 				labelErrorApellido.setVisible(false);
 				labelErrorCorreo.setVisible(false);
 				labelErrorContrasena.setVisible(false);
-				if (textNombre.getText().matches("^[a-zA-Z]*$") && !textNombre.getText().isEmpty()
-						&& textApellido.getText().matches("^[a-zA-Z]*$") && !textApellido.getText().isEmpty()
+				if (textNombre.getText().matches("^[a-z A-Z]*$") && !textNombre.getText().isEmpty()
+						&& textApellido.getText().matches("^[a-z A-Z]*$") && !textApellido.getText().isEmpty()
 						&& textCorreo.getText()
 								.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 										+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
@@ -210,10 +211,10 @@ public class VentanaRegistro {
 					VentanaLogin VL = new VentanaLogin();
 					VL.setVisible(true);
 					frame.dispose();
-				} else if (!textNombre.getText().matches("^[a-zA-Z]*$") || textNombre.getText().isEmpty()) {
+				} else if (!textNombre.getText().matches("^[a-z A-Z]*$") || textNombre.getText().isEmpty()) {
 					// nombre mal
 					labelErrorNombre.setVisible(true);
-				} else if (!textApellido.getText().matches("^[a-zA-Z]*$") || textApellido.getText().isEmpty()) {
+				} else if (!textApellido.getText().matches("^[a-z A-Z]*$") || textApellido.getText().isEmpty()) {
 					// apellido mal
 					labelErrorApellido.setVisible(true);
 				} else if (!textCorreo.getText().matches(
