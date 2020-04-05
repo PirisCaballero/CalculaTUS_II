@@ -18,7 +18,9 @@ import com.mycompany.app.Local;
 import com.mycompany.app.Users;
 import com.mycompany.app.Connection.Connect;
 
-import paneles.Panel_producto;
+import com.mycompany.app.paneles.*;
+
+
 
 public class VentanaPrincipal extends JFrame {
 	

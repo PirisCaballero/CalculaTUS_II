@@ -1,11 +1,11 @@
-package com.mycompany.app;;
+package com.mycompany.app;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
-import objetos.Connect;
+//import org.junit.jupiter.api.Test;
+//import objetos.Connect;
 /*				ATENCIÓN!!!!!!!!
  * ESTA CLASE SE USA CUNADO SE CAMBIAN LOS METODO DE LA CLASE CONNECT A PUBLICOS SI NO NO SE PUEDE
  *  CUANDO SE CAMBIEN SE PUEDE QUITAR EL COMENTARIO 

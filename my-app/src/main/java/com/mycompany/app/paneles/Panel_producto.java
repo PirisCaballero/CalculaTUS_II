@@ -1,4 +1,4 @@
-package paneles;
+package com.mycompany.app.paneles;
 
 import java.awt.Color;
 import java.util.ArrayList;
