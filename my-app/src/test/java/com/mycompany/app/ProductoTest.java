@@ -9,7 +9,8 @@ public class ProductoTest {
 
 	@Test
 	public void test() {
-		Producto p=new Producto(10, "pollo", 4);
+		//Producto p=new Producto(10, "pollo", 4);
+		Producto p=new Producto(10, "pollo", 4, 0, null);
 		//comprobacion getters 
 		Boolean resultado;
 		resultado=(p.getCantidad()==4);

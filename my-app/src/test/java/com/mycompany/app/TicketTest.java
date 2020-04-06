@@ -31,7 +31,8 @@ public class TicketTest {
 		resultado=(dato1.equals("2"));
 		//setters
 		ArrayList<Producto> p1= new ArrayList<Producto>();
-		Producto pollo=new Producto(30, "pollo", 10);
+		//Producto pollo=new Producto(30, "pollo", 10);
+		Producto pollo=new Producto(30, "pollo", 10, 0, dato1);
 		p1.add(pollo);
 		tic.setID_Tipo("3");
 		tic.setID_Lugar_Compra("4");
