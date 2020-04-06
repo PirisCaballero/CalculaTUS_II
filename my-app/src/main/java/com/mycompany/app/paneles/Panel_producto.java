@@ -1,6 +1,8 @@
 package com.mycompany.app.paneles;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -22,21 +24,28 @@ public class Panel_producto extends JPanel {
 	private Choice choice;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JButton btnRefresh;
+	private Users user;
 
 	public Panel_producto(Users us) {
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
 		this.setBackground(Color.white);
 		this.setBounds(240, 100, 530, 360);
+		this.user = us;
 
 		JLabel lblLocal = new JLabel("Local: ");
 		lblLocal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLocal.setBounds(50, 50, 150, 30);
 		add(lblLocal);
+		
+		btnRefresh = new JButton("Refresh");
+		btnRefresh.setBounds(431, 11, 89, 23);
+		add(btnRefresh);
 
 		choice = new Choice();
 		Connect cn = new Connect();
-		locList = cn.getLocales(us);
+		locList = cn.getLocales(user);
 		for (Local l : locList) {
 			choice.add(l.getNombre());
 		}
@@ -63,18 +72,22 @@ public class Panel_producto extends JPanel {
 		textField_1.setBounds(250, 150, 150, 30);
 		add(textField_1);
 		this.setVisible(false);
+		
+		btnRefresh.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("Refreshing...");
+				choice.removeAll();
+				Connect cn = new Connect();
+				locList.clear();
+				locList = cn.getLocales(user);
+				for (Local l : locList) {
+					choice.add(l.getNombre());
+				}
+			}
+		});
 
-	}
-
-	public void refreshList(Users us) {
-		locList.clear();
-		choice.removeAll();
-		Connect cn = new Connect();
-		locList = cn.getLocales(us);
-		for (Local l : locList) {
-			choice.add(l.getNombre());
-			System.out.println("Añadido de nuevo");
-		}
-		choice.repaint();
 	}
 }

@@ -194,7 +194,7 @@ public class VentanaPrincipal extends JFrame {
 		btnVerTickets.setSize(tpTabbed.getWidth() - 45, 30);
 
 		btnVerProductos = new JButton();
-		btnVerProductos.setText("Ver productos");
+		btnVerProductos.setText("Ver/Agregar productos");
 		btnVerProductos.setBounds(20, 210, 10, 10);
 		btnVerProductos.setSize(tpTabbed.getWidth() - 45, 30);
 
@@ -395,7 +395,6 @@ public class VentanaPrincipal extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				panelVerProductos.refreshList(user);
 				panelVerProductos.setVisible(true);
 				add(panelVerProductos);
 				repaint();
@@ -443,14 +442,23 @@ public class VentanaPrincipal extends JFrame {
 		});
 
 		btnLocalCreado.addActionListener(new ActionListener() {
-
+			/*
+			 * Este botón crea y registra un local
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Crear local");
 				Local loc = new Local(txtNombreLocal.getText(), txtDireccion.getText(),
 						Integer.parseInt(txtCodPostal.getText()), txtOpinion.getText());
 				Connect conn = new Connect();
-				System.out.println(conn.RegisLocal(user, loc));
+				boolean creado = conn.RegisLocal(user, loc);
+				System.out.println(creado);
+				if(creado) {
+					JOptionPane.showMessageDialog(null , "El local ha sido registrado correctamente");
+					txtCodPostal.setText("");txtDireccion.setText("");txtNombreLocal.setText("");txtOpinion.setText("");
+				}else {
+					JOptionPane.showConfirmDialog(null, "Ha habido un problema con la creacion del Local");
+				}
 			}
 		});
 

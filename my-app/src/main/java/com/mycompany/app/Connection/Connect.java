@@ -297,7 +297,7 @@ public class Connect {
 		}
 	}
 
-	public void cambio_de__tipo_de_usuario(Users log_user, String user_to_change, int cambio) {
+	public boolean cambio_de__tipo_de_usuario(Users log_user, String user_to_change, int cambio) {
 		Users userChanged = Recuperar_usuario(user_to_change);
 		System.out.println(userChanged.toString());
 		if (log_user.getAdmin() == 1) {
@@ -310,19 +310,26 @@ public class Connect {
 				try {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setInt(1, cambio);
-					stmt.setString(2, "null");
+					if( cambio == 1 ) {
+						stmt.setString(2, "null");
+					}else {
+						stmt.setString(2, log_user.getEmail());
+					}
 					stmt.setString(3, user_to_change);
 					System.out.println(stmt.executeUpdate());
 					good_by(cn);
+					return true;
 				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
+					return false;
 				}
-
 			} else {
 				System.out.println("El usuario a cambiar no pertenece al usuario administrador");
+				return false;
 			}
 		} else {
 			System.out.println("El usuario " + log_user.getNombre() + "no es administrador");
+			return false;
 		}
 	}
 
@@ -345,6 +352,29 @@ public class Connect {
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
 			return localesList;
+		}
+	}
+	
+	public ArrayList<Users> getUsers_byAdmin(Users usAd){
+		ArrayList<Users> userList = null;
+		String sql = "Select * from users where admin_email = ?";
+		Connection cn = Open_connection();
+		try {
+			userList = new ArrayList<Users>();
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setString(1, usAd.getEmail());
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Users us = new Users(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+				System.out.println(us.toString());
+				userList.add(us);
+			}
+			good_by(cn);
+			return userList;
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return userList;
 		}
 	}
 
