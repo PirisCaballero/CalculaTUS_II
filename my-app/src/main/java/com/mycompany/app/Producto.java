@@ -1,22 +1,34 @@
 package com.mycompany.app;
 
 public class Producto {
-	private float precio;
+	private double precio;
 	private String nombre;
 	private int cantidad;
+	private int localAsociado;
+	private String userAsociado;
 
-	public Producto(int precio, String nombre, int cantidad) {
+	public Producto(double precio, String nombre, int cantidad , int loc , String user) {
 		super();
 		this.precio = precio;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
+		this.userAsociado = user;
+		this.localAsociado = loc;
 	}
 
-	public float getPrecio() {
+	public int getLocalAsociado() {
+		return localAsociado;
+	}
+
+	public void setLocalAsociado(int localAsociado) {
+		this.localAsociado = localAsociado;
+	}
+
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(int precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
@@ -35,5 +47,17 @@ public class Producto {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+	@Override
+	public String toString() {
+		String pr = "Nombre: " + this.nombre + " Precio: "+this.precio + " idLocal: "+this.localAsociado + "Usuario: "+this.userAsociado;
+		return pr;
+	}
 
+	public String getUserAsociado() {
+		return userAsociado;
+	}
+
+	public void setUserAsociado(String userAsociado) {
+		this.userAsociado = userAsociado;
+	}
 }

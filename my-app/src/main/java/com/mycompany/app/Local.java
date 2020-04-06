@@ -6,6 +6,7 @@ public class Local {
 	private String direccion;
 	private int cp;
 	private String descripcion;
+	private int IdLocal;
 
 	public Local() {
 	}
@@ -23,7 +24,12 @@ public class Local {
 				+ this.getCp();
 		return local;
 	}
-
+	public void setId(int id) {
+		this.IdLocal = id;
+	}
+	public int getId() {
+		return this.IdLocal;
+	}
 	public String getDescripcion() {
 		return descripcion;
 	}

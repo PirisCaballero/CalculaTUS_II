@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 
 import com.mycompany.app.Local;
+import com.mycompany.app.Producto;
 import com.mycompany.app.Users;
 
 public class Connect {
@@ -296,7 +297,78 @@ public class Connect {
 			System.out.println(u.toString());
 		}
 	}
-
+	public Local getLocal_byName(Users us , String locName) {
+		//TODO
+		Local loc = null;
+		String sql = "Select * from locales where email_duenio = ? and Nombre = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setString(1, us.getEmail());
+			stmt.setString(2, locName);
+			ResultSet rs = stmt.executeQuery();
+			//TODO
+			while(rs.next()) {
+				loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
+				loc.setId(rs.getInt(1));
+				System.out.println(rs.getInt(1));
+			}
+			good_by(cn);
+			return loc;
+		}catch(SQLException sqle) {
+			System.out.println(sqle);
+			sqle.printStackTrace();
+			return null;
+		}
+	}
+	public ArrayList<Producto> getProducts_byLocal(Users us , int loc_ID) {
+		ArrayList<Producto> prList = null;
+		String sql = "Select * from productos where idLocal = ? and email_comprador = ?";
+		Connection cn = Open_connection();
+		prList = new ArrayList<Producto>();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setInt(1, loc_ID);
+			stmt.setString(2, us.getEmail());
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Producto pr = new Producto(rs.getDouble(3), rs.getString(2), 1 , rs.getInt(4) , us.getEmail());
+				prList.add(pr);
+				//System.out.println(pr.toString());
+			}
+			good_by(cn);
+			return prList;
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
+	public boolean anadirProducto(Users usAd , Producto pr , int loc_ID) {
+		String sql = "Insert Into productos Values( ? , ? , ? , ? , ? )";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setInt(1, 0);
+			stmt.setString(2, pr.getNombre());
+			stmt.setDouble(3, pr.getPrecio());
+			stmt.setInt(4, loc_ID);
+			stmt.setString(5, usAd.getEmail());
+			int aniadido = stmt.executeUpdate();
+			good_by(cn);
+			if( aniadido == 1 ) {
+				JOptionPane.showMessageDialog(null, "Producto Añadido");
+				return true;
+			}else {
+				JOptionPane.showMessageDialog(null, "El producto no ha podido ser añadido");
+				return false;
+			}
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return false;
+		}
+	}
 	public boolean cambio_de__tipo_de_usuario(Users log_user, String user_to_change, int cambio) {
 		Users userChanged = Recuperar_usuario(user_to_change);
 		System.out.println(userChanged.toString());
@@ -344,7 +416,7 @@ public class Connect {
 			while (rs.next()) {
 				Local loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
 				localesList.add(loc);
-				System.out.println(loc.toString());
+				//System.out.println(loc.toString());
 			}
 			return localesList;
 		} catch (SQLException sqlE) {
@@ -380,8 +452,10 @@ public class Connect {
 
 	public static void main(String[] args) {
 		Connect c = new Connect();
-		Users Aitor = new Users("Elena", "Alonso", "elena.alonso@deusto.es", "mesa555", 1, "null");
-		c.cambio_de__tipo_de_usuario(Aitor, "eneko@deusto.es", 1);
+		Local loc = new Local("Prueba", "C/Pr", 48920, "Esta good");
+		Producto pr = new Producto(2.1 , "EroskiPR", 1 , 18 , "admin@root.es");
+		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
+		c.anadirProducto(us, pr, 18);
 
 	}
 }
