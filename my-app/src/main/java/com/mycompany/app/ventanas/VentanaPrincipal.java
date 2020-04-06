@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
@@ -30,9 +31,10 @@ public class VentanaPrincipal extends JFrame {
 	JTextField txtNombreLocal, txtDireccion, txtCodPostal, txtFechaEmisionTicket, txtTienda;
 	JTextArea txtOpinion;
 	JTabbedPane tpTabbed;
-	JPanel panelLocal, panelCrearTicket, panelVerTickets, panelVerEstadisticas, panelBienvenida;
+	JPanel panelLocal, panelVerTickets, panelVerEstadisticas, panelBienvenida;
 	Panel_producto panelVerProductos;
 	PanelAdmin panelAdmin;
+	PanelCrearTicket panelCrearTicket;
 	
 	private Users user;
 
@@ -216,13 +218,8 @@ public class VentanaPrincipal extends JFrame {
 		panelLocal.setBounds(240, 100, 530, 360);
 		panelLocal.setVisible(false);
 
-		panelCrearTicket = new JPanel();
-		panelCrearTicket.setLayout(null);
-		panelCrearTicket.setBorder(BorderFactory.createEtchedBorder());
-		panelCrearTicket.setBackground(Color.WHITE);
-		panelCrearTicket.setBounds(240, 100, 530, 360);
-		panelCrearTicket.setVisible(false);
-
+		panelCrearTicket = new PanelCrearTicket();
+		
 		panelVerTickets = new JPanel();
 		panelVerTickets.setLayout(null);
 		panelVerTickets.setBorder(BorderFactory.createEtchedBorder());
@@ -462,37 +459,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 
-		lblFechaEmisionTicket = new JLabel();
-		lblFechaEmisionTicket.setText("Fecha de emision:");
-		lblFechaEmisionTicket.setBounds(80, 70, 140, 30);
-		panelCrearTicket.add(lblFechaEmisionTicket);
-
-		txtFechaEmisionTicket = new JTextField();
-		txtFechaEmisionTicket.setText("");
-		txtFechaEmisionTicket.setBounds(260, 70, 170, 30);
-		panelCrearTicket.add(txtFechaEmisionTicket);
-
-		lblLocalTicket = new JLabel();
-		lblLocalTicket.setText("Introduce la tienda de compra:");
-		lblLocalTicket.setBounds(51, 120, 180, 30);
-		panelCrearTicket.add(lblLocalTicket);
-
-		txtTienda = new JTextField();
-		txtTienda.setText("");
-		txtTienda.setBounds(260, 120, 170, 30);
-		panelCrearTicket.add(txtTienda);
-
-		lblProductosTicket = new JLabel();
-		lblProductosTicket.setText("Introduce los productos:");
-		lblProductosTicket.setBounds(51, 170, 180, 30);
-		panelCrearTicket.add(lblProductosTicket);
-
-		btnGuardarTicket = new JButton();
-		btnGuardarTicket.setText("Guardar");
-		btnGuardarTicket.setBounds(panelCrearTicket.getWidth() / 2 - 50, 320, 50, 10);
-		btnGuardarTicket.setSize(80, 30);
-		panelCrearTicket.add(btnGuardarTicket);
-
+		
 		panelTabbedUser.add(btnLocal);
 		panelTabbedUser.add(btnHacerTicket);
 		panelTabbedUser.add(btnVerTickets);
