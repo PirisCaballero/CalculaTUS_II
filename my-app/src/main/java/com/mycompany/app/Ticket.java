@@ -67,9 +67,9 @@ public class Ticket {
 
 	// si queremos crear el objeto con ujna lista predefinida
 	public Ticket(String nombre, String id_lugar, String id_ti, ArrayList<Producto> list) {
-		Date fecha = new Date();
-		SimpleDateFormat dt = new SimpleDateFormat("hh:mm:ss at dd/mm/yyy");
-		this.Fecha_emision = dt.format(fecha);
+		//Date fecha = new Date();
+		//SimpleDateFormat dt = new SimpleDateFormat("hh:mm:ss at dd/mm/yyy");
+		//this.Fecha_emision = dt.format(fecha);
 		this.NombreUsuario = nombre;
 		this.ID_Lugar_Compra = id_lugar;
 		this.ID_Tipo = id_ti;
