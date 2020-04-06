@@ -70,7 +70,6 @@ public class PanelAdmin extends JPanel{
 		
 		
 		btnGuardar.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(choiceAdmin.getSelectedItem() + "  ||  " + choiceUsuario.getSelectedItem());

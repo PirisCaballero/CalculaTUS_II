@@ -323,7 +323,6 @@ public class Connect {
 					System.out.println(sqlE);
 					return false;
 				}
-
 			} else {
 				System.out.println("El usuario a cambiar no pertenece al usuario administrador");
 				return false;
