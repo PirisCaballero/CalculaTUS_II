@@ -234,7 +234,7 @@ public class VentanaPrincipal extends JFrame {
 		panelVerEstadisticas.setBounds(240, 100, 530, 360);
 		panelVerEstadisticas.setVisible(false);
 
-		panelVerProductos = new Panel_producto(user);
+		//panelVerProductos = new Panel_producto(user);
 
 		lblRegistrarLocal = new JLabel();
 		lblRegistrarLocal.setText("Registrar local");

@@ -93,8 +93,8 @@ public class VentanaLogin extends JFrame {
 				if (user != null) {
 					JOptionPane.showMessageDialog(null, "Bienvenido de nuevo " + user.getNombre());
 					System.out.println(user.toString());
-					VentanaPrincipal VP = new VentanaPrincipal(user);
-					VP.setVisible(true);
+					//VentanaPrincipal VP = new VentanaPrincipal(user);
+					Ventana_CalculaTUS_II VP = new Ventana_CalculaTUS_II(user);
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario no registrado");

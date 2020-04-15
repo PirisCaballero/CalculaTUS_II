@@ -106,6 +106,30 @@ public class Connect {
 			return false;
 		}
 	}
+	public Local getLocal_by_Id(Users user , int ID) {
+		String sql = "Select * from locales where  idLocales = ? and email_duenio = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setInt(1, ID);
+			stmt.setString(2, user.getEmail());
+			ResultSet rs = stmt.executeQuery();
+			Local loc = new Local();
+			int cont = 0;
+			while (rs.next()) {
+				loc.setId(ID);
+				loc.setNombre(rs.getString(2));
+				loc.setDireccion(rs.getString(3));
+				loc.setCp(rs.getInt(4));
+				loc.setDescripcion(rs.getString(5));
+				cont += 1;
+			}
+			return loc;
+		} catch (SQLException sqlE) {
+			System.out.println(sqlE);
+			return null;
+		}
+	}
 
 	public Users Verificar_usuario(String email, String pass) {
 		Users us = null;
