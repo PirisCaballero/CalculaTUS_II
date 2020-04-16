@@ -18,6 +18,7 @@ public class Panel_norte extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JFrame main_frame;
+	private Icon icon;
 	private Users main_user;
 	public Panel_norte(Users user , JFrame fr) {
 		this.main_frame = fr;
@@ -31,14 +32,23 @@ public class Panel_norte extends JPanel {
 		JButton exit = new JButton("Exit");
 		exit.setBounds( main_frame.getWidth()-75 , 0 , 75 , 50 );
 		
-		JButton addLocal = new JButton("addLocal");
+		icon = new ImageIcon( "src/main/java/com/mycompany/app/Resources/icons/final/addLocal.jpg" );
+		JButton addLocal = new JButton(icon);
 		addLocal.setBounds( 0 , 0 , 100 , 50 );
+		addLocal.setBackground(Color.white);
+		addLocal.setFocusPainted(false);
 		
-		JButton addTicket = new JButton("addTicket");
+		icon = new ImageIcon( "src/main/java/com/mycompany/app/Resources/icons/final/addTicket.jpg" );
+		JButton addTicket = new JButton(icon);
 		addTicket.setBounds( 100 , 0 , 100 , 50 );
+		addTicket.setFocusPainted(false);
+		addTicket.setBackground(Color.white);
 		
-		JButton addProducto = new JButton("addProducto");
+		icon = new ImageIcon( "src/main/java/com/mycompany/app/Resources/icons/final/addProduct.jpg" );
+		JButton addProducto = new JButton(icon);
 		addProducto.setBounds( 200 , 0 , 100 , 50 );
+		addProducto.setBackground(Color.white);
+		addProducto.setFocusPainted(false);
 		
 		JButton admin = new JButton("Admin");
 		admin.setBounds( 300 , 0 , 100 , 25 );
