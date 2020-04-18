@@ -88,6 +88,7 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				main_frame.dispose();		
+				System.exit(0);
 			}
 		});
 		logOut.addActionListener(new ActionListener() {

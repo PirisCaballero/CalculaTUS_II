@@ -562,7 +562,26 @@ public class Connect {
 			}
 		}
 	}
-
+	public ArrayList<Ticket> getTickets_by_user(Users user){
+		ArrayList<Ticket> tL = new ArrayList<Ticket>();
+		String sql = "Select * from tickets where email_comprador = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setString(1, user.getEmail());
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Ticket ti = new Ticket((String)rs.getString(5), rs.getString(2), (Double)rs.getDouble(3), rs.getInt(4));
+				ti.setID(rs.getInt(1));
+				tL.add(ti);
+			}
+			return tL;
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
 	public static void main(String[] args) {
 		Connect c = new Connect();
 		Local loc = new Local("Prueba", "C/Pr", 48920, "Esta good");

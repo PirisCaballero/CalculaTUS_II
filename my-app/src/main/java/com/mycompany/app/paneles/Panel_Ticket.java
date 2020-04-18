@@ -11,6 +11,7 @@ import com.mycompany.app.Producto;
 import com.mycompany.app.Ticket;
 import com.mycompany.app.Users;
 import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.ventanas.Show_Tickets;
 import com.toedter.calendar.JCalendar;
 
 import java.awt.Choice;
@@ -116,6 +117,9 @@ public class Panel_Ticket extends JPanel {
 		btn_grabar.setBounds(360, 400, 150, 30);
 		add(btn_grabar);
 		
+		JButton show_Ti = new JButton("Ver Tickets");
+		show_Ti.setBounds(40, 400, 150, 30);
+		add(show_Ti);
 		
 		choice.addItemListener(new ItemListener() {
 			
@@ -186,6 +190,14 @@ public class Panel_Ticket extends JPanel {
 				}else {
 					System.out.println("Has seleccionado no hacer el ticket");
 				}
+			}
+		});
+		show_Ti.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Show_Tickets st = new Show_Tickets(main_user);
 			}
 		});
 		

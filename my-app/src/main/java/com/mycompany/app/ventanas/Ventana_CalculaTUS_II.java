@@ -15,14 +15,14 @@ public class Ventana_CalculaTUS_II{
 	 */
 
 	private Users main_user;
-	private JFrame main_frame;
+	private static JFrame main_frame;
 	public static Panel_Central pc; private Panel_Datos pd;private Panel_sur ps;private Panel_norte pn;
 	public Ventana_CalculaTUS_II(Users user) {
 		this.main_user = user;
-		this.main_frame = new JFrame();
+		Ventana_CalculaTUS_II.main_frame = new JFrame();
 		main_frame.setTitle("CalculaTUS_II");
 		main_frame.setLayout(null);
-		main_frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main_frame.setSize(1024, 720);
 		main_frame.setResizable(false);
 		main_frame.setLocationRelativeTo(null);
@@ -37,6 +37,9 @@ public class Ventana_CalculaTUS_II{
 		main_frame.add(ps);
 		main_frame.add(pd);
 		main_frame.setVisible(true);
+	}
+	public static JFrame getFrame() {
+		return main_frame;
 	}
 	public static void main(String[] args) {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
