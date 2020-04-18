@@ -180,7 +180,7 @@ public class Panel_Ticket extends JPanel {
 					Ticket TI = cn.crearTicket(main_user,ti);
 					System.out.println("El id del ticket es: " + TI.getID());
 					/*
-					 * El ticket esta hecho, falta grabar los elementos relacionados a ese ticket en otra tabla
+					 * El ticket esta hecho, falta grabar los elementos relacionados a ese ticket en otra tabla.
 					 */
 					cn.introducirProductosComprador(main_user, prTicket, TI);
 				}else {
