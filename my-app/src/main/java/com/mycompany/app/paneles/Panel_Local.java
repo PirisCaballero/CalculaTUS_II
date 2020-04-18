@@ -3,8 +3,14 @@ package com.mycompany.app.paneles;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import com.mycompany.app.Local;
+import com.mycompany.app.Users;
+import com.mycompany.app.Connection.Connect;
 
 public class Panel_Local extends JPanel{
 	
@@ -16,7 +22,8 @@ public class Panel_Local extends JPanel{
 	private JTextField txtNombreLocal , txtDireccion , txtCodPostal;
 	private JTextArea txtOpinion;
 	private JButton btnLocalCreado;
-	public Panel_Local() {
+	private Users main_user; 
+	public Panel_Local(Users user) {
 		this.setBounds(0, 0, 524, 470);
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
@@ -81,17 +88,17 @@ public class Panel_Local extends JPanel{
 		btnLocalCreado.setBounds(getWidth() / 2 - 50, 320, 50, 10);
 		btnLocalCreado.setSize(80, 30);
 		this.add(btnLocalCreado);
-	}
-	public static void main(String[] args) {
-		JFrame fr = new JFrame();
-		fr.setSize(524 , 740);
-		fr.setVisible(true);
-		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fr.setLayout(null);
 		
-		
-		Panel_Local pl = new Panel_Local();
-		fr.add(pl);
+		btnLocalCreado.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Connect cn = new Connect();
+				Local loc = new Local(txtNombreLocal.getText() , txtDireccion.getText() , Integer.parseInt(txtCodPostal.getText()) , txtOpinion.getText());
+				cn.RegisLocal(main_user, loc);
+			}
+		});
 	}
 
 }

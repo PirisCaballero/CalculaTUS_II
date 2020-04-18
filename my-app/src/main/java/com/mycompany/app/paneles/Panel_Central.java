@@ -31,7 +31,7 @@ public class Panel_Central extends JPanel{
 		this.setLayout(null);
 		this.pDat = pd;
 		
-		pl = new Panel_Local();
+		pl = new Panel_Local(main_user);
 		pp = new Panel_producto(main_user , pd);
 		pb = new Panel_Bienvenida(main_user);
 		pa = new PanelAdmin(main_user , pd);

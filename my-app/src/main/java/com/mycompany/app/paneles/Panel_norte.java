@@ -25,7 +25,7 @@ public class Panel_norte extends JPanel {
 		this.main_user = user;
 		this.setBounds(0 , 0 , main_frame.getWidth() , 50);
 		this.setLayout(null);
-		this.setBorder( BorderFactory.createLineBorder(Color.green));
+		//this.setBorder( BorderFactory.createLineBorder(Color.green));
 		this.setBackground(Color.white);
 		
 		///Contenido
@@ -65,7 +65,7 @@ public class Panel_norte extends JPanel {
 		JLabel usuario = new JLabel( main_user.getEmail() );
 		usuario.setBounds( ftp.getLocation().x+ftp.getWidth() , 0 , 450 , 25 );
 		usuario.setHorizontalAlignment(SwingConstants.CENTER);
-		usuario.setBorder(BorderFactory.createLineBorder(Color.black));
+		//usuario.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		JButton logOut = new JButton("Log Out");
 		logOut.setBounds( ftp.getLocation().x+ftp.getWidth() , 25 , 450 , 25 );
