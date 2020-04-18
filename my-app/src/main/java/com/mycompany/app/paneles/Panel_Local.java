@@ -28,6 +28,7 @@ public class Panel_Local extends JPanel{
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
 		this.setBackground(Color.WHITE);
+		this.main_user = user;
 		
 		///Contenido
 		
