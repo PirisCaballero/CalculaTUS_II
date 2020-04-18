@@ -121,5 +121,13 @@ public class Panel_norte extends JPanel {
 				Ventana_CalculaTUS_II.pc.setPanel(2);
 			}
 		});
+		admin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ventana_CalculaTUS_II.pc.setPanel(1);
+			}
+		});
 	}
 }

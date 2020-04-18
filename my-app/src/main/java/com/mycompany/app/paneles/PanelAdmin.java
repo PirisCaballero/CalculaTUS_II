@@ -9,6 +9,7 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.app.Local;
 import com.mycompany.app.Users;
@@ -24,27 +25,28 @@ public class PanelAdmin extends JPanel{
 	Users user;
 	
 	private ArrayList<Local> userList = new ArrayList<Local>();
-	
-	public PanelAdmin(Users u){
+	private Panel_Datos pd;
+	public PanelAdmin(Users u , Panel_Datos pdts){
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
 		this.setBackground(Color.WHITE);
-		this.setBounds(240, 100, 530, 360);
+		this.setBounds(0, 0, 574, 470);
 		this.setVisible(true);
 		this.user = u;
+		this.pd = pdts;
 		
 		lblCambiarTipo = new JLabel();
 		lblCambiarTipo.setText("Cambiar tipo de usuario:");
-		lblCambiarTipo.setBounds(80, 90, 140, 30);
+		lblCambiarTipo.setBounds(29, 90, 140, 30);
 		this.add(lblCambiarTipo);
 		
 		btnRefresh = new JButton("Refresh");
-		btnRefresh.setBounds(431, 11, 89, 23);
+		btnRefresh.setBounds(178, 35, 89, 23);
 		add(btnRefresh);
 		
 		lblUsuarioAsociado = new JLabel();
 		lblUsuarioAsociado.setText("Elige un usuario:");
-		lblUsuarioAsociado.setBounds(80, 120, 140, 30);
+		lblUsuarioAsociado.setBounds(29, 120, 140, 30);
 		this.add(lblUsuarioAsociado);
 		
 		choiceUsuario = new Choice();
@@ -53,19 +55,19 @@ public class PanelAdmin extends JPanel{
 		for(Users us : ul) {
 			choiceUsuario.add(us.getEmail());
 		}
-		choiceUsuario.setBounds(280, 120, 170, 30);
+		choiceUsuario.setBounds(222, 120, 170, 30);
 		this.add(choiceUsuario);
 		
 		choiceAdmin = new Choice();
 		choiceAdmin.add("-----------");
 		choiceAdmin.add("Administrador");
 		choiceAdmin.add("Usuario");
-		choiceAdmin.setBounds(280, 90, 170, 30);
+		choiceAdmin.setBounds(222, 90, 170, 30);
 		this.add(choiceAdmin);
 
 		btnGuardar = new JButton();
 		btnGuardar.setText("Guardar");
-		btnGuardar.setBounds(this.getWidth() / 2 - 50, 240, 50, 10);
+		btnGuardar.setBounds(111, 206, 50, 10);
 		btnGuardar.setSize(80, 30);
 		
 		
@@ -102,9 +104,20 @@ public class PanelAdmin extends JPanel{
 				choiceUsuario.removeAll();
 				Connect cn = new Connect();
 				ArrayList<Users> ul = cn.getUsers_byAdmin(user);
-				for(Users us : ul) {
-					choiceUsuario.add(us.getEmail());
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.setColumnCount(2);
+				String [] nomcolumns = { "Nombre" , "Correo" };
+				modelo.setColumnIdentifiers(nomcolumns);
+				for(Users u : ul) {
+					System.out.println(u.getEmail());
+					choiceUsuario.add(u.getEmail());
 				}
+				modelo.setRowCount(ul.size());
+				for(int i = 0; i<ul.size() ; i++) {
+					 modelo.setValueAt(ul.get(i).getNombre(), i, 0);
+					 modelo.setValueAt(ul.get(i).getEmail(), i, 1);
+				}
+				pd.setData(modelo);
 			}
 		});
 		
