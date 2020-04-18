@@ -15,7 +15,7 @@ public class Panel_Bienvenida extends JPanel{
 	private Users main_user;
 	public Panel_Bienvenida(Users us) {
 		main_user = us;
-		this.setBounds(0 , 0 , 524, 470);
+		this.setBounds(0 , 0 , 574, 470);
 		this.setLayout(null);
 		this.setBackground(Color.white);
 	}

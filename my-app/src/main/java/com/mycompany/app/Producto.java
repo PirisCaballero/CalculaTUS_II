@@ -6,6 +6,7 @@ public class Producto {
 	private int cantidad;
 	private int localAsociado;
 	private String userAsociado;
+	private int id;
 
 	public Producto(double precio, String nombre, int cantidad , int loc , String user) {
 		super();
@@ -16,6 +17,12 @@ public class Producto {
 		this.localAsociado = loc;
 	}
 
+	public void setID(int ID) {
+		this.id = ID;
+	}
+	public int getID() {
+		return this.id;
+	}
 	public int getLocalAsociado() {
 		return localAsociado;
 	}

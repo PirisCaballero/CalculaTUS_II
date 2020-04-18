@@ -15,7 +15,7 @@ public class Panel_Datos extends JPanel{
 	public Panel_Datos() {
 		this.setBounds( 0 , 50 , 500 , 470 );
 		this.setVisible(true);
-		this.setBorder(BorderFactory.createLineBorder(Color.green));
+		//this.setBorder(BorderFactory.createLineBorder(Color.green));
 		//this.setBackground(Color.green);
 		
 		///Contenido

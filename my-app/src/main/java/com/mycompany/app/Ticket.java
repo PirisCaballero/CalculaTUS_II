@@ -7,9 +7,10 @@ import java.util.Date;
 public class Ticket {
 	private String Fecha_emision;
 	private String NombreUsuario;
-	private String ID_Lugar_Compra;
-	private String ID_Tipo;
+	private int ID_Lugar_Compra;
+	private int ID;
 	private ArrayList<Producto> lista;
+	private Double importe = 0.0;
 
 	public String getFecha_emision() {
 		return Fecha_emision;
@@ -27,20 +28,27 @@ public class Ticket {
 		NombreUsuario = nombreUsuario;
 	}
 
-	public String getID_Lugar_Compra() {
+	public int getID_Lugar_Compra() {
 		return ID_Lugar_Compra;
 	}
 
-	public void setID_Lugar_Compra(String iD_Lugar_Compra) {
+	public void setID_Lugar_Compra(int iD_Lugar_Compra) {
 		ID_Lugar_Compra = iD_Lugar_Compra;
 	}
 
-	public String getID_Tipo() {
-		return ID_Tipo;
+	public int getID() {
+		return ID;
 	}
 
-	public void setID_Tipo(String iD_Tipo) {
-		ID_Tipo = iD_Tipo;
+	public void setID(int iD_Tipo) {
+		ID = iD_Tipo;
+	}
+	
+	public Double getImporte() {
+		return this.importe;
+	}
+	public void setImporte(Double imp) {
+		this.importe = imp;
 	}
 
 	public ArrayList<Producto> getLista() {
@@ -53,41 +61,10 @@ public class Ticket {
 
 	public Ticket() {
 	}
-
-	// si lo creamos desde cero y queremos una lista vacia
-	public Ticket(String nombre, String id_lugar, String id_ti) {
-		Date fecha = new Date();
-		SimpleDateFormat dt = new SimpleDateFormat("hh:mm:ss at dd/mm/yyy");
-		this.Fecha_emision = dt.format(fecha);
-		this.NombreUsuario = nombre;
-		this.ID_Lugar_Compra = id_lugar;
-		this.ID_Tipo = id_ti;
-		this.lista = new ArrayList<Producto>();
+	public Ticket(String fecha , String us_email , Double importe , int loc_id) {
+		this.Fecha_emision = fecha;
+		this.NombreUsuario = us_email;
+		this.importe = importe;
+		this.ID_Lugar_Compra = loc_id;
 	}
-
-	// si queremos crear el objeto con ujna lista predefinida
-	public Ticket(String nombre, String id_lugar, String id_ti, ArrayList<Producto> list) {
-		//Date fecha = new Date();
-		//SimpleDateFormat dt = new SimpleDateFormat("hh:mm:ss at dd/mm/yyy");
-		//this.Fecha_emision = dt.format(fecha);
-		this.NombreUsuario = nombre;
-		this.ID_Lugar_Compra = id_lugar;
-		this.ID_Tipo = id_ti;
-		this.lista = list;
-	}
-
-	// calculamos el precio total del producto
-	public float totalPrecio() {
-		float total = 0;
-		if (this.lista != null) {
-			for (Producto producto : lista) {
-				total += producto.getPrecio();
-			}
-			return total;
-		}
-
-		return 0;
-
-	}
-
 }
