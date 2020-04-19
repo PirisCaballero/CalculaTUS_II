@@ -15,7 +15,7 @@ public class UsersTest {
 		Boolean resultado;
 		int a=usuario.getAdmin();
 		resultado=(a==1);
-		assertTrue(resultado);
+		assertTrue(resultado);	
 		String b=usuario.getAdminEmail();
 		resultado=b.equals("null");
 		assertTrue(resultado);
