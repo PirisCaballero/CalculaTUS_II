@@ -5,6 +5,7 @@ import javax.swing.*;
 import com.mycompany.app.Users;
 import com.mycompany.app.paneles.Panel_Central;
 import com.mycompany.app.paneles.Panel_Datos;
+import com.mycompany.app.paneles.Panel_Ticket;
 import com.mycompany.app.paneles.Panel_norte;
 import com.mycompany.app.paneles.Panel_sur;
 
@@ -26,11 +27,11 @@ public class Ventana_CalculaTUS_II{
 		main_frame.setSize(1024, 720);
 		main_frame.setResizable(false);
 		main_frame.setLocationRelativeTo(null);
-		pn = new Panel_norte(main_user , this.main_frame);
 		String [] users = { "Aitor" , "Iratxe" , "Erik" , "Eneko" };
 		ps = new Panel_sur(main_user , main_frame , users);
 		pd = new Panel_Datos();
 		pc = new Panel_Central(main_user , pd);
+		pn = new Panel_norte(main_user , this.main_frame , pc.getPanel_Ticket());
 		
 		main_frame.add(pn);
 		main_frame.add(pc);

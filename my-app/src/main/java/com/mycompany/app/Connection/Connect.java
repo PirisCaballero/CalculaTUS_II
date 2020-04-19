@@ -224,7 +224,6 @@ public class Connect {
 			}
 		}
 	}
-
 	public boolean RegisLocal(Users user, Local loc) {
 		if (!buscar_local(user, loc)) {
 			System.out.println("El local no esta registrado");
@@ -289,7 +288,49 @@ public class Connect {
 			return false;
 		}
 	}
-
+	public ArrayList<Producto> getProducts_by_ticket(Users user , int ticketID){
+		ArrayList<Producto> pL = new ArrayList<Producto>();
+		String sql = "Select * from elementoscompra where idTicket = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setInt(1, ticketID);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Producto p = new Producto((String)rs.getString(2), Double.parseDouble( (String)rs.getString(3) ) , Integer.parseInt((String)rs.getString(4)));
+				pL.add(p);
+			}
+			good_by(cn);
+			return pL;
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
+	public Ticket getTicket_by_ticketID(int ID) {
+		Ticket t = new Ticket();
+		String sql = "Select * from tickets where idTickets = ?";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setInt(1, ID);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				t.setID( rs.getInt(1) );
+				t.setNombreUsuario(rs.getString(2));
+				t.setImporte(rs.getDouble(3));
+				t.setID_Lugar_Compra(rs.getInt(4));
+				t.setFecha_emision(rs.getString(5));
+			}
+			good_by(cn);
+			return t;
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return null;
+		}
+	}
 	private ArrayList<Users> getUsers() {
 		ArrayList<Users> usersList = new ArrayList<Users>();
 		String sql = "Select * from users";
@@ -547,13 +588,14 @@ public class Connect {
 		//TODO
 		int tam = prL.size();
 		for(int i = 0 ; i<tam ; i++) {
-			String sql = "Insert into elementoscompra VALUES ( ? , ? , ? )";
+			String sql = "Insert into elementoscompra VALUES ( ? , ? , ? , ?)";
 			Connection cn = Open_connection();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setInt(1, t.getID());
 				stmt.setString(2, prL.get(i).getNombre());
 				stmt.setDouble(3, prL.get(i).getPrecio());
+				stmt.setInt(4, prL.get(i).getCantidad());
 				int rs = stmt.executeUpdate();
 				if(rs == 1) { System.out.println("YAS"); };
 				}catch(SQLException sqlE) {

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import com.mycompany.app.Users;
+import com.mycompany.app.ventanas.Show_Tickets;
 import com.mycompany.app.ventanas.VentanaLogin;
 import com.mycompany.app.ventanas.Ventana_CalculaTUS_II;
 
@@ -20,13 +21,15 @@ public class Panel_norte extends JPanel {
 	private JFrame main_frame;
 	private Icon icon;
 	private Users main_user;
-	public Panel_norte(Users user , JFrame fr) {
+	private Show_Tickets pti;
+	public Panel_norte(Users user , JFrame fr , Show_Tickets pt) {
 		this.main_frame = fr;
 		this.main_user = user;
 		this.setBounds(0 , 0 , main_frame.getWidth() , 50);
 		this.setLayout(null);
 		//this.setBorder( BorderFactory.createLineBorder(Color.green));
 		this.setBackground(Color.white);
+		this.pti = pt;
 		
 		///Contenido
 		JButton exit = new JButton("Exit");
@@ -65,7 +68,7 @@ public class Panel_norte extends JPanel {
 		JLabel usuario = new JLabel( main_user.getEmail() );
 		usuario.setBounds( ftp.getLocation().x+ftp.getWidth() , 0 , 450 , 25 );
 		usuario.setHorizontalAlignment(SwingConstants.CENTER);
-		//usuario.setBorder(BorderFactory.createLineBorder(Color.black));
+		usuario.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		JButton logOut = new JButton("Log Out");
 		logOut.setBounds( ftp.getLocation().x+ftp.getWidth() , 25 , 450 , 25 );
@@ -101,6 +104,7 @@ public class Panel_norte extends JPanel {
 						JOptionPane.YES_NO_OPTION);
 				if (resp == 0) {
 					main_frame.dispose();
+					pti.dispose();
 					VentanaLogin vtnLogin = new VentanaLogin();
 					vtnLogin.setVisible(true);
 				}

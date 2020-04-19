@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.app.Users;
+import com.mycompany.app.ventanas.Show_Tickets;
 
 public class Panel_Central extends JPanel{
 	
@@ -99,6 +100,9 @@ public class Panel_Central extends JPanel{
 	}
 	public Panel_producto getPanelProd() {
 		return this.pp;
+	}
+	public Show_Tickets getPanel_Ticket() {
+		return this.pt.getFrameTickets();
 	}
 
 }

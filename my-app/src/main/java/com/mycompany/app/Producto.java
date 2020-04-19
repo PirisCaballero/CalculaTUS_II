@@ -16,6 +16,11 @@ public class Producto {
 		this.userAsociado = user;
 		this.localAsociado = loc;
 	}
+	public Producto(String Nombre , Double prec , int Cantidad) {
+		this.nombre = Nombre;
+		this.precio = prec;
+		this.cantidad = Cantidad;
+	}
 
 	public void setID(int ID) {
 		this.id = ID;

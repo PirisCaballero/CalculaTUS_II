@@ -1,52 +1,110 @@
 package com.mycompany.app.ventanas;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicTreeUI.SelectionModelPropertyChangeHandler;
 import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.app.Ticket;
 import com.mycompany.app.Users;
 import com.mycompany.app.Connection.Connect;
 
-public class Show_Tickets{
+public class Show_Tickets extends JFrame{
 	
 	/**
 	 * Betha 1.2
 	 */
 	private static final long serialVersionUID = 1L;
-	private JFrame ven;
 	private ArrayList<Ticket> tL;
 	private Users main_user;
+	private JTable tabla;
+	private Show_ticket st;
+	private Connect cn;
 	public Show_Tickets(Users user) {
-		ven = new JFrame();
-		ven.setTitle("Tickets");
-		ven.setVisible(true);
-		ven.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		ven.setBounds( Ventana_CalculaTUS_II.getFrame().getLocation().x+Ventana_CalculaTUS_II.getFrame().getWidth() , Ventana_CalculaTUS_II.getFrame().getLocation().y ,
+		this.setTitle("Tickets");
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setBounds( Ventana_CalculaTUS_II.getFrame().getLocation().x+Ventana_CalculaTUS_II.getFrame().getWidth() , Ventana_CalculaTUS_II.getFrame().getLocation().y ,
 				350 , Ventana_CalculaTUS_II.getFrame().getHeight()  );
-		ven.setResizable(false);
+		this.setResizable(false);
+		this.setLayout(null);
 		this.main_user = user;
-		Connect cn = new Connect();
+		cn = new Connect();
 		tL = cn.getTickets_by_user(main_user);
 		String[] nomCol = { "ID_Ticket" };
 		
 		//Contenido
-		DefaultTableModel modelo = new DefaultTableModel();
+		Model modelo = new Model();
 		modelo.setColumnIdentifiers(nomCol);
 		modelo.setColumnCount(1);
 		modelo.setRowCount(tL.size());
 		for(int i = 0; i<tL.size() ; i++) {
 			modelo.setValueAt(tL.get(i).getNombreUsuario()+"TICKET"+tL.get(i).getID(), i, 0);
+			modelo.isCellEditable(i, 0);
 		}
 			
-		JTable tabla = new JTable(modelo);
-		tabla.setEnabled(false);
+		tabla = new JTable(modelo);
+		tabla.setEnabled(true);
+		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane scroll = new JScrollPane( tabla );
+		scroll.setBounds(0 , 0 , 350 , Ventana_CalculaTUS_II.getFrame().getHeight()-80 );
+		//scroll.setBorder(BorderFactory.createLineBorder(Color.red));
 		
-		ven.add(scroll);
+		JButton btnEnviar = new JButton("Ver Ticket");
+		btnEnviar.setBounds(0 , Ventana_CalculaTUS_II.getFrame().getHeight()-80 , 175 , 50);
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.setBounds(175 , Ventana_CalculaTUS_II.getFrame().getHeight()-80 , 175 , 50);
+		this.add(scroll);
+		this.add(btnEnviar);
+		this.add(btnRefresh , BorderLayout.SOUTH);
+		
+		btnEnviar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				st = new Show_ticket(main_user, (String)tabla.getValueAt(tabla.getSelectedRow(), 0));
+				st.setVisible(true);
+			}
+		});
+		btnRefresh.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				tL.clear();
+				tL = cn.getTickets_by_user(main_user);
+				String[] nomCol = { "ID_Ticket" };
+				Model modelo = new Model();
+				modelo.setColumnIdentifiers(nomCol);
+				modelo.setColumnCount(1);
+				modelo.setRowCount(tL.size());
+				for(int i = 0; i<tL.size() ; i++) {
+					modelo.setValueAt(tL.get(i).getNombreUsuario()+"TICKET"+tL.get(i).getID(), i, 0);
+					modelo.isCellEditable(i, 0);
+				}
+				tabla.setModel(modelo);
+			}
+		});
 		
 	}
 
+}
+class Model extends DefaultTableModel{
+	/**
+	 * Betha 1.2
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public boolean isCellEditable(int row , int column) {
+		return false;
+	}
+	
 }

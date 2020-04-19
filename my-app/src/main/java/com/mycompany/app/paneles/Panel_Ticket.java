@@ -41,6 +41,7 @@ public class Panel_Ticket extends JPanel {
 	private JTextField textField;
 	private ArrayList<Producto> prTicket;
 	private String date;
+	private static Show_Tickets st;
 	
 	public Panel_Ticket(Users us , Panel_Datos pdat) {
 		this.setBounds(0 , 0 , 574 , 470);
@@ -121,6 +122,24 @@ public class Panel_Ticket extends JPanel {
 		show_Ti.setBounds(40, 400, 150, 30);
 		add(show_Ti);
 		
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.setBounds(71, 23, 89, 23);
+		add(btnRefresh);
+		
+		btnRefresh.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				choice.removeAll();
+				ul.clear();
+				ul = cn.getLocales(main_user);
+				for(Local u : ul) {
+					choice.add(u.getNombre());
+				}
+				choice.setEnabled(true);
+			}
+		});
 		choice.addItemListener(new ItemListener() {
 			
 			@Override
@@ -150,6 +169,7 @@ public class Panel_Ticket extends JPanel {
 					date = simpleDateFormat.format(calendario.getDate());
 					System.out.println(date + producto.getSelectedItem());
 					Producto pr = cn.getProduct_by_Name(main_user, producto.getSelectedItem());
+					pr.setCantidad(Integer.parseInt(textField.getText()));
 					modelo.setRowCount(modelo.getRowCount()+1);
 					modelo.setValueAt(pr.getNombre() , row, col);
 					modelo.setValueAt(pr.getPrecio(), row, col+1);
@@ -172,7 +192,7 @@ public class Panel_Ticket extends JPanel {
 				for(int i = 0; i<prTicket.size() ; i++) {
 					lista += prTicket.get(i).getNombre() + "\n";
 					System.out.println( modelo.getValueAt(i, 2) );
-					Double var2 = prTicket.get(i).getPrecio() * Integer.parseInt((String) modelo.getValueAt(i, 2)); 
+					Double var2 = prTicket.get(i).getPrecio() * Double.parseDouble((String) modelo.getValueAt(i, 2)); 
 					prec += var2;
 				}
 				//prTicket es el array con los productos del ticket
@@ -192,12 +212,14 @@ public class Panel_Ticket extends JPanel {
 				}
 			}
 		});
+		st = new Show_Tickets(main_user);
+		st.setVisible(false);
 		show_Ti.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Show_Tickets st = new Show_Tickets(main_user);
+				st.setVisible(true);
 			}
 		});
 		
@@ -205,5 +227,8 @@ public class Panel_Ticket extends JPanel {
 		add(producto);		
 		
 		
+	}
+	public static Show_Tickets getFrameTickets() {
+		return st;
 	}
 }
