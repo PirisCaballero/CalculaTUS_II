@@ -134,10 +134,22 @@ public class Panel_Ticket extends JPanel {
 				choice.removeAll();
 				ul.clear();
 				ul = cn.getLocales(main_user);
+				choice.add("-------------------");
 				for(Local u : ul) {
 					choice.add(u.getNombre());
 				}
 				choice.setEnabled(true);
+				producto.removeAll();
+				pL.clear();
+				if(choice.getSelectedItem() != "-------------------") {
+					Local locID = cn.getLocal_byName(main_user, choice.getSelectedItem());
+					pL = cn.getProducts_byLocal(main_user, locID.getId());
+					for(Producto p : pL) {
+						producto.add(p.getNombre());
+					}
+				}else {
+					System.out.println("No hay seleccion");
+				}
 			}
 		});
 		choice.addItemListener(new ItemListener() {

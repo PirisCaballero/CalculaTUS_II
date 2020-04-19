@@ -206,7 +206,7 @@ public class Connect {
 		}
 	}
 
-	private boolean isAdmin(Users user) {
+	public boolean isAdmin(Users user) {
 		if (user.getAdminEmail() == "null") {
 			System.out.println("Este usuario es admin");
 			return true;
