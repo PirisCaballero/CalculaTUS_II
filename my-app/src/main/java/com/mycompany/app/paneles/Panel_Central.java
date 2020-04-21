@@ -16,7 +16,7 @@ public class Panel_Central extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
 	private Panel_Local pl; private Panel_Bienvenida pb;
-	private Panel_producto pp; private PanelAdmin pa;private Panel_Ticket pt;
+	private Panel_producto pp; private PanelAdmin pa;private Panel_Ticket pt;private Panel_FTP pftp;
 	private final String nombres_col[] = {"Columna 1" , "Columna 2" , "Columna 3"};
 	private final String Data[][] = {
 			{ "" , "" , "" }
@@ -37,6 +37,7 @@ public class Panel_Central extends JPanel{
 		pb = new Panel_Bienvenida(main_user);
 		pa = new PanelAdmin(main_user , pd);
 		pt = new Panel_Ticket(main_user, pDat);
+		pftp = new Panel_FTP(main_user);
 		pb.setVisible(true);
 		this.add(pb);
 		this.repaint();
@@ -63,7 +64,7 @@ public class Panel_Central extends JPanel{
 			this.add(pa);
 			pa.setVisible(true);
 			try {
-				pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);
+				pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);pftp.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
@@ -75,7 +76,7 @@ public class Panel_Central extends JPanel{
 			System.out.println("Panel Producto");
 			pp.setVisible(true);
 			try {
-				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);
+				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);pftp.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -84,16 +85,32 @@ public class Panel_Central extends JPanel{
 			this.repaint();
 			break;
 		case 3:
+			System.out.println("Prueba + " + panel);
 			this.pDat.setData(DefaultModel);
 			System.out.println("Añadir ticket");
 			pt.setVisible(true);
 			try {
-				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pp.setVisible(false);
+				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pp.setVisible(false);pftp.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
 			}add(pt);
 			this.repaint();
+			break;
+		case 4:
+			System.out.println("Prueba + " + panel);
+			this.pDat.setData(DefaultModel);
+			System.out.println("Conexion FTP");
+			add(pftp);
+			pftp.setVisible(true);
+			try {
+				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pp.setVisible(false);pt.setVisible(false);
+			}catch(Exception e) {
+				System.out.println(e);
+				e.printStackTrace();
+			}
+			this.repaint();
+			break;
 		default:
 			break;
 		}

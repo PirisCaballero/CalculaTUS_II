@@ -17,6 +17,7 @@ import javax.swing.WindowConstants;
 
 import com.mycompany.app.Users;
 import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.Connection.ConnectFTP;
 
 public class VentanaRegistro {
 
@@ -210,6 +211,9 @@ public class VentanaRegistro {
 					conn.RegisUser(user);
 					VentanaLogin VL = new VentanaLogin();
 					VL.setVisible(true);
+					ConnectFTP Cftp = new ConnectFTP(user);
+					Cftp.OpenConexion();
+					System.out.println( Cftp.regisUserFolder() );
 					frame.dispose();
 				} else if (!textNombre.getText().matches("^[a-z A-Z]*$") || textNombre.getText().isEmpty()) {
 					// nombre mal

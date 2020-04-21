@@ -142,5 +142,13 @@ public class Panel_norte extends JPanel {
 				Ventana_CalculaTUS_II.pc.setPanel(3);
 			}
 		});
+		ftp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ventana_CalculaTUS_II.pc.setPanel(4);
+			}
+		});
 	}
 }
