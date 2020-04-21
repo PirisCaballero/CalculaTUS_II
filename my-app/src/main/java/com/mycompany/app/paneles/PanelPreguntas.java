@@ -11,15 +11,13 @@ import com.mycompany.app.Users;
 
 public class PanelPreguntas extends JPanel{
 
-	private Users main_user;
 	
-	public PanelPreguntas(Users us) {
+	public PanelPreguntas() {
 
 		this.setBounds(0 , 0 , 574 , 470);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setBackground(Color.white);
 		this.setLayout(null);
-		this.main_user = us;
 		this.setPreferredSize(new Dimension(500, 800));
 		
 		JLabel lblPreguntas = new JLabel("Preguntas frecuentes");

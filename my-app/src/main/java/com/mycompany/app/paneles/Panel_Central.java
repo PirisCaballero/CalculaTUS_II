@@ -38,7 +38,7 @@ public class Panel_Central extends JPanel{
 		pa = new PanelAdmin(main_user , pd);
 		pu = new PanelUser(main_user, pd); //no se si es pd ¿?¿?¿??¿¿?¿?¿?¿?¿?¿??¿¿?¿?
 		pt = new Panel_Ticket(main_user, pDat);
-		pg = new PanelPreguntas(main_user);
+		pg = new PanelPreguntas();
 		sc = new JScrollPane(pg);
 		pb.setVisible(true);
 		this.add(pb);
