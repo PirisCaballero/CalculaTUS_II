@@ -1,6 +1,5 @@
 package com.mycompany.app;
 
-
 import static org.junit.Assert.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,7 +48,7 @@ public class TicketTest {
 //		String dato3=tic.getID_Tipo();
 //		resultado=(dato3.equals("3"));
 //		assertTrue(resultado);
-	
+
 	}
 
 }

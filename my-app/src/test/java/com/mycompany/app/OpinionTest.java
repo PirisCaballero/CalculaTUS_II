@@ -10,13 +10,13 @@ public class OpinionTest {
 
 	@Test
 	public void test() {
-		Opinion o1 = new Opinion(1,"eneko.perez@opendeusto.es", 5, "Buena aplicacion");
+		Opinion o1 = new Opinion(1, "eneko.perez@opendeusto.es", 5, "Buena aplicacion");
 		Boolean resultado;
 
 		int d = o1.getValoracion();
 		resultado = (d == 5);
 		assertTrue(resultado);
-		
+
 		String a = o1.getEmail();
 		resultado = a.equals("eneko.perez@opendeusto.es");
 		assertTrue(resultado);
@@ -37,7 +37,7 @@ public class OpinionTest {
 		int d2 = o1.getId_opinion();
 		resultado = (d2 == 2);
 		assertTrue(resultado);
-		
+
 		String a2 = o1.getEmail();
 		resultado = a2.equals("abc@opendeusto.es");
 		assertTrue(resultado);

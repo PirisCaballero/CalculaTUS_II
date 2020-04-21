@@ -16,12 +16,14 @@ public class Panel_Central extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
 	private Panel_Local pl; private Panel_Bienvenida pb;
-	private Panel_producto pp; private PanelAdmin pa;private Panel_Ticket pt;private Panel_FTP pftp;
+	private Panel_FTP pftp;
+	private Panel_producto pp; private PanelAdmin pa;private Panel_Ticket pt; private PanelUser pu; private PanelPreguntas pg;
 	private final String nombres_col[] = {"Columna 1" , "Columna 2" , "Columna 3"};
 	private final String Data[][] = {
 			{ "" , "" , "" }
 			
 	};
+	private JScrollPane sc;
 	private final DefaultTableModel DefaultModel = new DefaultTableModel( Data , nombres_col );
 	private Panel_Datos pDat;
 	public Panel_Central(Users user , Panel_Datos pd) {
@@ -31,13 +33,15 @@ public class Panel_Central extends JPanel{
 		this.setVisible(true);
 		this.setLayout(null);
 		this.pDat = pd;
-		
 		pl = new Panel_Local(main_user);
 		pp = new Panel_producto(main_user , pd);
 		pb = new Panel_Bienvenida(main_user);
 		pa = new PanelAdmin(main_user , pd);
+		pu = new PanelUser(main_user, pd); //no se si es pd ¿?¿?¿??¿¿?¿?¿?¿?¿?¿??¿¿?¿?
 		pt = new Panel_Ticket(main_user, pDat);
 		pftp = new Panel_FTP(main_user);
+		pg = new PanelPreguntas();
+		sc = new JScrollPane(pg);
 		pb.setVisible(true);
 		this.add(pb);
 		this.repaint();
@@ -47,15 +51,15 @@ public class Panel_Central extends JPanel{
 		switch (panel) {
 		case 0:
 			System.out.println("Panel Local");
-			this.add(pl);
 			pl.setVisible(true);
+			this.pDat.setData(DefaultModel);
 			try {
-				this.pDat.setData(DefaultModel);
-				pp.setVisible(false); pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);
+				pa.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);sc.setVisible(false);pb.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
 			}
+			this.add(pl);
 			this.repaint();
 			break;
 		case 1:
@@ -64,7 +68,7 @@ public class Panel_Central extends JPanel{
 			this.add(pa);
 			pa.setVisible(true);
 			try {
-				pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);pftp.setVisible(false);
+				pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);sc.setVisible(false);pb.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
@@ -76,7 +80,7 @@ public class Panel_Central extends JPanel{
 			System.out.println("Panel Producto");
 			pp.setVisible(true);
 			try {
-				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);pftp.setVisible(false);
+				pa.setVisible(false);sc.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -90,7 +94,7 @@ public class Panel_Central extends JPanel{
 			System.out.println("Añadir ticket");
 			pt.setVisible(true);
 			try {
-				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pp.setVisible(false);pftp.setVisible(false);
+				sc.setVisible(false);pa.setVisible(false);pl.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -104,15 +108,41 @@ public class Panel_Central extends JPanel{
 			add(pftp);
 			pftp.setVisible(true);
 			try {
-				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pp.setVisible(false);pt.setVisible(false);
+				pa.setVisible(false);sc.setVisible(false);pl.setVisible(false);pt.setVisible(false);pp.setVisible(false);pu.setVisible(false);pb.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
 			}
 			this.repaint();
 			break;
+		case 5:
+			System.out.println("Preguntas");
+			sc.setVisible(true);
+			sc.setBounds(0, 0, pp.getWidth()-5, 470);
+			this.add(sc);
+			try {
+				pa.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+			}catch(Exception e){
+				System.out.println(e);
+				e.printStackTrace();
+			}
+			this.repaint();
+			break;
+		case 6:
+			System.out.println("Panel Usuario");
+			this.pDat.setData(DefaultModel);
+			this.add(pu);
+			pu.setVisible(true);
+			try {
+				pa.setVisible(false);pl.setVisible(false);pt.setVisible(false);sc.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+			}catch (Exception e){
+				System.out.println(e);
+				e.printStackTrace();
+			}
+			break;
 		default:
 			break;
+		
 		}
 	}
 	public Panel_producto getPanelProd() {
