@@ -16,12 +16,13 @@ public class Panel_Central extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
 	private Panel_Local pl; private Panel_Bienvenida pb;
-	private Panel_producto pp; private PanelAdmin pa;private Panel_Ticket pt; private PanelUser pu;
+	private Panel_producto pp; private PanelAdmin pa;private Panel_Ticket pt; private PanelUser pu; private PanelPreguntas pg;
 	private final String nombres_col[] = {"Columna 1" , "Columna 2" , "Columna 3"};
 	private final String Data[][] = {
 			{ "" , "" , "" }
 			
 	};
+	private JScrollPane sc;
 	private final DefaultTableModel DefaultModel = new DefaultTableModel( Data , nombres_col );
 	private Panel_Datos pDat;
 	public Panel_Central(Users user , Panel_Datos pd) {
@@ -31,13 +32,14 @@ public class Panel_Central extends JPanel{
 		this.setVisible(true);
 		this.setLayout(null);
 		this.pDat = pd;
-		
 		pl = new Panel_Local(main_user);
 		pp = new Panel_producto(main_user , pd);
 		pb = new Panel_Bienvenida(main_user);
 		pa = new PanelAdmin(main_user , pd);
 		pu = new PanelUser(main_user, pd); //no se si es pd ¿?¿?¿??¿¿?¿?¿?¿?¿?¿??¿¿?¿?
 		pt = new Panel_Ticket(main_user, pDat);
+		pg = new PanelPreguntas(main_user);
+		sc = new JScrollPane(pg);
 		pb.setVisible(true);
 		this.add(pb);
 		this.repaint();
@@ -51,7 +53,7 @@ public class Panel_Central extends JPanel{
 			pl.setVisible(true);
 			try {
 				this.pDat.setData(DefaultModel);
-				pp.setVisible(false); pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);pu.setVisible(false);
+				sc.setVisible(false);pp.setVisible(false); pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);pu.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
@@ -64,7 +66,7 @@ public class Panel_Central extends JPanel{
 			this.add(pa);
 			pa.setVisible(true);
 			try {
-				pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);
+				sc.setVisible(false);pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
@@ -76,7 +78,7 @@ public class Panel_Central extends JPanel{
 			System.out.println("Panel Producto");
 			pp.setVisible(true);
 			try {
-				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);pu.setVisible(false);
+				sc.setVisible(false);pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pt.setVisible(false);pu.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -89,7 +91,7 @@ public class Panel_Central extends JPanel{
 			System.out.println("Añadir ticket");
 			pt.setVisible(true);
 			try {
-				pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pp.setVisible(false);pu.setVisible(false);
+				sc.setVisible(false);pl.setVisible(false);pb.setVisible(false);pa.setVisible(false);pp.setVisible(false);pu.setVisible(false);;
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -102,15 +104,30 @@ public class Panel_Central extends JPanel{
 			this.add(pu);
 			pu.setVisible(true);
 			try {
-				pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);pa.setVisible(false);
+				sc.setVisible(false);pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);pa.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
 			}
 			this.repaint();
 			//break;
+		case 5:
+			System.out.println("Preguntas");
+			sc.setVisible(true);
+			
+			sc.setBounds(0, 0, pp.getWidth()-5, 470);
+			this.add(sc);
+			try {
+				pp.setVisible(false); pb.setVisible(false);pl.setVisible(false);pt.setVisible(false);pa.setVisible(false);pu.setVisible(false);
+			}catch(Exception e){
+				System.out.println(e);
+				e.printStackTrace();
+			}
+			this.repaint();
+			break;
 		default:
 			break;
+		
 		}
 	}
 	public Panel_producto getPanelProd() {

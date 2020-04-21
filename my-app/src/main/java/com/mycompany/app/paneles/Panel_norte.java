@@ -71,7 +71,10 @@ public class Panel_norte extends JPanel {
 		usuario.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		JButton logOut = new JButton("Log Out");
-		logOut.setBounds( ftp.getLocation().x+ftp.getWidth() , 25 , 450 , 25 );
+		logOut.setBounds( ftp.getLocation().x+ftp.getWidth() , 25 , 400 , 25 );
+		
+		JButton preguntas = new JButton("?");
+		preguntas.setBounds(logOut.getLocation().x+logOut.getWidth(), 25, 50, 25);
 		
 		////añadir al panel
 		this.add(ftp);
@@ -83,6 +86,7 @@ public class Panel_norte extends JPanel {
 		this.add(addTicket);
 		this.add(addLocal);
 		this.add(usuario);
+		this.add(preguntas);
 		this.add(exit);
 		
 		///Listeners
@@ -148,6 +152,14 @@ public class Panel_norte extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Ventana_CalculaTUS_II.pc.setPanel(4);
+			}
+		});
+		preguntas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Ventana_CalculaTUS_II.pc.setPanel(5);
 			}
 		});
 	}

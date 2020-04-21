@@ -1,10 +1,12 @@
 package com.mycompany.app.paneles;
 
+import java.awt.BorderLayout;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.app.Connection.Connect;
 
@@ -14,8 +16,8 @@ public class PanelCrearTicket extends JPanel{
 	JButton btnGuardarTicket, btnAgregarProducto;
 	JTable tablaProductos;
 	Choice choiceProducto;
-	Object columnas []= {"Producto", "Precio", "Unidades"};
-	Object celdas[][]= new Object[3][10];
+	String columnas []= {"Producto", "Precio", "Unidades"};
+	Object data[][]= {};
 	
 	public PanelCrearTicket() {
 		
@@ -77,11 +79,13 @@ public class PanelCrearTicket extends JPanel{
 		txtUnidades.setBounds(260, 185, 170, 30);
 		this.add(txtUnidades);
 		
-		tablaProductos = new JTable(celdas, columnas);
-		tablaProductos.setBounds(20, 240, 200, 180);
+		DefaultTableModel dtm = new DefaultTableModel(data, columnas);
+		tablaProductos = new JTable(dtm);
+		tablaProductos.setBounds(20, 240, 500, 180);
 		tablaProductos.setSize(490, 100);
 		tablaProductos.setPreferredScrollableViewportSize(new Dimension(490, 100));
-		this.add(tablaProductos);
+		JScrollPane scrollPane = new JScrollPane(tablaProductos);
+		this.add(scrollPane, BorderLayout.CENTER);
 
 	}
 }
