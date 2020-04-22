@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.mycompany.app.Users;
-import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.connection.Connect;
 
 public class Panel_consola extends JPanel{
 	

@@ -10,7 +10,7 @@ import javax.swing.*;
 
 import com.mycompany.app.Local;
 import com.mycompany.app.Users;
-import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.connection.Connect;
 
 public class Panel_Local extends JPanel{
 	

@@ -16,8 +16,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 import com.mycompany.app.Users;
-import com.mycompany.app.Connection.Connect;
-import com.mycompany.app.Connection.ConnectFTP;
+import com.mycompany.app.connection.Connect;
+import com.mycompany.app.connection.ConnectFTP;
 
 public class VentanaRegistro {
 

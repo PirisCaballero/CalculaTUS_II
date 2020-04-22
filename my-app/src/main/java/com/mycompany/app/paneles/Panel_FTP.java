@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import org.apache.commons.net.ftp.FTPFile;
 
 import com.mycompany.app.Users;
-import com.mycompany.app.Connection.ConnectFTP;
+import com.mycompany.app.connection.ConnectFTP;
 import java.awt.Choice;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;

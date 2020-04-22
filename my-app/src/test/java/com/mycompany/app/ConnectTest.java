@@ -1,3 +1,4 @@
+package com.mycompany.app;
 
 //import static org.junit.jupiter.api.Assertions.*;
 

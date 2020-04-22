@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.connection.Connect;
 
 public class PanelCrearTicket extends JPanel{
 	JLabel lblFechaEmisionTicket, lblLocalTicket, lblProductosTicket, lblUnidades;

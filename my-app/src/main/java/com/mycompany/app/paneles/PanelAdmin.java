@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.app.Local;
 import com.mycompany.app.Users;
-import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.connection.Connect;
 
 
 

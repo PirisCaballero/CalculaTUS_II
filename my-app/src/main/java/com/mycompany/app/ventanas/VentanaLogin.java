@@ -11,7 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.mycompany.app.Users;
-import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.connection.Connect;
 
 public class VentanaLogin extends JFrame {
 

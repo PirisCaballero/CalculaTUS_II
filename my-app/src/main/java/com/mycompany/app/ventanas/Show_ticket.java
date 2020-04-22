@@ -9,7 +9,7 @@ import com.mycompany.app.Local;
 import com.mycompany.app.Producto;
 import com.mycompany.app.Ticket;
 import com.mycompany.app.Users;
-import com.mycompany.app.Connection.Connect;
+import com.mycompany.app.connection.Connect;
 public class Show_ticket extends JFrame{
 	private JTable table;
 	private int ID;

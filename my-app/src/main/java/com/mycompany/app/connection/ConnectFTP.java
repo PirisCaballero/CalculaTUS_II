@@ -1,4 +1,4 @@
-package com.mycompany.app.Connection;
+package com.mycompany.app.connection;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
