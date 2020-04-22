@@ -1,6 +1,7 @@
 package com.mycompany.app.Connection;
 
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 
 import com.mycompany.app.Users;
 
@@ -8,9 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-
-import javax.swing.ImageIcon;
 
 public class ConnectFTP {
 	private static final String ORIGINAL= "ÁáÉéÍíÓóÚúÑñÜü";private static final String REPLACEMENT = "AaEeIiOoUuNnUu";
@@ -42,8 +40,6 @@ public class ConnectFTP {
 			cliente.connect("83.213.204.144", 21);
 			//cliente.enterLocalPassiveMode();
 			cliente.changeWorkingDirectory("/"+main_user.getEmail());
-			int replay = cliente.getReplyCode();
-			System.out.println(replay);
 			boolean login = cliente.login(userFTP, pass);
 			if(login) {
 				System.out.println("Conectado al servidor");
@@ -101,13 +97,47 @@ public class ConnectFTP {
 			return false;
 		}
 	}
+	public boolean downloadFile() {
+		try {
+			OpenConexion();
+			//TODO
+			closeConnection();
+			return true;
+		}catch(Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public FTPFile[] getUserFolders(String path){
+		System.out.println(path);
+		try {
+			OpenConexion();
+			FTPFile[] carpetas = cliente.listDirectories(path);
+			closeConnection();
+			return carpetas;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public FTPFile [] getUserFiles(String path) {
+		try {
+			OpenConexion();
+			FTPFile[] ficheros = cliente.listFiles(path);
+			closeConnection();
+			return ficheros;
+		}catch(Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			return null;
+		}
+	}
 	public static void main(String[] args) {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		ConnectFTP ftp = new ConnectFTP(us);
-		boolean con = ftp.OpenConexion();
-		File f = new File( "src/main/java/com/mycompany/app/Resources/icons/final/addProduct.jpg" );
-		System.out.println( con );
-		System.out.println( ftp.uploadFile(f) );
+		ftp.getUserFiles("\\"+us.getEmail()+"\\Carpeta 1");
 	}
 	
 }
