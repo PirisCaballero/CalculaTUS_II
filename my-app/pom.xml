@@ -7,6 +7,7 @@
 
 	<groupId>es.deusto.spq</groupId>
 	<artifactId>CalculaTUS_II</artifactId>
+	<description>Second part of CalculaTUS</description>
 	<version>1.0-SNAPSHOT</version>
 
 	<name>CalculaTUS_II</name>
@@ -113,5 +114,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<description>Second part of CalculaTUS</description>
 </project>
