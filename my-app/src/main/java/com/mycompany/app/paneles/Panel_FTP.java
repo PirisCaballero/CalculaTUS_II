@@ -17,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import org.apache.commons.net.ftp.FTPFile;
 
@@ -134,6 +135,29 @@ public class Panel_FTP extends JPanel{
 				frameAddFolder.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frameAddFolder.getContentPane().setLayout(null);
 				frameAddFolder.setVisible(true);
+				JLabel nombre = new JLabel("Carpeta: ");
+				nombre.setHorizontalAlignment(SwingConstants.CENTER);
+				nombre.setBounds(0 , 0 , 100 , 30);
+				JTextField txtnombre = new JTextField();
+				txtnombre.setBounds(100 , 0 , 150 , 30);
+				frameAddFolder.add(nombre);frameAddFolder.add(txtnombre);
+				JButton enviar = new JButton("Crear");
+				enviar.setBounds(75 , 35 , 100 , 30);
+				frameAddFolder.add(enviar);
+				
+				enviar.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						if(!txtnombre.getText().isEmpty()) {
+							if(cFTP.createDir(path+txtnombre.getText())) {
+								JOptionPane.showMessageDialog(null, "Carpeta creada con exito");
+							}else {
+								JOptionPane.showMessageDialog(null, "La carpeta no se ha creado con exito");							}
+						}
+					}
+				});
 			}
 		});
 		button_back.addActionListener(new ActionListener() {

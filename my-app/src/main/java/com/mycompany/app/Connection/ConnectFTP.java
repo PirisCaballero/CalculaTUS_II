@@ -134,6 +134,25 @@ public class ConnectFTP {
 			return null;
 		}
 	}
+	public boolean createDir(String path) {
+		
+		try {
+			OpenConexion();
+			System.out.println("Este es path de la nueva carpeta " + path);
+			if(cliente.makeDirectory(path)) {
+				closeConnection();
+				return true;
+			}else {
+				closeConnection();
+				return false;
+			}
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			return false;
+		}
+	}
 	public static void main(String[] args) {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		ConnectFTP ftp = new ConnectFTP(us);
