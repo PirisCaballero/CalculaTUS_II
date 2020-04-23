@@ -13,8 +13,8 @@ public class OpinionTest {
 		Opinion o1 = new Opinion(1, "eneko.perez@opendeusto.es", 5, "Buena aplicacion");
 		Boolean resultado;
 
-		int d = o1.getValoracion();
-		resultado = (d == 5);
+		int d = o1.getId_opinion();
+		resultado = (d == 1);
 		assertTrue(resultado);
 
 		String a = o1.getEmail();
