@@ -138,7 +138,7 @@ public class Panel_FTP extends JPanel{
 				JLabel nombre = new JLabel("Carpeta: ");
 				nombre.setHorizontalAlignment(SwingConstants.CENTER);
 				nombre.setBounds(0 , 0 , 100 , 30);
-				JTextField txtnombre = new JTextField();
+				final JTextField txtnombre = new JTextField(); //he puesto final pork si no da error en mvn compile
 				txtnombre.setBounds(100 , 0 , 150 , 30);
 				frameAddFolder.add(nombre);frameAddFolder.add(txtnombre);
 				JButton enviar = new JButton("Crear");
