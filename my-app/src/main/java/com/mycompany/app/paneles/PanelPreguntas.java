@@ -11,7 +11,8 @@ import com.mycompany.app.Users;
 
 public class PanelPreguntas extends JPanel{
 
-	
+	private static final long serialVersionUID = 1L;
+
 	public PanelPreguntas() {
 
 		this.setBounds(0 , 0 , 574 , 470);
