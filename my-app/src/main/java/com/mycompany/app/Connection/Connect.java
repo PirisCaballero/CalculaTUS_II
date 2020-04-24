@@ -628,8 +628,12 @@ public class Connect {
 		Connect c = new Connect();
 		Local loc = new Local("Prueba", "C/Pr", 48920, "Esta good");
 		Producto pr = new Producto(2.1 , "EroskiPR", 1 , 18 , "admin@root.es");
+		Ticket t = new Ticket("25/06/2020" , "admin@root.es" , 2.03 , 16);
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		c.anadirProducto(us, pr, 18);
+		
+		//Prueba
+		c.crearTicket(us, t);
 
 	}
 }

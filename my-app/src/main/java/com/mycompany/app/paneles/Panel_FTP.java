@@ -52,7 +52,7 @@ public class Panel_FTP extends JPanel{
 		///Componentes	
 		
 		
-		JButton button = new JButton("Escoger Archivo");
+		JButton button = new JButton("Subir Archivo");
 		button.setBounds(20, 76, 150, 30);
 		add(button);
 		
@@ -211,7 +211,23 @@ public class Panel_FTP extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				if(C_files.getSelectedItem() != "../") {
+					int i = C_files.getSelectedIndex()-1;
+					System.out.println(ficheros.length + " || " + i);
+					if( ficheros[i].isFile()  && ficheros.length>=0) {
+						JOptionPane.showMessageDialog(null, "Seleccione donde quiere guardar el archivo");
+						fileChooser = new JFileChooser();
+						fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+						fileChooser.showOpenDialog(p);
+						File ruta = fileChooser.getSelectedFile();
+						String arc = path+C_files.getSelectedItem();
+						cFTP.downloadFile(arc, ruta.getPath());
+					}else {
+						JOptionPane.showMessageDialog(null, "Selecciona un archivo valido y no una ruta :D");
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo para descargar");
+				}
 			}
 		});
 	}
