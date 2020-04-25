@@ -18,6 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import es.deusto.spq.Users;
+import es.deusto.spq.Users.Type;
 import es.deusto.spq.connection.Connect;
 
 public class Panel_consola extends JPanel{
@@ -65,13 +66,13 @@ public class Panel_consola extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Connect cn = new Connect();
-				boolean isA = cn.isAdmin(main_user);
-				if(isA) {
+				if(main_user.getAdmin()==1) {
+				
 					JOptionPane.showMessageDialog(null, "Es usted administrador, tiene acceso");
 					consola.setEnabled(true);
+					
 				}else {
-					JOptionPane.showMessageDialog(null, "NO Es usted administrador, NO tiene acceso");
+					JOptionPane.showMessageDialog(null, "Acceso restringido a administradores");
 					consola.setEnabled(false);
 				}
 			}

@@ -136,7 +136,12 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Ventana_CalculaTUS_II.pc.setPanel(1);
+				if(main_user.getAdmin()==1) {
+					Ventana_CalculaTUS_II.pc.setPanel(1);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Acceso restringido para administradores");
+				}
 			}
 		});
 		addTicket.addActionListener(new ActionListener() {
