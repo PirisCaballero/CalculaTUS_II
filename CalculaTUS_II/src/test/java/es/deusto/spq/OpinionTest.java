@@ -1,5 +1,6 @@
 package es.deusto.spq;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -49,6 +50,10 @@ public class OpinionTest {
 		String c2 = o1.getComentario();
 		resultado = c2.equals("Estupenda");
 		assertTrue(resultado);
+				
+		String expected = o1.toString();
+		String actual = "Opinion [id_opinion=2, email=abc@opendeusto.es, valoracion=4, comentario=Estupenda]";
+		assertEquals(expected, actual);
+		
 	}
-
 }

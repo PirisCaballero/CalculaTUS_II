@@ -9,7 +9,6 @@ public class Producto {
 	private int id;
 
 	public Producto(double precio, String nombre, int cantidad , int loc , String user) {
-		super();
 		this.precio = precio;
 		this.nombre = nombre;
 		this.cantidad = cantidad;

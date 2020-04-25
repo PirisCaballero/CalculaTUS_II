@@ -8,7 +8,6 @@ public class Opinion {
 	private String comentario;
 
 	public Opinion(int id_opinion, String email, int valoracion, String comentario) {
-		super();
 		this.id_opinion = id_opinion;
 		this.email = email;
 		this.valoracion = valoracion;
