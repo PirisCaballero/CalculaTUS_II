@@ -18,8 +18,8 @@ import es.deusto.spq.connection.Connect;
 
 
 public class PanelAdmin extends JPanel{
-	JLabel lblCambiarTipo, lblUsuarioAsociado;
-	Choice choiceAdmin, choiceUsuario;
+	JLabel lblCambiarTipo, lblUsuarioAsociado, lblTienda;
+	Choice choiceAdmin, choiceUsuario, choiceTienda;
 	JButton btnGuardar, btnRefresh;
 	int admin;
 	Users user;
@@ -69,6 +69,24 @@ public class PanelAdmin extends JPanel{
 		btnGuardar.setText("Guardar");
 		btnGuardar.setBounds(111, 206, 50, 10);
 		btnGuardar.setSize(80, 30);
+		
+		lblTienda = new JLabel();
+		lblTienda.setText("Selecciona un establecimiento:");
+		lblTienda.setBounds(29, 300, 200, 30);
+		this.add(lblTienda);
+				
+		choiceTienda = new Choice();
+		ArrayList<Local> tiendas = cn.getLocales(user);
+		for(Local ti : tiendas) {
+			choiceTienda.add(ti.getNombre());
+		}
+		choiceTienda.setBounds(240, 300, 170, 30);
+		this.add(choiceTienda);
+		
+		
+		JButton btnFrecuente = new JButton("Compradores frecuentes");
+		btnFrecuente.setBounds(240, 335, 200, 23);
+		add(btnFrecuente);
 		
 		
 		btnGuardar.addActionListener(new ActionListener() {
@@ -120,7 +138,22 @@ public class PanelAdmin extends JPanel{
 				pd.setData(modelo);
 			}
 		});
-		
+		btnFrecuente.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//TODO HAY QUE CAMBIAR LO QUE SE MUESTRA EN LA TABLA CUANDO EL METODO DE FILTRADO ESTE LISTO
+				DefaultTableModel table = new DefaultTableModel();
+				table.setColumnCount(2);
+				String [] nombreColumnas = {"Nombre", "Cliente"};
+				table.setColumnIdentifiers(nombreColumnas);
+				table.setRowCount(tiendas.size());
+				for(int i=0; i< tiendas.size(); i++) {
+					table.setValueAt(tiendas.get(i).getNombre(), i, 0);
+				}
+				pd.setData(table);
+			}
+		});
 		
 		this.add(btnGuardar);
 	}

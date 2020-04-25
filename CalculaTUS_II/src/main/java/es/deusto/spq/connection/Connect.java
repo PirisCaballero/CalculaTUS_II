@@ -173,7 +173,7 @@ public class Connect {
 		}
 	}
 
-	private Users Recuperar_usuario(String user_Adminemail) {
+	public Users Recuperar_usuario(String user_Adminemail) {
 		Users us = new Users();
 		String sql = "Select * from users where email = ?";
 		Connection cn = Open_connection();

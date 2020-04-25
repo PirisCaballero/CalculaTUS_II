@@ -5,7 +5,6 @@ import java.awt.Font;
 import javax.swing.*;
 
 import es.deusto.spq.Users;
-import es.deusto.spq.ventanas.Panel_consola;
 
 
 public class Panel_sur extends JPanel{

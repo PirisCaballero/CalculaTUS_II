@@ -1,5 +1,6 @@
 package es.deusto.spq;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -27,6 +28,7 @@ public class LocalTest {
 		local.setDescripcion("nada");
 		local.setDireccion("santana");
 		local.setNombre("sopuerta");
+		local.setId(3);
 		resultado = local.getNombre().equals("sopuerta");
 		assertTrue(resultado);
 		resultado = local.getDireccion().equals("santana");
@@ -35,7 +37,12 @@ public class LocalTest {
 		assertTrue(resultado);
 		resultado = (local.getCp() == 0);
 		assertTrue(resultado);
-
+		resultado = (local.getId() == 3);
+		assertTrue(resultado);
+		
+		String expected = local.toString();
+		String actual = "Nombre: sopuerta Direccion: santana codigo postal: 0";
+		assertEquals(expected, actual);
 	}
 
 }

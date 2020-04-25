@@ -29,6 +29,13 @@ public class Panel_Ticket extends JPanel {
 	/**
 	 * Betha 1.2
 	 */
+	
+	private final String nombres_col[] = {"Columna 1" , "Columna 2" , "Columna 3"};
+	private final String Data[][] = {
+			{ "" , "" , "" }
+	};
+	
+	
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
 	private Panel_Datos pd;
@@ -151,6 +158,11 @@ public class Panel_Ticket extends JPanel {
 				}else {
 					System.out.println("No hay seleccion");
 				}
+				
+				for(int i = 0; i<modelo.getRowCount()-1;i++) {
+					modelo.removeRow(i);
+				}
+				
 			}
 		});
 		choice.addItemListener(new ItemListener() {

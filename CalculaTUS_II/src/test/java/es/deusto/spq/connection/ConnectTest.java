@@ -1,4 +1,4 @@
-package es.deusto.spq;
+package es.deusto.spq.connection;
 
 //import static org.junit.jupiter.api.Assertions.*;
 

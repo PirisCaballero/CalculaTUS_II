@@ -8,9 +8,6 @@ public class Local {
 	private String descripcion;
 	private int IdLocal;
 
-	public Local() {
-	}
-
 	public Local(String nom, String dir, int codPost, String desc) {
 		this.nombre = nom;
 		this.direccion = dir;
