@@ -14,6 +14,7 @@ public class Local {
 		this.cp = codPost;
 		this.descripcion = desc;
 	}
+	public Local() {}
 
 	@Override
 	public String toString() {
