@@ -56,6 +56,7 @@ public class PanelUser extends JPanel {
 		btnControl.setBounds(178, 135, 200, 23);
 		add(btnControl);
 		
+		
 		sd = new Show_Descuentos(main_user);
 		sd.setVisible(false);
 		btnDescuento.addActionListener(new ActionListener() {

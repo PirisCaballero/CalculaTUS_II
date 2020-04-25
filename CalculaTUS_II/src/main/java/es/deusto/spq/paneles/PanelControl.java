@@ -72,12 +72,18 @@ public class PanelControl extends JPanel{
 		choiceUsuario.setBounds(180, 100, 170, 30);
 		this.add(choiceUsuario);
 		
+		
+		
 		btnDatos.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Ticket> t = cn.getTickets_by_user(cn.Recuperar_usuario(choiceUsuario.getSelectedItem()));
-				DefaultTableModel modelo = new DefaultTableModel();
+				DefaultTableModel modelo = new DefaultTableModel() {
+					public boolean isCellEditable(int row, int column) {
+						return true;};
+				};
+				
 				modelo.setColumnCount(3);
 				String [] nomColumns = {"Nombre", "Fecha", "Precio"};
 				modelo.setColumnIdentifiers(nomColumns);
