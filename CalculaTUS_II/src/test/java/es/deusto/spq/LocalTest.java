@@ -12,6 +12,8 @@ public class LocalTest {
 	@Test
 	public void Funcionaltest() {
 		Local local = new Local("casa", "ninguna", 48190, "es un local");
+		Local l2 = new Local();
+		
 		// comprobación de los diferentes getters y setters funcionan correctamente
 		// getters
 		Boolean resultado;
@@ -21,8 +23,7 @@ public class LocalTest {
 		assertTrue(resultado);
 		resultado = local.getDescripcion().equals("es un local");
 		assertTrue(resultado);
-		resultado = (local.getCp() == 48190);
-		assertTrue(resultado);
+		assertEquals(48190, local.getCp());
 		// setters
 		local.setCp(0);
 		local.setDescripcion("nada");
@@ -35,10 +36,8 @@ public class LocalTest {
 		assertTrue(resultado);
 		resultado = local.getDescripcion().equals("nada");
 		assertTrue(resultado);
-		resultado = (local.getCp() == 0);
-		assertTrue(resultado);
-		resultado = (local.getId() == 3);
-		assertTrue(resultado);
+		assertEquals(0, local.getCp());
+		assertEquals(3, local.getId());
 		
 		String expected = local.toString();
 		String actual = "Nombre: sopuerta Direccion: santana codigo postal: 0";

@@ -16,12 +16,12 @@ public class ProductoTest {
 		Producto p2 = new Producto("huevos", 3.0, 12);
 		// comprobacion getters
 		Boolean resultado;
-		resultado = (p.getCantidad() == 4);
-		assertTrue(resultado);
+		
+		assertEquals(4, p.getCantidad());
 		resultado = (p.getNombre().equals("pollo"));
 		assertTrue(resultado);
-		resultado = (p.getPrecio() == 10);
-		assertTrue(resultado);
+		
+		assertEquals(10, p.getPrecio(), 0);
 		// comprobacion de setters
 		p.setCantidad(5);
 		p.setPrecio(5);
@@ -30,19 +30,14 @@ public class ProductoTest {
 		p.setLocalAsociado(9);
 		p.setUserAsociado("Alfonso");
 		
-		resultado = (p.getCantidad() == 5);
-		assertTrue(resultado);
+		assertEquals(5, p.getCantidad());
 		resultado = (p.getNombre().equals("nada"));
 		assertTrue(resultado);
-		resultado = (p.getPrecio() == 5);
-		assertTrue(resultado);
+		assertEquals(5, p.getPrecio(), 0);
 		
-		resultado = p.getID()==3;
-		assertTrue(resultado);
+		assertEquals(3, p.getID());
 		
-		resultado = p.getLocalAsociado() == 9;
-		assertTrue(resultado);
-		
+		assertEquals(9, p.getLocalAsociado());
 		
 		String actual = p.getUserAsociado();
 		String expected = "Alfonso";	

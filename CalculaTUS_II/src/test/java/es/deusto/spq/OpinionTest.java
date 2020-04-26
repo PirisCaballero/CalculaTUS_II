@@ -1,6 +1,7 @@
 package es.deusto.spq;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -18,17 +19,15 @@ public class OpinionTest {
 		o1.setComentario("Buena aplicacion");
 		Boolean resultado;
 
-		int d = o1.getId_opinion();
-		resultado = (d == 1);
-		assertTrue(resultado);
+		assertEquals(1, o1.getId_opinion());
+		
+		assertFalse(o1.equals(null));
 
 		String a = o1.getEmail();
 		resultado = a.equals("eneko.perez@opendeusto.es");
 		assertTrue(resultado);
 
-		int b = o1.getValoracion();
-		resultado = (b == 5);
-		assertTrue(resultado);
+		assertEquals(5, o1.getValoracion());;
 
 		String c = o1.getComentario();
 		resultado = c.equals("Buena aplicacion");
@@ -39,17 +38,15 @@ public class OpinionTest {
 		o1.setValoracion(4);
 		o1.setComentario("Estupenda");
 
-		int d2 = o1.getId_opinion();
-		resultado = (d2 == 2);
-		assertTrue(resultado);
+		o1.setId_opinion(2);;
+		assertEquals(2, o1.getId_opinion());;
 
 		String a2 = o1.getEmail();
 		resultado = a2.equals("abc@opendeusto.es");
 		assertTrue(resultado);
 
-		int b2 = o1.getValoracion();
-		resultado = (b2 == 4);
-		assertTrue(resultado);
+		o1.setValoracion(4);
+		assertEquals(4, o1.getValoracion());;
 
 		String c2 = o1.getComentario();
 		resultado = c2.equals("Estupenda");
