@@ -213,9 +213,9 @@ public class Connect {
 			return true;
 		} else {
 			Users us = Recuperar_usuario(user.getEmail());
-			System.out.println(us.toString());
+			//System.out.println(us.toString());
 			if (us != null && us.getAdmin() == 1) {
-				System.out.println("El usuario al que hace referencia es admin");
+				//System.out.println("El usuario al que hace referencia es admin");
 				return true;
 			} else {
 				// JOptionPane.showMessageDialog(null, "El usuario al que hace referencia no es
@@ -438,12 +438,12 @@ public class Connect {
 	}
 	public boolean cambio_de__tipo_de_usuario(Users log_user, String user_to_change, int cambio) {
 		Users userChanged = Recuperar_usuario(user_to_change);
-		System.out.println(userChanged.toString());
+		//System.out.println(userChanged.toString());
 		if (log_user.getAdmin() == 1) {
-			System.out.println("El usuario es admin, OK");
-			System.out.println(log_user.getEmail() + "||" + userChanged.getAdminEmail());
+			//System.out.println("El usuario es admin, OK");
+			//System.out.println(log_user.getEmail() + "||" + userChanged.getAdminEmail());
 			if (log_user.getEmail().equals(userChanged.getAdminEmail())) {
-				System.out.println("El usuario a cambiar es del usuario administrador");
+				//System.out.println("El usuario a cambiar es del usuario administrador");
 				String sql = "Update users set admin = ? , admin_email = ? where email = ?";
 				Connection cn = Open_connection();
 				try {
@@ -455,19 +455,19 @@ public class Connect {
 						stmt.setString(2, log_user.getEmail());
 					}
 					stmt.setString(3, user_to_change);
-					System.out.println(stmt.executeUpdate());
+					//System.out.println(stmt.executeUpdate());
 					good_by(cn);
 					return true;
 				} catch (SQLException sqlE) {
-					System.out.println(sqlE);
+					//System.out.println(sqlE);
 					return false;
 				}
 			} else {
-				System.out.println("El usuario a cambiar no pertenece al usuario administrador");
+				//System.out.println("El usuario a cambiar no pertenece al usuario administrador");
 				return false;
 			}
 		} else {
-			System.out.println("El usuario " + log_user.getNombre() + "no es administrador");
+			//System.out.println("El usuario " + log_user.getNombre() + "no es administrador");
 			return false;
 		}
 	}
