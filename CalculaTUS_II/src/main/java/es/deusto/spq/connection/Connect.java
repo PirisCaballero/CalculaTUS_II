@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 
 import es.deusto.spq.Local;
+import es.deusto.spq.Opinion;
 import es.deusto.spq.Producto;
 import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
@@ -622,6 +623,27 @@ public class Connect {
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
 			return null;
+		}
+	}
+	public boolean SaveOpinion(Opinion op) {
+		String sql = "Insert into opiniones values (? , ? , ? , ?)";
+		Connection cn = Open_connection();
+		try {
+			PreparedStatement stmt = cn.prepareStatement(sql);
+			stmt.setInt(1, 0);
+			stmt.setInt(2, op.getValoracion());
+			stmt.setString(3, op.getComentario());
+			stmt.setString(4, op.getEmail());
+			int r = stmt.executeUpdate();
+			if(r==1) {
+				return true;
+			}else {
+				return false;
+			}
+		}catch(SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return false;
 		}
 	}
 	public static void main(String[] args) {

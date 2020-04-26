@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import es.deusto.spq.Local;
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.Show_Descuentos;
+import es.deusto.spq.ventanas.VentanaOpinion;
 import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
 
 public class PanelUser extends JPanel {
@@ -56,6 +57,10 @@ public class PanelUser extends JPanel {
 		btnControl.setBounds(178, 135, 200, 23);
 		add(btnControl);
 		
+		JButton btnOpinanosd = new JButton("Opinanos :D");
+		btnOpinanosd.setBounds(178, 185, 200, 23);
+		add(btnOpinanosd);
+		
 		
 		sd = new Show_Descuentos(main_user);
 		sd.setVisible(false);
@@ -74,6 +79,16 @@ public class PanelUser extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Ventana_CalculaTUS_II.pc.setPanel(7);
+			}
+		});
+		
+		btnOpinanosd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaOpinion vp = new VentanaOpinion(user);
+				vp.setVisible(true);
 			}
 		});
 	}

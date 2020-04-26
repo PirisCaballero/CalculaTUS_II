@@ -7,13 +7,9 @@ public class Opinion {
 	private int valoracion;
 	private String comentario;
 
-	public Opinion(int id_opinion, String email, int valoracion, String comentario) {
-		this.id_opinion = id_opinion;
-		this.email = email;
-		this.valoracion = valoracion;
-		this.comentario = comentario;
+	public Opinion() {
+		
 	}
-
 	public int getId_opinion() {
 		return id_opinion;
 	}
