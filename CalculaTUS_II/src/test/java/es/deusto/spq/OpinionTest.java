@@ -11,7 +11,11 @@ public class OpinionTest {
 
 	@Test
 	public void test() {
-		Opinion o1 = new Opinion(1, "eneko.perez@opendeusto.es", 5, "Buena aplicacion");
+		Opinion o1 = new Opinion();
+		o1.setId_opinion(1);
+		o1.setEmail("eneko.perez@opendeusto.es");
+		o1.setValoracion(5);
+		o1.setComentario("Buena aplicacion");
 		Boolean resultado;
 
 		int d = o1.getId_opinion();
