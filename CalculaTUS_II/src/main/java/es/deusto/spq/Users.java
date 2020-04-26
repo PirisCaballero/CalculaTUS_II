@@ -54,7 +54,7 @@ public class Users {
 	@Override
 	public String toString() {
 		return "Users [nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email + ", pass=" + pass
-				+ ", admin=" + admin + "adminemail=" + email_admin;
+				+ ", admin=" + admin + ", adminemail=" + email_admin;
 	}
 
 	public String getPass() {
@@ -115,15 +115,6 @@ public class Users {
 //	this.trabajadores=trabajadores;
 //	
 //}
-//método que se usara para los usario de tipo Admin
-	public void anyadirTrabajador(Users usuario) {
-		// verificamos que el usairo que vamos a añadir en la lista es un usariok de
-		// tipo trabajador
-		if (usuario.type == Type.trabajador) {
 
-			trabajadores.add(usuario);
-		}
-
-	}
 
 }
