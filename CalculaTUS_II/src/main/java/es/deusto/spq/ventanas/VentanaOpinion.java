@@ -179,5 +179,13 @@ public class VentanaOpinion extends JFrame {
 			}
 		});
 		
+		botonAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		
 	}
 }
