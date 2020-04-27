@@ -14,13 +14,14 @@ import javax.swing.table.DefaultTableModel;
 import es.deusto.spq.Local;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
+import es.deusto.spq.ventanas.VentanaModificar;
 
 
 
 public class PanelAdmin extends JPanel{
 	JLabel lblCambiarTipo, lblUsuarioAsociado, lblTienda;
 	Choice choiceAdmin, choiceUsuario, choiceTienda;
-	JButton btnGuardar, btnRefresh;
+	JButton btnGuardar, btnRefresh, btnModificar;
 	int admin;
 	Users user;
 	
@@ -70,6 +71,12 @@ public class PanelAdmin extends JPanel{
 		btnGuardar.setBounds(111, 206, 50, 10);
 		btnGuardar.setSize(80, 30);
 		
+		btnModificar = new JButton();
+		btnModificar.setText("Modificar datos");
+		btnModificar.setBounds(this.getWidth()/2-140, 400, 220, 23);
+		
+		add(btnModificar);
+		
 		lblTienda = new JLabel();
 		lblTienda.setText("Selecciona un establecimiento:");
 		lblTienda.setBounds(29, 300, 200, 30);
@@ -88,7 +95,7 @@ public class PanelAdmin extends JPanel{
 		btnFrecuente.setBounds(240, 335, 200, 23);
 		add(btnFrecuente);
 		
-		
+		this.add(btnGuardar);
 		btnGuardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -155,6 +162,14 @@ public class PanelAdmin extends JPanel{
 			}
 		});
 		
-		this.add(btnGuardar);
+		btnModificar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaModificar vm = new VentanaModificar(user);
+				vm.setVisible(true);
+			}
+		});
 	}
+	
 }
