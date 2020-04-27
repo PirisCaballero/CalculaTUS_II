@@ -10,6 +10,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class ConnectFTP {
@@ -18,9 +20,10 @@ public class ConnectFTP {
 	private final String pass = "BI7812cb!";
 	private Users main_user;
 	private FTPClient cliente = new FTPClient();
+	private Connect c = new Connect();
 	
 	public static String stripAccents(String str) {
-	    if (str == null) {
+	    if (str == null || str =="") {
 	        return null;
 	    }
 	    char[] array = str.toCharArray();
@@ -34,144 +37,174 @@ public class ConnectFTP {
 	}
 	
 	public ConnectFTP (Users user) {
-		this.main_user = user;
+		if( user != null &&  c.buscar_usuario(user.getEmail())) {
+			this.main_user = user;
+		}else {
+		}
 	}
 	
 	public boolean OpenConexion() {
-		try {
-			cliente.connect("83.213.204.144", 21);
-			//cliente.enterLocalPassiveMode();
-			cliente.changeWorkingDirectory("/"+main_user.getEmail());
-			boolean login = cliente.login(userFTP, pass);
-			if(login) {
-				System.out.println("Conectado al servidor");
-				cliente.enterLocalPassiveMode();
+		if( main_user != null && c.buscar_usuario(main_user.getEmail())) {
+			try {
+				cliente.connect("83.213.204.144", 21);
+				//cliente.enterLocalPassiveMode();
 				cliente.changeWorkingDirectory("/"+main_user.getEmail());
-				return true;
-			}else {
-				System.out.println("Fallo al conectarse");
+				boolean login = cliente.login(userFTP, pass);
+				if(login) {
+					System.out.println("Conectado al servidor");
+					cliente.enterLocalPassiveMode();
+					cliente.changeWorkingDirectory("/"+main_user.getEmail());
+					return true;
+				}else {
+					System.out.println("Fallo al conectarse");
+					return false;
+				}
+			}catch (IOException ioE) {
+				System.out.println(ioE);
+				ioE.printStackTrace();
 				return false;
 			}
-		}catch (IOException ioE) {
-			System.out.println(ioE);
-			ioE.printStackTrace();
+		}else {
 			return false;
 		}
 	}
 	public boolean closeConnection() {
-		try {
-			cliente.disconnect();
-			return true;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if( main_user != null && c.buscar_usuario(main_user.getEmail()) ) {
+			try {
+				cliente.disconnect();
+				return true;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}else {
 			return false;
 		}
 	}
 	public boolean regisUserFolder() {
-		try {
-			OpenConexion();
-			boolean creado = cliente.makeDirectory("/"+main_user.getEmail());
-			closeConnection();
-			return creado;
-		} catch (IOException e) {
-			System.out.println(e);
-			e.printStackTrace();
+		if( main_user != null && c.buscar_usuario(main_user.getEmail()) ) {
+			try {
+				OpenConexion();
+				boolean creado = cliente.makeDirectory("/"+main_user.getEmail());
+				closeConnection();
+				return creado;
+			} catch (IOException e) {
+				System.out.println(e);
+				e.printStackTrace();
+				return false;
+			}
+		}else {
 			return false;
 		}
 	}
 	public boolean uploadFile( File f , String path) {
-		try {
-			OpenConexion();
-			FileInputStream is = new FileInputStream(f);
-			String nom = stripAccents(f.getName());
-			cliente.storeFile(path+"\\"+nom, is);
-			closeConnection();
-			return true;
-		} catch (FileNotFoundException e) {
-			System.out.println("FILE NOT FOND"+e);
-			e.printStackTrace();
-			return false;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("IO"+e);
-			e.printStackTrace();
+		if(f != null && path != "") {
+			try {
+				OpenConexion();
+				FileInputStream is = new FileInputStream(f);
+				String nom = stripAccents(f.getName());
+				cliente.storeFile(path+"\\"+nom, is);
+				closeConnection();
+				return true;
+			} catch (FileNotFoundException e) {
+				System.out.println("FILE NOT FOND"+e);
+				//e.printStackTrace();
+				return false;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("IO"+e);
+				//e.printStackTrace();
+				return false;
+			}
+		}else {
 			return false;
 		}
 	}
 	public boolean downloadFile(String path) {
-		try {
-			OpenConexion();
-			//TODO
-			File f = new File(path);
-			FileOutputStream fos = new FileOutputStream(f);
-			cliente.retrieveFile(path+f.getName(), fos);
-			closeConnection();
-			return true;
-		}catch(Exception e) {
-			System.out.println(e);
-			e.printStackTrace();
+		File f2 = new File(path);
+		if( path != "" && f2.exists() && path != null ) {
+			try {
+				OpenConexion();
+				//TODO
+				File f = new File(path);
+				FileOutputStream fos = new FileOutputStream(f);
+				cliente.retrieveFile(path+f.getName(), fos);
+				closeConnection();
+				return true;
+			}catch(Exception e) {
+				System.out.println(e);
+				e.printStackTrace();
+				return false;
+			}
+		}else {
 			return false;
 		}
 	}
 	public ArrayList<FTPFile> getUserFolders(String path){
-		ArrayList<FTPFile> carpetas = new ArrayList<FTPFile>();
-		carpetas.add(null);
-		System.out.println(path);
-		try {
-			OpenConexion();
-			FTPFile[] car = cliente.listDirectories(path);
-			closeConnection();
-			for( FTPFile  f : car ){
-				carpetas.add(f);
+		if( path != "" && path != null) {
+			ArrayList<FTPFile> carpetas = new ArrayList<FTPFile>();
+			carpetas.add(null);
+			System.out.println(path);
+			try {
+				OpenConexion();
+				FTPFile[] car = cliente.listDirectories(path);
+				closeConnection();
+				for( FTPFile  f : car ){
+					carpetas.add(f);
+				}
+				return carpetas;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
 			}
-			return carpetas;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}else {
 			return null;
 		}
+		
 	}
 	public ArrayList<FTPFile> getUserFiles(String path) {
-		ArrayList<FTPFile> ficheros = new ArrayList<FTPFile>();
-		ficheros.add(null);
-		try {
-			OpenConexion();
-			FTPFile[] fich = cliente.listFiles(path);
-			closeConnection();
-			for( FTPFile f : fich ) {
-				ficheros.add(f);
+		if( path != null && path != "null" ) {
+			ArrayList<FTPFile> ficheros = new ArrayList<FTPFile>();
+			ficheros.add(null);
+			try {
+				OpenConexion();
+				FTPFile[] fich = cliente.listFiles(path);
+				closeConnection();
+				for( FTPFile f : fich ) {
+					ficheros.add(f);
+				}
+				return ficheros;
+			}catch(Exception e) {
+				System.out.println(e);
+				e.printStackTrace();
+				return null;
 			}
-			return ficheros;
-		}catch(Exception e) {
-			System.out.println(e);
-			e.printStackTrace();
+		}else {
 			return null;
 		}
 	}
 	public boolean createDir(String path) {
-		
-		try {
-			OpenConexion();
-			System.out.println("Este es path de la nueva carpeta " + path);
-			if(cliente.makeDirectory(path)) {
-				closeConnection();
-				return true;
-			}else {
-				closeConnection();
+		if( path != null && path != "null" ) {
+			try {
+				OpenConexion();
+				System.out.println("Este es path de la nueva carpeta " + path);
+				if(cliente.makeDirectory(path)) {
+					closeConnection();
+					return true;
+				}else {
+					closeConnection();
+					return false;
+				}
+				
+			}catch(Exception e) {
+				System.out.println(e);
+				e.printStackTrace();
 				return false;
 			}
-			
-		}catch(Exception e) {
-			System.out.println(e);
-			e.printStackTrace();
+		}else {
 			return false;
 		}
 	}
-	public static void main(String[] args) {
-		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
-		ConnectFTP ftp = new ConnectFTP(us);
-		ftp.getUserFiles("\\"+us.getEmail()+"\\Carpeta 1");
-	}
-	
 }

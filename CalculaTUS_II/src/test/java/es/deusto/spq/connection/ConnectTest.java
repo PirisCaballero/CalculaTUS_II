@@ -141,6 +141,11 @@ public class ConnectTest{
 		assertTrue(cn.RegisUser(us1));
 		assertFalse(cn.RegisUser(us2));
 		assertFalse(cn.RegisUser(us3));
+		double r2 = Math.random();
+		String correo2 = "prueba@"+r2+".es";
+		System.out.println(correo);
+		Users us11 = new Users("Pepe", "Leal", correo2, "pl",1 , "null");//Correcto
+		assertTrue(cn.RegisUser(us11));
 	}
 	@Test
 	public void testgetProducts_by_ticket() {

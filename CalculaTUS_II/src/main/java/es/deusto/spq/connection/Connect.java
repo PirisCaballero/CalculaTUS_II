@@ -237,7 +237,7 @@ public class Connect {
 					System.out.println("Usuario recuperado");
 					return us;
 				} else {
-					JOptionPane.showMessageDialog(null, "Usuario no encontrado" + "-->"+cont);
+					//JOptionPane.showMessageDialog(null, "Usuario no encontrado" + "-->"+cont);
 					System.out.println("Usuario no recuperado");
 					return null;
 				}
@@ -249,19 +249,6 @@ public class Connect {
 		}else {
 			return null;
 		}
-	}
-
-	public boolean isAdmin(Users user) {
-		if( user != null ) {
-			if( buscar_usuario(user.getEmail()) && user.getAdmin() == 1) {
-				return true;
-			}else {
-				return false;
-			}
-		}else {
-			return false;
-		}
-					
 	}
 	public boolean RegisLocal(Users user, Local loc) {
 		if( user != null && loc != null ) {
@@ -299,13 +286,23 @@ public class Connect {
 		}
 		
 	}
-
+	public boolean isAdmin(Users user) {
+		if( user != null ) {
+			if( buscar_usuario(user.getEmail()) && user.getAdmin() == 1) {
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
+					
+	}
 	public boolean RegisUser(Users us) {
 		if( us != null ) {
 			if (!buscar_usuario(us.getEmail())) {
 				System.out.println("Usuario no registrado");
-				Users usa = Recuperar_usuario(us.getAdminEmail());
-				if (isAdmin(usa)) {
+				if( us.getAdminEmail() == "null") {
 					System.out.println("Administrador registrado");
 					String sql = "Insert Into users Values (? , ? , ? , ? , ? , ?)";
 					Connection cn = Open_connection();
@@ -327,7 +324,34 @@ public class Connect {
 						sqlE.printStackTrace();
 						return false;
 					}
-				} else {
+				}else {
+					Users usa = Recuperar_usuario(us.getAdminEmail());
+					if (isAdmin(usa)) {
+						System.out.println("Administrador registrado");
+						String sql = "Insert Into users Values (? , ? , ? , ? , ? , ?)";
+						Connection cn = Open_connection();
+						try {
+							PreparedStatement stmt = cn.prepareStatement(sql);
+							stmt.setString(1, us.getNombre());
+							stmt.setString(2, us.getApellidos());
+							stmt.setString(3, us.getEmail());
+							stmt.setString(4, us.getPass());
+							stmt.setInt(5, us.getAdmin());
+							stmt.setString(6, us.getAdminEmail());
+							/////
+							System.out.println(stmt.executeUpdate());
+							good_by(cn);
+							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+							return true;
+						} catch (SQLException sqlE) {
+							System.out.println(sqlE);
+							sqlE.printStackTrace();
+							return false;
+						}
+					}else {
+						return false;
+					}
+				}} else {
 					// JOptionPane.showMessageDialog(null, "Ese administrador no existe");
 					System.out.println("Ese administrador no existe");
 					return false;
@@ -337,9 +361,6 @@ public class Connect {
 				System.out.println("Usuario ya registrado");
 				return false;
 			}
-		}else {
-			return false;
-		}
 	}
 	public ArrayList<Producto> getProducts_by_ticket(Users user , int ticketID){
 		ArrayList<Producto> pL = new ArrayList<Producto>();
