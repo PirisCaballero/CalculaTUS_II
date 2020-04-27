@@ -229,7 +229,7 @@ public class ConnectTest{
 		Producto p = new Producto("Pan", 1.0, 1);
 		p.setID(290);p.setLocalAsociado(16);p.setUserAsociado("admin@root.es");
 		assertEquals(p.getID(), cn.getProduct_by_Name(usT, p.getNombre()).getID());
-		assertEquals(null, cn.getProduct_by_Name(null, ""));/**/
+		assertEquals(null, cn.getProduct_by_Name(null, ""));
 	}
 }
 
