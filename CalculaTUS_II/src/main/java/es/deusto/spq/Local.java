@@ -7,12 +7,14 @@ public class Local {
 	private int cp;
 	private String descripcion;
 	private int IdLocal;
+	private String emailDuenio;
 
 	public Local(String nom, String dir, int codPost, String desc) {
 		this.nombre = nom;
 		this.direccion = dir;
 		this.cp = codPost;
 		this.descripcion = desc;
+		this.emailDuenio = "";
 	}
 	public Local() {}
 
@@ -58,6 +60,12 @@ public class Local {
 
 	public void setCp(int cp) {
 		this.cp = cp;
+	}
+	public String getEmailduenio() {
+		return this.emailDuenio;
+	}
+	public void setEmailDuenio(String email) {
+		this.emailDuenio = email;
 	}
 
 }

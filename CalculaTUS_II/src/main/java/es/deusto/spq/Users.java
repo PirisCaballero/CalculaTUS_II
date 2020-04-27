@@ -104,17 +104,5 @@ public class Users {
 	public Users() {
 	}
 
-//este constructor se declara para la creación de un administrados añadiendo el parametro de la lista de usuarios que va a tener a su nombre
-//public Users(String nombre, String direccion, String email, String pass,ArrayList<Users>trabajadores) {
-//	super();
-//	this.nombre = nombre;
-//	this.direccion = direccion;
-//	this.email = email;
-//	this.pass = pass;
-//	this.type = Type.Admin;
-//	this.trabajadores=trabajadores;
-//	
-//}
-
 
 }
