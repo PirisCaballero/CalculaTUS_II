@@ -30,8 +30,7 @@ public class Show_Tickets extends JFrame{
 		this.setTitle("Tickets");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setBounds( Ventana_CalculaTUS_II.getFrame().getLocation().x+Ventana_CalculaTUS_II.getFrame().getWidth() , Ventana_CalculaTUS_II.getFrame().getLocation().y ,
-				350 , Ventana_CalculaTUS_II.getFrame().getHeight()  );
+		this.setBounds( Ventana_CalculaTUS_II.getFrame().getLocation().x+Ventana_CalculaTUS_II.getFrame().getWidth() , Ventana_CalculaTUS_II.getFrame().getLocation().y , 350 , Ventana_CalculaTUS_II.getFrame().getHeight()  );
 		this.setResizable(false);
 		this.setLayout(null);
 		this.main_user = user;
