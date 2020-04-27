@@ -118,6 +118,6 @@ public class ConnectFTPTest {
 		String nom = "\\carpet"+r;
 		String path = "\\"+us.getEmail()+nom+"\\";
 		assertEquals(true , ftp.createDir(path));
-		assertEquals(false, ftp.createDir(null));
+		assertEquals(false, ftp.createDir(null));/**/
 	}
 }
