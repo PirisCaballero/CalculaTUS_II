@@ -2,50 +2,92 @@ package es.deusto.spq;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.*;
 
 import es.deusto.spq.Producto;
 
 public class ProductoTest {
 
-	@Test
-	public void test() {
-		// Producto p=new Producto(10, "pollo", 4);
-		Producto p = new Producto(10, "pollo", 4, 0, "Alfonso");
-		
-		Producto p2 = new Producto("huevos", 3.0, 12);
-		// comprobacion getters
-		Boolean resultado;
-		
-		assertEquals(4, p.getCantidad());
-		resultado = (p.getNombre().equals("pollo"));
-		assertTrue(resultado);
-		
-		assertEquals(10, p.getPrecio(), 0);
-		// comprobacion de setters
-		p.setCantidad(5);
-		p.setPrecio(5);
-		p.setNombre("nada");
-		p.setID(3);
-		p.setLocalAsociado(9);
-		p.setUserAsociado("Alfonso");
-		
-		assertEquals(5, p.getCantidad());
-		resultado = (p.getNombre().equals("nada"));
-		assertTrue(resultado);
-		assertEquals(5, p.getPrecio(), 0);
-		
-		assertEquals(3, p.getID());
-		
-		assertEquals(9, p.getLocalAsociado());
-		
-		String actual = p.getUserAsociado();
-		String expected = "Alfonso";	
-		assertEquals(expected, actual);
-		
-		String expected2 = p.toString();
-		String actual2 = "Nombre: nada Precio: 5.0 idLocal: 9Usuario: Alfonso";
-		assertEquals(expected2, actual2);
+	static Producto p1, p2;
+	
+	@BeforeClass
+	public static void initialize() {
+		p1 = new Producto(10, "pollo", 4, 0, "Alfonso");
+		p1.setID(23);
+		p2 = new Producto("huevos", 3.0, 12);
+		p2.setUserAsociado("Javier");
 	}
-
+	
+	@Test
+	public void testSetID() {
+		p2.setID(1);
+		assertEquals(1, p2.getID());
+	}
+	
+	@Test
+	public void testSetLocalAsociado() {
+		p2.setLocalAsociado(3);
+		assertEquals(3, p2.getLocalAsociado());
+	}
+	
+	@Test
+	public void testSetPrecio() {
+		p2.setPrecio(3.3);
+		assertEquals(3.3, p2.getPrecio(), 0);
+	}
+	
+	@Test
+	public void testSetNombre() {
+		p2.setNombre("cordero");
+		assertEquals("cordero", p2.getNombre());
+	}
+	
+	@Test
+	public void testSetCantidad() {
+		p2.setCantidad(3);
+		assertEquals(3, p2.getCantidad());
+	}
+	
+	@Test
+	public void testToString() {
+		String expected = "Nombre: pollo Precio: 10.0 idLocal: 0Usuario: Alfonso";
+		assertEquals(expected, p1.toString());
+	}
+	
+	@Test
+	public void testSetUserAsociado() {
+		p2.setUserAsociado("Manolo");
+		assertEquals("Manolo", p2.getUserAsociado());
+	}
+	
+	@Test
+	public void testGetUserAsociado() {
+		assertEquals("Javier", p2.getUserAsociado());
+	}
+	
+	@Test
+	public void testGetID() {
+		assertEquals(23, p1.getID());
+	}
+	
+	@Test
+	public void testGetLocalAsociado() {
+		assertEquals(0, p1.getLocalAsociado());
+	}
+	
+	@Test
+	public void testGetPrecio() {
+		assertEquals(10.0, p1.getPrecio(), 0);
+	}
+	
+	@Test
+	public void testGetNombre() {
+		assertEquals("pollo", p1.getNombre());
+	}
+	
+	@Test
+	public void testGetCantidad() {
+		assertEquals(4, p1.getCantidad());
+	}
+	
 }
