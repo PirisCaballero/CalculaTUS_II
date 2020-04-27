@@ -230,6 +230,54 @@ public class ConnectTest{
 		p.setID(290);p.setLocalAsociado(16);p.setUserAsociado("admin@root.es");
 		assertEquals(p.getID(), cn.getProduct_by_Name(usT, p.getNombre()).getID());
 		assertEquals(null, cn.getProduct_by_Name(null, ""));
+		assertEquals(null, cn.getProduct_by_Name(usF, ""));//con usuario falso
+		assertEquals(null, cn.getProduct_by_Name(usF, p.getNombre()));
+		assertEquals(null, cn.getProduct_by_Name(null , null));
+	}
+	@Test
+	public void testcrearTicket() {
+		Ticket ti = new Ticket("27-04-2020", "admin@root.es", 3.0, 16);
+		assertEquals(ti.getNombreUsuario() , cn.crearTicket(usT, ti).getNombreUsuario());
+		assertEquals(null, cn.crearTicket(usT, null));
+		assertEquals(null, cn.crearTicket(usF, ti));
+		assertEquals(null, cn.crearTicket(usF, null));
+	}
+	@Test
+	public void testintroducirProductosComprador() {
+		ArrayList<Producto> pr = new ArrayList<Producto>();
+		double r = Math.random();
+		String nom = "Pan" + r;
+		Producto p = new Producto(nom, 1.0, 1);
+		p.setID(290);p.setLocalAsociado(16);p.setUserAsociado("admin@root.es");
+		pr.add(p);
+		Ticket ti = new Ticket("27-04-2020", "admin@root.es", 3.0, 16);
+		Ticket t = cn.crearTicket(usT, ti);
+		
+		assertTrue(cn.introducirProductosComprador(usT, pr, t));
+		assertFalse(cn.introducirProductosComprador(usT, null, null));
+		assertFalse(cn.introducirProductosComprador(usF, null, null));
+		assertFalse(cn.introducirProductosComprador(null, null, null));
+		
+	}
+	@Test
+	public void testgetTickets_by_user() {
+		ArrayList<Ticket> tL = new ArrayList<Ticket>();
+		assertEquals(tL.getClass(), cn.getTickets_by_user(usT).getClass());
+		assertEquals(null, cn.getTickets_by_user(null));
+		assertEquals(null, cn.getTickets_by_user(usF));
+	}
+	@Test
+	public void testSaveOpinion() {
+		String ID = Math.random()*1000 + "";
+		int id = (int) Double.parseDouble(ID);
+		Opinion op = new Opinion();
+		op.setEmail("admin@root.es");
+		op.setComentario("OK");
+		op.setId_opinion(id);
+		op.setValoracion(5);
+		
+		assertTrue(cn.SaveOpinion(op));
+		assertFalse(cn.SaveOpinion(null));
 	}
 }
 

@@ -645,106 +645,132 @@ public class Connect {
 	 * Funcion para crear un ticket
 	 */
 	public Ticket crearTicket(Users user , Ticket ti) {
-		Ticket t = null;
-		String sql = "INSERT INTO tickets VALUES ( ? , ? , ? , ? , ? )";
-		Connection cn = Open_connection();
-		try {
-			PreparedStatement stmt = cn.prepareStatement(sql);
-			stmt.setInt(1, 0);
-			stmt.setString(2, user.getEmail());
-			stmt.setDouble(3, ti.getImporte());
-			stmt.setInt(4, ti.getID_Lugar_Compra());
-			stmt.setString(5, ti.getFecha_emision());
-			int rs = stmt.executeUpdate();
-			if(rs == 1) {
-				//JOptionPane.showMessageDialog(null, "Ticket generado satisfactoriamente");
-				System.out.println("Ticket generado satisfactoriamente");
-			}
-			try {
-				String sql2 = "Select * from tickets where email_comprador = ? and Importe = ? and idLocal = ? and fecha = ?";
-				PreparedStatement stmt2 = cn.prepareStatement(sql2);
-				stmt2.setString(1, user.getEmail());
-				stmt2.setDouble(2, ti.getImporte());
-				stmt2.setInt(3, ti.getID_Lugar_Compra());
-				stmt2.setString(4, ti.getFecha_emision());
-				ResultSet rs2 = stmt2.executeQuery();
-				while(rs2.next()) {
-					t = new Ticket((String)rs2.getString(5), rs2.getString(2), (Double)rs2.getDouble(3), rs2.getInt(4));
-					t.setID(rs2.getInt(1));
+		if( user != null && ti != null ) {
+			if( buscar_usuario(user.getEmail()) ) {
+				Ticket t = null;
+				String sql = "INSERT INTO tickets VALUES ( ? , ? , ? , ? , ? )";
+				Connection cn = Open_connection();
+				try {
+					PreparedStatement stmt = cn.prepareStatement(sql);
+					stmt.setInt(1, 0);
+					stmt.setString(2, user.getEmail());
+					stmt.setDouble(3, ti.getImporte());
+					stmt.setInt(4, ti.getID_Lugar_Compra());
+					stmt.setString(5, ti.getFecha_emision());
+					int rs = stmt.executeUpdate();
+					if(rs == 1) {
+						//JOptionPane.showMessageDialog(null, "Ticket generado satisfactoriamente");
+						System.out.println("Ticket generado satisfactoriamente");
+					}
+					try {
+						String sql2 = "Select * from tickets where email_comprador = ? and Importe = ? and idLocal = ? and fecha = ?";
+						PreparedStatement stmt2 = cn.prepareStatement(sql2);
+						stmt2.setString(1, user.getEmail());
+						stmt2.setDouble(2, ti.getImporte());
+						stmt2.setInt(3, ti.getID_Lugar_Compra());
+						stmt2.setString(4, ti.getFecha_emision());
+						ResultSet rs2 = stmt2.executeQuery();
+						while(rs2.next()) {
+							t = new Ticket((String)rs2.getString(5), rs2.getString(2), (Double)rs2.getDouble(3), rs2.getInt(4));
+							t.setID(rs2.getInt(1));
+						}
+						good_by(cn);
+						return t;
+					}catch(SQLException sqlE2) {
+						System.out.println(sqlE2);
+						sqlE2.printStackTrace();
+					}
+				}catch(SQLException sqlE) {
+					System.out.println(sqlE);
+					sqlE.printStackTrace();
 				}
-				good_by(cn);
 				return t;
-			}catch(SQLException sqlE2) {
-				System.out.println(sqlE2);
-				sqlE2.printStackTrace();
+			}else {
+				return null;
 			}
-		}catch(SQLException sqlE) {
-			System.out.println(sqlE);
-			sqlE.printStackTrace();
+		}else {
+			return null;
 		}
-		return t;
 	}
 	/*
 	 * Funcion para añadir productos a la tabla de elementos de compra
 	 */
-	public void introducirProductosComprador(Users user , ArrayList<Producto> prL , Ticket t) {
+	public boolean introducirProductosComprador(Users user , ArrayList<Producto> prL , Ticket t) {
 		//TODO
-		int tam = prL.size();
-		for(int i = 0 ; i<tam ; i++) {
-			String sql = "Insert into elementoscompra VALUES ( ? , ? , ? , ?)";
-			Connection cn = Open_connection();
-			try {
-				PreparedStatement stmt = cn.prepareStatement(sql);
-				stmt.setInt(1, t.getID());
-				stmt.setString(2, prL.get(i).getNombre());
-				stmt.setDouble(3, prL.get(i).getPrecio());
-				stmt.setInt(4, prL.get(i).getCantidad());
-				int rs = stmt.executeUpdate();
-				if(rs == 1) { System.out.println("YAS"); };
-				}catch(SQLException sqlE) {
-				System.out.println(sqlE);
-				sqlE.printStackTrace();
-			}
+		if( user != null && prL != null && t != null ) {
+			int tam = prL.size();
+			for(int i = 0 ; i<tam ; i++) {
+				String sql = "Insert into elementoscompra VALUES ( ? , ? , ? , ?)";
+				Connection cn = Open_connection();
+				try {
+					PreparedStatement stmt = cn.prepareStatement(sql);
+					stmt.setInt(1, t.getID());
+					stmt.setString(2, prL.get(i).getNombre());
+					stmt.setDouble(3, prL.get(i).getPrecio());
+					stmt.setInt(4, prL.get(i).getCantidad());
+					int rs = stmt.executeUpdate();
+					if(rs == 1) { System.out.println("YAS"); };
+					}catch(SQLException sqlE) {
+					System.out.println(sqlE);
+					sqlE.printStackTrace();
+					return false;
+					}
+				}
+			return true;
+		}else {
+			return false;
 		}
 	}
 	public ArrayList<Ticket> getTickets_by_user(Users user){
-		ArrayList<Ticket> tL = new ArrayList<Ticket>();
-		String sql = "Select * from tickets where email_comprador = ?";
-		Connection cn = Open_connection();
-		try {
-			PreparedStatement stmt = cn.prepareStatement(sql);
-			stmt.setString(1, user.getEmail());
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				Ticket ti = new Ticket((String)rs.getString(5), rs.getString(2), (Double)rs.getDouble(3), rs.getInt(4));
-				ti.setID(rs.getInt(1));
-				tL.add(ti);
+		if( user != null ) {
+			if( buscar_usuario(user.getEmail()) ) {
+				ArrayList<Ticket> tL = new ArrayList<Ticket>();
+				String sql = "Select * from tickets where email_comprador = ?";
+				Connection cn = Open_connection();
+				try {
+					PreparedStatement stmt = cn.prepareStatement(sql);
+					stmt.setString(1, user.getEmail());
+					ResultSet rs = stmt.executeQuery();
+					while(rs.next()) {
+						Ticket ti = new Ticket((String)rs.getString(5), rs.getString(2), (Double)rs.getDouble(3), rs.getInt(4));
+						ti.setID(rs.getInt(1));
+						tL.add(ti);
+					}
+					return tL;
+				}catch(SQLException sqlE) {
+					System.out.println(sqlE);
+					sqlE.printStackTrace();
+					return null;
+				}
+			}else {
+				return null;
 			}
-			return tL;
-		}catch(SQLException sqlE) {
-			System.out.println(sqlE);
-			sqlE.printStackTrace();
+		}else {
 			return null;
 		}
 	}
 	public boolean SaveOpinion(Opinion op) {
-		String sql = "Insert into opiniones values (? , ? , ? , ?)";
-		Connection cn = Open_connection();
-		try {
-			PreparedStatement stmt = cn.prepareStatement(sql);
-			stmt.setInt(1, 0);
-			stmt.setInt(2, op.getValoracion());
-			stmt.setString(3, op.getComentario());
-			stmt.setString(4, op.getEmail());
-			int r = stmt.executeUpdate();
-			if(r==1) {
-				return true;
-			}else {
+		if(op != null) {
+			String sql = "Insert into opiniones values (? , ? , ? , ?)";
+			Connection cn = Open_connection();
+			try {
+				PreparedStatement stmt = cn.prepareStatement(sql);
+				stmt.setInt(1, 0);
+				stmt.setInt(2, op.getValoracion());
+				stmt.setString(3, op.getComentario());
+				stmt.setString(4, op.getEmail());
+				int r = stmt.executeUpdate();
+				if(r==1) {
+					return true;
+				}else {
+					return false;
+				}
+			}catch(SQLException sqlE) {
+				System.out.println(sqlE);
+				sqlE.printStackTrace();
 				return false;
 			}
-		}catch(SQLException sqlE) {
-			System.out.println(sqlE);
-			sqlE.printStackTrace();
+		}else {
 			return false;
 		}
 	}
