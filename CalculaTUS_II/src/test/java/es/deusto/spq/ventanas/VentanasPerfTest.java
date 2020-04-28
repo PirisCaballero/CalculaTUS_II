@@ -20,19 +20,19 @@ public class VentanasPerfTest {
 	public static junit.framework.Test suite() {
 		 return new JUnit4TestAdapter(VentanasPerfTest.class);
 	}
-	/*
-	@Test
+	
+	@Test(expected = NullPointerException.class)
 	@PerfTest(invocations = 4, threads = 20)
-	// @Required(max = 120, average = 30)
+	@Required(max = 200, average = 120)
 	public void show_DescuentosTest() {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		Show_Descuentos SD = new Show_Descuentos(us);
 		assertTrue(SD != null);
 	}
 	
-	@Test
+	@Test(expected = IndexOutOfBoundsException.class)
 	@PerfTest(invocations = 4, threads = 20)
-	// @Required(max = 120, average = 30)
+	@Required(max = 120, average = 30)
 	public void show_ticketTest() {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		String ti = "Ticket";
@@ -40,19 +40,19 @@ public class VentanasPerfTest {
 		assertTrue(St != null);
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	@PerfTest(invocations = 4, threads = 20)
-	// @Required(max = 120, average = 30)
+	@Required(max = 500, average = 250)
 	public void show_TicketsTest() {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		Show_Tickets ST = new Show_Tickets(us);
 		assertTrue(ST != null);
 	}
-	*/
+	
 	
 	@Test
 	@PerfTest(invocations = 10, threads = 5)
-	@Required(totalTime = 15000, max = 10000)
+	@Required(totalTime = 30000, max = 10000)
 	public void ventana_CalculaTUS_IITest() {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		Ventana_CalculaTUS_II VenCal = new Ventana_CalculaTUS_II(us);
