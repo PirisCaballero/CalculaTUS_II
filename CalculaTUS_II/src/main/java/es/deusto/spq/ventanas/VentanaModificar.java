@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
+import es.deusto.spq.paneles.Panel_norte;
 
 public class VentanaModificar extends JFrame {
 
@@ -20,14 +21,17 @@ public class VentanaModificar extends JFrame {
 	private JButton btnGuardar;
 	private JTextField txtUsuario;
 	private JTextField txtPassword;
+	private Connect c = new Connect();
+	private Users main_user;
 
 	public VentanaModificar(Users u) {
 		super("Modificar datos");
+		this.main_user = u;
 		this.setSize(600, 400);
 		this.setLayout(null);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		JPanel ventanaModificar = new JPanel();
 		ventanaModificar.setLayout(null);
 		getContentPane().add(ventanaModificar);
@@ -72,11 +76,17 @@ public class VentanaModificar extends JFrame {
 					JOptionPane.showMessageDialog(null, "Rellena todos los campos, por favor");
 				}
 				else {
-					u.setEmail(txtUsuario.getText());
-					//TODO CONEXION CON BD
-					Connect cn = new Connect();
-					setVisible(false);
-					JOptionPane.showMessageDialog(null, "Datos cambiados correctamente");
+					String nombre = txtUsuario.getText();
+					String pass = txtPassword.getText();
+					boolean update = c.updateData(main_user, nombre, pass);
+					if( update ) {
+						JOptionPane.showMessageDialog(null, "Datos cambiados correctamente");
+						Panel_norte.usuario.setText(nombre);
+						dispose();
+					}else {
+						JOptionPane.showMessageDialog(null, "Datos NO cambiados ");
+						dispose();
+					}
 				}							
 			}
 		});

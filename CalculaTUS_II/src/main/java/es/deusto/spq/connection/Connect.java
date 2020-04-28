@@ -795,4 +795,32 @@ public class Connect {
 			return false;
 		}
 	}
+	public boolean updateData(Users us , String nombre , String pass) {
+		if( us != null && nombre != "" && pass != null && nombre != null && pass !=null && buscar_usuario(us.getEmail())) {
+			String sql = "update users set name = ? where email = ?";
+			String sql2 = "update users set password = ? where email = ?";
+			Connection cn = Open_connection();
+			try {
+				PreparedStatement stmt1 = cn.prepareStatement(sql);
+				PreparedStatement stmt2 = cn.prepareStatement(sql2);
+				stmt1.setString(1, nombre);
+				stmt1.setString(2, us.getEmail());
+				
+				stmt2.setString(1, pass);
+				stmt2.setString(2, us.getEmail());
+				int R1 = stmt1.executeUpdate();
+				int R2 = stmt2.executeUpdate();
+				if( R1 == 1 && R2 == 1 ) {
+					return true;
+				}else {
+					return false;
+				}
+			}catch (SQLException e) {
+				System.out.println(e);
+				return false;
+			}
+		}else {
+			return false;
+		}
+	}
 }

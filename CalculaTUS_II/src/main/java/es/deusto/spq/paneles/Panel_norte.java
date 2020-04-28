@@ -22,7 +22,7 @@ public class Panel_norte extends JPanel {
 	private Icon icon;
 	private Users main_user;
 	private Show_Tickets pti;
-	private JButton preguntas;
+	private JButton preguntas;public static JLabel usuario;
 	public Panel_norte(Users user , JFrame fr , Show_Tickets pt) {
 		this.main_frame = fr;
 		this.main_user = user;
@@ -66,7 +66,7 @@ public class Panel_norte extends JPanel {
 		JButton sql = new JButton("SQL");
 		sql.setBounds( 400 , 25 , 100 , 25 );
 		
-		JLabel usuario = new JLabel( main_user.getEmail() );
+		usuario = new JLabel( main_user.getNombre() );
 		usuario.setBounds( ftp.getLocation().x+ftp.getWidth() , 0 , 450 , 25 );
 		usuario.setHorizontalAlignment(SwingConstants.CENTER);
 		usuario.setBorder(BorderFactory.createLineBorder(Color.black));

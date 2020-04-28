@@ -93,7 +93,8 @@ public class ConnectTest{
 	}
 	@Test
 	public void testVerificar_usuario() {
-		assertEquals(usT.getPass(), cn.Verificar_usuario(usT.getEmail(), "root").getPass());
+		Users usT2 = new Users("Cheesire", "Cat", "CH@cat.es", "kity", 1, "null");
+		assertEquals(usT2.getPass(), cn.Verificar_usuario(usT2.getEmail(), usT2.getPass()).getPass());
 		assertEquals(null, cn.Verificar_usuario("", ""));
 		assertEquals(null, cn.Verificar_usuario("email@falso.es", ""));
 		assertEquals(null, cn.Verificar_usuario(usT.getEmail(), "passFalsa"));
@@ -283,6 +284,17 @@ public class ConnectTest{
 		
 		assertTrue(cn.SaveOpinion(op));
 		assertFalse(cn.SaveOpinion(null));
+	}
+	@Test
+	public void testupdateData() {
+		String nom = "NombreTest";
+		String pas = "PassTest";
+		assertTrue(cn.updateData(usT2, nom, pas));
+		assertFalse(cn.updateData(usF, "", ""));
+		assertFalse(cn.updateData(usF, nom, pas));
+		assertFalse(cn.updateData(null, "", ""));
+		assertFalse(cn.updateData(usF, null, null));
+		assertFalse(cn.updateData(null, null, null));
 	}
 }
 
