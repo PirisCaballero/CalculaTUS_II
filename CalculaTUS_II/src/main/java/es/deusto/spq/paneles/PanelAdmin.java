@@ -53,8 +53,10 @@ public class PanelAdmin extends JPanel{
 		choiceUsuario = new Choice();
 		Connect cn = new Connect();
 		ArrayList<Users> ul = cn.getUsers_byAdmin(user);
-		for(Users us : ul) {
-			choiceUsuario.add(us.getEmail());
+		if( user.getAdmin() == 1 ) {
+			for(Users us : ul) {
+				choiceUsuario.add(us.getEmail());
+			}
 		}
 		choiceUsuario.setBounds(222, 120, 170, 30);
 		this.add(choiceUsuario);
@@ -84,8 +86,10 @@ public class PanelAdmin extends JPanel{
 				
 		choiceTienda = new Choice();
 		ArrayList<Local> tiendas = cn.getLocales(user);
-		for(Local ti : tiendas) {
-			choiceTienda.add(ti.getNombre());
+		if( user.getAdmin() == 1) {
+			for(Local ti : tiendas) {
+				choiceTienda.add(ti.getNombre());
+			}
 		}
 		choiceTienda.setBounds(240, 300, 170, 30);
 		this.add(choiceTienda);

@@ -36,6 +36,7 @@ public class Panel_Central extends JPanel{
 		pl = new Panel_Local(main_user);
 		pp = new Panel_producto(main_user , pd);
 		pb = new Panel_Bienvenida(main_user);
+		System.out.println("Iratxe " + main_user.getNombre());
 		pa = new PanelAdmin(main_user , pd);
 		pu = new PanelUser(main_user, pd); //no se si es pd ¿?¿?¿??¿¿?¿?¿?¿?¿?¿??¿¿?¿?
 		pt = new Panel_Ticket(main_user, pDat);

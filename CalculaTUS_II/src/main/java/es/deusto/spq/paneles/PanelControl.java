@@ -66,8 +66,10 @@ public class PanelControl extends JPanel{
 		choiceUsuario = new Choice();
 		Connect cn = new Connect();
 		ArrayList<Users> ul = cn.getUsers_byAdmin(user);
-		for(Users us : ul) {
-			choiceUsuario.add(us.getEmail());
+		if( user.getAdmin() == 1 ) {
+			for(Users us : ul) {
+				choiceUsuario.add(us.getEmail());
+			}
 		}
 		choiceUsuario.setBounds(180, 100, 170, 30);
 		this.add(choiceUsuario);
