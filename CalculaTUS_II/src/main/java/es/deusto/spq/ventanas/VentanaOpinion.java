@@ -34,6 +34,8 @@ public class VentanaOpinion extends JFrame {
 	private JScrollPane scroll;
 	private Users main_User;
 	private int charCount = 0;
+	private JProgressBar progressBar;
+	private JLabel lblChars;
 
 	public VentanaOpinion(Users us) {
 		super("Opinion");
@@ -115,13 +117,13 @@ public class VentanaOpinion extends JFrame {
 		getContentPane().add(scroll);
 		getContentPane().add(error);
 		
-		JProgressBar progressBar = new JProgressBar();
+		progressBar = new JProgressBar();
 		progressBar.setBounds(20, 311, 66, 14);
 		getContentPane().add(progressBar);
 		progressBar.setMaximum(500);progressBar.setMinimum(0);
 		progressBar.setValue(0);
 		
-		JLabel lblChars = new JLabel("500 chars");
+		lblChars = new JLabel("500 chars");
 		lblChars.setBounds(98, 311, 66, 14);
 		getContentPane().add(lblChars);
 

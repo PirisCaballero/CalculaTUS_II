@@ -41,7 +41,7 @@ public class Panel_FTP extends JPanel{
 	private JPanel p;
 	private String lastDir = "";private File fichero;private JFileChooser fileChooser;
 	private Choice Cfolders , C_files; private ArrayList<FTPFile> carp , fich;
-	private String path;
+	private String path; private JLabel lblPath; JButton btnR; JFrame frameAddFolder;
 	public Panel_FTP(Users us) {
 		this.main_user = us;
 		this.setBounds(0 , 0 , 574 , 470);
@@ -104,12 +104,12 @@ public class Panel_FTP extends JPanel{
 		button_back.setBounds(271, 153, 55, 23);
 		add(button_back);
 		
-		JLabel lblPath = new JLabel(path);
+		lblPath = new JLabel(path);
 		lblPath.setBounds(200, 390, 250, 30);
 		lblPath.setBorder(BorderFactory.createLineBorder(Color.black));
 		add(lblPath);
 		
-		JButton btnR = new JButton("R");  //Refresh
+		btnR = new JButton("R");  //Refresh
 		btnR.setBounds(401, 153, 49, 23);
 		add(btnR);
 		
@@ -195,7 +195,7 @@ public class Panel_FTP extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JFrame frameAddFolder = new JFrame("Add Folder");
+				frameAddFolder = new JFrame("Add Folder");
 				frameAddFolder.setSize(250 , 100);
 				frameAddFolder.setResizable(false);
 				frameAddFolder.setLocationRelativeTo(null);

@@ -3,11 +3,11 @@ package es.deusto.spq.paneles;
 import org.junit.*;
 
 import es.deusto.spq.Users;
+import es.deusto.spq.connection.Connect;
 import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
 
 public class Panel_CentralTest {
 
-	static Users u;
 	static Panel_Datos pd;
 	static Panel_FTP pftp;
 	static Panel_Local pl;
@@ -20,10 +20,11 @@ public class Panel_CentralTest {
 	static PanelControl pc;
 	static Ventana_CalculaTUS_II vt;
 	static Panel_Central pCent;
-	
+	static Connect c = new Connect();
+	static Users u = c.Recuperar_usuario("admin@root.es");
 	@BeforeClass
 	public static void initialize() {
-		u = new Users("Ben", "Bon", "benbon@gmail.com", "eo", 0, "admin@root.es");
+		//u = new Users("Ben", "Bon", "benbon@gmail.com", "eo", 0, "admin@root.es");
 		vt = new Ventana_CalculaTUS_II(u);
 		pd = new Panel_Datos();
 		pftp = new Panel_FTP(u);

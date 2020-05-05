@@ -24,6 +24,7 @@ public class PanelAdmin extends JPanel{
 	JButton btnGuardar, btnRefresh, btnModificar;
 	int admin;
 	Users user;
+	private ArrayList<Local> tiendas ;
 	
 	private ArrayList<Local> userList = new ArrayList<Local>();
 	private Panel_Datos pd;
@@ -85,7 +86,7 @@ public class PanelAdmin extends JPanel{
 		this.add(lblTienda);
 				
 		choiceTienda = new Choice();
-		ArrayList<Local> tiendas = cn.getLocales(user);
+		tiendas = cn.getLocales(user);
 		if( user.getAdmin() == 1) {
 			for(Local ti : tiendas) {
 				choiceTienda.add(ti.getNombre());

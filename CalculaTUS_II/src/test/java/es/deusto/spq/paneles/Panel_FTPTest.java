@@ -2,18 +2,23 @@ package es.deusto.spq.paneles;
 
 import static org.junit.Assert.assertFalse;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import es.deusto.spq.Users;
+import es.deusto.spq.connection.Connect;
 
 public class Panel_FTPTest {
-
+	
+	static Connect c;
 	static Users u;
 	static Panel_FTP pftp;
 	
-	@BeforeClass
-	public static void initialize() {
-		u = new Users("Ben", "Bon", "benbon@gmail.com", "eo", 0, "admin@root.es");
+	@Before
+	public void setUp() {
+		c = new Connect();
+		u = c.Recuperar_usuario("admin@root.es");
 	}
 	
 	@Test

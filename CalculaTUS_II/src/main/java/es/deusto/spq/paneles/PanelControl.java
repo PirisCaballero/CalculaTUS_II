@@ -31,6 +31,7 @@ public class PanelControl extends JPanel{
 	private Choice choiceUsuario;
 	private Users user;
 	private Panel_Datos dts;
+	private Connect cn;
 	
 	public PanelControl(Users u, Panel_Datos pdts) {
 		this.setBounds(0 , 0 , 574 , 470);
@@ -64,7 +65,7 @@ public class PanelControl extends JPanel{
 		this.add(lblSeleccionar);
 		
 		choiceUsuario = new Choice();
-		Connect cn = new Connect();
+		cn = new Connect();
 		ArrayList<Users> ul = cn.getUsers_byAdmin(user);
 		if( user.getAdmin() == 1 ) {
 			for(Users us : ul) {

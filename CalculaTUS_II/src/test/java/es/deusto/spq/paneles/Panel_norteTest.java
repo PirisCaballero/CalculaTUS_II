@@ -5,11 +5,13 @@ import javax.swing.JFrame;
 import org.junit.*;
 
 import es.deusto.spq.Users;
+import es.deusto.spq.connection.Connect;
 import es.deusto.spq.ventanas.Show_Tickets;
 import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
 
 public class Panel_norteTest {
 
+	static Connect c = new Connect();
 	static Users u;
 	static Panel_norte pn;
 	static JFrame main_frame;
@@ -21,7 +23,7 @@ public class Panel_norteTest {
 	@BeforeClass
 	public static void initialize() {
 		
-		u = new Users("Ben", "Bon", "benbon@gmail.com", "eo", 0, "admin@root.es");
+		u = c.Recuperar_usuario("admin@root.es");
 		vt = new Ventana_CalculaTUS_II(u);
 		main_frame = new JFrame();
 		main_frame.setTitle("CalculaTUS_II");
