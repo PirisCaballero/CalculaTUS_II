@@ -105,7 +105,7 @@ public class VentanaLogin extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		//This is a prueba
+		//Esto es una prueba pp
 		VentanaLogin VL = new VentanaLogin();
 		VL.setVisible(true);
 	}
