@@ -7,7 +7,7 @@ public class Local {
 	private int cp;
 	private String descripcion;
 	private int IdLocal;
-	private String emailDuenio; //super comentario mega elaborado
+	private String emailDuenio;
 
 	public Local(String nom, String dir, int codPost, String desc) {
 		this.nombre = nom;
