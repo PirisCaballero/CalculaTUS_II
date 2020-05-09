@@ -27,8 +27,8 @@ public class PanelAdmin extends JPanel{
 	private ArrayList<Local> tiendas ;
 	
 	private ArrayList<Local> userList = new ArrayList<Local>();
-	private Panel_Datos pd;
-	public PanelAdmin(Users u , Panel_Datos pdts){
+	private PanelDatos pd;
+	public PanelAdmin(Users u , PanelDatos pdts){
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
 		this.setBackground(Color.WHITE);
@@ -53,7 +53,7 @@ public class PanelAdmin extends JPanel{
 		
 		choiceUsuario = new Choice();
 		Connect cn = new Connect();
-		ArrayList<Users> ul = cn.getUsers_byAdmin(user);
+		ArrayList<Users> ul = cn.getUsersByAdmin(user);
 		if( user.getAdmin() == 1 ) {
 			for(Users us : ul) {
 				choiceUsuario.add(us.getEmail());
@@ -115,7 +115,7 @@ public class PanelAdmin extends JPanel{
 					JOptionPane.showMessageDialog(null, "Debes de introducir un tipo de usuario");
 				}
 				if( admin < 2 ) {
-					boolean cambio_efectivo = conn.cambio_de__tipo_de_usuario(user, choiceUsuario.getSelectedItem(), admin); 
+					boolean cambio_efectivo = conn.cambioDeTipoDeUsuario(user, choiceUsuario.getSelectedItem(), admin); 
 					System.out.println(cambio_efectivo);
 					if(cambio_efectivo) {
 						JOptionPane.showMessageDialog(null, "El cambio de tipo de cuenta ha sido efectivo");
@@ -133,7 +133,7 @@ public class PanelAdmin extends JPanel{
 				System.out.println("Refreshing...");
 				choiceUsuario.removeAll();
 				Connect cn = new Connect();
-				ArrayList<Users> ul = cn.getUsers_byAdmin(user);
+				ArrayList<Users> ul = cn.getUsersByAdmin(user);
 				DefaultTableModel modelo = new DefaultTableModel();
 				modelo.setColumnCount(2);
 				String [] nomcolumns = { "Nombre" , "Correo" };

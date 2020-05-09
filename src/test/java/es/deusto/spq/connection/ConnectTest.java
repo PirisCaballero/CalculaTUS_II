@@ -52,63 +52,62 @@ public class ConnectTest{
 	}
 	
 	@Test
-	public void testOpen_connection() throws SQLException {
-		assertEquals(c.getClass(), cn.Open_connection().getClass());
+	public void testOpenConnection() throws SQLException {
+		assertEquals(c.getClass(), cn.OpenConnection().getClass());
 	}
 	@Test
-	public void testsay_hello() {
-		assertTrue( cn.say_hello(c) );
-		assertFalse( cn.say_hello(cN) );
+	public void testsayHello() {
+		assertTrue( cn.sayHello(c) );
+		assertFalse( cn.sayHello(cN) );
 	}
 	@Test
-	public void testgood_by() {
-		assertTrue( cn.good_by(c) );
-		assertFalse( cn.good_by(cN) );
+	public void testgoodBy() {
+		assertTrue( cn.goodBy(c) );
+		assertFalse( cn.goodBy(cN) );
 	}
 	@Test
-	public void testbuscar_usuario() {
-		assertTrue(cn.buscar_usuario(usT.getEmail()));
-		assertFalse(cn.buscar_usuario(usF.getEmail()));
-		assertFalse(cn.buscar_usuario(null));
-		assertFalse(cn.buscar_usuario(""));
+	public void testbuscarUsuario() {
+		assertTrue(cn.buscarUsuario(usT.getEmail()));
+		assertFalse(cn.buscarUsuario(usF.getEmail()));
+		assertFalse(cn.buscarUsuario(null));
+		assertFalse(cn.buscarUsuario(""));
 	}
 	@Test
-	public void testbuscar_local() {
-		assertFalse(cn.buscar_local(usT, locF));
-		assertFalse(cn.buscar_local(usF, locT));
-		assertFalse(cn.buscar_local(usF, locF));
-		assertFalse(cn.buscar_local(usT, null));
-		assertFalse(cn.buscar_local(usF, null));
-		assertFalse(cn.buscar_local(null, locF));
-		assertFalse(cn.buscar_local(null, locT));
-		assertTrue(cn.buscar_local(usT2, locT));
+	public void testbuscarLocal() {
+		assertFalse(cn.buscarLocal(usT, locF));
+		assertFalse(cn.buscarLocal(usF, locT));
+		assertFalse(cn.buscarLocal(usF, locF));
+		assertFalse(cn.buscarLocal(usT, null));
+		assertFalse(cn.buscarLocal(usF, null));
+		assertFalse(cn.buscarLocal(null, locF));
+		assertFalse(cn.buscarLocal(null, locT));
+		assertTrue(cn.buscarLocal(usT2, locT));
 	}
 	@Test 
-	public void testgetLocal_by_Id() {
-		assertEquals(locT.getId() , cn.getLocal_by_Id(usT2, 15).getId());
-		assertEquals(null, cn.getLocal_by_Id(null, 15));
-		assertEquals(null, cn.getLocal_by_Id(usF, 15));
-		assertEquals(null, cn.getLocal_by_Id(null, 0));
-		assertEquals(null, cn.getLocal_by_Id(null, 1000000));
+	public void testgetLocalById() {
+		assertEquals(locT.getId() , cn.getLocalById(usT2, 15).getId());
+		assertEquals(null, cn.getLocalById(null, 15));
+		assertEquals(null, cn.getLocalById(usF, 15));
+		assertEquals(null, cn.getLocalById(null, 0));
+		assertEquals(null, cn.getLocalById(null, 1000000));
 	}
 	@Test
-	public void testVerificar_usuario() {
+	public void testVerificarUsuario() {
 		Users usT2 = new Users("Cheesire", "Cat", "CH@cat.es", "kity", 1, "null");
-		assertEquals(usT2.getPass(), cn.Verificar_usuario(usT2.getEmail(), usT2.getPass()).getPass());
-		assertEquals(null, cn.Verificar_usuario("", ""));
-		assertEquals(null, cn.Verificar_usuario("email@falso.es", ""));
-		assertEquals(null, cn.Verificar_usuario(usT.getEmail(), "passFalsa"));
-		assertEquals(null, cn.Verificar_usuario(null, null));
+		assertEquals(usT2.getPass(), cn.VerificarUsuario(usT2.getEmail(), usT2.getPass()).getPass());
+		assertEquals(null, cn.VerificarUsuario("", ""));
+		assertEquals(null, cn.VerificarUsuario("email@falso.es", ""));
+		assertEquals(null, cn.VerificarUsuario(usT.getEmail(), "passFalsa"));
+		assertEquals(null, cn.VerificarUsuario(null, null));
 	}
 	@Test
-	public void testRecuperar_usuario() {
-		assertEquals(usT.getApellidos(), cn.Recuperar_usuario(usT.getEmail()).getApellidos());
-		assertEquals(null, cn.Recuperar_usuario(""));
-		assertEquals(null, cn.Recuperar_usuario(null));
+	public void testRecuperarUsuario() {
+		assertEquals(usT.getApellidos(), cn.RecuperarUsuario(usT.getEmail()).getApellidos());
+		assertEquals(null, cn.RecuperarUsuario(""));
+		assertEquals(null, cn.RecuperarUsuario(null));
 	}
 	@Test
 	public void testisAdmin() {
-		System.out.println("UwU " + cn.isAdmin(usT));
 		assertTrue(cn.isAdmin(usT));
 		assertFalse(cn.isAdmin(null));
 		assertFalse(cn.isAdmin(usF));//Este usuario no existe
@@ -149,19 +148,19 @@ public class ConnectTest{
 		assertTrue(cn.RegisUser(us11));
 	}
 	@Test
-	public void testgetProducts_by_ticket() {
+	public void testgetProductsByTicket() {
 		ArrayList<Producto> pr = new ArrayList<Producto>();
 		Ticket ti = new Ticket("16-04-2020", "admin@root.es", 176.0 , 19);
 		ti.setID(12);
-		assertEquals(pr.getClass() , cn.getProducts_by_ticket(usT, ti.getID()).getClass() );
-		assertEquals(null, cn.getProducts_by_ticket(null, 12));
-		assertEquals(null, cn.getProducts_by_ticket(null, 0));
+		assertEquals(pr.getClass() , cn.getProductsByTicket(usT, ti.getID()).getClass() );
+		assertEquals(null, cn.getProductsByTicket(null, 12));
+		assertEquals(null, cn.getProductsByTicket(null, 0));
 	}
 	@Test
-	public void testgetTicket_by_ticketID() {
+	public void testgetTicketbyTicketID() {
 		Ticket ti = new Ticket("16-04-2020", "admin@root.es", 176.0 , 19);
 		ti.setID(12);
-		assertEquals(ti.getClass(), cn.getTicket_by_ticketID(12).getClass());
+		assertEquals(ti.getClass(), cn.getTicketByTicketID(12).getClass());
 	}
 	@Test
 	public void testgetUsers() {
@@ -169,25 +168,25 @@ public class ConnectTest{
 		assertEquals(ul.getClass(), cn.getUsers().getClass());
 	}
 	@Test
-	public void testgetLocal_byName() {
+	public void testgetLocalbyName() {
 		Local l = new Local("Deusto", "C/ Pepe", 48920, "la uni");
 		l.setId(15);
 		l.setEmailDuenio("unai@deusto.es");
-		assertEquals(15, cn.getLocal_byName(usT2, "Deusto").getId());
-		assertEquals(null, cn.getLocal_byName(null, null));
-		assertEquals(null, cn.getLocal_byName(null, ""));
-		assertEquals(null, cn.getLocal_byName(usF, ""));
+		assertEquals(15, cn.getLocalByName(usT2, "Deusto").getId());
+		assertEquals(null, cn.getLocalByName(null, null));
+		assertEquals(null, cn.getLocalByName(null, ""));
+		assertEquals(null, cn.getLocalByName(usF, ""));
 	}
 	@Test
-	public void testgetProducts_byLocal() {
+	public void testgetProductsByLocal() {
 		Local l = new Local("Deusto", "C/ Pepe", 48920, "la uni");
 		l.setId(15);
 		l.setEmailDuenio("unai@deusto.es");
 		ArrayList<Producto> pr = new ArrayList<Producto>();
-		assertEquals(pr.getClass(), cn.getProducts_byLocal(usT, l.getId()).getClass());
-		assertEquals(null, cn.getProducts_byLocal(null, 15));
-		assertEquals(null, cn.getProducts_byLocal(null, 0));
-		assertEquals(null, cn.getProducts_byLocal(usF, 15));
+		assertEquals(pr.getClass(), cn.getProductsByLocal(usT, l.getId()).getClass());
+		assertEquals(null, cn.getProductsByLocal(null, 15));
+		assertEquals(null, cn.getProductsByLocal(null, 0));
+		assertEquals(null, cn.getProductsByLocal(usF, 15));
 	}
 	@Test
 	public void testanadirProducto() {
@@ -206,15 +205,15 @@ public class ConnectTest{
 		assertFalse(cn.anadirProducto(usF, null, 0));
 	}
 	@Test
-	public void testcambio_de__tipo_de_usuario() {
-		assertTrue(cn.cambio_de__tipo_de_usuario(usT, "prueba@0.3608716890837307.es", 1));
-		assertFalse(cn.cambio_de__tipo_de_usuario(usT, "", 1));
-		assertFalse(cn.cambio_de__tipo_de_usuario(usT, "", 0));
-		assertFalse(cn.cambio_de__tipo_de_usuario(usT, null, 1));
-		assertFalse(cn.cambio_de__tipo_de_usuario(usT, null, 0));
-		assertFalse(cn.cambio_de__tipo_de_usuario(null, "", 1));
-		assertFalse(cn.cambio_de__tipo_de_usuario(null , usT.getEmail(), 1));
-		assertFalse(cn.cambio_de__tipo_de_usuario(usT, usT.getEmail(), 1));
+	public void testcambio_deTipoDeUsuario() {
+		assertTrue(cn.cambioDeTipoDeUsuario(usT, "prueba@0.3608716890837307.es", 1));
+		assertFalse(cn.cambioDeTipoDeUsuario(usT, "", 1));
+		assertFalse(cn.cambioDeTipoDeUsuario(usT, "", 0));
+		assertFalse(cn.cambioDeTipoDeUsuario(usT, null, 1));
+		assertFalse(cn.cambioDeTipoDeUsuario(usT, null, 0));
+		assertFalse(cn.cambioDeTipoDeUsuario(null, "", 1));
+		assertFalse(cn.cambioDeTipoDeUsuario(null , usT.getEmail(), 1));
+		assertFalse(cn.cambioDeTipoDeUsuario(usT, usT.getEmail(), 1));
 	}
 	@Test
 	public void testgetLocales() {
@@ -224,21 +223,21 @@ public class ConnectTest{
 		assertEquals(null, cn.getLocales(null));
 	}
 	@Test
-	public void testgetUsers_byAdmin() {
+	public void testgetUsersByAdmin() {
 		ArrayList<Users> userList = new ArrayList<Users>();
-		assertEquals(userList.getClass(), cn.getUsers_byAdmin(usT).getClass());
-		assertEquals(null, cn.getUsers_byAdmin(usF));//Es admin pero no existe
-		assertEquals(null, cn.getUsers_byAdmin(null));
+		assertEquals(userList.getClass(), cn.getUsersByAdmin(usT).getClass());
+		assertEquals(null, cn.getUsersByAdmin(usF));//Es admin pero no existe
+		assertEquals(null, cn.getUsersByAdmin(null));
 	}
 	@Test
-	public void testgetProduct_by_Name() {
+	public void testgetProductByName() {
 		Producto p = new Producto("Pan", 1.0, 1);
 		p.setID(290);p.setLocalAsociado(16);p.setUserAsociado("admin@root.es");
-		assertEquals(p.getID(), cn.getProduct_by_Name(usT, p.getNombre()).getID());
-		assertEquals(null, cn.getProduct_by_Name(null, ""));
-		assertEquals(null, cn.getProduct_by_Name(usF, ""));//con usuario falso
-		assertEquals(null, cn.getProduct_by_Name(usF, p.getNombre()));
-		assertEquals(null, cn.getProduct_by_Name(null , null));
+		assertEquals(p.getID(), cn.getProductByName(usT, p.getNombre()).getID());
+		assertEquals(null, cn.getProductByName(null, ""));
+		assertEquals(null, cn.getProductByName(usF, ""));//con usuario falso
+		assertEquals(null, cn.getProductByName(usF, p.getNombre()));
+		assertEquals(null, cn.getProductByName(null , null));
 	}
 	@Test
 	public void testcrearTicket() {
@@ -266,11 +265,11 @@ public class ConnectTest{
 		
 	}
 	@Test
-	public void testgetTickets_by_user() {
+	public void testgetTicketsByUser() {
 		ArrayList<Ticket> tL = new ArrayList<Ticket>();
-		assertEquals(tL.getClass(), cn.getTickets_by_user(usT).getClass());
-		assertEquals(null, cn.getTickets_by_user(null));
-		assertEquals(null, cn.getTickets_by_user(usF));
+		assertEquals(tL.getClass(), cn.getTicketsByUser(usT).getClass());
+		assertEquals(null, cn.getTicketsByUser(null));
+		assertEquals(null, cn.getTicketsByUser(usF));
 	}
 	@Test
 	public void testSaveOpinion() {

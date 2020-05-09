@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 import org.junit.*;
 
-public class Panel_DatosTest {
+public class PanelDatosTest {
 
 	static DefaultTableModel modelo;
 	
@@ -25,7 +25,7 @@ public class Panel_DatosTest {
 	@Test
 	public void testPanel_Datos() {
 		
-		Panel_Datos pd = new Panel_Datos();
+		PanelDatos pd = new PanelDatos();
 		pd.setData(modelo);
 		assertFalse(pd.equals(null));
 	}

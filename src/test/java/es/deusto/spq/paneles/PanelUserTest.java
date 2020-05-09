@@ -4,22 +4,22 @@ import org.junit.*;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.Show_Descuentos;
-import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
+import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelUserTest {
 
 	static Users u;
-	static Panel_Datos pd;
+	static PanelDatos pd;
 	static PanelUser pu;
 	static Show_Descuentos sd;
 	static PanelControl pc;
-	static Ventana_CalculaTUS_II vt;
+	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
 	public static void initialize() {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
-		vt = new Ventana_CalculaTUS_II(u);
-		pd = new Panel_Datos();
+		vt = new VentanaCalculaTUSII(u);
+		pd = new PanelDatos();
 		sd = new Show_Descuentos(u);
 		pc = new PanelControl(u, pd);
 	}

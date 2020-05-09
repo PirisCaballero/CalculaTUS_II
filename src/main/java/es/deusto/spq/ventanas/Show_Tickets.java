@@ -30,12 +30,12 @@ public class Show_Tickets extends JFrame{
 		this.setTitle("Tickets");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setBounds( Ventana_CalculaTUS_II.getFrame().getLocation().x+Ventana_CalculaTUS_II.getFrame().getWidth() , Ventana_CalculaTUS_II.getFrame().getLocation().y , 350 , Ventana_CalculaTUS_II.getFrame().getHeight()  );
+		this.setBounds( VentanaCalculaTUSII.getFrame().getLocation().x+VentanaCalculaTUSII.getFrame().getWidth() , VentanaCalculaTUSII.getFrame().getLocation().y , 350 , VentanaCalculaTUSII.getFrame().getHeight()  );
 		this.setResizable(false);
 		this.setLayout(null);
 		this.main_user = user;
 		cn = new Connect();
-		tL = cn.getTickets_by_user(main_user);
+		tL = cn.getTicketsByUser(main_user);
 		String[] nomCol = { "ID_Ticket" };
 		
 		//Contenido
@@ -52,13 +52,13 @@ public class Show_Tickets extends JFrame{
 		tabla.setEnabled(true);
 		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane scroll = new JScrollPane( tabla );
-		scroll.setBounds(0 , 0 , 350 , Ventana_CalculaTUS_II.getFrame().getHeight()-80 );
+		scroll.setBounds(0 , 0 , 350 , VentanaCalculaTUSII.getFrame().getHeight()-80 );
 		//scroll.setBorder(BorderFactory.createLineBorder(Color.red));
 		
 		JButton btnEnviar = new JButton("Ver Ticket");
-		btnEnviar.setBounds(0 , Ventana_CalculaTUS_II.getFrame().getHeight()-80 , 175 , 50);
+		btnEnviar.setBounds(0 , VentanaCalculaTUSII.getFrame().getHeight()-80 , 175 , 50);
 		JButton btnRefresh = new JButton("Refresh");
-		btnRefresh.setBounds(175 , Ventana_CalculaTUS_II.getFrame().getHeight()-80 , 175 , 50);
+		btnRefresh.setBounds(175 , VentanaCalculaTUSII.getFrame().getHeight()-80 , 175 , 50);
 		this.add(scroll);
 		this.add(btnEnviar);
 		this.add(btnRefresh , BorderLayout.SOUTH);
@@ -78,7 +78,7 @@ public class Show_Tickets extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				tL.clear();
-				tL = cn.getTickets_by_user(main_user);
+				tL = cn.getTicketsByUser(main_user);
 				String[] nomCol = { "ID_Ticket" };
 				Model modelo = new Model();
 				modelo.setColumnIdentifiers(nomCol);

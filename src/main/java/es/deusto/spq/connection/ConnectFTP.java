@@ -37,14 +37,14 @@ public class ConnectFTP {
 	}
 	
 	public ConnectFTP (Users user) {
-		if( user != null &&  c.buscar_usuario(user.getEmail())) {
+		if( user != null &&  c.buscarUsuario(user.getEmail())) {
 			this.main_user = user;
 		}else {
 		}
 	}
 	
 	public boolean OpenConexion() {
-		if( main_user != null && c.buscar_usuario(main_user.getEmail())) {
+		if( main_user != null && c.buscarUsuario(main_user.getEmail())) {
 			try {
 				cliente.connect("83.213.204.144", 21);
 				//cliente.enterLocalPassiveMode();
@@ -69,7 +69,7 @@ public class ConnectFTP {
 		}
 	}
 	public boolean closeConnection() {
-		if( main_user != null && c.buscar_usuario(main_user.getEmail()) ) {
+		if( main_user != null && c.buscarUsuario(main_user.getEmail()) ) {
 			try {
 				cliente.disconnect();
 				return true;
@@ -83,7 +83,7 @@ public class ConnectFTP {
 		}
 	}
 	public boolean regisUserFolder() {
-		if( main_user != null && c.buscar_usuario(main_user.getEmail()) ) {
+		if( main_user != null && c.buscarUsuario(main_user.getEmail()) ) {
 			try {
 				OpenConexion();
 				boolean creado = cliente.makeDirectory("/"+main_user.getEmail());

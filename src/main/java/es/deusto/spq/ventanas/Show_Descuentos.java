@@ -15,8 +15,8 @@ public class Show_Descuentos extends JFrame {
 		this.setTitle("Descuentos");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setBounds(Ventana_CalculaTUS_II.getFrame().getLocation().x + Ventana_CalculaTUS_II.getFrame().getWidth(),
-				Ventana_CalculaTUS_II.getFrame().getLocation().y, 350, Ventana_CalculaTUS_II.getFrame().getHeight());
+		this.setBounds(VentanaCalculaTUSII.getFrame().getLocation().x + VentanaCalculaTUSII.getFrame().getWidth(),
+				VentanaCalculaTUSII.getFrame().getLocation().y, 350, VentanaCalculaTUSII.getFrame().getHeight());
 		this.setResizable(false);
 		this.setLayout(null);
 		this.main_user = user;

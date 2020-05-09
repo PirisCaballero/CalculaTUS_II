@@ -4,43 +4,43 @@ import org.junit.*;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
-import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
+import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
-public class Panel_CentralTest {
+public class PanelCentralTest {
 
-	static Panel_Datos pd;
-	static Panel_FTP pftp;
-	static Panel_Local pl;
-	static Panel_producto pprod;
-	static Panel_Bienvenida pb;
+	static PanelDatos pd;
+	static PanelFTP pftp;
+	static PanelLocal pl;
+	static PanelProducto pprod;
+	static PanelBienvenida pb;
 	static PanelAdmin pa;
 	static PanelUser pu;
-	static Panel_Ticket pt;
+	static PanelTicket pt;
 	static PanelPreguntas ppreg;
 	static PanelControl pc;
-	static Ventana_CalculaTUS_II vt;
-	static Panel_Central pCent;
+	static VentanaCalculaTUSII vt;
+	static PanelCentral pCent;
 	static Connect c = new Connect();
-	static Users u = c.Recuperar_usuario("admin@root.es");
+	static Users u = c.RecuperarUsuario("admin@root.es");
 	@BeforeClass
 	public static void initialize() {
 		//u = new Users("Ben", "Bon", "benbon@gmail.com", "eo", 0, "admin@root.es");
-		vt = new Ventana_CalculaTUS_II(u);
-		pd = new Panel_Datos();
-		pftp = new Panel_FTP(u);
-		pl = new Panel_Local(u);
-		pprod = new Panel_producto(u, pd);
-		pb = new Panel_Bienvenida(u);
+		vt = new VentanaCalculaTUSII(u);
+		pd = new PanelDatos();
+		pftp = new PanelFTP(u);
+		pl = new PanelLocal(u);
+		pprod = new PanelProducto(u, pd);
+		pb = new PanelBienvenida(u);
 		pa = new PanelAdmin(u, pd);
 		pu = new PanelUser(u, pd);
-		pt = new Panel_Ticket(u, pd);
+		pt = new PanelTicket(u, pd);
 		ppreg = new PanelPreguntas();
 		pc = new PanelControl(u, pd);
 	}
 	
 	@Test
 	public void testSetPanel() {
-		pCent = new Panel_Central(u, pd);
+		pCent = new PanelCentral(u, pd);
 		pCent.setPanel(0);
 		pCent.setPanel(1);
 		pCent.setPanel(2);

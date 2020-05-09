@@ -19,7 +19,7 @@ public class Connect {
 
 	Connection conn;
 
-	public Connection Open_connection() {
+	public Connection OpenConnection() {
 		conn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,7 +29,7 @@ public class Connect {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://83.213.204.144:3306/calculatus_root", "calculaTUS_root",
 					"Nevera98!");
-			boolean ok = say_hello(conn);
+			boolean ok = sayHello(conn);
 			System.out.println(ok);
 			return conn;
 		} catch (SQLException sqlE) {
@@ -39,7 +39,7 @@ public class Connect {
 		}
 	}
 
-	public boolean say_hello(Connection cn) {
+	public boolean sayHello(Connection cn) {
 		try {
 			if( cn != null ) {
 				if (cn.isValid(50000)) {
@@ -57,7 +57,7 @@ public class Connect {
 		}
 	}
 
-	public boolean good_by(Connection cn) {
+	public boolean goodBy(Connection cn) {
 		try {
 			if(cn != null) {
 				if(cn.isValid(50000)) {
@@ -76,9 +76,9 @@ public class Connect {
 		}
 	}
 
-	public boolean buscar_usuario(String email) {
+	public boolean buscarUsuario(String email) {
 		String sql = "Select * from users where email = ?";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		if( email != null && email != "" ) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
@@ -103,11 +103,11 @@ public class Connect {
 		
 	}
 
-	public boolean buscar_local(Users user, Local loc) {
+	public boolean buscarLocal(Users user, Local loc) {
 		String sql = "Select * from locales where Nombre = ? and email_duenio = ?";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		if( user != null && loc != null) {
-			if( buscar_usuario(user.getEmail()) ) {
+			if( buscarUsuario(user.getEmail()) ) {
 				try {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setString(1, loc.getNombre());
@@ -134,9 +134,9 @@ public class Connect {
 		}
 		
 	}
-	public Local getLocal_by_Id(Users user , int ID) {
+	public Local getLocalById(Users user , int ID) {
 		String sql = "Select * from locales where  idLocales = ? and email_duenio = ?";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		if( user != null ) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
@@ -168,10 +168,10 @@ public class Connect {
 		
 	}
 
-	public Users Verificar_usuario(String email, String pass) {
+	public Users VerificarUsuario(String email, String pass) {
 		Users us = null;
 		String sql = "Select * from users where email = ?";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		if( email != "" && pass !="" && email != null && pass != null) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
@@ -214,10 +214,10 @@ public class Connect {
 		
 	}
 
-	public Users Recuperar_usuario(String user_email) {
+	public Users RecuperarUsuario(String user_email) {
 		Users us = new Users();
 		String sql = "Select * from users where email = ?";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		if( user_email != "" && user_email != null ) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
@@ -252,11 +252,11 @@ public class Connect {
 	}
 	public boolean RegisLocal(Users user, Local loc) {
 		if( user != null && loc != null ) {
-			if (!buscar_local(user, loc)) {
-				if(buscar_usuario(user.getEmail())) {
+			if (!buscarLocal(user, loc)) {
+				if(buscarUsuario(user.getEmail())) {
 					System.out.println("El local no esta registrado");
 					String sql = "Insert into locales Values ( ? , ? , ? , ? , ? , ? )";
-					Connection cn = Open_connection();
+					Connection cn = OpenConnection();
 					try {
 						PreparedStatement stmt = cn.prepareStatement(sql);
 						stmt.setInt(1, 0);
@@ -267,7 +267,7 @@ public class Connect {
 						stmt.setString(6, user.getEmail());
 						////////
 						System.out.println(stmt.executeUpdate());
-						good_by(cn);
+						goodBy(cn);
 						return true;
 					} catch (SQLException sqlE) {
 						System.out.println(sqlE);
@@ -288,7 +288,7 @@ public class Connect {
 	}
 	public boolean isAdmin(Users user) {
 		if( user != null ) {
-			if( buscar_usuario(user.getEmail()) && user.getAdmin() == 1) {
+			if( buscarUsuario(user.getEmail()) && user.getAdmin() == 1) {
 				return true;
 			}else {
 				return false;
@@ -300,12 +300,12 @@ public class Connect {
 	}
 	public boolean RegisUser(Users us) {
 		if( us != null ) {
-			if (!buscar_usuario(us.getEmail())) {
+			if (!buscarUsuario(us.getEmail())) {
 				System.out.println("Usuario no registrado");
 				if( us.getAdminEmail() == "null") {
 					System.out.println("Administrador registrado");
 					String sql = "Insert Into users Values (? , ? , ? , ? , ? , ?)";
-					Connection cn = Open_connection();
+					Connection cn = OpenConnection();
 					try {
 						PreparedStatement stmt = cn.prepareStatement(sql);
 						stmt.setString(1, us.getNombre());
@@ -316,7 +316,7 @@ public class Connect {
 						stmt.setString(6, us.getAdminEmail());
 						/////
 						System.out.println(stmt.executeUpdate());
-						good_by(cn);
+						goodBy(cn);
 						JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 						return true;
 					} catch (SQLException sqlE) {
@@ -325,11 +325,11 @@ public class Connect {
 						return false;
 					}
 				}else {
-					Users usa = Recuperar_usuario(us.getAdminEmail());
+					Users usa = RecuperarUsuario(us.getAdminEmail());
 					if (isAdmin(usa)) {
 						System.out.println("Administrador registrado");
 						String sql = "Insert Into users Values (? , ? , ? , ? , ? , ?)";
-						Connection cn = Open_connection();
+						Connection cn = OpenConnection();
 						try {
 							PreparedStatement stmt = cn.prepareStatement(sql);
 							stmt.setString(1, us.getNombre());
@@ -340,7 +340,7 @@ public class Connect {
 							stmt.setString(6, us.getAdminEmail());
 							/////
 							System.out.println(stmt.executeUpdate());
-							good_by(cn);
+							goodBy(cn);
 							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 							return true;
 						} catch (SQLException sqlE) {
@@ -362,10 +362,10 @@ public class Connect {
 				return false;
 			}
 	}
-	public ArrayList<Producto> getProducts_by_ticket(Users user , int ticketID){
+	public ArrayList<Producto> getProductsByTicket(Users user , int ticketID){
 		ArrayList<Producto> pL = new ArrayList<Producto>();
 		String sql = "Select * from elementoscompra where idTicket = ?";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		if( user != null ) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
@@ -375,7 +375,7 @@ public class Connect {
 					Producto p = new Producto((String)rs.getString(2), Double.parseDouble( (String)rs.getString(3) ) , Integer.parseInt((String)rs.getString(4)));
 					pL.add(p);
 				}
-				good_by(cn);
+				goodBy(cn);
 				return pL;
 			}catch(SQLException sqlE) {
 				System.out.println(sqlE);
@@ -386,10 +386,10 @@ public class Connect {
 			return null;
 		}
 	}
-	public Ticket getTicket_by_ticketID(int ID) {
+	public Ticket getTicketByTicketID(int ID) {
 		Ticket t = new Ticket();
 		String sql = "Select * from tickets where idTickets = ?";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		try {
 			PreparedStatement stmt = cn.prepareStatement(sql);
 			stmt.setInt(1, ID);
@@ -401,7 +401,7 @@ public class Connect {
 				t.setID_Lugar_Compra(rs.getInt(4));
 				t.setFecha_emision(rs.getString(5));
 			}
-			good_by(cn);
+			goodBy(cn);
 			return t;
 		}catch(SQLException sqlE) {
 			System.out.println(sqlE);
@@ -412,7 +412,7 @@ public class Connect {
 	public ArrayList<Users> getUsers() {
 		ArrayList<Users> usersList = new ArrayList<Users>();
 		String sql = "Select * from users";
-		Connection cn = Open_connection();
+		Connection cn = OpenConnection();
 		try {
 			PreparedStatement stmt = cn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
@@ -435,18 +435,18 @@ public class Connect {
 		}
 	}
 
-	public void list_users() {
+	public void listUsers() {
 		ArrayList<Users> ul = getUsers();
 		for (Users u : ul) {
 			System.out.println(u.toString());
 		}
 	}
-	public Local getLocal_byName(Users us , String locName) {
+	public Local getLocalByName(Users us , String locName) {
 		//TODO
 		if( us != null && locName != null && locName != "" ) {
 			Local loc = null;
 			String sql = "Select * from locales where email_duenio = ? and Nombre = ?";
-			Connection cn = Open_connection();
+			Connection cn = OpenConnection();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setString(1, us.getEmail());
@@ -458,7 +458,7 @@ public class Connect {
 					loc.setId(rs.getInt(1));
 					System.out.println(rs.getInt(1));
 				}
-				good_by(cn);
+				goodBy(cn);
 				return loc;
 			}catch(SQLException sqle) {
 				System.out.println(sqle);
@@ -470,14 +470,14 @@ public class Connect {
 		}
 		
 	}
-	public ArrayList<Producto> getProducts_byLocal(Users us , int loc_ID) {
+	public ArrayList<Producto> getProductsByLocal(Users us , int loc_ID) {
 		if( us != null ) {
-			if( !buscar_usuario(us.getEmail()) ) {
+			if( !buscarUsuario(us.getEmail()) ) {
 				return null;
 			}
 			ArrayList<Producto> prList = null;
 			String sql = "Select * from productos where idLocal = ? and email_comprador = ?";
-			Connection cn = Open_connection();
+			Connection cn = OpenConnection();
 			prList = new ArrayList<Producto>();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
@@ -489,7 +489,7 @@ public class Connect {
 					prList.add(pr);
 					//System.out.println(pr.toString());
 				}
-				good_by(cn);
+				goodBy(cn);
 				return prList;
 			}catch(SQLException sqlE) {
 				System.out.println(sqlE);
@@ -501,16 +501,16 @@ public class Connect {
 		}
 	}
 	public boolean anadirProducto(Users usAd , Producto pr , int loc_ID) {
-		if( usAd != null && pr != null && buscar_usuario(usAd.getEmail())) {
-			Local l = getLocal_by_Id(usAd, loc_ID);
+		if( usAd != null && pr != null && buscarUsuario(usAd.getEmail())) {
+			Local l = getLocalById(usAd, loc_ID);
 			if( l == null ) { 
 				return false; 
 			}
-			if( getProduct_by_Name(usAd, pr.getNombre()) != null ) {
+			if( getProductByName(usAd, pr.getNombre()) != null ) {
 				return false;
 			}
 			String sql = "Insert Into productos Values( ? , ? , ? , ? , ? )";
-			Connection cn = Open_connection();
+			Connection cn = OpenConnection();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setInt(1, 0);
@@ -519,7 +519,7 @@ public class Connect {
 				stmt.setInt(4, loc_ID);
 				stmt.setString(5, usAd.getEmail());
 				int aniadido = stmt.executeUpdate();
-				good_by(cn);
+				goodBy(cn);
 				if( aniadido == 1 ) {
 					JOptionPane.showMessageDialog(null, "Producto Añadido");
 					return true;
@@ -536,9 +536,9 @@ public class Connect {
 			return false;
 		}
 	}
-	public boolean cambio_de__tipo_de_usuario(Users log_user, String user_to_change, int cambio) {
+	public boolean cambioDeTipoDeUsuario(Users log_user, String user_to_change, int cambio) {
 		if( log_user != null && user_to_change != null && user_to_change != "") {
-			Users userChanged = Recuperar_usuario(user_to_change);
+			Users userChanged = RecuperarUsuario(user_to_change);
 			//System.out.println(userChanged.toString());
 			if( userChanged == null ) {
 				return false;
@@ -549,7 +549,7 @@ public class Connect {
 				if (log_user.getEmail().equals(userChanged.getAdminEmail())) {
 					//System.out.println("El usuario a cambiar es del usuario administrador");
 					String sql = "Update users set admin = ? , admin_email = ? where email = ?";
-					Connection cn = Open_connection();
+					Connection cn = OpenConnection();
 					try {
 						PreparedStatement stmt = cn.prepareStatement(sql);
 						stmt.setInt(1, cambio);
@@ -560,7 +560,7 @@ public class Connect {
 						}
 						stmt.setString(3, user_to_change);
 						//System.out.println(stmt.executeUpdate());
-						good_by(cn);
+						goodBy(cn);
 						return true;
 					} catch (SQLException sqlE) {
 						//System.out.println(sqlE);
@@ -580,10 +580,10 @@ public class Connect {
 	}
 
 	public ArrayList<Local> getLocales(Users us) {
-		if( us != null && buscar_usuario(us.getEmail()) ) {
+		if( us != null && buscarUsuario(us.getEmail()) ) {
 			ArrayList<Local> localesList = new ArrayList<Local>();
 			String sql = "Select * from locales where email_duenio = ?";
-			Connection cn = Open_connection();
+			Connection cn = OpenConnection();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setString(1, us.getEmail());
@@ -605,12 +605,12 @@ public class Connect {
 		}
 	}
 	
-	public ArrayList<Users> getUsers_byAdmin(Users usAd){
-		if( usAd != null && buscar_usuario(usAd.getEmail()) ) {
+	public ArrayList<Users> getUsersByAdmin(Users usAd){
+		if( usAd != null && buscarUsuario(usAd.getEmail()) ) {
 			if( isAdmin(usAd) ) {
 				ArrayList<Users> userList = null;
 				String sql = "Select * from users where admin_email = ?";
-				Connection cn = Open_connection();
+				Connection cn = OpenConnection();
 				try {
 					userList = new ArrayList<Users>();
 					PreparedStatement stmt = cn.prepareStatement(sql);
@@ -621,7 +621,7 @@ public class Connect {
 						System.out.println(us.toString());
 						userList.add(us);
 					}
-					good_by(cn);
+					goodBy(cn);
 					return userList;
 				}catch(SQLException sqlE) {
 					System.out.println(sqlE);
@@ -636,11 +636,11 @@ public class Connect {
 		}
 	}
 	
-	public Producto getProduct_by_Name(Users user , String Nombre) {
+	public Producto getProductByName(Users user , String Nombre) {
 		if( user != null && Nombre != "" ) {
 			Producto p = null;
 			String sql = "Select * from productos where Nombre = ? and email_comprador = ?";
-			Connection cn = Open_connection();
+			Connection cn = OpenConnection();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setString(1, Nombre);
@@ -651,7 +651,7 @@ public class Connect {
 					p.setID(rs.getInt(1));
 				}
 				//System.out.println("producto: "+p.getNombre()+p.getID());
-				good_by(cn);
+				goodBy(cn);
 				return p;
 			}catch(SQLException sqlE) {
 				System.out.println(sqlE);
@@ -667,10 +667,10 @@ public class Connect {
 	 */
 	public Ticket crearTicket(Users user , Ticket ti) {
 		if( user != null && ti != null ) {
-			if( buscar_usuario(user.getEmail()) ) {
+			if( buscarUsuario(user.getEmail()) ) {
 				Ticket t = null;
 				String sql = "INSERT INTO tickets VALUES ( ? , ? , ? , ? , ? )";
-				Connection cn = Open_connection();
+				Connection cn = OpenConnection();
 				try {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setInt(1, 0);
@@ -695,7 +695,7 @@ public class Connect {
 							t = new Ticket((String)rs2.getString(5), rs2.getString(2), (Double)rs2.getDouble(3), rs2.getInt(4));
 							t.setID(rs2.getInt(1));
 						}
-						good_by(cn);
+						goodBy(cn);
 						return t;
 					}catch(SQLException sqlE2) {
 						System.out.println(sqlE2);
@@ -722,7 +722,7 @@ public class Connect {
 			int tam = prL.size();
 			for(int i = 0 ; i<tam ; i++) {
 				String sql = "Insert into elementoscompra VALUES ( ? , ? , ? , ?)";
-				Connection cn = Open_connection();
+				Connection cn = OpenConnection();
 				try {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setInt(1, t.getID());
@@ -742,12 +742,12 @@ public class Connect {
 			return false;
 		}
 	}
-	public ArrayList<Ticket> getTickets_by_user(Users user){
+	public ArrayList<Ticket> getTicketsByUser(Users user){
 		if( user != null ) {
-			if( buscar_usuario(user.getEmail()) ) {
+			if( buscarUsuario(user.getEmail()) ) {
 				ArrayList<Ticket> tL = new ArrayList<Ticket>();
 				String sql = "Select * from tickets where email_comprador = ?";
-				Connection cn = Open_connection();
+				Connection cn = OpenConnection();
 				try {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setString(1, user.getEmail());
@@ -773,7 +773,7 @@ public class Connect {
 	public boolean SaveOpinion(Opinion op) {
 		if(op != null) {
 			String sql = "Insert into opiniones values (? , ? , ? , ?)";
-			Connection cn = Open_connection();
+			Connection cn = OpenConnection();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setInt(1, 0);
@@ -796,10 +796,10 @@ public class Connect {
 		}
 	}
 	public boolean updateData(Users us , String nombre , String pass) {
-		if( us != null && nombre != "" && pass != null && nombre != null && pass !=null && buscar_usuario(us.getEmail())) {
+		if( us != null && nombre != "" && pass != null && nombre != null && pass !=null && buscarUsuario(us.getEmail())) {
 			String sql = "update users set name = ? where email = ?";
 			String sql2 = "update users set password = ? where email = ?";
-			Connection cn = Open_connection();
+			Connection cn = OpenConnection();
 			try {
 				PreparedStatement stmt1 = cn.prepareStatement(sql);
 				PreparedStatement stmt2 = cn.prepareStatement(sql2);

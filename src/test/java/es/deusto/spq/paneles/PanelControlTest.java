@@ -9,13 +9,13 @@ import es.deusto.spq.Users;
 public class PanelControlTest {
 	
 	static Users u;
-	static Panel_Datos pd;
+	static PanelDatos pd;
 	static PanelControl pc;
 	
 	@BeforeClass
 	public static void initialize() {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
-		pd = new Panel_Datos();
+		pd = new PanelDatos();
 	}
 
 	@Test

@@ -6,7 +6,7 @@ import org.junit.*;
 
 import es.deusto.spq.Users;
 
-public class Panel_BienvenidaTest {
+public class PanelBienvenidaTest {
 	
 	static Users u;
 	
@@ -17,7 +17,7 @@ public class Panel_BienvenidaTest {
 
 	@Test
 	public void testPanelBienvenida() {
-		Panel_Bienvenida pbvn = new Panel_Bienvenida(u);
+		PanelBienvenida pbvn = new PanelBienvenida(u);
 		assertFalse(pbvn.equals(null));
 	}
 }

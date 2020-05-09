@@ -9,9 +9,9 @@ import javax.swing.*;
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.Show_Tickets;
 import es.deusto.spq.ventanas.VentanaLogin;
-import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
+import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
-public class Panel_norte extends JPanel {
+public class PanelNorte extends JPanel {
 
 	/**
 	 * Betha 1.1
@@ -23,7 +23,7 @@ public class Panel_norte extends JPanel {
 	private Users main_user;
 	private Show_Tickets pti;
 	private JButton preguntas;public static JLabel usuario;
-	public Panel_norte(Users user , JFrame fr , Show_Tickets pt) {
+	public PanelNorte(Users user , JFrame fr , Show_Tickets pt) {
 		this.main_frame = fr;
 		this.main_user = user;
 		this.setBounds(0 , 0 , main_frame.getWidth() , 50);
@@ -120,7 +120,7 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Ventana_CalculaTUS_II.pc.setPanel(0);
+				VentanaCalculaTUSII.pc.setPanel(0);
 			}
 		});
 		addProducto.addActionListener(new ActionListener() {
@@ -128,7 +128,7 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Ventana_CalculaTUS_II.pc.setPanel(2);
+				VentanaCalculaTUSII.pc.setPanel(2);
 			}
 		});
 		admin.addActionListener(new ActionListener() {
@@ -137,7 +137,7 @@ public class Panel_norte extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(main_user.getAdmin()==1) {
-					Ventana_CalculaTUS_II.pc.setPanel(1);
+					VentanaCalculaTUSII.pc.setPanel(1);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Acceso restringido para administradores");
@@ -149,7 +149,7 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Ventana_CalculaTUS_II.pc.setPanel(3);
+				VentanaCalculaTUSII.pc.setPanel(3);
 			}
 		});
 		ftp.addActionListener(new ActionListener() {
@@ -157,7 +157,7 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Ventana_CalculaTUS_II.pc.setPanel(4);
+				VentanaCalculaTUSII.pc.setPanel(4);
 			}
 		});
 		userBut.addActionListener(new ActionListener() {
@@ -165,7 +165,7 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Ventana_CalculaTUS_II.pc.setPanel(6);
+				VentanaCalculaTUSII.pc.setPanel(6);
 			}
 		});
 		preguntas.addActionListener(new ActionListener() {
@@ -173,7 +173,7 @@ public class Panel_norte extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Ventana_CalculaTUS_II.pc.setPanel(5);
+				VentanaCalculaTUSII.pc.setPanel(5);
 			}
 		});
 	}

@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class Panel_Ticket extends JPanel {
+public class PanelTicket extends JPanel {
 	
 	/**
 	 * Betha 1.2
@@ -38,7 +38,7 @@ public class Panel_Ticket extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
-	private Panel_Datos pd;
+	private PanelDatos pd;
 	private JCalendar calendario;
 	private ArrayList<Local> ul;
 	private ArrayList<Producto> pL;
@@ -51,7 +51,7 @@ public class Panel_Ticket extends JPanel {
 	private String date;
 	private static Show_Tickets st;
 	
-	public Panel_Ticket(Users us , Panel_Datos pdat) {
+	public PanelTicket(Users us , PanelDatos pdat) {
 		this.setBounds(0 , 0 , 574 , 470);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setBackground(Color.white);
@@ -104,8 +104,8 @@ public class Panel_Ticket extends JPanel {
 		
 		producto = new Choice();
 		if(choice.getSelectedItem() != "-------------------") {
-			Local locID = cn.getLocal_byName(main_user, choice.getSelectedItem());
-			pL = cn.getProducts_byLocal(main_user, locID.getId());
+			Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
+			pL = cn.getProductsByLocal(main_user, locID.getId());
 			for(Producto p : pL) {
 				producto.add(p.getNombre());
 			}
@@ -150,8 +150,8 @@ public class Panel_Ticket extends JPanel {
 				producto.removeAll();
 				pL.clear();
 				if(choice.getSelectedItem() != "-------------------") {
-					Local locID = cn.getLocal_byName(main_user, choice.getSelectedItem());
-					pL = cn.getProducts_byLocal(main_user, locID.getId());
+					Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
+					pL = cn.getProductsByLocal(main_user, locID.getId());
 					for(Producto p : pL) {
 						producto.add(p.getNombre());
 					}
@@ -173,8 +173,8 @@ public class Panel_Ticket extends JPanel {
 				System.out.println("Funciona el listener");
 				if(choice.getSelectedItem() != "-------------------") {
 					producto.removeAll();
-					Local locID = cn.getLocal_byName(main_user, choice.getSelectedItem());
-					pL = cn.getProducts_byLocal(main_user, locID.getId());
+					Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
+					pL = cn.getProductsByLocal(main_user, locID.getId());
 					for(Producto p : pL) {
 						producto.add(p.getNombre());
 					}
@@ -193,7 +193,7 @@ public class Panel_Ticket extends JPanel {
 					SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 					date = simpleDateFormat.format(calendario.getDate());
 					System.out.println(date + producto.getSelectedItem());
-					Producto pr = cn.getProduct_by_Name(main_user, producto.getSelectedItem());
+					Producto pr = cn.getProductByName(main_user, producto.getSelectedItem());
 					pr.setCantidad(Integer.parseInt(textField.getText()));
 					modelo.setRowCount(modelo.getRowCount()+1);
 					modelo.setValueAt(pr.getNombre() , row, col);
@@ -224,7 +224,7 @@ public class Panel_Ticket extends JPanel {
 				lista += "Por un precio de: "+prec+" €";
 				int opcion = JOptionPane.showConfirmDialog(null, lista);
 				if( opcion == JOptionPane.YES_OPTION ) {
-					Local loc = cn.getLocal_byName(main_user, choice.getSelectedItem());
+					Local loc = cn.getLocalByName(main_user, choice.getSelectedItem());
 					Ticket ti = new Ticket( date , main_user.getEmail() , prec , loc.getId() );
 					Ticket TI = cn.crearTicket(main_user,ti);
 					System.out.println("El id del ticket es: " + TI.getID());

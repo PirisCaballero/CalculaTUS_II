@@ -6,24 +6,24 @@ import org.junit.*;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
-import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
+import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
-public class Panel_LocalTest {
+public class PanelLocalTest {
 
 	static Connect c = new Connect();
 	static Users u;
-	static Panel_Local pl;
-	static Ventana_CalculaTUS_II vt;
+	static PanelLocal pl;
+	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
 	public static void initialize() {
-		u = c.Recuperar_usuario("admin@root.es");
-		vt = new Ventana_CalculaTUS_II(u);
+		u = c.RecuperarUsuario("admin@root.es");
+		vt = new VentanaCalculaTUSII(u);
 	}
 	
 	@Test
 	public void testPanelLocal() {
-		pl = new Panel_Local(u);
+		pl = new PanelLocal(u);
 		assertFalse(pl.equals(null));
 	}
 }

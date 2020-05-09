@@ -9,21 +9,21 @@ import org.junit.Test;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
-public class Panel_FTPTest {
+public class PanelFTPTest {
 	
 	static Connect c;
 	static Users u;
-	static Panel_FTP pftp;
+	static PanelFTP pftp;
 	
 	@Before
 	public void setUp() {
 		c = new Connect();
-		u = c.Recuperar_usuario("admin@root.es");
+		u = c.RecuperarUsuario("admin@root.es");
 	}
 	
 	@Test
 	public void testPanel_FTP() {
-		pftp = new Panel_FTP(u);
+		pftp = new PanelFTP(u);
 		assertFalse(pftp.equals(null));
 	}
 	

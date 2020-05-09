@@ -20,7 +20,7 @@ import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 import es.deusto.spq.ventanas.Show_Tickets;
-import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
+import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelControl extends JPanel{
 
@@ -30,10 +30,10 @@ public class PanelControl extends JPanel{
 	private JButton btnDatos; private JButton btnVolver;
 	private Choice choiceUsuario;
 	private Users user;
-	private Panel_Datos dts;
+	private PanelDatos dts;
 	private Connect cn;
 	
-	public PanelControl(Users u, Panel_Datos pdts) {
+	public PanelControl(Users u, PanelDatos pdts) {
 		this.setBounds(0 , 0 , 574 , 470);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setBackground(Color.white);
@@ -66,7 +66,7 @@ public class PanelControl extends JPanel{
 		
 		choiceUsuario = new Choice();
 		cn = new Connect();
-		ArrayList<Users> ul = cn.getUsers_byAdmin(user);
+		ArrayList<Users> ul = cn.getUsersByAdmin(user);
 		if( user.getAdmin() == 1 ) {
 			for(Users us : ul) {
 				choiceUsuario.add(us.getEmail());
@@ -81,7 +81,7 @@ public class PanelControl extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<Ticket> t = cn.getTickets_by_user(cn.Recuperar_usuario(choiceUsuario.getSelectedItem()));
+				ArrayList<Ticket> t = cn.getTicketsByUser(cn.RecuperarUsuario(choiceUsuario.getSelectedItem()));
 				DefaultTableModel modelo = new DefaultTableModel() {
 					public boolean isCellEditable(int row, int column) {
 						return true;};
@@ -108,7 +108,7 @@ public class PanelControl extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Ventana_CalculaTUS_II.pc.setPanel(6);
+				VentanaCalculaTUSII.pc.setPanel(6);
 			}
 		});
 	}

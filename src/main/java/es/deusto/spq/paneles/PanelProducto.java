@@ -16,7 +16,7 @@ import es.deusto.spq.connection.Connect;
 
 import java.awt.Choice;
 
-public class Panel_producto extends JPanel {
+public class PanelProducto extends JPanel {
 
 	/**
 	 * CalculaTUS_II
@@ -33,9 +33,9 @@ public class Panel_producto extends JPanel {
 	private String[] column_names = { "Nombre" , "Precio" , "Local" };
 	private JScrollPane scrollpane;
 	private String localSel = "";
-	private Panel_Datos pd;
+	private PanelDatos pd;
 
-	public Panel_producto(Users us , Panel_Datos pdts) {
+	public PanelProducto(Users us , PanelDatos pdts) {
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
 		this.setBackground(Color.white);
@@ -128,8 +128,8 @@ public class Panel_producto extends JPanel {
 				for (Local l : locList) {
 					choice.add(l.getNombre());
 				}
-				Local local = cn.getLocal_byName(user, localSel);
-				cn.getProducts_byLocal(user, local.getId());
+				Local local = cn.getLocalByName(user, localSel);
+				cn.getProductsByLocal(user, local.getId());
 				//scrollpane.removeAll();
 				//System.out.println("Local seleccionado: " + local.getId());
 				dataToTable(local.getId(), tabla_productos);
@@ -141,7 +141,7 @@ public class Panel_producto extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Connect cn = new Connect();
-				Local local = cn.getLocal_byName(user, choice.getSelectedItem());
+				Local local = cn.getLocalByName(user, choice.getSelectedItem());
 				//System.out.println("El nombre del local es: "+local.getNombre();
 				Producto prod = new Producto( Double.parseDouble(textField_1.getText()), textField.getText() , 0 , local.getId() ,user.getEmail());
 				cn.anadirProducto(user, prod, local.getId());
@@ -152,12 +152,12 @@ public class Panel_producto extends JPanel {
 	}
 	public DefaultTableModel dataToTable(int locID , JTable tabla) {
 		Connect cn = new Connect();
-		ArrayList<Producto> prList = cn.getProducts_byLocal(user, locID);
+		ArrayList<Producto> prList = cn.getProductsByLocal(user, locID);
 		DefaultTableModel modelo = new DefaultTableModel();
 		modelo.setRowCount(prList.size());
 		modelo.setColumnCount(3);
 		modelo.setColumnIdentifiers(column_names);
-		Local loc = cn.getLocal_by_Id(user, locID);
+		Local loc = cn.getLocalById(user, locID);
 		for( int i = 0 ; i<prList.size() ; i++ ) {
 			System.out.println(prList.get(i).toString());
 			modelo.setValueAt(prList.get(i).getNombre(),i , 0);

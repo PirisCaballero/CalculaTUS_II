@@ -12,7 +12,7 @@ import es.deusto.spq.Local;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
-public class Panel_Local extends JPanel{
+public class PanelLocal extends JPanel{
 	
 	/**
 	 * Betha 1.1
@@ -23,7 +23,7 @@ public class Panel_Local extends JPanel{
 	private JTextArea txtOpinion;
 	private JButton btnLocalCreado;
 	private Users main_user; 
-	public Panel_Local(Users user) {
+	public PanelLocal(Users user) {
 		this.setBounds(0, 0, 524, 470);
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());

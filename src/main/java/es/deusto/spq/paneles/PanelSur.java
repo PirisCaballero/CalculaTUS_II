@@ -7,7 +7,7 @@ import javax.swing.*;
 import es.deusto.spq.Users;
 
 
-public class Panel_sur extends JPanel{
+public class PanelSur extends JPanel{
 	
 	/**
 	 * Betha 1.1
@@ -15,7 +15,7 @@ public class Panel_sur extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
 	private JFrame main_frame;
-	public Panel_sur(Users us , JFrame fr , String [] users) {
+	public PanelSur(Users us , JFrame fr , String [] users) {
 		main_user = us;
 		main_frame = fr;
 		this.setBounds(0 , 520 , main_frame.getWidth() , 200);
@@ -46,7 +46,7 @@ public class Panel_sur extends JPanel{
 		}
 		panel_usuarios.setVisible(true);
 		
-		Panel_consola pc = new Panel_consola(main_user);
+		PanelConsola pc = new PanelConsola(main_user);
 		pc.setVisible(true);
 		
 		

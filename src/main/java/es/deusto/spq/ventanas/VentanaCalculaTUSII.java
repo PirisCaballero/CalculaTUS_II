@@ -3,13 +3,9 @@ package es.deusto.spq.ventanas;
 import javax.swing.*;
 
 import es.deusto.spq.Users;
-import es.deusto.spq.paneles.Panel_Central;
-import es.deusto.spq.paneles.Panel_Datos;
-import es.deusto.spq.paneles.Panel_Ticket;
-import es.deusto.spq.paneles.Panel_norte;
-import es.deusto.spq.paneles.Panel_sur;
+import es.deusto.spq.paneles.*;
 
-public class Ventana_CalculaTUS_II{
+public class VentanaCalculaTUSII{
 
 	/**
 	 * Betha 1.1 
@@ -17,10 +13,10 @@ public class Ventana_CalculaTUS_II{
 
 	private Users main_user;
 	private static JFrame main_frame;
-	public static Panel_Central pc; private Panel_Datos pd;private Panel_sur ps;private Panel_norte pn;
-	public Ventana_CalculaTUS_II(Users user) {
+	public static PanelCentral pc; private PanelDatos pd;private PanelSur ps;private PanelNorte pn;
+	public VentanaCalculaTUSII(Users user) {
 		this.main_user = user;
-		Ventana_CalculaTUS_II.main_frame = new JFrame();
+		VentanaCalculaTUSII.main_frame = new JFrame();
 		main_frame.setTitle("CalculaTUS_II");
 		main_frame.setLayout(null);
 		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,10 +24,10 @@ public class Ventana_CalculaTUS_II{
 		main_frame.setResizable(false);
 		main_frame.setLocationRelativeTo(null);
 		String [] users = { "Aitor" , "Iratxe" , "Erik" , "Eneko" };
-		ps = new Panel_sur(main_user , main_frame , users);
-		pd = new Panel_Datos();
-		pc = new Panel_Central(main_user , pd);
-		pn = new Panel_norte(main_user , this.main_frame , pc.getPanel_Ticket());
+		ps = new PanelSur(main_user , main_frame , users);
+		pd = new PanelDatos();
+		pc = new PanelCentral(main_user , pd);
+		pn = new PanelNorte(main_user , this.main_frame , pc.getPanel_Ticket());
 		
 		main_frame.add(pn);
 		main_frame.add(pc);
@@ -44,6 +40,6 @@ public class Ventana_CalculaTUS_II{
 	}
 	public static void main(String[] args) {
 		Users us = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
-		Ventana_CalculaTUS_II VenCal = new Ventana_CalculaTUS_II(us);
+		VentanaCalculaTUSII VenCal = new VentanaCalculaTUSII(us);
 	}
 }

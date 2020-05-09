@@ -6,11 +6,11 @@ import org.junit.*;
 
 import es.deusto.spq.Users;
 
-public class Panel_surTest {
+public class PanelSurTest {
 
 	static Users u;
 	static JFrame main_frame;
-	static Panel_sur ps;
+	static PanelSur ps;
 	static String[] us = { "Aitor" , "Iratxe" , "Erik" , "Eneko" };
 	
 	@BeforeClass
@@ -27,7 +27,7 @@ public class Panel_surTest {
 	}
 	
 	@Test
-	public void testPanel_sur() {
-		ps = new Panel_sur(u, main_frame, us);
+	public void testPanelSur() {
+		ps = new PanelSur(u, main_frame, us);
 	}
 }

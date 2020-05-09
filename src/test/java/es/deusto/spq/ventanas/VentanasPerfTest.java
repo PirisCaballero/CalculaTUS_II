@@ -59,8 +59,8 @@ public class VentanasPerfTest {
 	@Required(totalTime = 30000, max = 10000)
 	public void ventana_CalculaTUS_IITest() {
 		Connect c = new Connect();
-		Users us = c.Recuperar_usuario("admin@root.es");
-		Ventana_CalculaTUS_II VenCal = new Ventana_CalculaTUS_II(us);
+		Users us = c.RecuperarUsuario("admin@root.es");
+		VentanaCalculaTUSII VenCal = new VentanaCalculaTUSII(us);
 		assertTrue(VenCal != null);
 	}
 
@@ -77,7 +77,7 @@ public class VentanasPerfTest {
 	@Required(totalTime = 1000, max = 1000)
 	public void ventanaOpinionTest() {
 		Connect c = new Connect();
-		Users us = c.Recuperar_usuario("admin@root.es");
+		Users us = c.RecuperarUsuario("admin@root.es");
 		VentanaOpinion VO = new VentanaOpinion(us);
 		assertTrue(VO != null);
 	}

@@ -27,9 +27,9 @@ public class Show_ticket extends JFrame{
 		ID = Integer.parseInt(l[1]);
 		System.out.println("ID-->"+ID);
 		Connect cn = new Connect();
-		prList = cn.getProducts_by_ticket(main_user, this.ID);
-		Ticket ticket = cn.getTicket_by_ticketID(ID);
-		Local loc = cn.getLocal_by_Id(main_user, ticket.getID_Lugar_Compra());
+		prList = cn.getProductsByTicket(main_user, this.ID);
+		Ticket ticket = cn.getTicketByTicketID(ID);
+		Local loc = cn.getLocalById(main_user, ticket.getID_Lugar_Compra());
 		
 		JLabel lblNewLabel = new JLabel(ti);
 		lblNewLabel.setBounds(175, 20, 150, 30);

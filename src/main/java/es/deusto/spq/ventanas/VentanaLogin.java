@@ -89,12 +89,12 @@ public class VentanaLogin extends JFrame {
 				System.out.println("Comprobacion de usuario correcto");
 				Connect conn = new Connect();
 				// conn.list_users();
-				Users user = conn.Verificar_usuario(txtUsuario.getText(), txtPassword.getText());
+				Users user = conn.VerificarUsuario(txtUsuario.getText(), txtPassword.getText());
 				if (user != null) {
 					JOptionPane.showMessageDialog(null, "Bienvenido de nuevo " + user.getNombre());
 					System.out.println(user.toString());
 					//VentanaPrincipal VP = new VentanaPrincipal(user);
-					Ventana_CalculaTUS_II VP = new Ventana_CalculaTUS_II(user);
+					VentanaCalculaTUSII VP = new VentanaCalculaTUSII(user);
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario no registrado");

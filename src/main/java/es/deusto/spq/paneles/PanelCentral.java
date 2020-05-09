@@ -8,16 +8,16 @@ import javax.swing.table.DefaultTableModel;
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.Show_Tickets;
 
-public class Panel_Central extends JPanel{
+public class PanelCentral extends JPanel{
 	
 	/**
 	 * Betha 1.1
 	 */
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
-	private Panel_Local pl; private PanelControl pcont; private Panel_Bienvenida pb;
-	private Panel_FTP pftp;
-	private Panel_producto pp; private PanelAdmin pa;private Panel_Ticket pt; private PanelUser pu; private PanelPreguntas pg;
+	private PanelLocal pl; private PanelControl pcont; private PanelBienvenida pb;
+	private PanelFTP pftp;
+	private PanelProducto pp; private PanelAdmin pa;private PanelTicket pt; private PanelUser pu; private PanelPreguntas pg;
 	private final String nombres_col[] = {"Columna 1" , "Columna 2" , "Columna 3"};
 	private final String Data[][] = {
 			{ "" , "" , "" }
@@ -25,22 +25,22 @@ public class Panel_Central extends JPanel{
 	};
 	private JScrollPane sc;
 	private final DefaultTableModel DefaultModel = new DefaultTableModel( Data , nombres_col );
-	private Panel_Datos pDat;
-	public Panel_Central(Users user , Panel_Datos pd) {
+	private PanelDatos pDat;
+	public PanelCentral(Users user , PanelDatos pd) {
 		this.main_user = user;
 		this.setBounds( 500 , 50 , 574 , 470);
 		this.setBackground(Color.blue);
 		this.setVisible(true);
 		this.setLayout(null);
 		this.pDat = pd;
-		pl = new Panel_Local(main_user);
-		pp = new Panel_producto(main_user , pd);
-		pb = new Panel_Bienvenida(main_user);
+		pl = new PanelLocal(main_user);
+		pp = new PanelProducto(main_user , pd);
+		pb = new PanelBienvenida(main_user);
 		System.out.println("Iratxe " + main_user.getNombre());
 		pa = new PanelAdmin(main_user , pd);
 		pu = new PanelUser(main_user, pd); //no se si es pd ¿?¿?¿??¿¿?¿?¿?¿?¿?¿??¿¿?¿?
-		pt = new Panel_Ticket(main_user, pDat);
-		pftp = new Panel_FTP(main_user);
+		pt = new PanelTicket(main_user, pDat);
+		pftp = new PanelFTP(main_user);
 		pg = new PanelPreguntas();
 		pcont = new PanelControl(main_user, pDat);
 		sc = new JScrollPane(pg);
@@ -160,7 +160,7 @@ public class Panel_Central extends JPanel{
 		
 		}
 	}
-	public Panel_producto getPanelProd() {
+	public PanelProducto getPanelProd() {
 		return this.pp;
 	}
 	public Show_Tickets getPanel_Ticket() {

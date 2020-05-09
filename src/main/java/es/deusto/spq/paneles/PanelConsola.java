@@ -21,7 +21,7 @@ import es.deusto.spq.Users;
 import es.deusto.spq.Users.Type;
 import es.deusto.spq.connection.Connect;
 
-public class Panel_consola extends JPanel{
+public class PanelConsola extends JPanel{
 	
 	/**
 	 * Betha 1.1
@@ -33,7 +33,7 @@ public class Panel_consola extends JPanel{
 	// JScrollPane sp;
 
 	private Users main_user;
-	public Panel_consola(Users user) {
+	public PanelConsola(Users user) {
 		main_user = user;
 		this.setBounds(300 , 0 , 724 , 200);
 		this.setLayout(null);

@@ -13,11 +13,11 @@ import es.deusto.spq.Producto;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
-public class Panel_productoTest {
+public class PanelProductoTest {
 
-	static Panel_producto ppr;
+	static PanelProducto ppr;
 	static Users u;
-	static Panel_Datos pd;
+	static PanelDatos pd;
 	static JTable tabla_productos;
 	static Local local;
 	static Connect c;
@@ -26,7 +26,7 @@ public class Panel_productoTest {
 	@BeforeClass
 	public static void initialize() {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
-		pd = new Panel_Datos();
+		pd = new PanelDatos();
 		Object[][] datos = {};
 		String[] column_names = { "Nombre" , "Precio" , "Local" };
 		tabla_productos = new JTable( datos , column_names );
@@ -38,13 +38,13 @@ public class Panel_productoTest {
 		ArrayList<Producto> prodList = new ArrayList<Producto>();
 		prodList.add(prod);
 		c = new Connect();
-		ArrayList<Producto> prList = c.getProducts_byLocal(u, local.getId()); 
+		ArrayList<Producto> prList = c.getProductsByLocal(u, local.getId()); 
 		prList.add(prod);
 	}
 	
 	@Test
-	public void testPanel_producto() {
-		ppr = new Panel_producto(u, pd);
+	public void testPanelProducto() {
+		ppr = new PanelProducto(u, pd);
 		assertFalse(pd.equals(null));
 	}
 	

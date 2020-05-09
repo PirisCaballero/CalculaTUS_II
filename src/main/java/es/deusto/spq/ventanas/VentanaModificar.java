@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
-import es.deusto.spq.paneles.Panel_norte;
+import es.deusto.spq.paneles.PanelNorte;
 
 public class VentanaModificar extends JFrame {
 
@@ -81,7 +81,7 @@ public class VentanaModificar extends JFrame {
 					boolean update = c.updateData(main_user, nombre, pass);
 					if( update ) {
 						JOptionPane.showMessageDialog(null, "Datos cambiados correctamente");
-						Panel_norte.usuario.setText(nombre);
+						PanelNorte.usuario.setText(nombre);
 						dispose();
 					}else {
 						JOptionPane.showMessageDialog(null, "Datos NO cambiados ");

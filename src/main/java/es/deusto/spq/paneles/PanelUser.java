@@ -16,7 +16,7 @@ import es.deusto.spq.Local;
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.Show_Descuentos;
 import es.deusto.spq.ventanas.VentanaOpinion;
-import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
+import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelUser extends JPanel {
 
@@ -25,13 +25,13 @@ public class PanelUser extends JPanel {
 	Users user;
 
 	private ArrayList<Local> userList = new ArrayList<Local>();
-	private Panel_Datos pd;
+	private PanelDatos pd;
 
 	private static Show_Descuentos sd;
 	private PanelControl pcont;
 	private Users main_user;
 
-	public PanelUser(Users u, Panel_Datos pdts) {
+	public PanelUser(Users u, PanelDatos pdts) {
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
 		this.setBackground(Color.WHITE);
@@ -78,7 +78,7 @@ public class PanelUser extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Ventana_CalculaTUS_II.pc.setPanel(7);
+				VentanaCalculaTUSII.pc.setPanel(7);
 			}
 		});
 		

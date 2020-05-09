@@ -8,26 +8,26 @@ import org.junit.*;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.Show_Tickets;
-import es.deusto.spq.ventanas.Ventana_CalculaTUS_II;
+import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
-public class Panel_TicketTest {
+public class PanelTicketTest {
 
 	static Users u;
-	static Panel_Datos pd;
-	static Panel_Ticket pt;
+	static PanelDatos pd;
+	static PanelTicket pt;
 	static Show_Tickets st;
-	static Ventana_CalculaTUS_II vt;
+	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
 	public static void initialize() {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
-		pd = new Panel_Datos();
-		vt = new Ventana_CalculaTUS_II(u);
+		pd = new PanelDatos();
+		vt = new VentanaCalculaTUSII(u);
 	}
 	
 	@Test
-	public void testPanel_Ticket() {
-		pt = new Panel_Ticket(u, pd);
+	public void testPanelTicket() {
+		pt = new PanelTicket(u, pd);
 		assertFalse(pt.equals(null));
 	}
 	

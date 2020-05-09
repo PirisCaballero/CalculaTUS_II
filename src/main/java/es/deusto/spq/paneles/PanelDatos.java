@@ -5,14 +5,14 @@ import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class Panel_Datos extends JPanel{
+public class PanelDatos extends JPanel{
 
 	/**
 	 * Betha1.1
 	 */
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel modelo;private JTable tabla;
-	public Panel_Datos() {
+	public PanelDatos() {
 		this.setBounds( 0 , 50 , 500 , 470 );
 		this.setVisible(true);
 		//this.setBorder(BorderFactory.createLineBorder(Color.green));

@@ -30,7 +30,7 @@ import java.awt.Choice;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class Panel_FTP extends JPanel{
+public class PanelFTP extends JPanel{
 	
 	/**
 	 * Betha 1.1
@@ -42,7 +42,7 @@ public class Panel_FTP extends JPanel{
 	private String lastDir = "";private File fichero;private JFileChooser fileChooser;
 	private Choice Cfolders , C_files; private ArrayList<FTPFile> carp , fich;
 	private String path; private JLabel lblPath; JButton btnR; JFrame frameAddFolder;
-	public Panel_FTP(Users us) {
+	public PanelFTP(Users us) {
 		this.main_user = us;
 		this.setBounds(0 , 0 , 574 , 470);
 		this.setBackground(Color.white);
