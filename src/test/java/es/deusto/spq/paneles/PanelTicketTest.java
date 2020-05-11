@@ -7,7 +7,7 @@ import java.awt.Choice;
 import org.junit.*;
 
 import es.deusto.spq.Users;
-import es.deusto.spq.ventanas.Show_Tickets;
+import es.deusto.spq.ventanas.ShowTickets;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelTicketTest {
@@ -15,7 +15,7 @@ public class PanelTicketTest {
 	static Users u;
 	static PanelDatos pd;
 	static PanelTicket pt;
-	static Show_Tickets st;
+	static ShowTickets st;
 	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
@@ -33,7 +33,7 @@ public class PanelTicketTest {
 	
 	@Test
 	public void testGetFrameTickets() {
-		Show_Tickets s = pt.getFrameTickets();
+		ShowTickets s = pt.getFrameTickets();
 		assertFalse(s.equals(null));
 	}
 	

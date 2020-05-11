@@ -65,21 +65,21 @@ public class PanelConsola extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if(main_user.getAdmin()==1) {
-				
-					JOptionPane.showMessageDialog(null, "Es usted administrador, tiene acceso");
-					consola.setEnabled(true);
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "Acceso restringido a administradores");
-					consola.setEnabled(false);
-				}
+				desBloc();
 			}
 		});
 
 	}
 	public void addText(String text) {
 		consola.setText(text );
+	}
+	public void desBloc() {
+		if(main_user.getAdmin()==1) {
+			JOptionPane.showMessageDialog(null, "Es usted administrador, tiene acceso");
+			consola.setEnabled(true);
+		}else {
+			JOptionPane.showMessageDialog(null, "Acceso restringido a administradores");
+			consola.setEnabled(false);
+		}
 	}
 }

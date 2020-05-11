@@ -3,7 +3,7 @@ package es.deusto.spq.paneles;
 import org.junit.*;
 
 import es.deusto.spq.Users;
-import es.deusto.spq.ventanas.Show_Descuentos;
+import es.deusto.spq.ventanas.ShowDescuentos;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelUserTest {
@@ -11,7 +11,7 @@ public class PanelUserTest {
 	static Users u;
 	static PanelDatos pd;
 	static PanelUser pu;
-	static Show_Descuentos sd;
+	static ShowDescuentos sd;
 	static PanelControl pc;
 	static VentanaCalculaTUSII vt;
 	
@@ -20,7 +20,7 @@ public class PanelUserTest {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		vt = new VentanaCalculaTUSII(u);
 		pd = new PanelDatos();
-		sd = new Show_Descuentos(u);
+		sd = new ShowDescuentos(u);
 		pc = new PanelControl(u, pd);
 	}
 	

@@ -27,7 +27,7 @@ public class VentanaCalculaTUSII{
 		ps = new PanelSur(main_user , main_frame , users);
 		pd = new PanelDatos();
 		pc = new PanelCentral(main_user , pd);
-		pn = new PanelNorte(main_user , this.main_frame , pc.getPanel_Ticket());
+		pn = new PanelNorte(main_user , this.main_frame , pc.getPanelTicket());
 		
 		main_frame.add(pn);
 		main_frame.add(pc);

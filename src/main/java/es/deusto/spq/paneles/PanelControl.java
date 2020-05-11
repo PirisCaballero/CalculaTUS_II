@@ -19,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
-import es.deusto.spq.ventanas.Show_Tickets;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelControl extends JPanel{
@@ -81,26 +80,7 @@ public class PanelControl extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<Ticket> t = cn.getTicketsByUser(cn.RecuperarUsuario(choiceUsuario.getSelectedItem()));
-				DefaultTableModel modelo = new DefaultTableModel() {
-					public boolean isCellEditable(int row, int column) {
-						return true;};
-				};
-				
-				modelo.setColumnCount(3);
-				String [] nomColumns = {"Nombre", "Fecha", "Precio"};
-				modelo.setColumnIdentifiers(nomColumns);
-				modelo.setRowCount(t.size());
-				for(int i=0; i<t.size(); i++) {
-					modelo.setValueAt(t.get(i).getNombreUsuario(), i, 0);
-					modelo.setValueAt(t.get(i).getFecha_emision(), i, 1);
-					modelo.setValueAt(t.get(i).getImporte(), i, 2);					
-				}
-				dts.setData(modelo);
-				if(t.size()==0) {
-					JOptionPane.showMessageDialog(null, "No se han registrado tickets");
-					
-				}
+				setDatos();
 			}
 		});
 		
@@ -111,6 +91,30 @@ public class PanelControl extends JPanel{
 				VentanaCalculaTUSII.pc.setPanel(6);
 			}
 		});
+	}
+	
+	
+	public void setDatos() {
+		ArrayList<Ticket> t = cn.getTicketsByUser(cn.RecuperarUsuario(choiceUsuario.getSelectedItem()));
+		DefaultTableModel modelo = new DefaultTableModel() {
+			public boolean isCellEditable(int row, int column) {
+				return true;};
+		};
+		
+		modelo.setColumnCount(3);
+		String [] nomColumns = {"Nombre", "Fecha", "Precio"};
+		modelo.setColumnIdentifiers(nomColumns);
+		modelo.setRowCount(t.size());
+		for(int i=0; i<t.size(); i++) {
+			modelo.setValueAt(t.get(i).getNombreUsuario(), i, 0);
+			modelo.setValueAt(t.get(i).getFecha_emision(), i, 1);
+			modelo.setValueAt(t.get(i).getImporte(), i, 2);					
+		}
+		dts.setData(modelo);
+		if(t.size()==0) {
+			JOptionPane.showMessageDialog(null, "No se han registrado tickets");
+			
+		}
 	}
 	
 }

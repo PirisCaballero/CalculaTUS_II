@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 
 import es.deusto.spq.Local;
 import es.deusto.spq.Users;
-import es.deusto.spq.ventanas.Show_Descuentos;
+import es.deusto.spq.ventanas.ShowDescuentos;
 import es.deusto.spq.ventanas.VentanaOpinion;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
@@ -27,7 +27,7 @@ public class PanelUser extends JPanel {
 	private ArrayList<Local> userList = new ArrayList<Local>();
 	private PanelDatos pd;
 
-	private static Show_Descuentos sd;
+	private static ShowDescuentos sd;
 	private PanelControl pcont;
 	private Users main_user;
 
@@ -62,7 +62,7 @@ public class PanelUser extends JPanel {
 		add(btnOpinanosd);
 		
 		
-		sd = new Show_Descuentos(main_user);
+		sd = new ShowDescuentos(main_user);
 		sd.setVisible(false);
 		btnDescuento.addActionListener(new ActionListener() {
 

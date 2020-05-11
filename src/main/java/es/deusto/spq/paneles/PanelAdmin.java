@@ -104,69 +104,16 @@ public class PanelAdmin extends JPanel{
 		btnGuardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(choiceAdmin.getSelectedItem() + "  ||  " + choiceUsuario.getSelectedItem());
-				Connect conn = new Connect();
-				int admin = 2;
-				if( choiceAdmin.getSelectedItem().equals("Administrador") ) {
-					admin = 1;
-				}else if( choiceAdmin.getSelectedItem().equals("Usuario") ) {
-					admin = 0;
-				}else {
-					JOptionPane.showMessageDialog(null, "Debes de introducir un tipo de usuario");
-				}
-				if( admin < 2 ) {
-					boolean cambio_efectivo = conn.cambioDeTipoDeUsuario(user, choiceUsuario.getSelectedItem(), admin); 
-					System.out.println(cambio_efectivo);
-					if(cambio_efectivo) {
-						JOptionPane.showMessageDialog(null, "El cambio de tipo de cuenta ha sido efectivo");
-					}else {
-						JOptionPane.showMessageDialog(null, "El cambio de tipo de cuenta NO ha sido efectivo");
-					}
-				}
+				JOptionPane.showConfirmDialog(null, "Guardado: " + save());
 			}
 		});
 		btnRefresh.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("Refreshing...");
-				choiceUsuario.removeAll();
-				Connect cn = new Connect();
-				ArrayList<Users> ul = cn.getUsersByAdmin(user);
-				DefaultTableModel modelo = new DefaultTableModel();
-				modelo.setColumnCount(2);
-				String [] nomcolumns = { "Nombre" , "Correo" };
-				modelo.setColumnIdentifiers(nomcolumns);
-				for(Users u : ul) {
-					System.out.println(u.getEmail());
-					choiceUsuario.add(u.getEmail());
-				}
-				modelo.setRowCount(ul.size());
-				for(int i = 0; i<ul.size() ; i++) {
-					 modelo.setValueAt(ul.get(i).getNombre(), i, 0);
-					 modelo.setValueAt(ul.get(i).getEmail(), i, 1);
-				}
-				pd.setData(modelo);
+				Refresh();
 			}
-		});
-		btnFrecuente.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//TODO HAY QUE CAMBIAR LO QUE SE MUESTRA EN LA TABLA CUANDO EL METODO DE FILTRADO ESTE LISTO
-				DefaultTableModel table = new DefaultTableModel();
-				table.setColumnCount(2);
-				String [] nombreColumnas = {"Nombre", "Cliente"};
-				table.setColumnIdentifiers(nombreColumnas);
-				table.setRowCount(tiendas.size());
-				for(int i=0; i< tiendas.size(); i++) {
-					table.setValueAt(tiendas.get(i).getNombre(), i, 0);
-				}
-				pd.setData(table);
-			}
-		});
-		
+		});		
 		btnModificar.addActionListener(new ActionListener() {
 			
 			@Override
@@ -175,6 +122,49 @@ public class PanelAdmin extends JPanel{
 				vm.setVisible(true);
 			}
 		});
+	}
+	public boolean save() {
+		System.out.println(choiceAdmin.getSelectedItem() + "  ||  " + choiceUsuario.getSelectedItem());
+		Connect conn = new Connect();
+		int admin = 2;
+		if( choiceAdmin.getSelectedItem().equals("Administrador") ) {
+			admin = 1;
+		}else if( choiceAdmin.getSelectedItem().equals("Usuario") ) {
+			admin = 0;
+		}else {
+			JOptionPane.showMessageDialog(null, "Debes de introducir un tipo de usuario");
+		}
+		if( admin < 2 ) {
+			boolean cambio_efectivo = conn.cambioDeTipoDeUsuario(user, choiceUsuario.getSelectedItem(), admin); 
+			System.out.println(cambio_efectivo);
+			if(cambio_efectivo) {
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
+	}
+	public void Refresh() {
+		System.out.println("Refreshing...");
+		choiceUsuario.removeAll();
+		Connect cn = new Connect();
+		ArrayList<Users> ul = cn.getUsersByAdmin(user);
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.setColumnCount(2);
+		String [] nomcolumns = { "Nombre" , "Correo" };
+		modelo.setColumnIdentifiers(nomcolumns);
+		for(Users u : ul) {
+			System.out.println(u.getEmail());
+			choiceUsuario.add(u.getEmail());
+		}
+		modelo.setRowCount(ul.size());
+		for(int i = 0; i<ul.size() ; i++) {
+			 modelo.setValueAt(ul.get(i).getNombre(), i, 0);
+			 modelo.setValueAt(ul.get(i).getEmail(), i, 1);
+		}
+		pd.setData(modelo);
 	}
 	
 }

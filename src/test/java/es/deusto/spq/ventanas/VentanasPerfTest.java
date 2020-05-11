@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import es.deusto.spq.Users;
+import es.deusto.spq.ventanas.*;
 import es.deusto.spq.connection.Connect;
 import junit.framework.JUnit4TestAdapter;
 
@@ -42,22 +43,22 @@ public class VentanasPerfTest {
 //		Show_ticket St = new Show_ticket(us, ti);
 //		assertTrue(St != null);
 //	}
-//	//TODO Esta da error
-//	@Test(expected = NullPointerException.class)
-//	@PerfTest(invocations = 4, threads = 20)
-//	@Required(max = 500, average = 250)
-//	public void show_TicketsTest() {
-//		Connect c = new Connect();
-//		Users us = c.Recuperar_usuario("admin@root.es");
-//		Show_Tickets ST = new Show_Tickets(us);
-//		assertTrue(ST != null);
-//	}
+	//TODO Esta da error
+	@Test()
+	@PerfTest(invocations = 4, threads = 20)
+	@Required(max = 2500, average = 1000)
+	public void showTicketsTest() {
+		Connect c = new Connect();
+		Users us = c.RecuperarUsuario("admin@root.es");
+		ShowTickets ST = new ShowTickets(us);
+		assertTrue(ST != null);
+	}
 	
 	/////////////////////////////////////////////////////////////
-	@Test(expected = NullPointerException.class)
+	@Test
 	@PerfTest(invocations = 10, threads = 5)
 	@Required(totalTime = 30000, max = 10000)
-	public void ventana_CalculaTUS_IITest() {
+	public void ventanaCalculaTUSIITest() {
 		Connect c = new Connect();
 		Users us = c.RecuperarUsuario("admin@root.es");
 		VentanaCalculaTUSII VenCal = new VentanaCalculaTUSII(us);

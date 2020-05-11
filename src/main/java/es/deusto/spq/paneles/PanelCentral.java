@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import es.deusto.spq.Users;
-import es.deusto.spq.ventanas.Show_Tickets;
+import es.deusto.spq.ventanas.ShowTickets;
 
 public class PanelCentral extends JPanel{
 	
@@ -163,8 +163,8 @@ public class PanelCentral extends JPanel{
 	public PanelProducto getPanelProd() {
 		return this.pp;
 	}
-	public Show_Tickets getPanel_Ticket() {
-		return this.pt.getFrameTickets();
+	public ShowTickets getPanelTicket() {
+		return PanelTicket.getFrameTickets();
 	}
 
 }

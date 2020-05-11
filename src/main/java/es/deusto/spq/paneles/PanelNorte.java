@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import es.deusto.spq.Users;
-import es.deusto.spq.ventanas.Show_Tickets;
+import es.deusto.spq.ventanas.ShowTickets;
 import es.deusto.spq.ventanas.VentanaLogin;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
@@ -21,9 +21,9 @@ public class PanelNorte extends JPanel {
 	private JFrame main_frame;
 	private Icon icon;
 	private Users main_user;
-	private Show_Tickets pti;
+	private ShowTickets pti;
 	private JButton preguntas;public static JLabel usuario;
-	public PanelNorte(Users user , JFrame fr , Show_Tickets pt) {
+	public PanelNorte(Users user , JFrame fr , ShowTickets pt) {
 		this.main_frame = fr;
 		this.main_user = user;
 		this.setBounds(0 , 0 , main_frame.getWidth() , 50);
@@ -95,24 +95,14 @@ public class PanelNorte extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				main_frame.dispose();		
-				System.exit(0);
+				Exit();
 			}
 		});
 		logOut.addActionListener(new ActionListener() {
 			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Cerrando sesion...");
-				JOptionPane cerrar = new JOptionPane();
-				int resp = cerrar.showConfirmDialog(null, "¿Seguro que quieres salir?", "Aviso",
-						JOptionPane.YES_NO_OPTION);
-				if (resp == 0) {
-					main_frame.dispose();
-					pti.dispose();
-					VentanaLogin vtnLogin = new VentanaLogin();
-					vtnLogin.setVisible(true);
-				}
+				LogOut();
 			}
 		});
 		addLocal.addActionListener(new ActionListener() {
@@ -176,5 +166,21 @@ public class PanelNorte extends JPanel {
 				VentanaCalculaTUSII.pc.setPanel(5);
 			}
 		});
+	}
+	public void LogOut() {
+		System.out.println("Cerrando sesion...");
+		JOptionPane cerrar = new JOptionPane();
+		int resp = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres salir?", "Aviso",
+				JOptionPane.YES_NO_OPTION);
+		if (resp == 0) {
+			main_frame.dispose();
+			pti.dispose();
+			VentanaLogin vtnLogin = new VentanaLogin();
+			vtnLogin.setVisible(true);
+		}
+	}
+	public void Exit() {
+		main_frame.dispose();		
+		System.exit(0);
 	}
 }

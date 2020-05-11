@@ -10,12 +10,12 @@ import es.deusto.spq.Producto;
 import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
-public class Show_ticket extends JFrame{
+public class ShowTicket extends JFrame{
 	private JTable table;
 	private int ID;
 	private Users main_user;
 	private ArrayList<Producto> prList;
-	public Show_ticket(Users user , String ti) {
+	public ShowTicket(Users user , String ti) {
 		setTitle(ti);
 		setSize(500 , 300);
 		setLocationRelativeTo(null);

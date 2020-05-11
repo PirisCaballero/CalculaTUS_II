@@ -6,7 +6,7 @@ import org.junit.*;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
-import es.deusto.spq.ventanas.Show_Tickets;
+import es.deusto.spq.ventanas.ShowTickets;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelNorteTest {
@@ -15,7 +15,7 @@ public class PanelNorteTest {
 	static Users u;
 	static PanelNorte pn;
 	static JFrame main_frame;
-	static Show_Tickets st;
+	static ShowTickets st;
 	static PanelCentral pc;
 	static PanelDatos pd;
 	static VentanaCalculaTUSII vt;
@@ -42,7 +42,7 @@ public class PanelNorteTest {
 	
 	@Test
 	public void testPanelNorte() {
-		pn = new PanelNorte(u, main_frame, pc.getPanel_Ticket());
+		pn = new PanelNorte(u, main_frame, pc.getPanelTicket());
 	}
 	
 }

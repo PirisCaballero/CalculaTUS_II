@@ -15,7 +15,7 @@ import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
-public class Show_Tickets extends JFrame{
+public class ShowTickets extends JFrame{
 	
 	/**
 	 * Betha 1.2
@@ -24,13 +24,18 @@ public class Show_Tickets extends JFrame{
 	private ArrayList<Ticket> tL;
 	private Users main_user;
 	private JTable tabla;
-	private Show_ticket st;
+	private ShowTicket st;
 	private Connect cn;
-	public Show_Tickets(Users user) {
+	public ShowTickets(Users user) {
 		this.setTitle("Tickets");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setBounds( VentanaCalculaTUSII.getFrame().getLocation().x+VentanaCalculaTUSII.getFrame().getWidth() , VentanaCalculaTUSII.getFrame().getLocation().y , 350 , VentanaCalculaTUSII.getFrame().getHeight()  );
+		if( VentanaCalculaTUSII.getFrame() != null ) {
+			this.setBounds( VentanaCalculaTUSII.getFrame().getLocation().x+VentanaCalculaTUSII.getFrame().getWidth() , VentanaCalculaTUSII.getFrame().getLocation().y , 350 , VentanaCalculaTUSII.getFrame().getHeight()  );
+		}else {
+			this.setBounds(200 , 200 , 350 , 500);
+		}
+		
 		this.setResizable(false);
 		this.setLayout(null);
 		this.main_user = user;
@@ -52,13 +57,20 @@ public class Show_Tickets extends JFrame{
 		tabla.setEnabled(true);
 		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane scroll = new JScrollPane( tabla );
-		scroll.setBounds(0 , 0 , 350 , VentanaCalculaTUSII.getFrame().getHeight()-80 );
+		JButton btnEnviar = new JButton("Ver Ticket");
+		JButton btnRefresh = new JButton("Refresh");
+		if( VentanaCalculaTUSII.getFrame() != null ) {
+			btnEnviar.setBounds(0 , VentanaCalculaTUSII.getFrame().getHeight()-80 , 175 , 50);
+			btnRefresh.setBounds(175 , VentanaCalculaTUSII.getFrame().getHeight()-80 , 175 , 50);
+			scroll.setBounds(0 , 0 , 350 , VentanaCalculaTUSII.getFrame().getHeight()-80 );
+		}else {
+			btnEnviar.setBounds(0 , 250 , 175 , 50);
+			btnRefresh.setBounds(175 , 250 , 175 , 50);
+			scroll.setBounds(0 , 0 , 350 , 450 );
+		}
+		
 		//scroll.setBorder(BorderFactory.createLineBorder(Color.red));
 		
-		JButton btnEnviar = new JButton("Ver Ticket");
-		btnEnviar.setBounds(0 , VentanaCalculaTUSII.getFrame().getHeight()-80 , 175 , 50);
-		JButton btnRefresh = new JButton("Refresh");
-		btnRefresh.setBounds(175 , VentanaCalculaTUSII.getFrame().getHeight()-80 , 175 , 50);
 		this.add(scroll);
 		this.add(btnEnviar);
 		this.add(btnRefresh , BorderLayout.SOUTH);
@@ -68,7 +80,7 @@ public class Show_Tickets extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				st = new Show_ticket(main_user, (String)tabla.getValueAt(tabla.getSelectedRow(), 0));
+				st = new ShowTicket(main_user, (String)tabla.getValueAt(tabla.getSelectedRow(), 0));
 				st.setVisible(true);
 			}
 		});

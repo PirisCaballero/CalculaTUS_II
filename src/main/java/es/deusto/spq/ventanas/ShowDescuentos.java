@@ -4,14 +4,14 @@ import javax.swing.JFrame;
 
 import es.deusto.spq.Users;
 
-public class Show_Descuentos extends JFrame {
+public class ShowDescuentos extends JFrame {
 
 	/**
 	 * Betha 1.2
 	 */
 	private Users main_user;
 
-	public Show_Descuentos(Users user) {
+	public ShowDescuentos(Users user) {
 		this.setTitle("Descuentos");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

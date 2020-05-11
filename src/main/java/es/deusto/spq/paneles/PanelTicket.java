@@ -13,7 +13,7 @@ import es.deusto.spq.Producto;
 import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
-import es.deusto.spq.ventanas.Show_Tickets;
+import es.deusto.spq.ventanas.ShowTickets;
 
 import java.awt.Choice;
 import java.awt.Button;
@@ -49,7 +49,7 @@ public class PanelTicket extends JPanel {
 	private JTextField textField;
 	private ArrayList<Producto> prTicket;
 	private String date;
-	private static Show_Tickets st;
+	private static ShowTickets st;
 	
 	public PanelTicket(Users us , PanelDatos pdat) {
 		this.setBounds(0 , 0 , 574 , 470);
@@ -237,7 +237,7 @@ public class PanelTicket extends JPanel {
 				}
 			}
 		});
-		st = new Show_Tickets(main_user);
+		st = new ShowTickets(main_user);
 		st.setVisible(false);
 		show_Ti.addActionListener(new ActionListener() {
 			
@@ -253,7 +253,7 @@ public class PanelTicket extends JPanel {
 		
 		
 	}
-	public static Show_Tickets getFrameTickets() {
+	public static ShowTickets getFrameTickets() {
 		return st;
 	}
 }

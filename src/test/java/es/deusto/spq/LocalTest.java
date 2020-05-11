@@ -2,76 +2,55 @@ package es.deusto.spq;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.mockito.exceptions.misusing.UnnecessaryStubbingException;
+import org.mockito.junit.MockitoJUnitRunner;
 import es.deusto.spq.Local;
+import es.deusto.spq.connection.Connect;
 
+@RunWith(MockitoJUnitRunner.class)
 public class LocalTest {
-	// comprobamos la funcionalidad de la clase Local
 	static Local local;
 	static Local l2;
+	static Connect c = new Connect();
 	
 	@BeforeClass
-	public static void initialize() {
-		local = new Local("casa", "ninguna", 48190, "es un local");
-		l2 = new Local();
+	public static void initialize()  throws UnnecessaryStubbingException{
+		local = c.getLocalById(c.RecuperarUsuario("admin@root.es"), 18);
+		l2 = c.getLocalById(c.RecuperarUsuario("admin@root.es"), 19);
 	}
 	
 	@Test
-	public void testGetNombre() {
-		assertTrue(local.getNombre().equals("casa"));
+	public void testGetNombre()  throws UnnecessaryStubbingException{
+		assertTrue(local.getNombre().equals("Dia_plaza"));
 	}
 	
 	@Test
-	public void testGetDireccion() {
-		assertTrue(local.getDireccion().equals("ninguna"));		
+	public void testGetDireccion()  throws UnnecessaryStubbingException{
+		assertTrue(local.getDireccion().equals("C/Arantza"));	
 	}
 	
 	@Test
-	public void testGetDescripcion() {
-		assertTrue(local.getDescripcion().equals("es un local"));		
+	public void testGetDescripcion()  throws UnnecessaryStubbingException{
+		assertTrue(local.getDescripcion().equals("El Dia de la lado de la iglesia :D"));	
 	}
 	
 	@Test
-	public void testGetCp() {
-		assertEquals(48190, local.getCp());		
+	public void testGetCp()  throws UnnecessaryStubbingException{
+		assertEquals(48920, local.getCp());	
 	}
 	
 	@Test
-	public void testSetCp() {
-		l2.setCp(0);
-		assertEquals(0, l2.getCp());
-	}
-	
-	@Test
-	public void testSetDescripcion() {
-		l2.setDescripcion("nada");
-		assertEquals("nada", l2.getDescripcion());
-	}
-	
-	@Test
-	public void testSetNombre() {
-		l2.setNombre("sopuerta");
-		assertEquals("sopuerta", l2.getNombre());
-	}
-	
-	@Test
-	public void testSetDireccion() {
-		l2.setDireccion("alguna");
-		assertEquals("alguna", l2.getDireccion());
-	}
-	
-	@Test
-	public void testSetID() {
+	public void testSetID()  throws UnnecessaryStubbingException{
 		l2.setId(3);
 		assertEquals(3, l2.getId());
 	}
 	
 	@Test
-	public void testToString() {
-		String expected = "Nombre: casa Direccion: ninguna codigo postal: 48190";
+	public void testToString()  throws UnnecessaryStubbingException{
+		String expected = "Nombre: Dia_plaza Direccion: C/Arantza codigo postal: 48920";
 		String actual = local.toString();
 		assertEquals(expected, actual);
 	}
