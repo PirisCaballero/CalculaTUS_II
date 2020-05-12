@@ -94,17 +94,18 @@ public class PanelLocal extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Connect cn = new Connect();
-				Local loc = new Local(txtNombreLocal.getText() , txtDireccion.getText() , Integer.parseInt(txtCodPostal.getText()) , txtOpinion.getText());
-				boolean saved = cn.RegisLocal(main_user, loc);
-				if( saved ) {
-					JOptionPane.showMessageDialog(null, "Local guardado con exito");
-				}else {
-					JOptionPane.showMessageDialog(null, "Local no guardado con exito");
-				}
+				crearLocal();
 			}
 		});
 	}
-
+	public void crearLocal() {
+		Connect cn = new Connect();
+		Local loc = new Local(txtNombreLocal.getText() , txtDireccion.getText() , Integer.parseInt(txtCodPostal.getText()) , txtOpinion.getText());
+		boolean saved = cn.RegisLocal(main_user, loc);
+		if( saved ) {
+			JOptionPane.showMessageDialog(null, "Local guardado con exito");
+		}else {
+			JOptionPane.showMessageDialog(null, "Local no guardado con exito");
+		}
+	}
 }
