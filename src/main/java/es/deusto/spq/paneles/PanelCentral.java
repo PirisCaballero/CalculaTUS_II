@@ -17,7 +17,7 @@ public class PanelCentral extends JPanel{
 	private Users main_user;
 	private PanelLocal pl; private PanelControl pcont; private PanelBienvenida pb;
 	private PanelFTP pftp;
-	private PanelProducto pp; private PanelAdmin pa;private PanelTicket pt; private PanelUser pu; private PanelPreguntas pg;
+	private PanelProducto pp; private PanelEstadisticas pe; private PanelAdmin pa;private PanelTicket pt; private PanelUser pu; private PanelPreguntas pg;
 	private final String nombres_col[] = {"Columna 1" , "Columna 2" , "Columna 3"};
 	private final String Data[][] = {
 			{ "" , "" , "" }
@@ -42,6 +42,7 @@ public class PanelCentral extends JPanel{
 		pt = new PanelTicket(main_user, pDat);
 		pftp = new PanelFTP(main_user);
 		pg = new PanelPreguntas();
+		pe = new PanelEstadisticas(main_user, pd);
 		pcont = new PanelControl(main_user, pDat);
 		sc = new JScrollPane(pg);
 		pb.setVisible(true);
@@ -56,7 +57,7 @@ public class PanelCentral extends JPanel{
 			pl.setVisible(true);
 			this.pDat.setData(DefaultModel);
 			try {
-				pa.setVisible(false);pcont.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);sc.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);pa.setVisible(false);pcont.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);sc.setVisible(false);pb.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
@@ -70,7 +71,7 @@ public class PanelCentral extends JPanel{
 			this.add(pa);
 			pa.setVisible(true);
 			try {
-				pl.setVisible(false);pcont.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);sc.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);pl.setVisible(false);pcont.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);sc.setVisible(false);pb.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
@@ -82,7 +83,7 @@ public class PanelCentral extends JPanel{
 			System.out.println("Panel Producto");
 			pp.setVisible(true);
 			try {
-				pa.setVisible(false);pcont.setVisible(false);sc.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);pa.setVisible(false);pcont.setVisible(false);sc.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -96,7 +97,7 @@ public class PanelCentral extends JPanel{
 			System.out.println("Añadir ticket");
 			pt.setVisible(true);
 			try {
-				sc.setVisible(false);pcont.setVisible(false);pa.setVisible(false);pl.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);sc.setVisible(false);pcont.setVisible(false);pa.setVisible(false);pl.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -110,7 +111,7 @@ public class PanelCentral extends JPanel{
 			add(pftp);
 			pftp.setVisible(true);
 			try {
-				pa.setVisible(false);pcont.setVisible(false);sc.setVisible(false);pl.setVisible(false);pt.setVisible(false);pp.setVisible(false);pu.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);pa.setVisible(false);pcont.setVisible(false);sc.setVisible(false);pl.setVisible(false);pt.setVisible(false);pp.setVisible(false);pu.setVisible(false);pb.setVisible(false);
 			}catch(Exception e) {
 				System.out.println(e);
 				e.printStackTrace();
@@ -123,7 +124,7 @@ public class PanelCentral extends JPanel{
 			sc.setBounds(0, 0, pp.getWidth()-5, 470);
 			this.add(sc);
 			try {
-				pa.setVisible(false);pcont.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);pa.setVisible(false);pcont.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
 			}catch(Exception e){
 				System.out.println(e);
 				e.printStackTrace();
@@ -136,19 +137,30 @@ public class PanelCentral extends JPanel{
 			this.add(pu);
 			pu.setVisible(true);
 			try {
-				pa.setVisible(false);pcont.setVisible(false);pl.setVisible(false);pt.setVisible(false);sc.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);pa.setVisible(false);pcont.setVisible(false);pl.setVisible(false);pt.setVisible(false);sc.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
 			}catch (Exception e){
 				System.out.println(e);
 				e.printStackTrace();
 			}
 			break;
 		case 7:
-			System.out.println("Panel control Usuario");
-			
+			System.out.println("Panel control Usuario");			
 			add(pcont);
 			pcont.setVisible(true);
 			try {
-				pa.setVisible(false);pu.setVisible(false);pl.setVisible(false);pt.setVisible(false);sc.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+				pe.setVisible(false);pa.setVisible(false);pu.setVisible(false);pl.setVisible(false);pt.setVisible(false);sc.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
+			}catch (Exception e){
+				System.out.println(e);
+				e.printStackTrace();
+			}
+			this.repaint();
+			break;
+		case 8:
+			this.pDat.setData(DefaultModel);
+			add(pe);
+			pe.setVisible(true);
+			try {
+				pcont.setVisible(false);pa.setVisible(false);pu.setVisible(false);pl.setVisible(false);pt.setVisible(false);sc.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
 			}catch (Exception e){
 				System.out.println(e);
 				e.printStackTrace();

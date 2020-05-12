@@ -97,13 +97,13 @@ public class PanelUser extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				actualizarDatos();				
+				estadisticas();				
 			}
 		});
 	}
 	
-	public void actualizarDatos() {
-		
+	public void estadisticas() {
+		VentanaCalculaTUSII.pc.setPanel(8);
 	}
 	
 	public void opinarAccion() {
