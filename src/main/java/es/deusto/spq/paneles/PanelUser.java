@@ -20,7 +20,7 @@ import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelUser extends JPanel {
 
-	JButton btnDescuento;
+	JButton btnDescuento, btnEstadisticas;
 	int admin;
 	Users user;
 
@@ -61,6 +61,10 @@ public class PanelUser extends JPanel {
 		btnOpinanosd.setBounds(178, 185, 200, 23);
 		add(btnOpinanosd);
 		
+		btnEstadisticas = new JButton("Ver estadísticas");
+		btnEstadisticas.setBounds(178, 235, 200, 23); //se puede mover donde querais, estaba aqui pork el panel esta vacio
+		add(btnEstadisticas);
+
 		
 		sd = new ShowDescuentos(main_user);
 		sd.setVisible(false);
@@ -68,9 +72,7 @@ public class PanelUser extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("btnDescuento");
-				sd.setVisible(true);
+				descuentoAccion();
 			}
 		});
 		
@@ -78,7 +80,7 @@ public class PanelUser extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaCalculaTUSII.pc.setPanel(7);
+				controlUsuario();
 			}
 		});
 		
@@ -87,9 +89,33 @@ public class PanelUser extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaOpinion vp = new VentanaOpinion(user);
-				vp.setVisible(true);
+				opinarAccion();
 			}
 		});
+		
+		btnEstadisticas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actualizarDatos();				
+			}
+		});
+	}
+	
+	public void actualizarDatos() {
+		
+	}
+	
+	public void opinarAccion() {
+		VentanaOpinion vp = new VentanaOpinion(user);
+		vp.setVisible(true);
+	}
+	
+	public void controlUsuario() {
+		VentanaCalculaTUSII.pc.setPanel(7);
+	}
+	
+	public void descuentoAccion() {
+		sd.setVisible(true);
 	}
 }
