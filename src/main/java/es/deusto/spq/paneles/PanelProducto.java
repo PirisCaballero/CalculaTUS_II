@@ -118,34 +118,14 @@ public class PanelProducto extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("Refreshing...");
-				localSel = choice.getSelectedItem();
-				choice.removeAll();
-				Connect cn = new Connect();
-				locList.clear();
-				locList = cn.getLocales(user);
-				for (Local l : locList) {
-					choice.add(l.getNombre());
-				}
-				Local local = cn.getLocalByName(user, localSel);
-				cn.getProductsByLocal(user, local.getId());
-				//scrollpane.removeAll();
-				//System.out.println("Local seleccionado: " + local.getId());
-				dataToTable(local.getId(), tabla_productos);
+				refresh();
 			}
 		});
 		btnAgregar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Connect cn = new Connect();
-				Local local = cn.getLocalByName(user, choice.getSelectedItem());
-				//System.out.println("El nombre del local es: "+local.getNombre();
-				Producto prod = new Producto( Double.parseDouble(textField_1.getText()), textField.getText() , 0 , local.getId() ,user.getEmail());
-				cn.anadirProducto(user, prod, local.getId());
-				textField.setText("");textField_1.setText("");
+				agregarProducto();
 			}
 		});
 
@@ -167,5 +147,27 @@ public class PanelProducto extends JPanel {
 		tabla.setModel(modelo);
 		this.pd.setData(modelo);
 		return modelo;
+	}
+	
+	public void refresh() {
+		localSel = choice.getSelectedItem();
+		choice.removeAll();
+		Connect cn = new Connect();
+		locList.clear();
+		locList = cn.getLocales(user);
+		for (Local l : locList) {
+			choice.add(l.getNombre());
+		}
+		Local local = cn.getLocalByName(user, localSel);
+		cn.getProductsByLocal(user, local.getId());
+		dataToTable(local.getId(), tabla_productos);
+	}
+	
+	public void agregarProducto() {
+		Connect cn = new Connect();
+		Local local = cn.getLocalByName(user, choice.getSelectedItem());
+		Producto prod = new Producto( Double.parseDouble(textField_1.getText()), textField.getText() , 0 , local.getId() ,user.getEmail());
+		cn.anadirProducto(user, prod, local.getId());
+		textField.setText("");textField_1.setText("");
 	}
 }
