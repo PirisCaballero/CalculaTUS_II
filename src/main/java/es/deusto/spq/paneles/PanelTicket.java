@@ -94,9 +94,9 @@ public class PanelTicket extends JPanel {
 		lblFecha.setBounds(100, 141, 150, 30);
 		add(lblFecha);
 		
-		JButton button = new JButton("Agregar");
-		button.setBounds(200, 400, 150, 30);
-		add(button);
+		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.setBounds(200, 400, 150, 30);
+		add(btnAgregar);
 		
 		JLabel lblProducto = new JLabel("Producto");
 		lblProducto.setBounds(100, 321, 150, 30);
@@ -122,9 +122,9 @@ public class PanelTicket extends JPanel {
 		add(textField);
 		textField.setColumns(10);
 		
-		JButton btn_grabar = new JButton("Grabar");
-		btn_grabar.setBounds(360, 400, 150, 30);
-		add(btn_grabar);
+		JButton btnGrabar = new JButton("Grabar");
+		btnGrabar.setBounds(360, 400, 150, 30);
+		add(btnGrabar);
 		
 		JButton show_Ti = new JButton("Ver Tickets");
 		show_Ti.setBounds(40, 400, 150, 30);
@@ -137,32 +137,8 @@ public class PanelTicket extends JPanel {
 		btnRefresh.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				choice.removeAll();
-				ul.clear();
-				ul = cn.getLocales(main_user);
-				choice.add("-------------------");
-				for(Local u : ul) {
-					choice.add(u.getNombre());
-				}
-				choice.setEnabled(true);
-				producto.removeAll();
-				pL.clear();
-				if(choice.getSelectedItem() != "-------------------") {
-					Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
-					pL = cn.getProductsByLocal(main_user, locID.getId());
-					for(Producto p : pL) {
-						producto.add(p.getNombre());
-					}
-				}else {
-					System.out.println("No hay seleccion");
-				}
-				
-				for(int i = 0; i<modelo.getRowCount()-1;i++) {
-					modelo.removeRow(i);
-				}
-				
+			public void actionPerformed(ActionEvent e) {			
+				refresh();
 			}
 		});
 		choice.addItemListener(new ItemListener() {
@@ -186,55 +162,16 @@ public class PanelTicket extends JPanel {
 				}
 			}
 		});
-		button.addActionListener(new ActionListener() {
+		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if( choice.getSelectedItem() != "-------------------" && textField.getText()!="" && Integer.parseInt(textField.getText())>0 ) {
-					String pattern = "dd-MM-yyyy";
-					SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-					date = simpleDateFormat.format(calendario.getDate());
-					System.out.println(date + producto.getSelectedItem());
-					Producto pr = cn.getProductByName(main_user, producto.getSelectedItem());
-					pr.setCantidad(Integer.parseInt(textField.getText()));
-					modelo.setRowCount(modelo.getRowCount()+1);
-					modelo.setValueAt(pr.getNombre() , row, col);
-					modelo.setValueAt(pr.getPrecio(), row, col+1);
-					modelo.setValueAt(textField.getText(), row, col+2);
-					pd.setData(modelo);
-					row+=1;
-					prTicket.add(pr);
-				}else {
-					JOptionPane.showMessageDialog(null, "No hay cantidad seleccionada o no hay local seleccionado");
-				}
+				agregar();
 			}
 		});
-		btn_grabar.addActionListener(new ActionListener() {
+		btnGrabar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String lista = "¿Desea hacer un ticket con los siguientes productos? : \n";
-				Double prec = 0.0;
-				for(int i = 0; i<prTicket.size() ; i++) {
-					lista += prTicket.get(i).getNombre() + "\n";
-					System.out.println( modelo.getValueAt(i, 2) );
-					Double var2 = prTicket.get(i).getPrecio() * Double.parseDouble((String) modelo.getValueAt(i, 2)); 
-					prec += var2;
-				}
-				//prTicket es el array con los productos del ticket
-				lista += "Por un precio de: "+prec+" €";
-				int opcion = JOptionPane.showConfirmDialog(null, lista);
-				if( opcion == JOptionPane.YES_OPTION ) {
-					Local loc = cn.getLocalByName(main_user, choice.getSelectedItem());
-					Ticket ti = new Ticket( date , main_user.getEmail() , prec , loc.getId() );
-					Ticket TI = cn.crearTicket(main_user,ti);
-					System.out.println("El id del ticket es: " + TI.getID());
-					/*
-					 * El ticket esta hecho, falta grabar los elementos relacionados a ese ticket en otra tabla.
-					 */
-					cn.introducirProductosComprador(main_user, prTicket, TI);
-				}else {
-					System.out.println("Has seleccionado no hacer el ticket");
-				}
+				grabar();
 			}
 		});
 		st = new ShowTickets(main_user);
@@ -253,7 +190,81 @@ public class PanelTicket extends JPanel {
 		
 		
 	}
+	
 	public static ShowTickets getFrameTickets() {
 		return st;
+	}
+	
+	public void refresh() {
+		choice.removeAll();
+		ul.clear();
+		ul = cn.getLocales(main_user);
+		choice.add("-------------------");
+		for(Local u : ul) {
+			choice.add(u.getNombre());
+		}
+		choice.setEnabled(true);
+		producto.removeAll();
+		pL.clear();
+		if(choice.getSelectedItem() != "-------------------") {
+			Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
+			pL = cn.getProductsByLocal(main_user, locID.getId());
+			for(Producto p : pL) {
+				producto.add(p.getNombre());
+			}
+		}else {
+			System.out.println("No hay seleccion");
+		}
+		
+		for(int i = 0; i<modelo.getRowCount()-1;i++) {
+			modelo.removeRow(i);
+		}
+		
+	}
+	
+	public void agregar() {
+		if( choice.getSelectedItem() != "-------------------" && textField.getText()!="" && Integer.parseInt(textField.getText())>0 ) {
+			String pattern = "dd-MM-yyyy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			date = simpleDateFormat.format(calendario.getDate());
+			System.out.println(date + producto.getSelectedItem());
+			Producto pr = cn.getProductByName(main_user, producto.getSelectedItem());
+			pr.setCantidad(Integer.parseInt(textField.getText()));
+			modelo.setRowCount(modelo.getRowCount()+1);
+			modelo.setValueAt(pr.getNombre() , row, col);
+			modelo.setValueAt(pr.getPrecio(), row, col+1);
+			modelo.setValueAt(textField.getText(), row, col+2);
+			pd.setData(modelo);
+			row+=1;
+			prTicket.add(pr);
+		}else {
+			JOptionPane.showMessageDialog(null, "No hay cantidad seleccionada o no hay local seleccionado");
+		}
+	}
+	
+	public void grabar() {
+		String lista = "¿Desea hacer un ticket con los siguientes productos? : \n";
+		Double prec = 0.0;
+		for(int i = 0; i<prTicket.size() ; i++) {
+			lista += prTicket.get(i).getNombre() + "\n";
+			System.out.println( modelo.getValueAt(i, 2) );
+			Double var2 = prTicket.get(i).getPrecio() * Double.parseDouble((String) modelo.getValueAt(i, 2)); 
+			prec += var2;
+		}
+		//prTicket es el array con los productos del ticket
+		lista += "Por un precio de: "+prec+" €";
+		int opcion = JOptionPane.showConfirmDialog(null, lista);
+		if( opcion == JOptionPane.YES_OPTION ) {
+			Local loc = cn.getLocalByName(main_user, choice.getSelectedItem());
+			Ticket ti = new Ticket( date , main_user.getEmail() , prec , loc.getId() );
+			Ticket TI = cn.crearTicket(main_user,ti);
+			System.out.println("El id del ticket es: " + TI.getID());
+			/*
+			 * El ticket esta hecho, falta grabar los elementos relacionados a ese ticket en otra tabla.
+			 */
+			cn.introducirProductosComprador(main_user, prTicket, TI);
+		}else {
+			System.out.println("Has seleccionado no hacer el ticket");
+		}
 	}
 }
