@@ -11,7 +11,7 @@ notifications:
       - eneko.perez@opendeusto.es
 os: linux
 script: 
-  - "jdk_switcher use openjdk8"
+  - mvn test -DargLine="-Dcontiperf.active=false"
   - "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
   - "mvn test -B"
 services: 
