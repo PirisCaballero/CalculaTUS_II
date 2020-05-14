@@ -1,80 +1,48 @@
 # CalculaTUS_II
 Second part of CalculaTUS
 
-Repositorio del proyecto del Grupo 10:
+[![Build Status](https://travis-ci.com/PirisCaballero/CalculaTUS_II.svg?branch=master)](https://travis-ci.com/PirisCaballero/CalculaTUS_II)
 
-Desarrollo en Java 1.8 (Oracle) y constriudo con Maven.
+## Getting Started
+### Prerequisites
+* Java 
+* MySQL Workbench Server
+* Maven
 
-Maven -> Herramienta de software para la gestión y construcción de proyectos Java.
-https://maven.apache.org/guides/index.html
+### Building and running the project
+These are the steps that need to be followed in order to succesfully build and run the project on Windows:
 
-MySQL -> Sistema de gestión de bases de datos relacional SGBD.
-https://dev.mysql.com/doc/
+#### 1. Install the project
+1. Open a new CMD window and run the following commands:
 
-JUnit -> JUnit es un conjunto de bibliotecas que son utilizadas en programación para hacer pruebas unitarias.
-https://junit.org/junit4/
+Validates that the project is correct and all the necessary information is available.
+```
+mvn validate
+```
+Compiles the source code of the project.
+```
+mvn compile
+```
+Download dependencies.
+```
+mvn install
+```
 
-JaCoCo -> Se utiliza para realizar reportes con base en la métrica de code coverage.
-https://www.jacoco.org/jacoco/trunk/doc/
+#### 2.  Run the client app
+1. Open a new CMD window and run the following command:
+```
+mvn exec:java -Dexec.mainClass="es.deusto.spq.ventanas.VentanaLogin"
+```
+## Execute the tests
+These are the commands that need to be introduced in order to run the project tests on Windows:
+###  Tests without performance:
+1. Open a new CMD window and run the following commands:
 
-Mockito -> Proporcionar la capacidad de escribir con claridad una prueba de unidad legible.
-https://site.mockito.org/
-
-Instalar:
-
-mvn validate -> Valida que el proyecto es correcto y toda la información necesaria está disponible.
-
-mvn compile -> Compila el código fuente del proyecto.
-
-mvn install -> Descarga dependencias.
-
-Ejecutar:
-mvn exec:java -Dexec.mainClass="com.mycompany.app.ventanas.VentanaLogin" -> Ejecuta la clase principal.
-
-	- Para registrarte debes introducir tu nombre, apellido, correo, contraseña y tipo de cuenta.
-
-		- En caso de ser un usuario, deberás introducir el correo de tu jefe o responsable.
-
-		- Si fueras un administrador, no tendrás que rellenar el campo "Correo de Administrador".
-
-	- Desde VentanaLogin, introduce tu correo y contraseña para poder usar el programa.
-
-		- Si eres un usuario normal podrás hacer las siguientes acciones:
-
-			- Registrar local.
-
-			- Hacer ticket.
-
-			- Ver tickets.
-
-			- Ver productos.
-
-			 -Ver estadística.
-
-		- Si además eres un administrador*[1] podrás hacer uso de las pestañas "Admin" y "FTP".
-
-		- Si quieres salir, tan solo tienes que cerrar la ventana; tambien existe la opción de "Log out" que permite cerrar sesión sin cerrar el programa para que otro usuario pueda iniciar sesión.
-
-	- [1] Por defecto cuando creamos una cuenta esta nunca sera administrador, esta funcion solo podra concederla otro administrador a una cuenta normal (o el programador accediendo a la base de datos).
-
-Pruebas automatizadas:
-
-mvn test -> Prueba el código fuente compilado utilizando un Framework de testeo adecuado.
-
-mvn prueba de integración -> Procesa e implementa el paquete si es necesario en un entorno donde se puedan ejecutar pruebas de testeo.
-
-Pasos a seguir en caso de errores Maven:
-
-1->	mvn validate
-
-2->	mvn compile
-
-3->	mvn test
-
-4->	mvn package
-
-5->	mvn integration-test
-
-6->	mvn verify
-
-7->	mvn install
+Tests the compiled source code using a suitable testing Framework.
+```
+mvn clean test
+```
+Processes and deploys the package if necessary in an environment where testing can be run.
+```
+mvn integration-test
+```
