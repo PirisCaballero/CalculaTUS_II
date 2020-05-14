@@ -1,8 +1,7 @@
 # CalculaTUS_II
 Second part of CalculaTUS
 
-[![Build Status](https://travis-ci.org/SPQ19-20/BSPQ20-E1.svg?branch=master)](https://travis-ci.org/SPQ19-20/BSPQ20-E1)
-Hay que poner nuestros links ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡
+[![Build Status](https://travis-ci.com/PirisCaballero/CalculaTUS_II.svg?branch=master)](https://travis-ci.com/PirisCaballero/CalculaTUS_II)
 
 ## Getting Started
 ### Prerequisites
