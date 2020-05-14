@@ -1,4 +1,3 @@
-install: ./install-dependencies.sh
 jdk: 
   - openjdk8
 language: java
