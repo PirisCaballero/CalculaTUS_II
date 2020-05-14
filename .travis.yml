@@ -2,6 +2,9 @@ language: java
 
 os: linux
 
+jdk:
+  - openjdk8
+
 notifications:
   email:
     recipients:
