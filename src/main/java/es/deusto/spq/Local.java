@@ -1,5 +1,5 @@
 package es.deusto.spq;
-
+ 
 public class Local {
 
 	private String nombre;
