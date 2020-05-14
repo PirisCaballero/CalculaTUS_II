@@ -1,5 +1,7 @@
 language: java
 
+os: windows
+
 notifications:
   email:
     recipients:
