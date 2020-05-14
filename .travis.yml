@@ -1,10 +1,27 @@
 language: java
 
+jdk:
+	- openjdk8
+	
+services:
+	- mysql
+	
+# install project dependencies:
+install: ./install-dependencies.sh
+	
+script:
+	# do stuff with OpenJDK 8
+	- jdk_switcher use openjdk8
+	# before running the build, Travis CI installs dependencies
+	- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+	# if your project has pom.xml file in the repository root but no build.gradle, Travis CI builds your project with Maven 3:
+	- mvn test -B	
+
 notifications:
-  email:
-    recipients:
-      - aitorpiris@opendeusto.es
-      - iratxe.campo@opendeusto.es
-      - eneko.perez@opendeusto.es
-    on_success: never
-    on_failure: always
+	email:
+		recipients:
+			- aitorpiris@opendeusto.es
+			- iratxe.campo@opendeusto.es
+			- eneko.perez@opendeusto.es
+		on_success: never
+		on_failure: always
