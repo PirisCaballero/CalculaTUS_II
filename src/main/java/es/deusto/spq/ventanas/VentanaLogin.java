@@ -86,24 +86,23 @@ public class VentanaLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("Comprobacion de usuario correcto");
-				Connect conn = new Connect();
-				// conn.list_users();
-				Users user = conn.VerificarUsuario(txtUsuario.getText(), txtPassword.getText());
-				if (user != null) {
-					JOptionPane.showMessageDialog(null, "Bienvenido de nuevo " + user.getNombre());
-					System.out.println(user.toString());
-					//VentanaPrincipal VP = new VentanaPrincipal(user);
-					VentanaCalculaTUSII VP = new VentanaCalculaTUSII(user);
-					dispose();
-				} else {
-					JOptionPane.showMessageDialog(null, "Usuario no registrado");
-				}
-
+				JOptionPane.showMessageDialog(null, "Inicio: " +LOG());
 			}
 		});
 	}
-
+	public boolean LOG () {
+		Connect conn = new Connect();
+		// conn.list_users();
+		Users user = conn.VerificarUsuario(txtUsuario.getText(), txtPassword.getText());
+		if (user != null) {
+			JOptionPane.showMessageDialog(null, "Bienvenido de nuevo " + user.getNombre());
+			VentanaCalculaTUSII VP = new VentanaCalculaTUSII(user);
+			dispose();
+			return true;
+		} else {
+			return false;
+		}
+	}
 	public static void main(String[] args) {
 		//Esto es una prueba pp
 		VentanaLogin VL = new VentanaLogin();

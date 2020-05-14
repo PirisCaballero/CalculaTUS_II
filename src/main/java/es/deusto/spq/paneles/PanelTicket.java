@@ -146,20 +146,7 @@ public class PanelTicket extends JPanel {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("Funciona el listener");
-				if(choice.getSelectedItem() != "-------------------") {
-					producto.removeAll();
-					Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
-					pL = cn.getProductsByLocal(main_user, locID.getId());
-					for(Producto p : pL) {
-						producto.add(p.getNombre());
-					}
-					producto.repaint();
-					choice.disable();
-				}else {
-					producto.removeAll();
-					System.out.println("No hay seleccion");
-				}
+				System.out.println("Choices: "+setLocalesyProductos());
 			}
 		});
 		btnAgregar.addActionListener(new ActionListener() {
@@ -191,6 +178,24 @@ public class PanelTicket extends JPanel {
 		
 	}
 	
+	public boolean setLocalesyProductos(){
+		System.out.println("Funciona el listener");
+		if(choice.getSelectedItem() != "-------------------") {
+			producto.removeAll();
+			Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
+			pL = cn.getProductsByLocal(main_user, locID.getId());
+			for(Producto p : pL) {
+				producto.add(p.getNombre());
+			}
+			producto.repaint();
+			choice.disable();
+			return true;
+		}else {
+			producto.removeAll();
+			System.out.println("No hay seleccion");
+			return false;
+		}
+	}
 	public static ShowTickets getFrameTickets() {
 		return st;
 	}

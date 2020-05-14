@@ -151,32 +151,12 @@ public class VentanaRegistro {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				// TODO Auto-generated method stub
-				if (choiceAdmin.getSelectedIndex() == 0 || choiceAdmin.getSelectedIndex() == 2) {
-					lblCorreoDelAdministrador.setVisible(true);
-					textField.setVisible(true);
-					admin = 0;
-				} else {
-					lblCorreoDelAdministrador.setVisible(false);
-					textField.setVisible(false);
-					admin = 1;
-				}
+				Admin();
 			}
 		});
 		botonAtras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				System.out.println("BOTON ATRAS actionListener");
-//				labelErrorNombre.setVisible(false);
-//				labelErrorApellido.setVisible(false);
-//				labelErrorCorreo.setVisible(false);
-//				labelErrorContrasena.setVisible(false);
-//				textNombre.setText("");
-//				textApellido.setText("");
-//				textCorreo.setText("");
-//				textContrasena.setText("");
-//				VentanaLogin vtnLogin = new VentanaLogin();
-//				vtnLogin.setVisible(true);
-//				frame.setVisible(false );
 				VentanaLogin VL = new VentanaLogin();
 				VL.setVisible(true);
 				frame.dispose();
@@ -186,63 +166,77 @@ public class VentanaRegistro {
 		botonSiguiente.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				labelErrorNombre.setVisible(false);
-				labelErrorApellido.setVisible(false);
-				labelErrorCorreo.setVisible(false);
-				labelErrorContrasena.setVisible(false);
-				if (textNombre.getText().matches("^[a-z A-Z]*$") && !textNombre.getText().isEmpty()
-						&& textApellido.getText().matches("^[a-z A-Z]*$") && !textApellido.getText().isEmpty()
-						&& textCorreo.getText()
-								.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-										+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
-						&& !textCorreo.getText().isEmpty() && !textContrasena.getText().isEmpty()) {
-					// todo bien
-					System.out.println("Todo bien!");
-					String correo_admin = "";
-					if (textField.getText().isEmpty()) {
-						correo_admin = "null";
-					} else {
-						correo_admin = textField.getText();
-					}
-					Users user = new Users(textNombre.getText(), textApellido.getText(), textCorreo.getText(),
-							textContrasena.getText(), admin, correo_admin);
-					System.out.println(user.toString());
-					Connect conn = new Connect();
-					conn.RegisUser(user);
-					VentanaLogin VL = new VentanaLogin();
-					VL.setVisible(true);
-					ConnectFTP Cftp = new ConnectFTP(user);
-					Cftp.OpenConexion();
-					System.out.println( Cftp.regisUserFolder() );
-					frame.dispose();
-				} else if (!textNombre.getText().matches("^[a-z A-Z]*$") || textNombre.getText().isEmpty()) {
-					// nombre mal
-					labelErrorNombre.setVisible(true);
-				} else if (!textApellido.getText().matches("^[a-z A-Z]*$") || textApellido.getText().isEmpty()) {
-					// apellido mal
-					labelErrorApellido.setVisible(true);
-				} else if (!textCorreo.getText().matches(
-						"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
-						|| textCorreo.getText().isEmpty()) {
-					// correo mal
-					labelErrorCorreo.setVisible(true);
-				} else if (textContrasena.getText().isEmpty()) {
-					// contrasena mal
-					labelErrorContrasena.setVisible(true);
-				}
+				Registrar();
 			}
 		});
 	}
-
-	// deberiamos quitarlo y decidir en que clase ponemos el main, lo dejo para
-	// probar ESTA ventana
-	/*public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new VentanaRegistro();
+	
+	public boolean Registrar() {
+		labelErrorNombre.setVisible(false);
+		labelErrorApellido.setVisible(false);
+		labelErrorCorreo.setVisible(false);
+		labelErrorContrasena.setVisible(false);
+		if (textNombre.getText().matches("^[a-z A-Z]*$") && !textNombre.getText().isEmpty()
+				&& textApellido.getText().matches("^[a-z A-Z]*$") && !textApellido.getText().isEmpty()
+				&& textCorreo.getText()
+						.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+								+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+				&& !textCorreo.getText().isEmpty() && !textContrasena.getText().isEmpty()) {
+			// todo bien
+			System.out.println("Todo bien!");
+			String correo_admin = "";
+			if (textField.getText().isEmpty()) {
+				correo_admin = "null";
+			} else {
+				correo_admin = textField.getText();
 			}
-		});
-	}*/
+			Users user = new Users(textNombre.getText(), textApellido.getText(), textCorreo.getText(),
+					textContrasena.getText(), admin, correo_admin);
+			System.out.println(user.toString());
+			Connect conn = new Connect();
+			conn.RegisUser(user);
+			VentanaLogin VL = new VentanaLogin();
+			VL.setVisible(true);
+			ConnectFTP Cftp = new ConnectFTP(user);
+			Cftp.OpenConexion();
+			System.out.println( Cftp.regisUserFolder() );
+			frame.dispose();
+			return true;
+		} else if (!textNombre.getText().matches("^[a-z A-Z]*$") || textNombre.getText().isEmpty()) {
+			// nombre mal
+			labelErrorNombre.setVisible(true);
+			return false;
+		} else if (!textApellido.getText().matches("^[a-z A-Z]*$") || textApellido.getText().isEmpty()) {
+			// apellido mal
+			labelErrorApellido.setVisible(true);
+			return false;
+		} else if (!textCorreo.getText().matches(
+				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+				|| textCorreo.getText().isEmpty()) {
+			// correo mal
+			labelErrorCorreo.setVisible(true);
+			return false;
+		} else if (textContrasena.getText().isEmpty()) {
+			// contrasena mal
+			labelErrorContrasena.setVisible(true);
+			return false;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean Admin() {
+		if (choiceAdmin.getSelectedIndex() == 0 || choiceAdmin.getSelectedIndex() == 2) {
+			lblCorreoDelAdministrador.setVisible(true);
+			textField.setVisible(true);
+			admin = 0;
+			return false;
+		} else {
+			lblCorreoDelAdministrador.setVisible(false);
+			textField.setVisible(false);
+			admin = 1;
+			return true;
+		}
+	}
+	
 }

@@ -72,24 +72,21 @@ public class VentanaModificar extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if((txtUsuario.getText().isEmpty()) || (txtPassword.getText().isEmpty())) {
-					JOptionPane.showMessageDialog(null, "Rellena todos los campos, por favor");
-				}
-				else {
-					String nombre = txtUsuario.getText();
-					String pass = txtPassword.getText();
-					boolean update = c.updateData(main_user, nombre, pass);
-					if( update ) {
-						JOptionPane.showMessageDialog(null, "Datos cambiados correctamente");
-						PanelNorte.usuario.setText(nombre);
-						dispose();
-					}else {
-						JOptionPane.showMessageDialog(null, "Datos NO cambiados ");
-						dispose();
-					}
-				}							
+				JOptionPane.showMessageDialog(null, "Guardado: "+Save());
 			}
 		});
+	}
+	public boolean Save() {
+		boolean update = false;
+		if((txtUsuario.getText().isEmpty()) || (txtPassword.getText().isEmpty())) {
+			JOptionPane.showMessageDialog(null, "Rellena todos los campos, por favor");
+		}
+		else {
+			String nombre = txtUsuario.getText();
+			String pass = txtPassword.getText();
+			update = c.updateData(main_user, nombre, pass);
+		}		
+		return update;
 	}
 	
 }
