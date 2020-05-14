@@ -1,1 +1,10 @@
 language: java
+
+notifications:
+  email:
+    recipients:
+      - aitorpiris@opendeusto.es
+      - iratxe.campo@opendeusto.es
+      - eneko.perez@opendeusto.es
+    on_success: never
+    on_failure: always
