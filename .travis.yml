@@ -1,15 +1,19 @@
-language: java
-
-os: linux
-
-jdk:
+install: ./install-dependencies.sh
+jdk: 
   - openjdk8
-
-notifications:
-  email:
-    recipients:
+language: java
+notifications: 
+  email: 
+    on_failure: always
+    on_success: never
+    recipients: 
       - aitorpiris@opendeusto.es
       - iratxe.campo@opendeusto.es
       - eneko.perez@opendeusto.es
-    on_success: never
-    on_failure: always
+os: linux
+script: 
+  - "jdk_switcher use openjdk8"
+  - "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+  - "mvn test -B"
+services: 
+  - mysql
