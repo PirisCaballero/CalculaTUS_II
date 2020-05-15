@@ -1,5 +1,5 @@
 package es.deusto.spq.ventanas;
-
+/*
 import static org.junit.Assert.assertTrue;
 
 import org.databene.contiperf.PerfTest;
@@ -71,7 +71,7 @@ public class VentanasPerfTest {
 	public void ventanaLoginTest() {
 		VentanaLogin VL = new VentanaLogin();
 		assertTrue(VL != null);
-	}
+	} 
 	
 	@Test
 	@PerfTest(invocations = 20, threads = 10)
@@ -91,4 +91,4 @@ public class VentanasPerfTest {
 		assertTrue(VR != null);
 	}
 	
-}
+}*/
