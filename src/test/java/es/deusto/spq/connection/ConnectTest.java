@@ -40,11 +40,11 @@ public class ConnectTest{
 		cN = null;
 		cn =  new Connect();
 		
-		locT = new Local("Deusto", "C/ Pepe", 48920, "la uni");
-		locT.setId(15);
+		locT = new Local("Deusto", "C/Lehendakari", 48001, "Prueba");
+		locT.setId(189);
 		locF = new Local("null" , "null" , 00001 , "null");
 		locF.setEmailDuenio("unai@deusto.es");
-		pr = new Producto(2.1 , "EroskiPR", 1 , 18 , "admin@root.es");
+		pr = new Producto(2.1 , "EroskiPR", 1 , 18 , "admin@root.es" , "Ropa");
 		usT = new Users("ADMIN", "ROOT", "admin@root.es", "root", 1, "null");
 		usT2 = new Users("Admin", "Root", "unai@deusto.es", "root", 1, "null");
 		usF = new Users("Admin", "Root", "admin@root.com", "root", 1, "null");
@@ -81,11 +81,11 @@ public class ConnectTest{
 		assertFalse(cn.buscarLocal(usF, null));
 		assertFalse(cn.buscarLocal(null, locF));
 		assertFalse(cn.buscarLocal(null, locT));
-		assertTrue(cn.buscarLocal(usT2, locT));
+		assertTrue(cn.buscarLocal(usT, locT));
 	}
 	@Test 
 	public void testgetLocalById() {
-		assertEquals(locT.getId() , cn.getLocalById(usT2, 15).getId());
+		assertEquals(locT.getId() , cn.getLocalById(usT, 189).getId());
 		assertEquals(null, cn.getLocalById(null, 15));
 		assertEquals(null, cn.getLocalById(usF, 15));
 		assertEquals(null, cn.getLocalById(null, 0));
@@ -169,10 +169,10 @@ public class ConnectTest{
 	}
 	@Test
 	public void testgetLocalbyName() {
-		Local l = new Local("Deusto", "C/ Pepe", 48920, "la uni");
-		l.setId(15);
-		l.setEmailDuenio("unai@deusto.es");
-		assertEquals(15, cn.getLocalByName(usT2, "Deusto").getId());
+		Local l = new Local("Deusto", "C/Lehendakari", 48001, "Prueba");
+		l.setId(189);
+		l.setEmailDuenio("admin@root.es");
+		assertEquals(189, cn.getLocalByName(usT, "Deusto").getId());
 		assertEquals(null, cn.getLocalByName(null, null));
 		assertEquals(null, cn.getLocalByName(null, ""));
 		assertEquals(null, cn.getLocalByName(usF, ""));
@@ -190,12 +190,12 @@ public class ConnectTest{
 	}
 	@Test
 	public void testanadirProducto() {
-		Local l = new Local("Deusto", "C/ Pepe", 48920, "la uni");
-		l.setId(16);
-		l.setEmailDuenio("unai@deusto.es");
+		Local l = new Local("Deusto", "C/Lehendakari", 48001, "Prueba");
+		l.setId(189);
+		l.setEmailDuenio("admin@root.es");
 		double r = Math.random();
 		Producto p = new Producto("Pan"+r, 1.0, 1);
-		p.setID(110);p.setLocalAsociado(16);p.setUserAsociado("admin@root.es");
+		p.setID( (int)Math.random()*1000 );p.setLocalAsociado(189);p.setUserAsociado("admin@root.es");p.setCategoria("Alimentacion");
 		assertTrue(cn.anadirProducto(usT, p, l.getId()));
 		assertFalse(cn.anadirProducto(usT, null, 15));
 		assertFalse(cn.anadirProducto(usT, p, 0));
@@ -232,7 +232,7 @@ public class ConnectTest{
 	@Test
 	public void testgetProductByName() {
 		Producto p = new Producto("Pan", 1.0, 1);
-		p.setID(290);p.setLocalAsociado(16);p.setUserAsociado("admin@root.es");
+		p.setID(373);p.setLocalAsociado(189);p.setUserAsociado("admin@root.es");p.setCategoria("Alimentacion");
 		assertEquals(p.getID(), cn.getProductByName(usT, p.getNombre()).getID());
 		assertEquals(null, cn.getProductByName(null, ""));
 		assertEquals(null, cn.getProductByName(usF, ""));//con usuario falso
@@ -294,6 +294,15 @@ public class ConnectTest{
 		assertFalse(cn.updateData(null, "", ""));
 		assertFalse(cn.updateData(usF, null, null));
 		assertFalse(cn.updateData(null, null, null));
+	}
+	@Test
+	public void testgetCategorias() {
+		ArrayList<String> cats = new ArrayList<String>();
+		assertEquals(cats.getClass(), cn.getCategorias().getClass());
+	}
+	@Test
+	public void testgetCategoriaById() {
+		assertEquals("Ropa", cn.getCategoriaByID(6));
 	}
 }
 

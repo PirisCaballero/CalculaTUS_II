@@ -23,7 +23,7 @@ public class TicketTest {
 		t1.setID(43);
 		t2 = new Ticket();
 		p1 = new Producto("pan", 2.0, 1);
-		p2 = new Producto(12.3, "detergente", 2, 0, "Pepito");
+		p2 = new Producto(12.3, "detergente", 2, 0, "Pepito" , "Ropa");
 		ArrayList<Producto> pr = new ArrayList<Producto>();
 		pr.add(p1);
 		pr.add(p2);
