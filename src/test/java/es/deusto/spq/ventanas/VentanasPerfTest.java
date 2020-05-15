@@ -55,15 +55,15 @@ public class VentanasPerfTest {
 	}
 	
 	/////////////////////////////////////////////////////////////
-	@Test
-	@PerfTest(invocations = 10, threads = 5)
-	@Required(totalTime = 30000, max = 10000)
-	public void ventanaCalculaTUSIITest() {
-		Connect c = new Connect();
-		Users us = c.RecuperarUsuario("admin@root.es");
-		VentanaCalculaTUSII VenCal = new VentanaCalculaTUSII(us);
-		assertTrue(VenCal != null);
-	}
+//	@Test
+//	@PerfTest(invocations = 10, threads = 5)
+//	@Required(totalTime = 30000, max = 12000)
+//	public void ventanaCalculaTUSIITest() {
+//		Connect c = new Connect();
+//		Users us = c.RecuperarUsuario("admin@root.es");
+//		VentanaCalculaTUSII VenCal = new VentanaCalculaTUSII(us);
+//		assertTrue(VenCal != null);
+//	}
 
 	@Test
 	@PerfTest(invocations = 20, threads = 10)

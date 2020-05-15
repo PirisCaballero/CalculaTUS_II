@@ -1,10 +1,12 @@
 package es.deusto.spq.paneles;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import org.junit.*;
 
@@ -50,6 +52,10 @@ public class PanelProductoTest {
 	
 	@Test
 	public void testDataToTable() {
-		ppr.dataToTable(local.getId(), tabla_productos);
+		System.out.println(local.getId());
+		System.out.println(tabla_productos.isEnabled());
+		
+		ppr = new PanelProducto(u, pd);
+		assertEquals(DefaultTableModel.class, ppr.dataToTable(local.getId(), tabla_productos).getClass());
 	}
 }

@@ -29,11 +29,9 @@ public class PanelProducto extends JPanel {
 	private JTextField textField_1;
 	private JButton btnRefresh;
 	private Users user;
-	private JTable tabla_productos;
 	private String[] column_names = { "Nombre" , "Precio" , "Local" };
-	private JScrollPane scrollpane;
 	private String localSel = "";
-	private PanelDatos pd;
+	private PanelDatos pd;Choice choice_cat;
 
 	public PanelProducto(Users us , PanelDatos pdts) {
 		this.setLayout(null);
@@ -85,15 +83,6 @@ public class PanelProducto extends JPanel {
 		////Array con los datos de la tabla
 		Object[][] datos = {};
 		
-		//Crear la tabla de con los producto ya registrados
-		tabla_productos = new JTable( datos , column_names );
-		
-		//Creamos un scrollpanel y se lo agregamos a la tabla
-		scrollpane = new JScrollPane(tabla_productos);
-		scrollpane.setBounds( 14 , 309 , 500 , 150 );
-		scrollpane.setBorder(BorderFactory.createLineBorder(Color.black));
-		add(scrollpane);
-		
 		/*
 		 * Choice para elegir el local de los productos a mostrar en la tabla
 		 */
@@ -104,7 +93,7 @@ public class PanelProducto extends JPanel {
 		}
 		
 		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(14, 264, 89, 23);
+		btnAgregar.setBounds(10, 349, 89, 23);
 		add(btnAgregar);
 		
 		JLabel lblAadirProducto = new JLabel("Añadir Producto");
@@ -113,6 +102,18 @@ public class PanelProducto extends JPanel {
 		Font auxFont = lblAadirProducto.getFont();
 		lblAadirProducto.setFont(new Font(auxFont.getFontName(), auxFont.getStyle(), 20));
 		add(lblAadirProducto);
+		
+		JLabel lblCategoria = new JLabel("Categoria");
+		lblCategoria.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCategoria.setBounds(50, 264, 150, 30);
+		add(lblCategoria);
+		
+		choice_cat = new Choice();
+		choice_cat.setBounds(250, 274, 150, 20);
+		for( String s : cn.getCategorias() ) {
+			choice_cat.add(s);
+		}
+		add(choice_cat);
 		
 		btnRefresh.addActionListener(new ActionListener() {
 			
@@ -160,13 +161,12 @@ public class PanelProducto extends JPanel {
 		}
 		Local local = cn.getLocalByName(user, localSel);
 		cn.getProductsByLocal(user, local.getId());
-		dataToTable(local.getId(), tabla_productos);
 	}
 	
 	public void agregarProducto() {
 		Connect cn = new Connect();
 		Local local = cn.getLocalByName(user, choice.getSelectedItem());
-		Producto prod = new Producto( Double.parseDouble(textField_1.getText()), textField.getText() , 0 , local.getId() ,user.getEmail());
+		Producto prod = new Producto( Double.parseDouble(textField_1.getText()), textField.getText() , 0 , local.getId() ,user.getEmail() , choice_cat.getSelectedItem());
 		cn.anadirProducto(user, prod, local.getId());
 		textField.setText("");textField_1.setText("");
 	}

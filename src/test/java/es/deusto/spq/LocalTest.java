@@ -18,28 +18,28 @@ public class LocalTest {
 	
 	@BeforeClass
 	public static void initialize()  throws UnnecessaryStubbingException{
-		local = c.getLocalById(c.RecuperarUsuario("admin@root.es"), 18);
-		l2 = c.getLocalById(c.RecuperarUsuario("admin@root.es"), 19);
+		local = c.getLocalById(c.RecuperarUsuario("admin@root.es"), 189);
+		l2 = c.getLocalById(c.RecuperarUsuario("admin@root.es"), 190);
 	}
 	
 	@Test
 	public void testGetNombre()  throws UnnecessaryStubbingException{
-		assertTrue(local.getNombre().equals("Dia_plaza"));
+		assertTrue(local.getNombre().equals("Deusto"));
 	}
 	
 	@Test
 	public void testGetDireccion()  throws UnnecessaryStubbingException{
-		assertTrue(local.getDireccion().equals("C/Arantza"));	
+		assertTrue(local.getDireccion().equals("C/ Lehendakari "));	
 	}
 	
 	@Test
 	public void testGetDescripcion()  throws UnnecessaryStubbingException{
-		assertTrue(local.getDescripcion().equals("El Dia de la lado de la iglesia :D"));	
+		assertTrue(local.getDescripcion().equals("Prueba"));	
 	}
 	
 	@Test
 	public void testGetCp()  throws UnnecessaryStubbingException{
-		assertEquals(48920, local.getCp());	
+		assertEquals(48001, local.getCp());	
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class LocalTest {
 	
 	@Test
 	public void testToString()  throws UnnecessaryStubbingException{
-		String expected = "Nombre: Dia_plaza Direccion: C/Arantza codigo postal: 48920";
+		String expected = "Nombre: Deusto Direccion: C/ Lehendakari  codigo postal: 48001";
 		String actual = local.toString();
 		assertEquals(expected, actual);
 	}

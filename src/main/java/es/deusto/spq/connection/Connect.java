@@ -470,6 +470,55 @@ public class Connect {
 		}
 		
 	}
+	public String getCategoriaByID(int id) {
+		if(id>0) {
+			String sql = "Select Nombre from categoria where ID_Categoria = ?";
+			Connection c = OpenConnection();
+			try {
+				PreparedStatement stmt = c.prepareStatement(sql);
+				stmt.setInt(1, id);
+				ResultSet rs = stmt.executeQuery();
+				int cont = 0;
+				String cat ="";
+				while(rs.next()) {
+					cont += 1;
+					cat = rs.getString(1);
+				}
+				if(cont == 1) {
+					return cat;
+				}
+				else {
+					System.out.println("El conteo es: "+cont);
+					goodBy(c);
+					return null;
+				}
+			}catch (SQLException sqlE) {
+				System.out.println(sqlE);
+				sqlE.printStackTrace();
+				return null;
+			}
+		}else {
+			return null;
+		}
+	}
+	public ArrayList<String> getCategorias(){
+		ArrayList<String> categorias = new ArrayList<String>();
+			String sql = "Select Nombre from categoria";
+			Connection c = OpenConnection();
+			try {
+				PreparedStatement stmt = c.prepareStatement(sql);
+				ResultSet rs = stmt.executeQuery();
+				while(rs.next()) {
+					categorias.add(rs.getString(1));
+				}
+				goodBy(c);
+				return categorias;
+			}catch (SQLException sqlE) {
+				System.out.println(sqlE);
+				sqlE.printStackTrace();
+				return null;
+			}
+	}
 	public ArrayList<Producto> getProductsByLocal(Users us , int loc_ID) {
 		if( us != null ) {
 			if( !buscarUsuario(us.getEmail()) ) {
@@ -485,7 +534,7 @@ public class Connect {
 				stmt.setString(2, us.getEmail());
 				ResultSet rs = stmt.executeQuery();
 				while(rs.next()) {
-					Producto pr = new Producto(rs.getDouble(3), rs.getString(2), 1 , rs.getInt(4) , us.getEmail());
+					Producto pr = new Producto(rs.getDouble(3), rs.getString(2), 1 , rs.getInt(4) , us.getEmail() , rs.getString(6));
 					prList.add(pr);
 					//System.out.println(pr.toString());
 				}
@@ -509,7 +558,7 @@ public class Connect {
 			if( getProductByName(usAd, pr.getNombre()) != null ) {
 				return false;
 			}
-			String sql = "Insert Into productos Values( ? , ? , ? , ? , ? )";
+			String sql = "Insert Into productos Values( ? , ? , ? , ? , ? , ? )";
 			Connection cn = OpenConnection();
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
@@ -518,6 +567,7 @@ public class Connect {
 				stmt.setDouble(3, pr.getPrecio());
 				stmt.setInt(4, loc_ID);
 				stmt.setString(5, usAd.getEmail());
+				stmt.setString(6, pr.getCategoria());
 				int aniadido = stmt.executeUpdate();
 				goodBy(cn);
 				if( aniadido == 1 ) {
@@ -647,7 +697,7 @@ public class Connect {
 				stmt.setString(2, user.getEmail());
 				ResultSet rs = stmt.executeQuery();
 				while(rs.next()) {
-					p = new Producto(rs.getDouble(3), rs.getString(2), 1, rs.getInt(4), rs.getString(5));
+					p = new Producto(rs.getDouble(3), rs.getString(2), 1, rs.getInt(4), rs.getString(5) , rs.getString(6));
 					p.setID(rs.getInt(1));
 				}
 				//System.out.println("producto: "+p.getNombre()+p.getID());

@@ -7,13 +7,21 @@ public class Producto {
 	private int localAsociado;
 	private String userAsociado;
 	private int id;
+	private String Categoria;
 
-	public Producto(double precio, String nombre, int cantidad , int loc , String user) {
+	public Producto(double precio, String nombre, int cantidad , int loc , String user , String c) {
 		this.precio = precio;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		this.userAsociado = user;
 		this.localAsociado = loc;
+		this.Categoria = c;
+	}
+	public String getCategoria() {
+		return Categoria;
+	}
+	public void setCategoria(String categoria) {
+		Categoria = categoria;
 	}
 	public Producto(String Nombre , Double prec , int Cantidad) {
 		this.nombre = Nombre;

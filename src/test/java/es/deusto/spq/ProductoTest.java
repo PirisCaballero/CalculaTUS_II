@@ -12,12 +12,20 @@ public class ProductoTest {
 	
 	@BeforeClass
 	public static void initialize() {
-		p1 = new Producto(10, "pollo", 4, 0, "Alfonso");
+		p1 = new Producto(10, "pollo", 4, 0, "Alfonso" , "Alimentacion");
 		p1.setID(23);
 		p2 = new Producto("huevos", 3.0, 12);
 		p2.setUserAsociado("Javier");
 	}
-	
+	@Test
+	public void testSetCategoria() {
+		p2.setCategoria("Ropa");
+		assertEquals("Ropa", p2.getCategoria());
+	}
+	@Test
+	public void testgetCategoria() {
+		assertEquals("Alimentacion", p1.getCategoria());
+	}
 	@Test
 	public void testSetID() {
 		p2.setID(1);
