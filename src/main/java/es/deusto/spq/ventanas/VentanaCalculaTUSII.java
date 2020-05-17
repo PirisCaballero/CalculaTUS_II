@@ -5,6 +5,11 @@ import javax.swing.*;
 import es.deusto.spq.Users;
 import es.deusto.spq.paneles.*;
 
+/**
+ * Ventana principal de la aplicacion, aqui se superposicionan todos los paneles
+ * del programa.
+ */
+
 public class VentanaCalculaTUSII{
 
 	/**

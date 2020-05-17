@@ -11,6 +11,12 @@ import es.deusto.spq.ventanas.ShowTickets;
 import es.deusto.spq.ventanas.VentanaLogin;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
+/**
+ * Panel que se encuentra en la parte superior de la VentanaCalculaTUSII, aqui se 
+ * encuentran los botones para añadir locales, tickets o productos y los que dan 
+ * acceso a los paneles de Admin, User, FTP y SQL.
+ */
+
 public class PanelNorte extends JPanel {
 
 	/**

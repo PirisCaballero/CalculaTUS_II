@@ -10,6 +10,11 @@ import javax.swing.table.DefaultTableModel;
 
 import es.deusto.spq.connection.Connect;
 
+/**
+ * Panel que da opcion a crear tickets con datos como fecha, tienda
+ * de compra o productos y unidades por producto.
+ */
+
 public class PanelCrearTicket extends JPanel{
 	JLabel lblFechaEmisionTicket, lblLocalTicket, lblProductosTicket, lblUnidades;
 	JTextField txtFechaEmisionTicket, txtTienda, txtUnidades;

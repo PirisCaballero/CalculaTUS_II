@@ -12,6 +12,11 @@ import es.deusto.spq.Local;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
+/**
+ * Panel que da la opcion a registrar un local con su nombre, direccion, 
+ * codigo postal y la posibilidad de dejar tu opinion.
+ */
+
 public class PanelLocal extends JPanel{
 	
 	/**

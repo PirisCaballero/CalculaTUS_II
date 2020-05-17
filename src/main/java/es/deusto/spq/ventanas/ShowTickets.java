@@ -15,6 +15,10 @@ import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
+/**
+ * Ventana que muestra tickets.
+ */
+
 public class ShowTickets extends JFrame{
 	
 	/**

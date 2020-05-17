@@ -16,7 +16,11 @@ import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 import es.deusto.spq.ventanas.VentanaModificar;
 
-
+/**
+ * Panel donde se puede cambiar un usuario normal a admin o viceversa,
+ * ademas posibilita visualizar una lista de los compradores frecuentes
+ * de un local en especifico.
+ */
 
 public class PanelAdmin extends JPanel{
 	JLabel lblCambiarTipo, lblUsuarioAsociado, lblTienda;

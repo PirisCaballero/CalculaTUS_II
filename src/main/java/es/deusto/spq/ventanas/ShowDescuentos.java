@@ -4,6 +4,11 @@ import javax.swing.JFrame;
 
 import es.deusto.spq.Users;
 
+/**
+ * Ventana lateral que muestra un listado con los descuentos posibles para el acliente.
+ * Se accede a traves de PanelUser, boton "Ver descuentos".
+ */
+
 public class ShowDescuentos extends JFrame {
 
 	/**

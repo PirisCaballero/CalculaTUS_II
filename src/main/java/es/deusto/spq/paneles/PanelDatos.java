@@ -5,6 +5,12 @@ import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Panel que se encuentra a la izquierda en la VentanaCalculaTUSII, tiene
+ * la capacidad de mostrar informacion en un tabla de tres columnas dependiendo
+ * de lo que se le pida a traves de botones de otros paneles.
+ */
+
 public class PanelDatos extends JPanel{
 
 	/**

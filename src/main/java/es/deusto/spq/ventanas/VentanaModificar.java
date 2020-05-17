@@ -14,6 +14,10 @@ import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 import es.deusto.spq.paneles.PanelNorte;
 
+/**
+ * Ventana que da opcion a modificar los datos como nombre de usuario o contraseña.
+ */
+
 public class VentanaModificar extends JFrame {
 
 	private static final long serialVersionUID = 1L;

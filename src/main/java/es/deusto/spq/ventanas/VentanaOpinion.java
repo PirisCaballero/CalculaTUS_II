@@ -24,6 +24,11 @@ import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 import javax.swing.JProgressBar;
 
+/**
+ * Ventana que da opcion a poner una valoracion del 1 al 5 y escribir una opinion, 
+ * ademas luego da opcion a mandarlo.
+ */
+
 public class VentanaOpinion extends JFrame {
 
 	private JRadioButton estrella1, estrella2, estrella3, estrella4, estrella5;

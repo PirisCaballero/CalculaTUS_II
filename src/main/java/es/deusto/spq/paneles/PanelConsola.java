@@ -21,6 +21,11 @@ import es.deusto.spq.Users;
 import es.deusto.spq.Users.Type;
 import es.deusto.spq.connection.Connect;
 
+/**
+ * Panel que se da de opcion a usar como consola, solo los usuarios
+ * que son administradores pueden usarlo.
+ */
+
 public class PanelConsola extends JPanel{
 	
 	/**

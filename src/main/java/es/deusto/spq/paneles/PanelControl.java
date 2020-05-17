@@ -21,6 +21,11 @@ import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
+/**
+ * Panel que da ocpion a ver los tickets de otros usuarios.
+ * Se accede desd el panelUser, con el boton "Control parental".
+ */
+
 public class PanelControl extends JPanel{
 
 	private static final long serialVersionUID = 1L;

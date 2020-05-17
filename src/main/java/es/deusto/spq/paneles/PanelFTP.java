@@ -31,6 +31,11 @@ import java.awt.Choice;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+/**
+ * Panel que da opcion de subir y descargar archivos pudiendo seleccionar
+ * el directorio de la carpeta y el fichero.
+ */
+
 public class PanelFTP extends JPanel{
 	
 	/**

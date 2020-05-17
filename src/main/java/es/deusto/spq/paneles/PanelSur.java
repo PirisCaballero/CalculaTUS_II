@@ -6,6 +6,11 @@ import javax.swing.*;
 
 import es.deusto.spq.Users;
 
+/**
+ * Panel que se encuentra en la parte de abajo de VentanaCalculaTUSII, muestra una 
+ * imagen con los nombres de los creadores del proyecto, ademas es donde esta colocado 
+ * el PanelConsola.
+ */
 
 public class PanelSur extends JPanel{
 	

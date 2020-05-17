@@ -25,6 +25,12 @@ import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
+/**
+ * Muestra las diferentes estadisticas que se quieren buscar dependiendo
+ * de un local o un producto. Se accede a traves del PanelUser y el boton 
+ * "Ver estadisticas".
+ */
+
 public class PanelEstadisticas extends JPanel {
 
 	private static final long serialVersionUID = 1L;

@@ -24,6 +24,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+/**
+ * Panel que muestra la informacion de los tickets.
+ */
+
 public class PanelTicket extends JPanel {
 	
 	/**

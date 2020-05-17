@@ -19,6 +19,11 @@ import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 import es.deusto.spq.connection.ConnectFTP;
 
+/**
+ * Ventana que da opcion a registrar a un usuario nuevo, unicamente se puede acceder antes de iniciar sesion
+ * desde la VentanaLogin.
+ */
+
 public class VentanaRegistro {
 
 	final JFrame frame;

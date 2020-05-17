@@ -19,6 +19,11 @@ public class Connect {
 
 	Connection conn;
 
+	/**
+	 * Crea la conexion a la Base de Datos
+	 * 
+	 * @return conn
+	 */
 	public Connection OpenConnection() {
 		conn = null;
 		try {
@@ -39,15 +44,20 @@ public class Connect {
 		}
 	}
 
+	/**
+	 * 
+	 * @param cn
+	 * @return boolean
+	 */
 	public boolean sayHello(Connection cn) {
 		try {
-			if( cn != null ) {
+			if (cn != null) {
 				if (cn.isValid(50000)) {
 					return true;
 				} else {
 					return false;
 				}
-			}else {
+			} else {
 				return false;
 			}
 		} catch (SQLException e) {
@@ -57,16 +67,22 @@ public class Connect {
 		}
 	}
 
+	/**
+	 * Cierra la conexion con la BD
+	 * 
+	 * @param cn
+	 * @return boolean
+	 */
 	public boolean goodBy(Connection cn) {
 		try {
-			if(cn != null) {
-				if(cn.isValid(50000)) {
+			if (cn != null) {
+				if (cn.isValid(50000)) {
 					cn.close();
 					return true;
-				}else {
+				} else {
 					return false;
 				}
-			}else {
+			} else {
 				return false;
 			}
 		} catch (SQLException sqlE) {
@@ -76,10 +92,16 @@ public class Connect {
 		}
 	}
 
+	/**
+	 * Busca un usuario en la BD
+	 * 
+	 * @param email
+	 * @return boolean
+	 */
 	public boolean buscarUsuario(String email) {
 		String sql = "Select * from users where email = ?";
 		Connection cn = OpenConnection();
-		if( email != null && email != "" ) {
+		if (email != null && email != "") {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setString(1, email);
@@ -97,17 +119,24 @@ public class Connect {
 				System.out.println(sqlE);
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
 
+	/**
+	 * Busca un local en la BD
+	 * 
+	 * @param user
+	 * @param loc
+	 * @return boolean
+	 */
 	public boolean buscarLocal(Users user, Local loc) {
 		String sql = "Select * from locales where Nombre = ? and email_duenio = ?";
 		Connection cn = OpenConnection();
-		if( user != null && loc != null) {
-			if( buscarUsuario(user.getEmail()) ) {
+		if (user != null && loc != null) {
+			if (buscarUsuario(user.getEmail())) {
 				try {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setString(1, loc.getNombre());
@@ -126,18 +155,26 @@ public class Connect {
 					System.out.println(sqlE);
 					return false;
 				}
-			}else {
+			} else {
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
-	public Local getLocalById(Users user , int ID) {
+
+	/**
+	 * Recibe Local buscado en la BD
+	 * 
+	 * @param user
+	 * @param ID
+	 * @return Local
+	 */
+	public Local getLocalById(Users user, int ID) {
 		String sql = "Select * from locales where  idLocales = ? and email_duenio = ?";
 		Connection cn = OpenConnection();
-		if( user != null ) {
+		if (user != null) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setInt(1, ID);
@@ -153,26 +190,33 @@ public class Connect {
 					loc.setDescripcion(rs.getString(5));
 					cont += 1;
 				}
-				if(cont == 1) {
+				if (cont == 1) {
 					return loc;
-				}else {
+				} else {
 					return null;
 				}
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
-		
+
 	}
 
+	/**
+	 * Comprueba si existe un Usuario
+	 * 
+	 * @param email
+	 * @param pass
+	 * @return User
+	 */
 	public Users VerificarUsuario(String email, String pass) {
 		Users us = null;
 		String sql = "Select * from users where email = ?";
 		Connection cn = OpenConnection();
-		if( email != "" && pass !="" && email != null && pass != null) {
+		if (email != "" && pass != "" && email != null && pass != null) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setString(1, email);
@@ -208,17 +252,22 @@ public class Connect {
 				Users user = null;
 				return user;
 			}
-		}else {
+		} else {
 			return null;
 		}
-		
+
 	}
 
+	/**
+	 * 
+	 * @param user_email
+	 * @return User
+	 */
 	public Users RecuperarUsuario(String user_email) {
 		Users us = new Users();
 		String sql = "Select * from users where email = ?";
 		Connection cn = OpenConnection();
-		if( user_email != "" && user_email != null ) {
+		if (user_email != "" && user_email != null) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setString(1, user_email);
@@ -237,7 +286,7 @@ public class Connect {
 					System.out.println("Usuario recuperado");
 					return us;
 				} else {
-					//JOptionPane.showMessageDialog(null, "Usuario no encontrado" + "-->"+cont);
+					// JOptionPane.showMessageDialog(null, "Usuario no encontrado" + "-->"+cont);
 					System.out.println("Usuario no recuperado");
 					return null;
 				}
@@ -246,14 +295,22 @@ public class Connect {
 				sqlE.printStackTrace();
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
+
+	/**
+	 * Registra un Local en la BD
+	 * 
+	 * @param user
+	 * @param loc
+	 * @return boolean
+	 */
 	public boolean RegisLocal(Users user, Local loc) {
-		if( user != null && loc != null ) {
+		if (user != null && loc != null) {
 			if (!buscarLocal(user, loc)) {
-				if(buscarUsuario(user.getEmail())) {
+				if (buscarUsuario(user.getEmail())) {
 					System.out.println("El local no esta registrado");
 					String sql = "Insert into locales Values ( ? , ? , ? , ? , ? , ? )";
 					Connection cn = OpenConnection();
@@ -274,35 +331,49 @@ public class Connect {
 						sqlE.printStackTrace();
 						return false;
 					}
-				}else {
+				} else {
 					return false;
-				}			
+				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Ese local ya esta registrado");
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
+
+	/**
+	 * Comprueba si un Usuario es Admin
+	 * 
+	 * @param user
+	 * @return boolean
+	 */
 	public boolean isAdmin(Users user) {
-		if( user != null ) {
-			if( buscarUsuario(user.getEmail()) && user.getAdmin() == 1) {
+		if (user != null) {
+			if (buscarUsuario(user.getEmail()) && user.getAdmin() == 1) {
 				return true;
-			}else {
+			} else {
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
-					
+
 	}
+
+	/**
+	 * Registra un Usuario en la BD
+	 * 
+	 * @param us
+	 * @return boolean
+	 */
 	public boolean RegisUser(Users us) {
-		if( us != null ) {
+		if (us != null) {
 			if (!buscarUsuario(us.getEmail())) {
 				System.out.println("Usuario no registrado");
-				if( us.getAdminEmail() == "null") {
+				if (us.getAdminEmail() == "null") {
 					System.out.println("Administrador registrado");
 					String sql = "Insert Into users Values (? , ? , ? , ? , ? , ?)";
 					Connection cn = OpenConnection();
@@ -324,7 +395,7 @@ public class Connect {
 						sqlE.printStackTrace();
 						return false;
 					}
-				}else {
+				} else {
 					Users usa = RecuperarUsuario(us.getAdminEmail());
 					if (isAdmin(usa)) {
 						System.out.println("Administrador registrado");
@@ -348,44 +419,61 @@ public class Connect {
 							sqlE.printStackTrace();
 							return false;
 						}
-					}else {
+					} else {
 						return false;
 					}
-				}} else {
-					// JOptionPane.showMessageDialog(null, "Ese administrador no existe");
-					System.out.println("Ese administrador no existe");
-					return false;
 				}
 			} else {
-				// JOptionPane.showMessageDialog(null, "Usuario ya registrado");
-				System.out.println("Usuario ya registrado");
+				// JOptionPane.showMessageDialog(null, "Ese administrador no existe");
+				System.out.println("Ese administrador no existe");
 				return false;
 			}
+		} else {
+			// JOptionPane.showMessageDialog(null, "Usuario ya registrado");
+			System.out.println("Usuario ya registrado");
+			return false;
+		}
 	}
-	public ArrayList<Producto> getProductsByTicket(Users user , int ticketID){
+
+	/**
+	 * Busca los Productos de un Ticket y un Usuario
+	 * 
+	 * @param user
+	 * @param ticketID
+	 * @return ArrayList de Productos de un Ticket
+	 */
+	public ArrayList<Producto> getProductsByTicket(Users user, int ticketID) {
 		ArrayList<Producto> pL = new ArrayList<Producto>();
 		String sql = "Select * from elementoscompra where idTicket = ?";
 		Connection cn = OpenConnection();
-		if( user != null ) {
+		if (user != null) {
 			try {
 				PreparedStatement stmt = cn.prepareStatement(sql);
 				stmt.setInt(1, ticketID);
 				ResultSet rs = stmt.executeQuery();
-				while(rs.next()) {
-					Producto p = new Producto((String)rs.getString(2), Double.parseDouble( (String)rs.getString(3) ) , Integer.parseInt((String)rs.getString(4)));
+				while (rs.next()) {
+					Producto p = new Producto((String) rs.getString(2), Double.parseDouble((String) rs.getString(3)),
+							Integer.parseInt((String) rs.getString(4)));
 					pL.add(p);
 				}
 				goodBy(cn);
 				return pL;
-			}catch(SQLException sqlE) {
+			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
+
+	/**
+	 * Busca un Ticket por su ID en la BD
+	 * 
+	 * @param ID
+	 * @return Ticket
+	 */
 	public Ticket getTicketByTicketID(int ID) {
 		Ticket t = new Ticket();
 		String sql = "Select * from tickets where idTickets = ?";
@@ -394,8 +482,8 @@ public class Connect {
 			PreparedStatement stmt = cn.prepareStatement(sql);
 			stmt.setInt(1, ID);
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				t.setID( rs.getInt(1) );
+			while (rs.next()) {
+				t.setID(rs.getInt(1));
 				t.setNombreUsuario(rs.getString(2));
 				t.setImporte(rs.getDouble(3));
 				t.setID_Lugar_Compra(rs.getInt(4));
@@ -403,12 +491,18 @@ public class Connect {
 			}
 			goodBy(cn);
 			return t;
-		}catch(SQLException sqlE) {
+		} catch (SQLException sqlE) {
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
 			return null;
 		}
 	}
+
+	/**
+	 * Busca todos los Usuarios en la BD
+	 * 
+	 * @return ArrayList de Usuarios
+	 */
 	public ArrayList<Users> getUsers() {
 		ArrayList<Users> usersList = new ArrayList<Users>();
 		String sql = "Select * from users";
@@ -435,15 +529,26 @@ public class Connect {
 		}
 	}
 
+	/**
+	 * Mete todos los Usuarios en un ArrayList
+	 */
 	public void listUsers() {
 		ArrayList<Users> ul = getUsers();
 		for (Users u : ul) {
 			System.out.println(u.toString());
 		}
 	}
-	public Local getLocalByName(Users us , String locName) {
-		//TODO
-		if( us != null && locName != null && locName != "" ) {
+
+	/**
+	 * Busca un Local por su nombre en la BD
+	 * 
+	 * @param us
+	 * @param locName
+	 * @return Local
+	 */
+	public Local getLocalByName(Users us, String locName) {
+		// TODO
+		if (us != null && locName != null && locName != "") {
 			Local loc = null;
 			String sql = "Select * from locales where email_duenio = ? and Nombre = ?";
 			Connection cn = OpenConnection();
@@ -452,26 +557,33 @@ public class Connect {
 				stmt.setString(1, us.getEmail());
 				stmt.setString(2, locName);
 				ResultSet rs = stmt.executeQuery();
-				//TODO
-				while(rs.next()) {
+				// TODO
+				while (rs.next()) {
 					loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
 					loc.setId(rs.getInt(1));
 					System.out.println(rs.getInt(1));
 				}
 				goodBy(cn);
 				return loc;
-			}catch(SQLException sqle) {
+			} catch (SQLException sqle) {
 				System.out.println(sqle);
 				sqle.printStackTrace();
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
-		
+
 	}
+
+	/**
+	 * Busca una Categoria por su nombre en la BD
+	 * 
+	 * @param id
+	 * @return String
+	 */
 	public String getCategoriaByID(int id) {
-		if(id>0) {
+		if (id > 0) {
 			String sql = "Select Nombre from categoria where ID_Categoria = ?";
 			Connection c = OpenConnection();
 			try {
@@ -479,49 +591,62 @@ public class Connect {
 				stmt.setInt(1, id);
 				ResultSet rs = stmt.executeQuery();
 				int cont = 0;
-				String cat ="";
-				while(rs.next()) {
+				String cat = "";
+				while (rs.next()) {
 					cont += 1;
 					cat = rs.getString(1);
 				}
-				if(cont == 1) {
+				if (cont == 1) {
 					return cat;
-				}
-				else {
-					System.out.println("El conteo es: "+cont);
+				} else {
+					System.out.println("El conteo es: " + cont);
 					goodBy(c);
 					return null;
 				}
-			}catch (SQLException sqlE) {
+			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
-	public ArrayList<String> getCategorias(){
+
+	/**
+	 * Devuelve una lista de Categorias
+	 * 
+	 * @return ArrayList de Categorias
+	 */
+	public ArrayList<String> getCategorias() {
 		ArrayList<String> categorias = new ArrayList<String>();
-			String sql = "Select Nombre from categoria";
-			Connection c = OpenConnection();
-			try {
-				PreparedStatement stmt = c.prepareStatement(sql);
-				ResultSet rs = stmt.executeQuery();
-				while(rs.next()) {
-					categorias.add(rs.getString(1));
-				}
-				goodBy(c);
-				return categorias;
-			}catch (SQLException sqlE) {
-				System.out.println(sqlE);
-				sqlE.printStackTrace();
-				return null;
+		String sql = "Select Nombre from categoria";
+		Connection c = OpenConnection();
+		try {
+			PreparedStatement stmt = c.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				categorias.add(rs.getString(1));
 			}
+			goodBy(c);
+			return categorias;
+		} catch (SQLException sqlE) {
+			System.out.println(sqlE);
+			sqlE.printStackTrace();
+			return null;
+		}
 	}
-	public ArrayList<Producto> getProductsByLocal(Users us , int loc_ID) {
-		if( us != null ) {
-			if( !buscarUsuario(us.getEmail()) ) {
+
+	/**
+	 * Busca una lista de Productos de un Local y un Usuario en concreto
+	 * 
+	 * @param us
+	 * @param loc_ID
+	 * @return ArrayList de Productos
+	 */
+	public ArrayList<Producto> getProductsByLocal(Users us, int loc_ID) {
+		if (us != null) {
+			if (!buscarUsuario(us.getEmail())) {
 				return null;
 			}
 			ArrayList<Producto> prList = null;
@@ -533,29 +658,39 @@ public class Connect {
 				stmt.setInt(1, loc_ID);
 				stmt.setString(2, us.getEmail());
 				ResultSet rs = stmt.executeQuery();
-				while(rs.next()) {
-					Producto pr = new Producto(rs.getDouble(3), rs.getString(2), 1 , rs.getInt(4) , us.getEmail() , rs.getString(6));
+				while (rs.next()) {
+					Producto pr = new Producto(rs.getDouble(3), rs.getString(2), 1, rs.getInt(4), us.getEmail(),
+							rs.getString(6));
 					prList.add(pr);
-					//System.out.println(pr.toString());
+					// System.out.println(pr.toString());
 				}
 				goodBy(cn);
 				return prList;
-			}catch(SQLException sqlE) {
+			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				return null;
 			}
-		}else{
+		} else {
 			return null;
 		}
 	}
-	public boolean anadirProducto(Users usAd , Producto pr , int loc_ID) {
-		if( usAd != null && pr != null && buscarUsuario(usAd.getEmail())) {
+
+	/**
+	 * Añade productos a la BD
+	 * 
+	 * @param usAd
+	 * @param pr
+	 * @param loc_ID
+	 * @return boolean
+	 */
+	public boolean anadirProducto(Users usAd, Producto pr, int loc_ID) {
+		if (usAd != null && pr != null && buscarUsuario(usAd.getEmail())) {
 			Local l = getLocalById(usAd, loc_ID);
-			if( l == null ) { 
-				return false; 
+			if (l == null) {
+				return false;
 			}
-			if( getProductByName(usAd, pr.getNombre()) != null ) {
+			if (getProductByName(usAd, pr.getNombre()) != null) {
 				return false;
 			}
 			String sql = "Insert Into productos Values( ? , ? , ? , ? , ? , ? )";
@@ -570,67 +705,84 @@ public class Connect {
 				stmt.setString(6, pr.getCategoria());
 				int aniadido = stmt.executeUpdate();
 				goodBy(cn);
-				if( aniadido == 1 ) {
+				if (aniadido == 1) {
 					JOptionPane.showMessageDialog(null, "Producto Añadido");
 					return true;
-				}else {
+				} else {
 					JOptionPane.showMessageDialog(null, "El producto no ha podido ser añadido");
 					return false;
 				}
-			}catch(SQLException sqlE) {
+			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
 	}
+
+	/**
+	 * Cambia un Usuario normal a Admin o viceversa
+	 * 
+	 * @param log_user
+	 * @param user_to_change
+	 * @param cambio
+	 * @return boolean
+	 */
 	public boolean cambioDeTipoDeUsuario(Users log_user, String user_to_change, int cambio) {
-		if( log_user != null && user_to_change != null && user_to_change != "") {
+		if (log_user != null && user_to_change != null && user_to_change != "") {
 			Users userChanged = RecuperarUsuario(user_to_change);
-			//System.out.println(userChanged.toString());
-			if( userChanged == null ) {
+			// System.out.println(userChanged.toString());
+			if (userChanged == null) {
 				return false;
 			}
 			if (log_user.getAdmin() == 1) {
-				//System.out.println("El usuario es admin, OK");
-				//System.out.println(log_user.getEmail() + "||" + userChanged.getAdminEmail());
+				// System.out.println("El usuario es admin, OK");
+				// System.out.println(log_user.getEmail() + "||" + userChanged.getAdminEmail());
 				if (log_user.getEmail().equals(userChanged.getAdminEmail())) {
-					//System.out.println("El usuario a cambiar es del usuario administrador");
+					// System.out.println("El usuario a cambiar es del usuario administrador");
 					String sql = "Update users set admin = ? , admin_email = ? where email = ?";
 					Connection cn = OpenConnection();
 					try {
 						PreparedStatement stmt = cn.prepareStatement(sql);
 						stmt.setInt(1, cambio);
-						if( cambio == 1 ) {
+						if (cambio == 1) {
 							stmt.setString(2, "null");
-						}else {
+						} else {
 							stmt.setString(2, log_user.getEmail());
 						}
 						stmt.setString(3, user_to_change);
-						//System.out.println(stmt.executeUpdate());
+						// System.out.println(stmt.executeUpdate());
 						goodBy(cn);
 						return true;
 					} catch (SQLException sqlE) {
-						//System.out.println(sqlE);
+						// System.out.println(sqlE);
 						return false;
 					}
 				} else {
-					//System.out.println("El usuario a cambiar no pertenece al usuario administrador");
+					// System.out.println("El usuario a cambiar no pertenece al usuario
+					// administrador");
 					return false;
 				}
 			} else {
-				//System.out.println("El usuario " + log_user.getNombre() + "no es administrador");
+				// System.out.println("El usuario " + log_user.getNombre() + "no es
+				// administrador");
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
 	}
 
+	/**
+	 * Busca los Locales de un Usuario en la BD
+	 * 
+	 * @param us
+	 * @return ArrayList de Locales
+	 */
 	public ArrayList<Local> getLocales(Users us) {
-		if( us != null && buscarUsuario(us.getEmail()) ) {
+		if (us != null && buscarUsuario(us.getEmail())) {
 			ArrayList<Local> localesList = new ArrayList<Local>();
 			String sql = "Select * from locales where email_duenio = ?";
 			Connection cn = OpenConnection();
@@ -641,7 +793,7 @@ public class Connect {
 				while (rs.next()) {
 					Local loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
 					localesList.add(loc);
-					//System.out.println(loc.toString());
+					// System.out.println(loc.toString());
 				}
 				return localesList;
 			} catch (SQLException sqlE) {
@@ -650,14 +802,20 @@ public class Connect {
 				sqlE.printStackTrace();
 				return localesList;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
-	public ArrayList<Users> getUsersByAdmin(Users usAd){
-		if( usAd != null && buscarUsuario(usAd.getEmail()) ) {
-			if( isAdmin(usAd) ) {
+
+	/**
+	 * Busca Usuarios cuyo email del admin es el mismo
+	 * 
+	 * @param usAd
+	 * @return ArrayList de Usuarios
+	 */
+	public ArrayList<Users> getUsersByAdmin(Users usAd) {
+		if (usAd != null && buscarUsuario(usAd.getEmail())) {
+			if (isAdmin(usAd)) {
 				ArrayList<Users> userList = null;
 				String sql = "Select * from users where admin_email = ?";
 				Connection cn = OpenConnection();
@@ -666,28 +824,36 @@ public class Connect {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setString(1, usAd.getEmail());
 					ResultSet rs = stmt.executeQuery();
-					while(rs.next()) {
-						Users us = new Users(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+					while (rs.next()) {
+						Users us = new Users(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+								rs.getInt(5), rs.getString(6));
 						System.out.println(us.toString());
 						userList.add(us);
 					}
 					goodBy(cn);
 					return userList;
-				}catch(SQLException sqlE) {
+				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
 					return null;
 				}
-			}else {
+			} else {
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
-	public Producto getProductByName(Users user , String Nombre) {
-		if( user != null && Nombre != "" ) {
+
+	/**
+	 * Busca un Producto con un Nombre y un Usuario (comprador) especifico
+	 * 
+	 * @param user
+	 * @param Nombre
+	 * @return Producto
+	 */
+	public Producto getProductByName(Users user, String Nombre) {
+		if (user != null && Nombre != "") {
 			Producto p = null;
 			String sql = "Select * from productos where Nombre = ? and email_comprador = ?";
 			Connection cn = OpenConnection();
@@ -696,28 +862,34 @@ public class Connect {
 				stmt.setString(1, Nombre);
 				stmt.setString(2, user.getEmail());
 				ResultSet rs = stmt.executeQuery();
-				while(rs.next()) {
-					p = new Producto(rs.getDouble(3), rs.getString(2), 1, rs.getInt(4), rs.getString(5) , rs.getString(6));
+				while (rs.next()) {
+					p = new Producto(rs.getDouble(3), rs.getString(2), 1, rs.getInt(4), rs.getString(5),
+							rs.getString(6));
 					p.setID(rs.getInt(1));
 				}
-				//System.out.println("producto: "+p.getNombre()+p.getID());
+				// System.out.println("producto: "+p.getNombre()+p.getID());
 				goodBy(cn);
 				return p;
-			}catch(SQLException sqlE) {
+			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				return p;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
-	/*
+
+	/**
 	 * Funcion para crear un ticket
+	 * 
+	 * @param user
+	 * @param ti
+	 * @return Ticket
 	 */
-	public Ticket crearTicket(Users user , Ticket ti) {
-		if( user != null && ti != null ) {
-			if( buscarUsuario(user.getEmail()) ) {
+	public Ticket crearTicket(Users user, Ticket ti) {
+		if (user != null && ti != null) {
+			if (buscarUsuario(user.getEmail())) {
 				Ticket t = null;
 				String sql = "INSERT INTO tickets VALUES ( ? , ? , ? , ? , ? )";
 				Connection cn = OpenConnection();
@@ -729,8 +901,8 @@ public class Connect {
 					stmt.setInt(4, ti.getID_Lugar_Compra());
 					stmt.setString(5, ti.getFecha_emision());
 					int rs = stmt.executeUpdate();
-					if(rs == 1) {
-						//JOptionPane.showMessageDialog(null, "Ticket generado satisfactoriamente");
+					if (rs == 1) {
+						// JOptionPane.showMessageDialog(null, "Ticket generado satisfactoriamente");
 						System.out.println("Ticket generado satisfactoriamente");
 					}
 					try {
@@ -741,36 +913,43 @@ public class Connect {
 						stmt2.setInt(3, ti.getID_Lugar_Compra());
 						stmt2.setString(4, ti.getFecha_emision());
 						ResultSet rs2 = stmt2.executeQuery();
-						while(rs2.next()) {
-							t = new Ticket((String)rs2.getString(5), rs2.getString(2), (Double)rs2.getDouble(3), rs2.getInt(4));
+						while (rs2.next()) {
+							t = new Ticket((String) rs2.getString(5), rs2.getString(2), (Double) rs2.getDouble(3),
+									rs2.getInt(4));
 							t.setID(rs2.getInt(1));
 						}
 						goodBy(cn);
 						return t;
-					}catch(SQLException sqlE2) {
+					} catch (SQLException sqlE2) {
 						System.out.println(sqlE2);
 						sqlE2.printStackTrace();
 					}
-				}catch(SQLException sqlE) {
+				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
 				}
 				return t;
-			}else {
+			} else {
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
-	/*
+
+	/**
 	 * Funcion para añadir productos a la tabla de elementos de compra
+	 * 
+	 * @param user
+	 * @param prL
+	 * @param t
+	 * @return boolean
 	 */
-	public boolean introducirProductosComprador(Users user , ArrayList<Producto> prL , Ticket t) {
-		//TODO
-		if( user != null && prL != null && t != null ) {
+	public boolean introducirProductosComprador(Users user, ArrayList<Producto> prL, Ticket t) {
+		// TODO
+		if (user != null && prL != null && t != null) {
 			int tam = prL.size();
-			for(int i = 0 ; i<tam ; i++) {
+			for (int i = 0; i < tam; i++) {
 				String sql = "Insert into elementoscompra VALUES ( ? , ? , ? , ?)";
 				Connection cn = OpenConnection();
 				try {
@@ -780,21 +959,31 @@ public class Connect {
 					stmt.setDouble(3, prL.get(i).getPrecio());
 					stmt.setInt(4, prL.get(i).getCantidad());
 					int rs = stmt.executeUpdate();
-					if(rs == 1) { System.out.println("YAS"); };
-					}catch(SQLException sqlE) {
+					if (rs == 1) {
+						System.out.println("YAS");
+					}
+					;
+				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
 					return false;
-					}
 				}
+			}
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	public ArrayList<Ticket> getTicketsByUser(Users user){
-		if( user != null ) {
-			if( buscarUsuario(user.getEmail()) ) {
+
+	/**
+	 * Busca todos los tickets de un Usuario (comprador) en la BD
+	 * 
+	 * @param user
+	 * @return ArrayList de Tickets
+	 */
+	public ArrayList<Ticket> getTicketsByUser(Users user) {
+		if (user != null) {
+			if (buscarUsuario(user.getEmail())) {
 				ArrayList<Ticket> tL = new ArrayList<Ticket>();
 				String sql = "Select * from tickets where email_comprador = ?";
 				Connection cn = OpenConnection();
@@ -802,26 +991,34 @@ public class Connect {
 					PreparedStatement stmt = cn.prepareStatement(sql);
 					stmt.setString(1, user.getEmail());
 					ResultSet rs = stmt.executeQuery();
-					while(rs.next()) {
-						Ticket ti = new Ticket((String)rs.getString(5), rs.getString(2), (Double)rs.getDouble(3), rs.getInt(4));
+					while (rs.next()) {
+						Ticket ti = new Ticket((String) rs.getString(5), rs.getString(2), (Double) rs.getDouble(3),
+								rs.getInt(4));
 						ti.setID(rs.getInt(1));
 						tL.add(ti);
 					}
 					return tL;
-				}catch(SQLException sqlE) {
+				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
 					return null;
 				}
-			}else {
+			} else {
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
 	}
+
+	/**
+	 * Guarda una Opinion en la BD
+	 * 
+	 * @param op
+	 * @return boolean
+	 */
 	public boolean SaveOpinion(Opinion op) {
-		if(op != null) {
+		if (op != null) {
 			String sql = "Insert into opiniones values (? , ? , ? , ?)";
 			Connection cn = OpenConnection();
 			try {
@@ -831,22 +1028,32 @@ public class Connect {
 				stmt.setString(3, op.getComentario());
 				stmt.setString(4, op.getEmail());
 				int r = stmt.executeUpdate();
-				if(r==1) {
+				if (r == 1) {
 					return true;
-				}else {
+				} else {
 					return false;
 				}
-			}catch(SQLException sqlE) {
+			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
 	}
-	public boolean updateData(Users us , String nombre , String pass) {
-		if( us != null && nombre != "" && pass != null && nombre != null && pass !=null && buscarUsuario(us.getEmail())) {
+
+	/**
+	 * Actualiza el Nombre o la Contraseña de un Usuario en la BD
+	 * 
+	 * @param us
+	 * @param nombre
+	 * @param pass
+	 * @return boolean
+	 */
+	public boolean updateData(Users us, String nombre, String pass) {
+		if (us != null && nombre != "" && pass != null && nombre != null && pass != null
+				&& buscarUsuario(us.getEmail())) {
 			String sql = "update users set name = ? where email = ?";
 			String sql2 = "update users set password = ? where email = ?";
 			Connection cn = OpenConnection();
@@ -855,21 +1062,21 @@ public class Connect {
 				PreparedStatement stmt2 = cn.prepareStatement(sql2);
 				stmt1.setString(1, nombre);
 				stmt1.setString(2, us.getEmail());
-				
+
 				stmt2.setString(1, pass);
 				stmt2.setString(2, us.getEmail());
 				int R1 = stmt1.executeUpdate();
 				int R2 = stmt2.executeUpdate();
-				if( R1 == 1 && R2 == 1 ) {
+				if (R1 == 1 && R2 == 1) {
 					return true;
-				}else {
+				} else {
 					return false;
 				}
-			}catch (SQLException e) {
+			} catch (SQLException e) {
 				System.out.println(e);
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
 	}

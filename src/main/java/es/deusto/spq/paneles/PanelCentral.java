@@ -8,6 +8,12 @@ import javax.swing.table.DefaultTableModel;
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.ShowTickets;
 
+/**
+ * Panel donde se superposicionan los paneles que dan opcion a 
+ * registrar local, añadir ticket, añadir producto, y los paneles
+ * PanelAdmin, PanelUser y PanelFTP.
+ */
+
 public class PanelCentral extends JPanel{
 	
 	/**

@@ -16,6 +16,11 @@ import es.deusto.spq.connection.Connect;
 
 import java.awt.Choice;
 
+/**
+ * Panel en el que se pueden añadir los productos introducendi los datos
+ * local del producto, precio, nombre y categoria.
+ */
+
 public class PanelProducto extends JPanel {
 
 	/**

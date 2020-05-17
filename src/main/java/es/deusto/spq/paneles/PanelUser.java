@@ -18,6 +18,12 @@ import es.deusto.spq.ventanas.ShowDescuentos;
 import es.deusto.spq.ventanas.VentanaOpinion;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
+/**
+ * Panel que muestra botones que dan acceso a unas de las opciones
+ *  que tiene un usuario: ver descuentos, control parental, opinanos
+ *   y ver estadisticas.
+ */
+
 public class PanelUser extends JPanel {
 
 	JButton btnDescuento, btnEstadisticas;

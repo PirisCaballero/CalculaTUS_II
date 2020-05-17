@@ -10,6 +10,12 @@ import es.deusto.spq.Producto;
 import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
+
+/**
+ * Ventana que muestra los valores de un ticket como el importe, la fehca, el local, 
+ * y el nombre, precio y cantidad de cada producto.
+ */
+
 public class ShowTicket extends JFrame{
 	private JTable table;
 	private int ID;

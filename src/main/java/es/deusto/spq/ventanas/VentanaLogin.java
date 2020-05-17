@@ -13,6 +13,11 @@ import javax.swing.JTextField;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
+/**
+ * Ventana que da opcion a iniciar sesion e ir a la VentanaClaculaTUSII
+ * o pode registrarse.
+ */
+
 public class VentanaLogin extends JFrame {
 
 	/**

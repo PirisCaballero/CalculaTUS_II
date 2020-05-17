@@ -9,6 +9,12 @@ import javax.swing.*;
 
 import es.deusto.spq.Users;
 
+/**
+ * Panel que muestra una serie de preguntas mas habituales y respuestas 
+ * respectivas respuestas. Se puede acceder mediante el boton con el 
+ * simbolo de interrogacion [?] en la parte superior de la VentanaCalculaTUSII.
+ */
+
 public class PanelPreguntas extends JPanel{
 
 	private static final long serialVersionUID = 1L;
