@@ -28,6 +28,10 @@ public class VentanaModificar extends JFrame {
 	private Connect c = new Connect();
 	private Users main_user;
 
+	/**
+	 * Esta clase abre una ventana que permite modifuicar los datos de usuario
+	 * @param u
+	 */
 	public VentanaModificar(Users u) {
 		super("Modificar datos");
 		this.main_user = u;
@@ -80,6 +84,10 @@ public class VentanaModificar extends JFrame {
 			}
 		});
 	}
+	/**
+	 * Esta funcion guarda los cambios en la BBDD
+	 * @return boolean
+	 */
 	public boolean Save() {
 		boolean update = false;
 		if((txtUsuario.getText().isEmpty()) || (txtPassword.getText().isEmpty())) {

@@ -21,6 +21,11 @@ public class ShowTicket extends JFrame{
 	private int ID;
 	private Users main_user;
 	private ArrayList<Producto> prList;
+	/**
+	 * Abre una ventana en la que se muestra la informacion de un ticket en concreto
+	 * @param user
+	 * @param ti
+	 */
 	public ShowTicket(Users user , String ti) {
 		setTitle(ti);
 		setSize(500 , 300);

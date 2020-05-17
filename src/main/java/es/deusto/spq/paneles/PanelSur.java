@@ -20,6 +20,12 @@ public class PanelSur extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
 	private JFrame main_frame;
+	/**
+	 * Este Panel contiene el panel con la consola, el logo de la univeridad y los nombres de los autores
+	 * @param us
+	 * @param fr
+	 * @param users
+	 */
 	public PanelSur(Users us , JFrame fr , String [] users) {
 		main_user = us;
 		main_frame = fr;

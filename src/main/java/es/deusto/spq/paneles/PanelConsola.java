@@ -38,6 +38,10 @@ public class PanelConsola extends JPanel{
 	// JScrollPane sp;
 
 	private Users main_user;
+	/**
+	 * En este panel se construye el objeto consola, mediante el cual el usuario administrador puede interactuiar con la BBDD
+	 * @param user
+	 */
 	public PanelConsola(Users user) {
 		main_user = user;
 		this.setBounds(300 , 0 , 724 , 200);
@@ -75,9 +79,16 @@ public class PanelConsola extends JPanel{
 		});
 
 	}
+	/**
+	 * Este metodo añade texto a la consola
+	 * @param text
+	 */
 	public void addText(String text) {
 		consola.setText(text );
 	}
+	/**
+	 * Esta funcion desbloquea la consola en funcion de si el usuario es admin o no
+	 */
 	public void desBloc() {
 		if(main_user.getAdmin()==1) {
 			JOptionPane.showMessageDialog(null, "Es usted administrador, tiene acceso");

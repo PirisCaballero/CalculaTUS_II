@@ -8,6 +8,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,6 +33,13 @@ public class PanelAdmin extends JPanel{
 	
 	private ArrayList<Local> userList = new ArrayList<Local>();
 	private PanelDatos pd;
+	
+	/**
+	 * Construye el panel en el cual se van a implementar todas las opcines de un usuario administrador
+	 * @param U
+	 * @param pdts
+	 * @
+	 */
 	public PanelAdmin(Users u , PanelDatos pdts){
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
@@ -127,6 +135,12 @@ public class PanelAdmin extends JPanel{
 			}
 		});
 	}
+	
+	/**
+	 * Este metodo cambia el tipo de usuario
+	 * 
+	 * @return si el guardado ha sido correcto
+	 */
 	public boolean save() {
 		System.out.println(choiceAdmin.getSelectedItem() + "  ||  " + choiceUsuario.getSelectedItem());
 		Connect conn = new Connect();
@@ -150,6 +164,9 @@ public class PanelAdmin extends JPanel{
 			return false;
 		}
 	}
+	/**
+	 * Este metodo recarga los choice donde se muestran los usuarios
+	 */
 	public void Refresh() {
 		System.out.println("Refreshing...");
 		choiceUsuario.removeAll();

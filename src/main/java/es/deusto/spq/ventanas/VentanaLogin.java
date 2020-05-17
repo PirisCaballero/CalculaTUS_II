@@ -29,6 +29,9 @@ public class VentanaLogin extends JFrame {
 	private JTextField txtUsuario;
 	private JPasswordField txtPassword;
 
+	/**
+	 * Genera la venta por la cual el usuario podrá iniciar sesion
+	 */
 	public VentanaLogin() {
 		super("Login de usuario");
 		this.setSize(600, 400);
@@ -95,6 +98,10 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 	}
+	/**
+	 * Este metodo verifica si la informacion proporciana es valida y el usuario puede acceder a la aplicación
+	 * @return boolean
+	 */
 	public boolean LOG () {
 		Connect conn = new Connect();
 		// conn.list_users();

@@ -37,6 +37,11 @@ public class PanelUser extends JPanel {
 	private PanelControl pcont;
 	private Users main_user;
 
+	/**
+	 * Este panel te permite ver las estadisticas, las opciones de usuario, el control parental y las estadisticas
+	 * @param u
+	 * @param pdts
+	 */
 	public PanelUser(Users u, PanelDatos pdts) {
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
@@ -107,20 +112,29 @@ public class PanelUser extends JPanel {
 			}
 		});
 	}
-	
+	/**
+	 * Abre una ventana que muestra las estadisticas
+	 */
 	public void estadisticas() {
 		VentanaCalculaTUSII.pc.setPanel(8);
 	}
-	
+	/**
+	 * Abre una ventana para que puedas dejar una reseña de la aplicación
+	 */
 	public void opinarAccion() {
 		VentanaOpinion vp = new VentanaOpinion(user);
 		vp.setVisible(true);
 	}
-	
+	/**
+	 * Abre una ventana para poder ver los datos de tus usuarios
+	 */
 	public void controlUsuario() {
 		VentanaCalculaTUSII.pc.setPanel(7);
 	}
-	
+	/**
+	 * Abre una ventana para ver los descuentos
+	 * @deprecated
+	 */
 	public void descuentoAccion() {
 		sd.setVisible(true);
 	}

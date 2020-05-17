@@ -18,6 +18,9 @@ public class PanelDatos extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel modelo;private JTable tabla;
+	/**
+	 * Este panel contiene una tabla en la que se muestran datos de los diferentes metodos de los paneles dentro del contenedor
+	 */
 	public PanelDatos() {
 		this.setBounds( 0 , 50 , 500 , 470 );
 		this.setVisible(true);
@@ -39,6 +42,10 @@ public class PanelDatos extends JPanel{
 		
 		add(scrollPane);
 	}
+	/**
+	 * Este metodo establece el modelo de datos que se va a introducir en la tabla
+	 * @param mod
+	 */
 	public void setData(DefaultTableModel mod) {
 		this.modelo = mod;
 		tabla.setModel(modelo);

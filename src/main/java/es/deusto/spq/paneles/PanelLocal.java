@@ -28,6 +28,10 @@ public class PanelLocal extends JPanel{
 	private JTextArea txtOpinion;
 	private JButton btnLocalCreado;
 	private Users main_user; 
+	/**
+	 * Con este panel puedes crear un local
+	 * @param user
+	 */
 	public PanelLocal(Users user) {
 		this.setBounds(0, 0, 524, 470);
 		this.setLayout(null);
@@ -103,6 +107,9 @@ public class PanelLocal extends JPanel{
 			}
 		});
 	}
+	/**
+	 * Esta funcion es la que crea el objeto Local
+	 */
 	public void crearLocal() {
 		Connect cn = new Connect();
 		Local loc = new Local(txtNombreLocal.getText() , txtDireccion.getText() , Integer.parseInt(txtCodPostal.getText()) , txtOpinion.getText());

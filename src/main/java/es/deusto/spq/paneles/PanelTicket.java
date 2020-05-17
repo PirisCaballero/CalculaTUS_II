@@ -55,6 +55,11 @@ public class PanelTicket extends JPanel {
 	private String date;
 	private static ShowTickets st;
 	
+	/**
+	 * 
+	 * @param us
+	 * @param pdat
+	 */
 	public PanelTicket(Users us , PanelDatos pdat) {
 		this.setBounds(0 , 0 , 574 , 470);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -182,6 +187,10 @@ public class PanelTicket extends JPanel {
 		
 	}
 	
+	/**
+	 * Este metodo añade al choice los productos segun el local seleccionado
+	 * @return boolean
+	 */
 	public boolean setLocalesyProductos(){
 		System.out.println("Funciona el listener");
 		if(choice.getSelectedItem() != "-------------------") {
@@ -200,10 +209,16 @@ public class PanelTicket extends JPanel {
 			return false;
 		}
 	}
+	/**
+	 * Este metodo abre una nueva ventana con una lista de todos los tickets que ha generado ese usuario
+	 * @return st
+	 */
 	public static ShowTickets getFrameTickets() {
 		return st;
 	}
-	
+	/**
+	 * Este metodo recarga los datos del panel
+	 */
 	public void refresh() {
 		choice.removeAll();
 		ul.clear();
@@ -230,7 +245,9 @@ public class PanelTicket extends JPanel {
 		}
 		
 	}
-	
+	/**
+	 * Este metodo agrega a una lista los productos que mas tarde se van a grabar en el ticket
+	 */
 	public void agregar() {
 		if( choice.getSelectedItem() != "-------------------" && textField.getText()!="" && Integer.parseInt(textField.getText())>0 ) {
 			String pattern = "dd-MM-yyyy";
@@ -250,7 +267,9 @@ public class PanelTicket extends JPanel {
 			JOptionPane.showMessageDialog(null, "No hay cantidad seleccionada o no hay local seleccionado");
 		}
 	}
-	
+	/**
+	 * Este metodo genera el ticket y lo guarda en la BBDD
+	 */
 	public void grabar() {
 		String lista = "¿Desea hacer un ticket con los siguientes productos? : \n";
 		Double prec = 0.0;

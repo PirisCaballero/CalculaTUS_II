@@ -19,6 +19,9 @@ public class PanelPreguntas extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * En este panel se muestran las preguntas mas frecuentes y sus respuestas
+	 */
 	public PanelPreguntas() {
 
 		this.setBounds(0 , 0 , 574 , 470);
@@ -108,29 +111,5 @@ public class PanelPreguntas extends JPanel{
 		lblR6.setBounds(25, lblP6.getY()+40, this.getWidth()-100, 56);
 		lblR6.setFont(fuente);
 		add(lblR6);
-		
-//		JLabel lblP7 = new JLabel("¿Qué es Calculatus II?");
-//		lblP7.setBounds(25, lblR6.getY()+70, 450, 56);
-//		lblP7.setFont(new Font(auxFont1.getFontName(), auxFont1.getStyle(), 12));
-//		add(lblP7);
-//		
-//		JLabel lblR7 = new JLabel("<html><p>Calculatus II es una aplicación que te permitirá realizar\"\r\n" + 
-//				"				+ \" un seguimiento de tus compras. De esta manera, serás capaz de analizar tus gastos,\"\r\n" + 
-//				"				+ \" generar estadísticas y mucho más.</p></html>");
-//		lblR7.setBounds(25, lblP7.getY()+40, this.getWidth()-100, 56);
-//		lblR7.setFont(fuente);
-//		add(lblR7);
-//		
-//		JLabel lblP8 = new JLabel("¿Qué es Calculatus II?");
-//		lblP8.setBounds(25, lblR7.getY()+70, 450, 56);
-//		lblP8.setFont(new Font(auxFont1.getFontName(), auxFont1.getStyle(), 12));
-//		add(lblP8);
-//		
-//		JLabel lblR8 = new JLabel("<html><p>Calculatus II es una aplicación que te permitirá realizar\"\r\n" + 
-//				"				+ \" un seguimiento de tus compras. De esta manera, serás capaz de analizar tus gastos,\"\r\n" + 
-//				"				+ \" generar estadísticas y mucho más.</p></html>");
-//		lblR8.setBounds(25, lblP8.getY()+40, this.getWidth()-100, 56);
-//		lblR8.setFont(fuente);
-//		add(lblR8);
 	}
 }
