@@ -32,6 +32,11 @@ public class PanelCentral extends JPanel{
 	private JScrollPane sc;
 	private final DefaultTableModel DefaultModel = new DefaultTableModel( Data , nombres_col );
 	private PanelDatos pDat;
+	/**
+	 * Este panel solo se usa de contenedor para otros paneles
+	 * @param user
+	 * @param pd
+	 */
 	public PanelCentral(Users user , PanelDatos pd) {
 		this.main_user = user;
 		this.setBounds( 500 , 50 , 574 , 470);
@@ -55,7 +60,10 @@ public class PanelCentral extends JPanel{
 		this.add(pb);
 		this.repaint();
 	}
-	
+	/**
+	 * Este metodo se usa para para cambiar el panel, recibe una variable que es un numero, y segun cual sea se activa un panel u otro
+	 * @param panel
+	 */
 	public void setPanel(int panel) {
 		switch (panel) {
 		case 0:
@@ -178,9 +186,17 @@ public class PanelCentral extends JPanel{
 		
 		}
 	}
+	/**
+	 * Este metodo devuelve el opbjeto pp
+	 * @return el objeto tipo PanelProducto
+	 */
 	public PanelProducto getPanelProd() {
 		return this.pp;
 	}
+	/**
+	 * Este metodo devuelve un objeto estatico de la clase PanelTicket
+	 * @return el objeto tipo Panelticket
+	 */
 	public ShowTickets getPanelTicket() {
 		return PanelTicket.getFrameTickets();
 	}

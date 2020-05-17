@@ -37,6 +37,11 @@ public class PanelControl extends JPanel{
 	private PanelDatos dts;
 	private Connect cn;
 	
+	/**
+	 * En este panel se pueden acceder a diferentes funciones tales como opinar sobre la app, ver las estadisticas...
+	 * @param u
+	 * @param pdts
+	 */
 	public PanelControl(Users u, PanelDatos pdts) {
 		this.setBounds(0 , 0 , 574 , 470);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -98,7 +103,9 @@ public class PanelControl extends JPanel{
 		});
 	}
 	
-	
+	/**
+	 * Esta funcion establece los datos en la tabla del PanelDatos
+	 */
 	public void setDatos() {
 		ArrayList<Ticket> t = cn.getTicketsByUser(cn.RecuperarUsuario(choiceUsuario.getSelectedItem()));
 		DefaultTableModel modelo = new DefaultTableModel() {

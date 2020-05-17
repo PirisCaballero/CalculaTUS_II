@@ -38,6 +38,11 @@ public class PanelProducto extends JPanel {
 	private String localSel = "";
 	private PanelDatos pd;Choice choice_cat;
 
+	/**
+	 * Este Panel permite la creacion y adición de productos
+	 * @param us
+	 * @param pdts
+	 */
 	public PanelProducto(Users us , PanelDatos pdts) {
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
@@ -136,6 +141,12 @@ public class PanelProducto extends JPanel {
 		});
 
 	}
+	/**
+	 * Este metodo inserta el modelo que se le pasan como parametro en la  tabla del PanelDatos
+	 * @param locID
+	 * @param tabla
+	 * @return
+	 */
 	public DefaultTableModel dataToTable(int locID , JTable tabla) {
 		Connect cn = new Connect();
 		ArrayList<Producto> prList = cn.getProductsByLocal(user, locID);
@@ -154,7 +165,9 @@ public class PanelProducto extends JPanel {
 		this.pd.setData(modelo);
 		return modelo;
 	}
-	
+	/**
+	 * Este metodo recarga los elementos del panel
+	 */
 	public void refresh() {
 		localSel = choice.getSelectedItem();
 		choice.removeAll();
@@ -167,7 +180,9 @@ public class PanelProducto extends JPanel {
 		Local local = cn.getLocalByName(user, localSel);
 		cn.getProductsByLocal(user, local.getId());
 	}
-	
+	/**
+	 * Este metodo añade el producto a la BBDD
+	 */
 	public void agregarProducto() {
 		Connect cn = new Connect();
 		Local local = cn.getLocalByName(user, choice.getSelectedItem());

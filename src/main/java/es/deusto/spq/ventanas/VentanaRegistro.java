@@ -35,6 +35,9 @@ public class VentanaRegistro {
 	int admin;
 	private JTextField textField;
 
+	/**
+	 * Esta clase abre una ventana para que el usuario pueda registrarse en nuestra BBDD
+	 */
 	public VentanaRegistro() {
 
 		frame = new JFrame();
@@ -176,6 +179,10 @@ public class VentanaRegistro {
 		});
 	}
 	
+	/**
+	 * Este metodo crea el objeto Users y lo registra en la BBDD
+	 * @return boolean
+	 */
 	public boolean Registrar() {
 		labelErrorNombre.setVisible(false);
 		labelErrorApellido.setVisible(false);
@@ -229,7 +236,10 @@ public class VentanaRegistro {
 			return false;
 		}
 	}
-	
+	/**
+	 * Verifica si el usuario proporcionado como administrador es verdaderamente un administrador
+	 * @return boolean
+	 */
 	public boolean Admin() {
 		if (choiceAdmin.getSelectedIndex() == 0 || choiceAdmin.getSelectedIndex() == 2) {
 			lblCorreoDelAdministrador.setVisible(true);

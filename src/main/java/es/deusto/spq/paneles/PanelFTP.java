@@ -48,6 +48,10 @@ public class PanelFTP extends JPanel{
 	private String lastDir = "";private File fichero;private JFileChooser fileChooser;
 	private Choice Cfolders , C_files; private ArrayList<FTPFile> carp , fich;
 	private String path; private JLabel lblPath; JButton btnR; JFrame frameAddFolder;boolean addFolder;
+	/**
+	 * Este panel es el que permite poder subir y bajar archivos de la carpeta de cada usuario
+	 * @param us
+	 */
 	public PanelFTP(Users us) {
 		this.main_user = us;
 		this.setBounds(0 , 0 , 574 , 470);
@@ -174,7 +178,9 @@ public class PanelFTP extends JPanel{
 	}
 	
 	
-	
+	/**
+	 * Recarga el choice de seleccion de fichero
+	 */
 	public void ChoiceFiles() {
 		// TODO Auto-generated method stub
 		//Se actualiza el path segun el archivo que coges
@@ -184,6 +190,9 @@ public class PanelFTP extends JPanel{
 			lblPath.setText(path);
 		}
 	}
+	/**
+	 * Recarga el choice de seleccion de carpetas
+	 */
 	public void ChoiceFolders() {
 		// TODO Auto-generated method stub
 		//Se actualiza el path con la carpeta seleccionada
@@ -206,6 +215,10 @@ public class PanelFTP extends JPanel{
 			}
 		}
 	}
+	/**
+	 * Esta función te permite descargar un archivo de tu carpeta de usuario
+	 * @return
+	 */
 	public boolean Download() {
 		// TODO Auto-generated method stub
 		JFileChooser ch = new JFileChooser(path);
@@ -222,6 +235,10 @@ public class PanelFTP extends JPanel{
 			return false;
 		}
 	}
+	/**
+	 * Esta función te permite subir un archivo a tu carpeta FTP
+	 * @return
+	 */
 	public boolean Upload() {
 		// TODO Auto-generated method stub
 		if(lastDir == "") {
@@ -241,6 +258,9 @@ public class PanelFTP extends JPanel{
 			return false;
 		}
 	}
+	/**
+	 * Esta función recarga los datos del panel
+	 */
 	public void Refresh() {
 		// TODO Auto-generated method stub
 		C_files.removeAll();
@@ -264,6 +284,10 @@ public class PanelFTP extends JPanel{
 			}
 		}
 	}
+	/**
+	 * Esta funcion crea una ventana para la creacion de una carepat
+	 * @return
+	 */
 	public boolean AddFolder() {
 		// TODO Auto-generated method stub
 		frameAddFolder = new JFrame("Add Folder");
@@ -293,6 +317,11 @@ public class PanelFTP extends JPanel{
 		});
 		return addFolder;
 	}
+	/**
+	 * Esta función crea una carpeta en la carpeta del usuario
+	 * @param txtnombre
+	 * @return
+	 */
 	public boolean addFolderFunc(JTextField txtnombre) {
 		if(!txtnombre.getText().isEmpty()) {
 			if(cFTP.createDir( "\\"+main_user.getEmail()+"\\"+txtnombre.getText())) {

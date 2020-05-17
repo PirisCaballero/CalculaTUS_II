@@ -29,6 +29,12 @@ public class PanelNorte extends JPanel {
 	private Users main_user;
 	private ShowTickets pti;
 	private JButton preguntas;public static JLabel usuario;
+	/**
+	 * En este panel se encuentran todos los botones de la zona norte de la aplicación
+	 * @param user
+	 * @param fr
+	 * @param pt
+	 */
 	public PanelNorte(Users user , JFrame fr , ShowTickets pt) {
 		this.main_frame = fr;
 		this.main_user = user;
@@ -173,6 +179,9 @@ public class PanelNorte extends JPanel {
 			}
 		});
 	}
+	/**
+	 * Con este metodo el usuario puede cerrar sesion
+	 */
 	public void LogOut() {
 		System.out.println("Cerrando sesion...");
 		JOptionPane cerrar = new JOptionPane();
@@ -185,6 +194,9 @@ public class PanelNorte extends JPanel {
 			vtnLogin.setVisible(true);
 		}
 	}
+	/**
+	 * Con este metodo el usuario puede cerrar la aplicación
+	 */
 	public void Exit() {
 		main_frame.dispose();		
 		System.exit(0);

@@ -13,6 +13,10 @@ public class PanelBienvenida extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Users main_user;
+	/**
+	 * Este panel carga el panel principal donde se da la bienvennida al usuario
+	 * @param us
+	 */
 	public PanelBienvenida(Users us) {
 		main_user = us;
 		this.setBounds(0 , 0 , 574, 470);

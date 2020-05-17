@@ -25,6 +25,9 @@ public class Local {
 		this.emailDuenio = "";
 	}
 
+	/*
+	 * Construye un local vacio, sin parametros
+	 */
 	public Local() {
 	}
 

@@ -24,6 +24,9 @@ public class PanelCrearTicket extends JPanel{
 	String columnas []= {"Producto", "Precio", "Unidades"};
 	Object data[][]= {};
 	
+	/**
+	 * Este panel te permite la creacion de tickets
+	 */
 	public PanelCrearTicket() {
 		
 		this.setLayout(null);

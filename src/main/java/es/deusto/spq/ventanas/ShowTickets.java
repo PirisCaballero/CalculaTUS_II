@@ -30,6 +30,10 @@ public class ShowTickets extends JFrame{
 	private JTable tabla;
 	private ShowTicket st;
 	private Connect cn;
+	/**
+	 * Esta clase abre una ventana con una tabla en la cual se muestran todos los tickets del usuario
+	 * @param user
+	 */
 	public ShowTickets(Users user) {
 		this.setTitle("Tickets");
 		this.setVisible(true);

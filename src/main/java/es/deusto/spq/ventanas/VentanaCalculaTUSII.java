@@ -19,6 +19,10 @@ public class VentanaCalculaTUSII{
 	private Users main_user;
 	private static JFrame main_frame;
 	public static PanelCentral pc; private PanelDatos pd;private PanelSur ps;private PanelNorte pn;
+	/**
+	 * Genera la ventana principal de la aplicacion
+	 * @param user
+	 */
 	public VentanaCalculaTUSII(Users user) {
 		this.main_user = user;
 		VentanaCalculaTUSII.main_frame = new JFrame();
@@ -40,6 +44,10 @@ public class VentanaCalculaTUSII{
 		main_frame.add(pd);
 		main_frame.setVisible(true);
 	}
+	/**
+	 * devuelve el frame de la ventana
+	 * @return
+	 */
 	public static JFrame getFrame() {
 		return main_frame;
 	}

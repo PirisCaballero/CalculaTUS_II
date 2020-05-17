@@ -16,6 +16,11 @@ public class ShowDescuentos extends JFrame {
 	 */
 	private Users main_user;
 
+	/**
+	 * Abre una ventana para poder ver los descuentos
+	 * @deprecated
+	 * @param user
+	 */
 	public ShowDescuentos(Users user) {
 		this.setTitle("Descuentos");
 		this.setVisible(true);

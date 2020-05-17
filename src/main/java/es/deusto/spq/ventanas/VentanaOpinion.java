@@ -42,6 +42,10 @@ public class VentanaOpinion extends JFrame {
 	private JProgressBar progressBar;
 	private JLabel lblChars;
 
+	/**
+	 * Esta clase abre una ventana para que el usuario pueda dejar una reseña de la aplicación
+	 * @param us
+	 */
 	public VentanaOpinion(Users us) {
 		super("Opinion");
 		this.main_User = us;
