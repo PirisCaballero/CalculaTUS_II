@@ -38,9 +38,11 @@ public class PanelEstadisticas extends JPanel {
 	private PanelDatos pd;
 	private DefaultTableModel modelo;
 	private ArrayList<Local> arrayLocal;
-	private ArrayList<Producto> arrayProducto;
+	private ArrayList<Producto> arrayProducto, prMios;
 	private String localSel="";
 	private JTable tablaProductos;
+	private ArrayList<Ticket> tckArr ;
+	Local l;
 	
 	Connect cn;
 	
@@ -116,7 +118,7 @@ public class PanelEstadisticas extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				buscar();
 				
 			}
 		});
@@ -135,56 +137,76 @@ public class PanelEstadisticas extends JPanel {
 		cn.getProductsByLocal(u, local.getId());
 	}
 	public void buscar() {
-		double porcentajeAlimentación = 0.0;
-		double porcentajeSalHig = 0.0;
-		double porcentajeOcio = 0.0;
-		double porcentajeTecnologia = 0.0;
-		double porcentajeFacturas = 0.0;
-		double porcentajeRopa = 0.0;
-		ArrayList<Producto> pr = new ArrayList<Producto>();
-		ArrayList<Ticket> arrayTicket = new ArrayList<Ticket>();
-		arrayTicket = cn.getTicketsByUser(u);
-		for(int i = 0; i < arrayTicket.size();i++) {
-			int t = arrayTicket.get(i).getID_Lugar_Compra();
-			pr = cn.getProductsByTicket(u, t);
-			if(pr.get(i).getCategoria()=="Alimentacion") porcentajeAlimentación+=1;
-			else if(pr.get(i).getCategoria()=="Salud/Higiene") porcentajeSalHig+=1;
-			else if(pr.get(i).getCategoria()=="Ocio") porcentajeOcio+=1;
-			else if(pr.get(i).getCategoria()=="Tecnologia") porcentajeTecnologia+=1;
-			else if(pr.get(i).getCategoria()=="Facturas") porcentajeFacturas+=1;
-			else if(pr.get(i).getCategoria()=="Ropa") porcentajeRopa+=1;
-			else {
-				JOptionPane.showConfirmDialog(null, "No hay tickets");
-			}
-			pr.get(i).getCategoria();
+//		double porcentajeAlimentación = 0.0;
+//		double porcentajeSalHig = 0.0;
+//		double porcentajeOcio = 0.0;
+//		double porcentajeTecnologia = 0.0;
+//		double porcentajeFacturas = 0.0;
+//		double porcentajeRopa = 0.0;
+//		ArrayList<Producto> pr = new ArrayList<Producto>();
+//		ArrayList<Ticket> arrayTicket = new ArrayList<Ticket>();
+//		arrayTicket = cn.getTicketsByUser(u);
+//		for(int i = 0; i < arrayTicket.size();i++) {
+//			int t = arrayTicket.get(i).getID_Lugar_Compra();
+//			pr = cn.getProductsByTicket(u, t);
+//			if(pr.get(i).getCategoria()=="Alimentacion") porcentajeAlimentación+=1;
+//			else if(pr.get(i).getCategoria()=="Salud/Higiene") porcentajeSalHig+=1;
+//			else if(pr.get(i).getCategoria()=="Ocio") porcentajeOcio+=1;
+//			else if(pr.get(i).getCategoria()=="Tecnologia") porcentajeTecnologia+=1;
+//			else if(pr.get(i).getCategoria()=="Facturas") porcentajeFacturas+=1;
+//			else if(pr.get(i).getCategoria()=="Ropa") porcentajeRopa+=1;
+//			else {
+//				JOptionPane.showConfirmDialog(null, "No hay tickets");
+//			}
+//			pr.get(i).getCategoria();
+//		}
+//		double total = porcentajeAlimentación+porcentajeFacturas+porcentajeOcio+ porcentajeRopa+porcentajeSalHig+porcentajeTecnologia;
+//		porcentajeAlimentación = porcentajeAlimentación/total*100;
+//		porcentajeSalHig = porcentajeSalHig/total*100;
+//		porcentajeOcio = porcentajeOcio/total*100;
+//		porcentajeTecnologia = porcentajeTecnologia/total*100;
+//		porcentajeFacturas = porcentajeFacturas/total*100;
+//		porcentajeRopa = porcentajeRopa/total*100;
+//		
+//		DefaultTableModel dtm = new DefaultTableModel(data, columnas);
+//		tablaProductos = new JTable(dtm);
+//		tablaProductos.setBounds(20, 240, 500, 180);
+//		tablaProductos.setSize(490, 100);
+//		tablaProductos.setPreferredScrollableViewportSize(new Dimension(490, 100));
+//		for(int i =0; i < total;i++) {
+//			data[i][0] = arrayTicket.get(i).getNombreUsuario();
+//			data[i][1] = arrayTicket.get(i).getID_Lugar_Compra();
+//			data[i][2] = pr.get(i).getCategoria();
+//			if(pr.get(i).getCategoria()=="Alimentacion") data[i][3] = porcentajeAlimentación;
+//			else if(pr.get(i).getCategoria()=="Salud/Higiene") data[i][3] = porcentajeSalHig;
+//			else if(pr.get(i).getCategoria()=="Ocio") data[i][3] = porcentajeOcio;
+//			else if(pr.get(i).getCategoria()=="Tecnologia") data[i][3] = porcentajeTecnologia;
+//			else if(pr.get(i).getCategoria()=="Facturas") data[i][3] = porcentajeFacturas;
+//			else if(pr.get(i).getCategoria()=="Ropa") data[i][3] = porcentajeRopa;
+//			
+//		}
+//		JScrollPane scrollPane = new JScrollPane(tablaProductos);
+//		this.add(scrollPane, BorderLayout.CENTER);
+//		pd.setData(dtm);
+		ArrayList<Producto> pr = cn.getProductsByLocal(u, cn.getLocalByName(u, chTienda.getSelectedItem()).getId());
+		for (int i = 0; i < pr.size(); i++) {
+			System.out.println(pr.get(i).getCategoria());
 		}
-		double total = porcentajeAlimentación+porcentajeFacturas+porcentajeOcio+ porcentajeRopa+porcentajeSalHig+porcentajeTecnologia;
-		porcentajeAlimentación = porcentajeAlimentación/total*100;
-		porcentajeSalHig = porcentajeSalHig/total*100;
-		porcentajeOcio = porcentajeOcio/total*100;
-		porcentajeTecnologia = porcentajeTecnologia/total*100;
-		porcentajeFacturas = porcentajeFacturas/total*100;
-		porcentajeRopa = porcentajeRopa/total*100;
 		
-		DefaultTableModel dtm = new DefaultTableModel(data, columnas);
-		tablaProductos = new JTable(dtm);
-		tablaProductos.setBounds(20, 240, 500, 180);
-		tablaProductos.setSize(490, 100);
-		tablaProductos.setPreferredScrollableViewportSize(new Dimension(490, 100));
-		for(int i =0; i < total;i++) {
-			data[i][0] = arrayTicket.get(i).getNombreUsuario();
-			data[i][1] = arrayTicket.get(i).getID_Lugar_Compra();
-			data[i][2] = pr.get(i).getCategoria();
-			if(pr.get(i).getCategoria()=="Alimentacion") data[i][3] = porcentajeAlimentación;
-			else if(pr.get(i).getCategoria()=="Salud/Higiene") data[i][3] = porcentajeSalHig;
-			else if(pr.get(i).getCategoria()=="Ocio") data[i][3] = porcentajeOcio;
-			else if(pr.get(i).getCategoria()=="Tecnologia") data[i][3] = porcentajeTecnologia;
-			else if(pr.get(i).getCategoria()=="Facturas") data[i][3] = porcentajeFacturas;
-			else if(pr.get(i).getCategoria()=="Ropa") data[i][3] = porcentajeRopa;
+		prMios = cn.getProductsByUser(u);
+		int contador = 0;
+		double total = 0;
+		for (int i = 0; i < prMios.size(); i++) {
+			System.out.println(prMios.get(i).getCategoria());
+			if(prMios.get(i).getCategoria()==chTipoProducto.getSelectedItem()) {
+				contador += 1;
+			}
 			
 		}
-		JScrollPane scrollPane = new JScrollPane(tablaProductos);
-		this.add(scrollPane, BorderLayout.CENTER);
-		pd.setData(dtm);
+		total = contador/prMios.size()*100;
+		System.out.println(total);
+			
+//		System.out.println(chTienda.getSelectedItem());
+//		System.out.println(chTipoProducto.getSelectedItem());
 	}
 }

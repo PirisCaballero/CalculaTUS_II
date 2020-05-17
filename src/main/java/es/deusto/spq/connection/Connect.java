@@ -845,6 +845,31 @@ public class Connect {
 		}
 	}
 
+	public ArrayList<Producto> getProductsByUser(Users u){
+		if(u!=null) {
+			ArrayList<Producto> prodArr = new ArrayList<Producto>();
+			String sql = "Select * from productos where email_comprador = ?";
+			Connection cn = OpenConnection();
+			try {
+				PreparedStatement stmt = cn.prepareStatement(sql);
+				stmt.setString(1, u.getEmail());
+				ResultSet rs = stmt.executeQuery();
+				while(rs.next()) {
+					Producto p = new Producto(rs.getDouble(3), rs.getString(2), 1, rs.getInt(4), rs.getString(5), rs.getString(6));
+					p.setID(rs.getInt(1));
+					prodArr.add(p);
+				}
+				goodBy(cn);
+				return prodArr;
+			} catch (SQLException e) {
+				System.out.println(e);
+				e.printStackTrace();
+				return null;
+			}
+		}
+		else return null;
+	}
+	
 	/**
 	 * Busca un Producto con un Nombre y un Usuario (comprador) especifico
 	 * 
