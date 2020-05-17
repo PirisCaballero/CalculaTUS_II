@@ -1,0 +1,663 @@
+\hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect}{}\doxysection{es.\+deusto.\+spq.\+connection.\+Connect Class Reference}
+\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect}\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Connection \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_ac24144f20ca3e4b4bebcb05cb6c7bfe4}{Open\+Connection}} ()
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_af92207c6c75c8c809c05ebaf05a08888}{say\+Hello}} (Connection cn)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a1956cbec3be479d6f6fa11caae7aafe8}{good\+By}} (Connection cn)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a240b9af25e355e8dd651ec9fb9817a7c}{buscar\+Usuario}} (String email)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a9eebc214920e485a254f1832424a69f9}{buscar\+Local}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user, \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} loc)
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a8f5b05440d538eb99f6208431a1b2774}{get\+Local\+By\+Id}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user, int ID)
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a68af32bba292b765677a007abdceaabb}{Verificar\+Usuario}} (String email, String pass)
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_abc00af3a4a535ecee1f3d20df3e2cf15}{Recuperar\+Usuario}} (String user\+\_\+email)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2446e574928f38ae5e24f317de1dbf80}{Regis\+Local}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user, \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} loc)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a5d3102c882a65b2e2295a1f9d1119152}{is\+Admin}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a1ab0ece4588feee9b6580fc099b8ee49}{Regis\+User}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} us)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a810add4fbbe8be06ed108613fee70cbb}{get\+Products\+By\+Ticket}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user, int ticket\+ID)
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a4a1e9809958325575192a4df4b56a3f5}{get\+Ticket\+By\+Ticket\+ID}} (int ID)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a54cc5a92564b5f3d070ea506ea722411}{get\+Users}} ()
+\item 
+void \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a34c080e01e96438869b8dfc3f54b3a51}{list\+Users}} ()
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a6e674808e5be1cf51b46effe41ddf3ce}{get\+Local\+By\+Name}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} us, String loc\+Name)
+\item 
+String \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a521a060a53b4891e65dcf91d0891d409}{get\+Categoria\+By\+ID}} (int id)
+\item 
+Array\+List$<$ String $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a22d3c96c2db103eb69fd2a003c7326d9}{get\+Categorias}} ()
+\item 
+Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a047939e0733b1306caae402a7d1a1e62}{get\+Products\+By\+Local}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} us, int loc\+\_\+\+ID)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a48108ae18a65a942438f4c9afe9837ac}{anadir\+Producto}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} us\+Ad, \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} pr, int loc\+\_\+\+ID)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a0a19bab514c88989cedcf53fcb7c5180}{cambio\+De\+Tipo\+De\+Usuario}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} log\+\_\+user, String user\+\_\+to\+\_\+change, int cambio)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a23e28af24d0ef3d9c778dfc6d9285b8f}{get\+Locales}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} us)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2bbe906ecba4c447cf23a7e3bd7cf2cb}{get\+Users\+By\+Admin}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} us\+Ad)
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a09be9f7af638c403d3a6f371de2bf1f2}{get\+Product\+By\+Name}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user, String Nombre)
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2140ef31fdd3a7e743d38c1b929ad366}{crear\+Ticket}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user, \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} ti)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_aff2dff89393ae3e4d429a6c21c1397d2}{introducir\+Productos\+Comprador}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user, Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} $>$ prL, \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} t)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a45bec72554d801fd300453869a2af5b6}{get\+Tickets\+By\+User}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_aaacd8b9f41e60346877bd88edb01cb8d}{Save\+Opinion}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_opinion}{Opinion}} op)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a51174e2fb89c214803e937243ce90173}{update\+Data}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} us, String nombre, String pass)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 18 of file Connect.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a48108ae18a65a942438f4c9afe9837ac}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a48108ae18a65a942438f4c9afe9837ac}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!anadirProducto@{anadirProducto}}
+\index{anadirProducto@{anadirProducto}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{anadirProducto()}{anadirProducto()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+anadir\+Producto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{us\+Ad,  }\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}}}]{pr,  }\item[{int}]{loc\+\_\+\+ID }\end{DoxyParamCaption})}
+
+Añade productos a la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em us\+Ad} & \\
+\hline
+{\em pr} & \\
+\hline
+{\em loc\+\_\+\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 687 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a9eebc214920e485a254f1832424a69f9}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a9eebc214920e485a254f1832424a69f9}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!buscarLocal@{buscarLocal}}
+\index{buscarLocal@{buscarLocal}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{buscarLocal()}{buscarLocal()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+buscar\+Local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}}}]{loc }\end{DoxyParamCaption})}
+
+Busca un local en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em loc} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 135 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a240b9af25e355e8dd651ec9fb9817a7c}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a240b9af25e355e8dd651ec9fb9817a7c}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!buscarUsuario@{buscarUsuario}}
+\index{buscarUsuario@{buscarUsuario}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{buscarUsuario()}{buscarUsuario()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+buscar\+Usuario (\begin{DoxyParamCaption}\item[{String}]{email }\end{DoxyParamCaption})}
+
+Busca un usuario en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 101 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a0a19bab514c88989cedcf53fcb7c5180}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a0a19bab514c88989cedcf53fcb7c5180}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!cambioDeTipoDeUsuario@{cambioDeTipoDeUsuario}}
+\index{cambioDeTipoDeUsuario@{cambioDeTipoDeUsuario}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{cambioDeTipoDeUsuario()}{cambioDeTipoDeUsuario()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+cambio\+De\+Tipo\+De\+Usuario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{log\+\_\+user,  }\item[{String}]{user\+\_\+to\+\_\+change,  }\item[{int}]{cambio }\end{DoxyParamCaption})}
+
+Cambia un Usuario normal a Admin o viceversa
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+\_\+user} & \\
+\hline
+{\em user\+\_\+to\+\_\+change} & \\
+\hline
+{\em cambio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 733 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2140ef31fdd3a7e743d38c1b929ad366}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2140ef31fdd3a7e743d38c1b929ad366}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!crearTicket@{crearTicket}}
+\index{crearTicket@{crearTicket}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{crearTicket()}{crearTicket()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} es.\+deusto.\+spq.\+connection.\+Connect.\+crear\+Ticket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}}}]{ti }\end{DoxyParamCaption})}
+
+Funcion para crear un ticket
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em ti} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} 
+\end{DoxyReturn}
+
+
+Definition at line 890 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a521a060a53b4891e65dcf91d0891d409}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a521a060a53b4891e65dcf91d0891d409}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getCategoriaByID@{getCategoriaByID}}
+\index{getCategoriaByID@{getCategoriaByID}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getCategoriaByID()}{getCategoriaByID()}}
+{\footnotesize\ttfamily String es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Categoria\+By\+ID (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Busca una Categoria por su nombre en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String 
+\end{DoxyReturn}
+
+
+Definition at line 585 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a22d3c96c2db103eb69fd2a003c7326d9}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a22d3c96c2db103eb69fd2a003c7326d9}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getCategorias@{getCategorias}}
+\index{getCategorias@{getCategorias}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getCategorias()}{getCategorias()}}
+{\footnotesize\ttfamily Array\+List$<$String$>$ es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Categorias (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devuelve una lista de Categorias
+
+\begin{DoxyReturn}{Returns}
+Array\+List de Categorias 
+\end{DoxyReturn}
+
+
+Definition at line 621 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a8f5b05440d538eb99f6208431a1b2774}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a8f5b05440d538eb99f6208431a1b2774}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getLocalById@{getLocalById}}
+\index{getLocalById@{getLocalById}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getLocalById()}{getLocalById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Local\+By\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{int}]{ID }\end{DoxyParamCaption})}
+
+Recibe \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} buscado en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a6e674808e5be1cf51b46effe41ddf3ce}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a6e674808e5be1cf51b46effe41ddf3ce}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getLocalByName@{getLocalByName}}
+\index{getLocalByName@{getLocalByName}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getLocalByName()}{getLocalByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Local\+By\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{us,  }\item[{String}]{loc\+Name }\end{DoxyParamCaption})}
+
+Busca un \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} por su nombre en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & \\
+\hline
+{\em loc\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} 
+\end{DoxyReturn}
+
+
+Definition at line 549 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a23e28af24d0ef3d9c778dfc6d9285b8f}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a23e28af24d0ef3d9c778dfc6d9285b8f}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getLocales@{getLocales}}
+\index{getLocales@{getLocales}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getLocales()}{getLocales()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}}$>$ es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Locales (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{us }\end{DoxyParamCaption})}
+
+Busca los Locales de un Usuario en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List de Locales 
+\end{DoxyReturn}
+
+
+Definition at line 784 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a09be9f7af638c403d3a6f371de2bf1f2}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a09be9f7af638c403d3a6f371de2bf1f2}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getProductByName@{getProductByName}}
+\index{getProductByName@{getProductByName}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getProductByName()}{getProductByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Product\+By\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{String}]{Nombre }\end{DoxyParamCaption})}
+
+Busca un \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} con un Nombre y un Usuario (comprador) especifico
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em Nombre} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} 
+\end{DoxyReturn}
+
+
+Definition at line 855 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a047939e0733b1306caae402a7d1a1e62}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a047939e0733b1306caae402a7d1a1e62}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getProductsByLocal@{getProductsByLocal}}
+\index{getProductsByLocal@{getProductsByLocal}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getProductsByLocal()}{getProductsByLocal()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}}$>$ es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Products\+By\+Local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{us,  }\item[{int}]{loc\+\_\+\+ID }\end{DoxyParamCaption})}
+
+Busca una lista de Productos de un \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} y un Usuario en concreto
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & \\
+\hline
+{\em loc\+\_\+\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List de Productos 
+\end{DoxyReturn}
+
+
+Definition at line 647 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a810add4fbbe8be06ed108613fee70cbb}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a810add4fbbe8be06ed108613fee70cbb}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getProductsByTicket@{getProductsByTicket}}
+\index{getProductsByTicket@{getProductsByTicket}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getProductsByTicket()}{getProductsByTicket()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}}$>$ es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Products\+By\+Ticket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{int}]{ticket\+ID }\end{DoxyParamCaption})}
+
+Busca los Productos de un \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} y un Usuario
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em ticket\+ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List de Productos de un \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} 
+\end{DoxyReturn}
+
+
+Definition at line 445 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a4a1e9809958325575192a4df4b56a3f5}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a4a1e9809958325575192a4df4b56a3f5}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getTicketByTicketID@{getTicketByTicketID}}
+\index{getTicketByTicketID@{getTicketByTicketID}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getTicketByTicketID()}{getTicketByTicketID()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Ticket\+By\+Ticket\+ID (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+Busca un \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} por su ID en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}} 
+\end{DoxyReturn}
+
+
+Definition at line 477 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a45bec72554d801fd300453869a2af5b6}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a45bec72554d801fd300453869a2af5b6}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getTicketsByUser@{getTicketsByUser}}
+\index{getTicketsByUser@{getTicketsByUser}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getTicketsByUser()}{getTicketsByUser()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}}$>$ es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Tickets\+By\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user }\end{DoxyParamCaption})}
+
+Busca todos los tickets de un Usuario (comprador) en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List de Tickets 
+\end{DoxyReturn}
+
+
+Definition at line 984 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a54cc5a92564b5f3d070ea506ea722411}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a54cc5a92564b5f3d070ea506ea722411}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getUsers@{getUsers}}
+\index{getUsers@{getUsers}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getUsers()}{getUsers()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}$>$ es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Busca todos los Usuarios en la BD
+
+\begin{DoxyReturn}{Returns}
+Array\+List de Usuarios 
+\end{DoxyReturn}
+
+
+Definition at line 506 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2bbe906ecba4c447cf23a7e3bd7cf2cb}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2bbe906ecba4c447cf23a7e3bd7cf2cb}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!getUsersByAdmin@{getUsersByAdmin}}
+\index{getUsersByAdmin@{getUsersByAdmin}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{getUsersByAdmin()}{getUsersByAdmin()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}$>$ es.\+deusto.\+spq.\+connection.\+Connect.\+get\+Users\+By\+Admin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{us\+Ad }\end{DoxyParamCaption})}
+
+Busca Usuarios cuyo email del admin es el mismo
+
+
+\begin{DoxyParams}{Parameters}
+{\em us\+Ad} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List de Usuarios 
+\end{DoxyReturn}
+
+
+Definition at line 816 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a1956cbec3be479d6f6fa11caae7aafe8}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a1956cbec3be479d6f6fa11caae7aafe8}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!goodBy@{goodBy}}
+\index{goodBy@{goodBy}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{goodBy()}{goodBy()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+good\+By (\begin{DoxyParamCaption}\item[{Connection}]{cn }\end{DoxyParamCaption})}
+
+Cierra la conexion con la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em cn} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_aff2dff89393ae3e4d429a6c21c1397d2}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_aff2dff89393ae3e4d429a6c21c1397d2}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!introducirProductosComprador@{introducirProductosComprador}}
+\index{introducirProductosComprador@{introducirProductosComprador}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{introducirProductosComprador()}{introducirProductosComprador()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+introducir\+Productos\+Comprador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{Array\+List$<$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_producto}{Producto}} $>$}]{prL,  }\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_ticket}{Ticket}}}]{t }\end{DoxyParamCaption})}
+
+Funcion para añadir productos a la tabla de elementos de compra
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em prL} & \\
+\hline
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 948 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a5d3102c882a65b2e2295a1f9d1119152}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a5d3102c882a65b2e2295a1f9d1119152}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!isAdmin@{isAdmin}}
+\index{isAdmin@{isAdmin}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{isAdmin()}{isAdmin()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+is\+Admin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user }\end{DoxyParamCaption})}
+
+Comprueba si un Usuario es Admin
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 353 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a34c080e01e96438869b8dfc3f54b3a51}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a34c080e01e96438869b8dfc3f54b3a51}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!listUsers@{listUsers}}
+\index{listUsers@{listUsers}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{listUsers()}{listUsers()}}
+{\footnotesize\ttfamily void es.\+deusto.\+spq.\+connection.\+Connect.\+list\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mete todos los Usuarios en un Array\+List 
+
+Definition at line 535 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_ac24144f20ca3e4b4bebcb05cb6c7bfe4}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_ac24144f20ca3e4b4bebcb05cb6c7bfe4}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!OpenConnection@{OpenConnection}}
+\index{OpenConnection@{OpenConnection}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{OpenConnection()}{OpenConnection()}}
+{\footnotesize\ttfamily Connection es.\+deusto.\+spq.\+connection.\+Connect.\+Open\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Crea la conexion a la Base de Datos
+
+\begin{DoxyReturn}{Returns}
+conn 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_abc00af3a4a535ecee1f3d20df3e2cf15}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_abc00af3a4a535ecee1f3d20df3e2cf15}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!RecuperarUsuario@{RecuperarUsuario}}
+\index{RecuperarUsuario@{RecuperarUsuario}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{RecuperarUsuario()}{RecuperarUsuario()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} es.\+deusto.\+spq.\+connection.\+Connect.\+Recuperar\+Usuario (\begin{DoxyParamCaption}\item[{String}]{user\+\_\+email }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+email} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+User 
+\end{DoxyReturn}
+
+
+Definition at line 266 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2446e574928f38ae5e24f317de1dbf80}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a2446e574928f38ae5e24f317de1dbf80}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!RegisLocal@{RegisLocal}}
+\index{RegisLocal@{RegisLocal}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{RegisLocal()}{RegisLocal()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+Regis\+Local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}}}]{loc }\end{DoxyParamCaption})}
+
+Registra un \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_local}{Local}} en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em loc} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 310 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a1ab0ece4588feee9b6580fc099b8ee49}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a1ab0ece4588feee9b6580fc099b8ee49}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!RegisUser@{RegisUser}}
+\index{RegisUser@{RegisUser}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{RegisUser()}{RegisUser()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+Regis\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{us }\end{DoxyParamCaption})}
+
+Registra un Usuario en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 372 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_aaacd8b9f41e60346877bd88edb01cb8d}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_aaacd8b9f41e60346877bd88edb01cb8d}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!SaveOpinion@{SaveOpinion}}
+\index{SaveOpinion@{SaveOpinion}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{SaveOpinion()}{SaveOpinion()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+Save\+Opinion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_opinion}{Opinion}}}]{op }\end{DoxyParamCaption})}
+
+Guarda una \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_opinion}{Opinion}} en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 1020 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_af92207c6c75c8c809c05ebaf05a08888}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_af92207c6c75c8c809c05ebaf05a08888}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!sayHello@{sayHello}}
+\index{sayHello@{sayHello}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{sayHello()}{sayHello()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+say\+Hello (\begin{DoxyParamCaption}\item[{Connection}]{cn }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em cn} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a51174e2fb89c214803e937243ce90173}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a51174e2fb89c214803e937243ce90173}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!updateData@{updateData}}
+\index{updateData@{updateData}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{updateData()}{updateData()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect.\+update\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{us,  }\item[{String}]{nombre,  }\item[{String}]{pass }\end{DoxyParamCaption})}
+
+Actualiza el Nombre o la Contraseña de un Usuario en la BD
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & \\
+\hline
+{\em nombre} & \\
+\hline
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 1054 of file Connect.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a68af32bba292b765677a007abdceaabb}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_a68af32bba292b765677a007abdceaabb}} 
+\index{es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}!VerificarUsuario@{VerificarUsuario}}
+\index{VerificarUsuario@{VerificarUsuario}!es.deusto.spq.connection.Connect@{es.deusto.spq.connection.Connect}}
+\doxysubsubsection{\texorpdfstring{VerificarUsuario()}{VerificarUsuario()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} es.\+deusto.\+spq.\+connection.\+Connect.\+Verificar\+Usuario (\begin{DoxyParamCaption}\item[{String}]{email,  }\item[{String}]{pass }\end{DoxyParamCaption})}
+
+Comprueba si existe un Usuario
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & \\
+\hline
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+User 
+\end{DoxyReturn}
+
+
+Definition at line 215 of file Connect.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/es/deusto/spq/connection/\mbox{\hyperlink{_connect_8java}{Connect.\+java}}\end{DoxyCompactItemize}

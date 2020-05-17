@@ -1,0 +1,228 @@
+\hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p}{}\doxysection{es.\+deusto.\+spq.\+connection.\+Connect\+F\+TP Class Reference}
+\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p}\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_adef92edd26edc7642c251a84e2c9a078}{Connect\+F\+TP}} (\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}} user)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a409482dcb0a82ffa8106d945cd7806e9}{Open\+Conexion}} ()
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_af7fd4a7d52fb17f3fc6703bc953fb092}{close\+Connection}} ()
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a3750602c4035cb278a532542d9f04ffa}{regis\+User\+Folder}} ()
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_afb0290aceafadcd876c2ed1fb5070245}{upload\+File}} (File f, String path)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a053282f19eccac0b34e47297e150610e}{download\+File}} (String path)
+\item 
+Array\+List$<$ F\+T\+P\+File $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_afca47c9bf9de5c7c0e82fa0a011235c4}{get\+User\+Folders}} (String path)
+\item 
+Array\+List$<$ F\+T\+P\+File $>$ \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_ac2c4ff268f9b5b7469504b760e2b9051}{get\+User\+Files}} (String path)
+\item 
+boolean \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a9e2d8c4bed03bc917ea987a420558eba}{create\+Dir}} (String path)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static String \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_affc8e8d97989042de9ebe5cc7d1377f3}{strip\+Accents}} (String str)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 17 of file Connect\+F\+T\+P.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_adef92edd26edc7642c251a84e2c9a078}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_adef92edd26edc7642c251a84e2c9a078}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!ConnectFTP@{ConnectFTP}}
+\index{ConnectFTP@{ConnectFTP}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{ConnectFTP()}{ConnectFTP()}}
+{\footnotesize\ttfamily es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+Connect\+F\+TP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file Connect\+F\+T\+P.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_af7fd4a7d52fb17f3fc6703bc953fb092}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_af7fd4a7d52fb17f3fc6703bc953fb092}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!closeConnection@{closeConnection}}
+\index{closeConnection@{closeConnection}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{closeConnection()}{closeConnection()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+close\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cierra la conexion F\+TP
+
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a9e2d8c4bed03bc917ea987a420558eba}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a9e2d8c4bed03bc917ea987a420558eba}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!createDir@{createDir}}
+\index{createDir@{createDir}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{createDir()}{createDir()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+create\+Dir (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption})}
+
+Crea directorio para una nueva carpeta
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 252 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a053282f19eccac0b34e47297e150610e}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a053282f19eccac0b34e47297e150610e}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!downloadFile@{downloadFile}}
+\index{downloadFile@{downloadFile}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{downloadFile()}{downloadFile()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+download\+File (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption})}
+
+Descarga un fichero de un directorio en concreto
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 167 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_ac2c4ff268f9b5b7469504b760e2b9051}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_ac2c4ff268f9b5b7469504b760e2b9051}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!getUserFiles@{getUserFiles}}
+\index{getUserFiles@{getUserFiles}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{getUserFiles()}{getUserFiles()}}
+{\footnotesize\ttfamily Array\+List$<$F\+T\+P\+File$>$ es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+get\+User\+Files (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption})}
+
+Busca los archivos de los Usuarios
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List de archivos del F\+TP 
+\end{DoxyReturn}
+
+
+Definition at line 224 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_afca47c9bf9de5c7c0e82fa0a011235c4}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_afca47c9bf9de5c7c0e82fa0a011235c4}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!getUserFolders@{getUserFolders}}
+\index{getUserFolders@{getUserFolders}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{getUserFolders()}{getUserFolders()}}
+{\footnotesize\ttfamily Array\+List$<$F\+T\+P\+File$>$ es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+get\+User\+Folders (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption})}
+
+Busca las carpetas de los Usuarios
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array\+List de archivos del F\+TP 
+\end{DoxyReturn}
+
+
+Definition at line 194 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a409482dcb0a82ffa8106d945cd7806e9}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a409482dcb0a82ffa8106d945cd7806e9}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!OpenConexion@{OpenConexion}}
+\index{OpenConexion@{OpenConexion}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{OpenConexion()}{OpenConexion()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+Open\+Conexion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Abre la conexion F\+TP
+
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 62 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a3750602c4035cb278a532542d9f04ffa}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_a3750602c4035cb278a532542d9f04ffa}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!regisUserFolder@{regisUserFolder}}
+\index{regisUserFolder@{regisUserFolder}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{regisUserFolder()}{regisUserFolder()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+regis\+User\+Folder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Crea la carpeta de un Usuario
+
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_affc8e8d97989042de9ebe5cc7d1377f3}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_affc8e8d97989042de9ebe5cc7d1377f3}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!stripAccents@{stripAccents}}
+\index{stripAccents@{stripAccents}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{stripAccents()}{stripAccents()}}
+{\footnotesize\ttfamily static String es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+strip\+Accents (\begin{DoxyParamCaption}\item[{String}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Quita los acentos de los String
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String 
+\end{DoxyReturn}
+
+
+Definition at line 32 of file Connect\+F\+T\+P.\+java.
+
+\mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_afb0290aceafadcd876c2ed1fb5070245}\label{classes_1_1deusto_1_1spq_1_1connection_1_1_connect_f_t_p_afb0290aceafadcd876c2ed1fb5070245}} 
+\index{es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}!uploadFile@{uploadFile}}
+\index{uploadFile@{uploadFile}!es.deusto.spq.connection.ConnectFTP@{es.deusto.spq.connection.ConnectFTP}}
+\doxysubsubsection{\texorpdfstring{uploadFile()}{uploadFile()}}
+{\footnotesize\ttfamily boolean es.\+deusto.\+spq.\+connection.\+Connect\+F\+T\+P.\+upload\+File (\begin{DoxyParamCaption}\item[{File}]{f,  }\item[{String}]{path }\end{DoxyParamCaption})}
+
+Sube un archivo de un directorio en concreto
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & \\
+\hline
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+Definition at line 137 of file Connect\+F\+T\+P.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/es/deusto/spq/connection/\mbox{\hyperlink{_connect_f_t_p_8java}{Connect\+F\+T\+P.\+java}}\end{DoxyCompactItemize}

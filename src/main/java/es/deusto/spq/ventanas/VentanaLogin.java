@@ -94,7 +94,7 @@ public class VentanaLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(null, "Inicio: " +LOG());
+				LOG();
 			}
 		});
 	}

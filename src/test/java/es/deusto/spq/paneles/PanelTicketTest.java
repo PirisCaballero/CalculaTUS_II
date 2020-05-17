@@ -5,18 +5,28 @@ import static org.junit.Assert.assertFalse;
 import java.awt.Choice;
 
 import org.junit.*;
+import org.mockito.Mock;
 
 import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.ShowTickets;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
-public class PanelTicketTest {
+import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+import org.junit.Test;
+
+public class PanelTicketTest {
+	
 	static Users u;
 	static PanelDatos pd;
 	static PanelTicket pt;
 	static ShowTickets st;
 	static VentanaCalculaTUSII vt;
+	
+	PanelTicket pt2 = mock(PanelTicket.class);
 	
 	@BeforeClass
 	public static void initialize() {
@@ -37,4 +47,9 @@ public class PanelTicketTest {
 		assertFalse(s.equals(null));
 	}
 	
+	@Test
+	public void testSetLocalesyPorductos() {
+		when(pt2.setLocalesyProductos()).thenReturn(true);
+		assertTrue(pt2.setLocalesyProductos());
+	}
 }
