@@ -194,8 +194,6 @@ public class VentanaRegistro {
 						.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 								+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 				&& !textCorreo.getText().isEmpty() && !textContrasena.getText().isEmpty()) {
-			// todo bien
-			System.out.println("Todo bien!");
 			String correo_admin = "";
 			if (textField.getText().isEmpty()) {
 				correo_admin = "null";
@@ -204,14 +202,12 @@ public class VentanaRegistro {
 			}
 			Users user = new Users(textNombre.getText(), textApellido.getText(), textCorreo.getText(),
 					textContrasena.getText(), admin, correo_admin);
-			System.out.println(user.toString());
 			Connect conn = new Connect();
 			conn.RegisUser(user);
 			VentanaLogin VL = new VentanaLogin();
 			VL.setVisible(true);
 			ConnectFTP Cftp = new ConnectFTP(user);
 			Cftp.OpenConexion();
-			System.out.println( Cftp.regisUserFolder() );
 			frame.dispose();
 			return true;
 		} else if (!textNombre.getText().matches("^[a-z A-Z]*$") || textNombre.getText().isEmpty()) {

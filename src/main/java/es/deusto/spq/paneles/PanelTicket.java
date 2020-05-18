@@ -119,7 +119,6 @@ public class PanelTicket extends JPanel {
 				producto.add(p.getNombre());
 			}
 		}else {
-			System.out.println("No hay seleccion");
 		}
 		
 		JLabel lblCantidadDeProducto = new JLabel("Cantidad de Producto");
@@ -192,7 +191,6 @@ public class PanelTicket extends JPanel {
 	 * @return boolean
 	 */
 	public boolean setLocalesyProductos(){
-		System.out.println("Funciona el listener");
 		if(choice.getSelectedItem() != "-------------------") {
 			producto.removeAll();
 			Local locID = cn.getLocalByName(main_user, choice.getSelectedItem());
@@ -253,7 +251,6 @@ public class PanelTicket extends JPanel {
 			String pattern = "dd-MM-yyyy";
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 			date = simpleDateFormat.format(calendario.getDate());
-			System.out.println(date + producto.getSelectedItem());
 			Producto pr = cn.getProductByName(main_user, producto.getSelectedItem());
 			pr.setCantidad(Integer.parseInt(textField.getText()));
 			modelo.setRowCount(modelo.getRowCount()+1);
@@ -275,7 +272,6 @@ public class PanelTicket extends JPanel {
 		Double prec = 0.0;
 		for(int i = 0; i<prTicket.size() ; i++) {
 			lista += prTicket.get(i).getNombre() + "\n";
-			System.out.println( modelo.getValueAt(i, 2) );
 			Double var2 = prTicket.get(i).getPrecio() * Double.parseDouble((String) modelo.getValueAt(i, 2)); 
 			prec += var2;
 		}
@@ -286,7 +282,6 @@ public class PanelTicket extends JPanel {
 			Local loc = cn.getLocalByName(main_user, choice.getSelectedItem());
 			Ticket ti = new Ticket( date , main_user.getEmail() , prec , loc.getId() );
 			Ticket TI = cn.crearTicket(main_user,ti);
-			System.out.println("El id del ticket es: " + TI.getID());
 			/*
 			 * El ticket esta hecho, falta grabar los elementos relacionados a ese ticket en otra tabla.
 			 */

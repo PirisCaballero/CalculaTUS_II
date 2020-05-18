@@ -41,6 +41,7 @@ public class VentanaOpinion extends JFrame {
 	private int charCount = 0;
 	private JProgressBar progressBar;
 	private JLabel lblChars;
+	private Thread update;
 
 	/**
 	 * Esta clase abre una ventana para que el usuario pueda dejar una reseña de la aplicación
@@ -83,15 +84,15 @@ public class VentanaOpinion extends JFrame {
 		radioButtonsEstrellas.add(estrella5);
 
 		botonAtras = new JButton();
-		botonAtras.setText("Atras");
+		botonAtras.setText("Atrás");
 		botonAtras.setBounds(10, 340, 200, 30);
 
 		botonSiguiente = new JButton();
-		botonSiguiente.setText("Enviar Oponion");
+		botonSiguiente.setText("Enviar Opinion");
 		botonSiguiente.setBounds(500, 340, 200, 30);
 
 		valoracion = new JLabel();
-		valoracion.setText("Valoracion:");
+		valoracion.setText("Valoración:");
 		valoracion.setBounds(10, 10, 100, 20);
 
 		comentario = new JLabel();
@@ -136,13 +137,11 @@ public class VentanaOpinion extends JFrame {
 		lblChars.setBounds(98, 311, 66, 14);
 		getContentPane().add(lblChars);
 
-		Thread update = new Thread() {
+		update = new Thread() {
 			@Override
 			public void run() {
-				System.out.println("Funciona el hilo " + texto.isEnabled());
 				while(texto.isEnabled()) {
 					progressBar.setValue(texto.getText().length());
-					System.out.println(texto.getText().length());
 					if(texto.getText().length() > 500) {
 						lblChars.setForeground(Color.red);
 					}else {
@@ -191,6 +190,11 @@ public class VentanaOpinion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				try {
+					update.stop();
+				} catch (ThreadDeath e2) {
+					e2.printStackTrace();
+				}
 			}
 		});
 		

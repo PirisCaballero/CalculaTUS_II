@@ -158,7 +158,6 @@ public class PanelProducto extends JPanel {
 		modelo.setColumnIdentifiers(column_names);
 		Local loc = cn.getLocalById(user, locID);
 		for( int i = 0 ; i<prList.size() ; i++ ) {
-			System.out.println(prList.get(i).toString());
 			modelo.setValueAt(prList.get(i).getNombre(),i , 0);
 			modelo.setValueAt(prList.get(i).getPrecio(),i , 1);
 			modelo.setValueAt(loc.getNombre(),i , 2);

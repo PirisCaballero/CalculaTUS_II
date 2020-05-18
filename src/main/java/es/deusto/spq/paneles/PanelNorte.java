@@ -183,7 +183,6 @@ public class PanelNorte extends JPanel {
 	 * Con este metodo el usuario puede cerrar sesion
 	 */
 	public void LogOut() {
-		System.out.println("Cerrando sesion...");
 		JOptionPane cerrar = new JOptionPane();
 		int resp = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres salir?", "Aviso",
 				JOptionPane.YES_NO_OPTION);

@@ -186,7 +186,6 @@ public class PanelFTP extends JPanel{
 		//Se actualiza el path segun el archivo que coges
 		if( C_files.getSelectedItem() != "../" ) {
 			path = "\\"+main_user.getEmail()+"\\"+Cfolders.getSelectedItem()+"\\"+C_files.getSelectedItem();
-			System.out.println(path);
 			lblPath.setText(path);
 		}
 	}

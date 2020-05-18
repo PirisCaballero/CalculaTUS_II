@@ -262,7 +262,6 @@ public class PanelEstadisticas extends JPanel {
 		
 		ArrayList<Producto> pr = cn.getProductsByLocal(u, cn.getLocalByName(u, chTienda.getSelectedItem()).getId());
 		for (int i = 0; i < pr.size(); i++) {
-			//System.out.println(pr.get(i).getCategoria());
 			if(pr.get(i).getCategoria().equals(chTipoProducto.getSelectedItem())) {
 				modelo.setRowCount(modelo.getRowCount()+1);
 				modelo.setValueAt(chTienda.getSelectedItem(), row, col);
@@ -277,7 +276,6 @@ public class PanelEstadisticas extends JPanel {
 		prMios = cn.getProductsByUser(u);
 		
 		for (int i = 0; i < prMios.size(); i++) {
-			//System.out.println(prMios.get(i).getCategoria());
 			if(prMios.get(i).getCategoria().equals("Alimentacion"))
 				contadorAlimentacion = contadorAlimentacion + 1;
 			if(prMios.get(i).getCategoria().equals("Salud/Higiene")) contadorSalud = contadorSalud + 1;

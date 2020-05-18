@@ -36,7 +36,6 @@ public class ShowTicket extends JFrame{
 		this.main_user = user;
 		String[] l = ti.split("TICKET");
 		ID = Integer.parseInt(l[1]);
-		System.out.println("ID-->"+ID);
 		Connect cn = new Connect();
 		prList = cn.getProductsByTicket(main_user, this.ID);
 		Ticket ticket = cn.getTicketByTicketID(ID);

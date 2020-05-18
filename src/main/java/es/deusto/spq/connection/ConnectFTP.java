@@ -67,7 +67,6 @@ public class ConnectFTP {
 				cliente.changeWorkingDirectory("/" + main_user.getEmail());
 				boolean login = cliente.login(userFTP, pass);
 				if (login) {
-					System.out.println("Conectado al servidor");
 					cliente.enterLocalPassiveMode();
 					cliente.changeWorkingDirectory("/" + main_user.getEmail());
 					return true;
@@ -195,7 +194,6 @@ public class ConnectFTP {
 		if (path != "" && path != null) {
 			ArrayList<FTPFile> carpetas = new ArrayList<FTPFile>();
 			carpetas.add(null);
-			System.out.println(path);
 			try {
 				OpenConexion();
 				FTPFile[] car = cliente.listDirectories(path);

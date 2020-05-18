@@ -142,7 +142,6 @@ public class PanelAdmin extends JPanel{
 	 * @return si el guardado ha sido correcto
 	 */
 	public boolean save() {
-		System.out.println(choiceAdmin.getSelectedItem() + "  ||  " + choiceUsuario.getSelectedItem());
 		Connect conn = new Connect();
 		int admin = 2;
 		if( choiceAdmin.getSelectedItem().equals("Administrador") ) {
@@ -154,7 +153,6 @@ public class PanelAdmin extends JPanel{
 		}
 		if( admin < 2 ) {
 			boolean cambio_efectivo = conn.cambioDeTipoDeUsuario(user, choiceUsuario.getSelectedItem(), admin); 
-			System.out.println(cambio_efectivo);
 			if(cambio_efectivo) {
 				return true;
 			}else {
@@ -168,7 +166,6 @@ public class PanelAdmin extends JPanel{
 	 * Este metodo recarga los choice donde se muestran los usuarios
 	 */
 	public void Refresh() {
-		System.out.println("Refreshing...");
 		choiceUsuario.removeAll();
 		Connect cn = new Connect();
 		ArrayList<Users> ul = cn.getUsersByAdmin(user);
@@ -177,7 +174,6 @@ public class PanelAdmin extends JPanel{
 		String [] nomcolumns = { "Nombre" , "Correo" };
 		modelo.setColumnIdentifiers(nomcolumns);
 		for(Users u : ul) {
-			System.out.println(u.getEmail());
 			choiceUsuario.add(u.getEmail());
 		}
 		modelo.setRowCount(ul.size());

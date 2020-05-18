@@ -51,7 +51,6 @@ public class PanelSur extends JPanel{
 			label.setBounds(200 , Y , 100 , 42);
 			label.setHorizontalAlignment(SwingConstants.CENTER);
 			//label.setBorder(BorderFactory.createLineBorder(Color.green));
-			//System.out.println(users[i]);
 			panel_usuarios.add(label);
 			Y+=42;
 		}

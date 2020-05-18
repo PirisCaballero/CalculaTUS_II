@@ -47,7 +47,6 @@ public class PanelCentral extends JPanel{
 		pl = new PanelLocal(main_user);
 		pp = new PanelProducto(main_user , pd);
 		pb = new PanelBienvenida(main_user);
-		System.out.println("Iratxe " + main_user.getNombre());
 		pa = new PanelAdmin(main_user , pd);
 		pu = new PanelUser(main_user, pd); //no se si es pd ¿?¿?¿??¿¿?¿?¿?¿?¿?¿??¿¿?¿?
 		pt = new PanelTicket(main_user, pDat);
@@ -67,7 +66,6 @@ public class PanelCentral extends JPanel{
 	public void setPanel(int panel) {
 		switch (panel) {
 		case 0:
-			System.out.println("Panel Local");
 			pl.setVisible(true);
 			this.pDat.setData(DefaultModel);
 			try {
@@ -81,7 +79,6 @@ public class PanelCentral extends JPanel{
 			break;
 		case 1:
 			this.pDat.setData(DefaultModel);
-			System.out.println("Admin");
 			this.add(pa);
 			pa.setVisible(true);
 			try {
@@ -94,7 +91,6 @@ public class PanelCentral extends JPanel{
 			break;
 		case 2:
 			this.pDat.setData(DefaultModel);
-			System.out.println("Panel Producto");
 			pp.setVisible(true);
 			try {
 				pe.setVisible(false);pa.setVisible(false);pcont.setVisible(false);sc.setVisible(false);pl.setVisible(false);pt.setVisible(false);pu.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
@@ -106,9 +102,7 @@ public class PanelCentral extends JPanel{
 			this.repaint();
 			break;
 		case 3:
-			System.out.println("Prueba + " + panel);
 			this.pDat.setData(DefaultModel);
-			System.out.println("Añadir ticket");
 			pt.setVisible(true);
 			try {
 				pe.setVisible(false);sc.setVisible(false);pcont.setVisible(false);pa.setVisible(false);pl.setVisible(false);pu.setVisible(false);pp.setVisible(false);pftp.setVisible(false);pb.setVisible(false);
@@ -119,9 +113,7 @@ public class PanelCentral extends JPanel{
 			this.repaint();
 			break;
 		case 4:
-			System.out.println("Prueba + " + panel);
 			this.pDat.setData(DefaultModel);
-			System.out.println("Conexion FTP");
 			add(pftp);
 			pftp.setVisible(true);
 			try {
@@ -133,7 +125,6 @@ public class PanelCentral extends JPanel{
 			this.repaint();
 			break;
 		case 5:
-			System.out.println("Preguntas");
 			sc.setVisible(true);
 			sc.setBounds(0, 0, pp.getWidth()-5, 470);
 			this.add(sc);
@@ -146,7 +137,6 @@ public class PanelCentral extends JPanel{
 			this.repaint();
 			break;
 		case 6:
-			System.out.println("Panel Usuario");
 			this.pDat.setData(DefaultModel);
 			this.add(pu);
 			pu.setVisible(true);
@@ -158,7 +148,6 @@ public class PanelCentral extends JPanel{
 			}
 			break;
 		case 7:
-			System.out.println("Panel control Usuario");			
 			add(pcont);
 			pcont.setVisible(true);
 			try {
