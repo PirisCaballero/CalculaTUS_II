@@ -113,7 +113,8 @@ public class ConnectFTP {
 		if (main_user != null && c.buscarUsuario(main_user.getEmail())) {
 			try {
 				OpenConexion();
-				boolean creado = cliente.makeDirectory("/" + main_user.getEmail());
+				boolean creado = cliente.makeDirectory("\\" + main_user.getEmail()+"\\");
+				System.out.println("La carpeta ha sido creada: "+creado);
 				closeConnection();
 				return creado;
 			} catch (IOException e) {

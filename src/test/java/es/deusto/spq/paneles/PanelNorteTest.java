@@ -14,27 +14,15 @@ public class PanelNorteTest {
 	static Connect c = new Connect();
 	static Users u;
 	static PanelNorte pn;
-	static JFrame main_frame;
 	static ShowTickets st;
 	static PanelCentral pc;
 	static PanelDatos pd;
-	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
 	public static void initialize() {
 		
 		u = c.RecuperarUsuario("admin@root.es");
-		vt = new VentanaCalculaTUSII(u);
-		main_frame = new JFrame();
-		main_frame.setTitle("CalculaTUS_II");
-		main_frame.setLayout(null);
-		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main_frame.setSize(1024, 720);
-		main_frame.setResizable(false);
-		main_frame.setLocationRelativeTo(null);
-		
 		pd = new PanelDatos();
-		
 		pc = new PanelCentral(u, pd);
 		
 		
@@ -42,7 +30,7 @@ public class PanelNorteTest {
 	
 	@Test
 	public void testPanelNorte() {
-		pn = new PanelNorte(u, main_frame, pc.getPanelTicket());
+		pn = new PanelNorte(u, pc.getPanelTicket());
 	}
 	
 }

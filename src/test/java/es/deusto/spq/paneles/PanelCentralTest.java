@@ -18,14 +18,14 @@ public class PanelCentralTest {
 	static PanelTicket pt;
 	static PanelPreguntas ppreg;
 	static PanelControl pc;
-	static VentanaCalculaTUSII vt;
 	static PanelCentral pCent;
-	static Connect c = new Connect();
-	static Users u = c.RecuperarUsuario("admin@root.es");
+	static Connect c;
+	static Users u;
 	@BeforeClass
 	public static void initialize() {
 		//u = new Users("Ben", "Bon", "benbon@gmail.com", "eo", 0, "admin@root.es");
-		vt = new VentanaCalculaTUSII(u);
+		c = new Connect();
+		u = c.RecuperarUsuario("admin@root.es");
 		pd = new PanelDatos();
 		pftp = new PanelFTP(u);
 		pl = new PanelLocal(u);

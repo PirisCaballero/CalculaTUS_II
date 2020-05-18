@@ -24,7 +24,6 @@ public class PanelTicketTest {
 	static PanelDatos pd;
 	static PanelTicket pt;
 	static ShowTickets st;
-	static VentanaCalculaTUSII vt;
 	
 	PanelTicket pt2 = mock(PanelTicket.class);
 	
@@ -32,7 +31,6 @@ public class PanelTicketTest {
 	public static void initialize() {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		pd = new PanelDatos();
-		vt = new VentanaCalculaTUSII(u);
 	}
 	
 	@Test

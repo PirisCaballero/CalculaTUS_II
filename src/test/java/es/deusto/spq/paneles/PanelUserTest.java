@@ -13,12 +13,10 @@ public class PanelUserTest {
 	static PanelUser pu;
 	static ShowDescuentos sd;
 	static PanelControl pc;
-	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
 	public static void initialize() {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
-		vt = new VentanaCalculaTUSII(u);
 		pd = new PanelDatos();
 		sd = new ShowDescuentos(u);
 		pc = new PanelControl(u, pd);

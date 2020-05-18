@@ -23,13 +23,11 @@ public class PanelSur extends JPanel{
 	/**
 	 * Este Panel contiene el panel con la consola, el logo de la univeridad y los nombres de los autores
 	 * @param us
-	 * @param fr
 	 * @param users
 	 */
-	public PanelSur(Users us , JFrame fr , String [] users) {
+	public PanelSur(Users us , String [] users) {
 		main_user = us;
-		main_frame = fr;
-		this.setBounds(0 , 520 , main_frame.getWidth() , 200);
+		this.setBounds(0 , 520 , 1024 , 200);
 		this.setLayout(null);
 		this.setBorder( BorderFactory.createLineBorder(Color.green));
 		this.setBackground(Color.white);

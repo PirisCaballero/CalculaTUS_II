@@ -11,12 +11,10 @@ public class PanelConsolaTest {
 	static Connect c = new Connect();
 	static Users u;
 	static PanelConsola pc;
-	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
 	public static void initialize() {
 		u = c.RecuperarUsuario("admin@root.es");
-		vt = new VentanaCalculaTUSII(u);
 	}
 	
 	@Test

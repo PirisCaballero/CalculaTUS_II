@@ -35,10 +35,10 @@ public class Connect {
 			conn = DriverManager.getConnection("jdbc:mysql://83.213.204.144:3306/calculatus_root", "calculaTUS_root",
 					"Nevera98!");
 			boolean ok = sayHello(conn);
-			System.out.println(ok);
+			//System.out.println(ok);
 			return conn;
 		} catch (SQLException sqlE) {
-			System.out.println(sqlE);
+			//System.out.println(sqlE);
 			sqlE.printStackTrace();
 			return conn;
 		}
@@ -61,7 +61,7 @@ public class Connect {
 				return false;
 			}
 		} catch (SQLException e) {
-			System.out.println(e);
+			//System.out.println(e);
 			e.printStackTrace();
 			return false;
 		}
@@ -86,7 +86,7 @@ public class Connect {
 				return false;
 			}
 		} catch (SQLException sqlE) {
-			System.out.println(sqlE);
+			//System.out.println(sqlE);
 			sqlE.printStackTrace();
 			return false;
 		}
@@ -118,7 +118,7 @@ public class Connect {
 					return true;
 				}
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+				//System.out.println(sqlE);
 				goodBy(cn);
 				return false;
 			}
@@ -158,7 +158,7 @@ public class Connect {
 						return false;
 					}
 				} catch (SQLException sqlE) {
-					System.out.println(sqlE);
+					//System.out.println(sqlE);
 					goodBy(cn);
 					return false;
 				}
@@ -207,7 +207,7 @@ public class Connect {
 					return null;
 				}
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+				//System.out.println(sqlE);
 				goodBy(cn);
 				return null;
 			}
@@ -245,14 +245,14 @@ public class Connect {
 					us.setAdminEmail(rs.getString(6));
 					cont += 1;
 				}
-				System.out.println(cont);
+				//System.out.println(cont);
 				if (cont > 0) {
 					if (us.getPass().equals(pass)) {
-						System.out.println("Usuario verificado");
+						//System.out.println("Usuario verificado");
 						goodBy(cn);
 						return us;
 					} else {
-						System.out.println("Usuario no verificado");
+						//System.out.println("Usuario no verificado");
 						Users user = null;
 						goodBy(cn);
 						return user;
@@ -263,7 +263,7 @@ public class Connect {
 					return user;
 				}
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+				//System.out.println(sqlE);
 				sqlE.printStackTrace();
 				Users user = null;
 				goodBy(cn);
@@ -301,17 +301,17 @@ public class Connect {
 					cont += 1;
 				}
 				if (cont == 1) {
-					System.out.println("Usuario recuperado");
+					//System.out.println("Usuario recuperado");
 					goodBy(cn);
 					return us;
 				} else {
 					// JOptionPane.showMessageDialog(null, "Usuario no encontrado" + "-->"+cont);
-					System.out.println("Usuario no recuperado");
+					//System.out.println("Usuario no recuperado");
 					goodBy(cn);
 					return null;
 				}
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+				//System.out.println(sqlE);
 				sqlE.printStackTrace();
 				goodBy(cn);
 				return null;
@@ -345,11 +345,11 @@ public class Connect {
 						stmt.setString(5, loc.getDescripcion());
 						stmt.setString(6, user.getEmail());
 						////////
-						System.out.println(stmt.executeUpdate());
+					//	System.out.println(stmt.executeUpdate());
 						goodBy(cn);
 						return true;
 					} catch (SQLException sqlE) {
-						System.out.println(sqlE);
+					//	System.out.println(sqlE);
 						sqlE.printStackTrace();
 						goodBy(cn);
 						return false;
@@ -358,7 +358,7 @@ public class Connect {
 					return false;
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Ese local ya esta registrado");
+				//JOptionPane.showMessageDialog(null, "Ese local ya esta registrado");
 				return false;
 			}
 		} else {
@@ -411,10 +411,10 @@ public class Connect {
 						/////
 						System.out.println(stmt.executeUpdate());
 						goodBy(cn);
-						JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+				//		JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 						return true;
 					} catch (SQLException sqlE) {
-						System.out.println(sqlE);
+					//	System.out.println(sqlE);
 						sqlE.printStackTrace();
 						goodBy(cn);
 						return false;
@@ -434,12 +434,12 @@ public class Connect {
 							stmt.setInt(5, us.getAdmin());
 							stmt.setString(6, us.getAdminEmail());
 							/////
-							System.out.println(stmt.executeUpdate());
+						System.out.println(stmt.executeUpdate());
 							goodBy(cn);
-							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
+						//	JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 							return true;
 						} catch (SQLException sqlE) {
-							System.out.println(sqlE);
+					//		System.out.println(sqlE);
 							sqlE.printStackTrace();
 							goodBy(cn);
 							return false;
@@ -450,12 +450,12 @@ public class Connect {
 				}
 			} else {
 				// JOptionPane.showMessageDialog(null, "Ese administrador no existe");
-				System.out.println("Ese administrador no existe");
+			//	System.out.println("Ese administrador no existe");
 				return false;
 			}
 		} else {
 			// JOptionPane.showMessageDialog(null, "Usuario ya registrado");
-			System.out.println("Usuario ya registrado");
+			//System.out.println("Usuario ya registrado");
 			return false;
 		}
 	}
@@ -484,7 +484,7 @@ public class Connect {
 				goodBy(cn);
 				return pL;
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+			//	System.out.println(sqlE);
 				sqlE.printStackTrace();
 				goodBy(cn);
 				return null;
@@ -518,7 +518,7 @@ public class Connect {
 			goodBy(cn);
 			return t;
 		} catch (SQLException sqlE) {
-			System.out.println(sqlE);
+		//	System.out.println(sqlE);
 			sqlE.printStackTrace();
 			goodBy(cn);
 			return null;
@@ -550,7 +550,7 @@ public class Connect {
 			goodBy(cn);
 			return usersList;
 		} catch (SQLException sqlE) {
-			System.out.println(sqlE);
+		//	System.out.println(sqlE);
 			sqlE.printStackTrace();
 			ArrayList<Users> r = new ArrayList<Users>();
 			goodBy(cn);
@@ -564,7 +564,7 @@ public class Connect {
 	public void listUsers() {
 		ArrayList<Users> ul = getUsers();
 		for (Users u : ul) {
-			System.out.println(u.toString());
+			//System.out.println(u.toString());
 		}
 	}
 
@@ -590,12 +590,12 @@ public class Connect {
 				while (rs.next()) {
 					loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
 					loc.setId(rs.getInt(1));
-					System.out.println(rs.getInt(1));
+				//	System.out.println(rs.getInt(1));
 				}
 				goodBy(cn);
 				return loc;
 			} catch (SQLException sqle) {
-				System.out.println(sqle);
+			//	System.out.println(sqle);
 				sqle.printStackTrace();
 				goodBy(cn);
 				return null;
@@ -630,12 +630,12 @@ public class Connect {
 					goodBy(c);
 					return cat;
 				} else {
-					System.out.println("El conteo es: " + cont);
+					//System.out.println("El conteo es: " + cont);
 					goodBy(c);
 					return null;
 				}
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+				//System.out.println(sqlE);
 				sqlE.printStackTrace();
 				goodBy(c);
 				return null;
@@ -663,7 +663,7 @@ public class Connect {
 			goodBy(c);
 			return categorias;
 		} catch (SQLException sqlE) {
-			System.out.println(sqlE);
+		//	System.out.println(sqlE);
 			sqlE.printStackTrace();
 			goodBy(c);
 			return null;
@@ -700,7 +700,7 @@ public class Connect {
 				goodBy(cn);
 				return prList;
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+			//	System.out.println(sqlE);
 				sqlE.printStackTrace();
 				goodBy(cn);
 				return null;
@@ -740,16 +740,16 @@ public class Connect {
 				int aniadido = stmt.executeUpdate();
 				goodBy(cn);
 				if (aniadido == 1) {
-					JOptionPane.showMessageDialog(null, "Producto Añadido");
+				//	JOptionPane.showMessageDialog(null, "Producto Añadido");
 					goodBy(cn);
 					return true;
 				} else {
-					JOptionPane.showMessageDialog(null, "El producto no ha podido ser añadido");
+			//		JOptionPane.showMessageDialog(null, "El producto no ha podido ser añadido");
 					goodBy(cn);
 					return false;
 				}
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+			//	System.out.println(sqlE);
 				goodBy(cn);
 				sqlE.printStackTrace();
 				return false;
@@ -837,7 +837,7 @@ public class Connect {
 				return localesList;
 			} catch (SQLException sqlE) {
 				localesList = null;
-				System.out.println(sqlE);
+			//	System.out.println(sqlE);
 				sqlE.printStackTrace();
 				goodBy(cn);
 				return localesList;
@@ -867,13 +867,13 @@ public class Connect {
 					while (rs.next()) {
 						Users us = new Users(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 								rs.getInt(5), rs.getString(6));
-						System.out.println(us.toString());
+					//	System.out.println(us.toString());
 						userList.add(us);
 					}
 					goodBy(cn);
 					return userList;
 				} catch (SQLException sqlE) {
-					System.out.println(sqlE);
+				//	System.out.println(sqlE);
 					sqlE.printStackTrace();
 					goodBy(cn);
 					return null;
@@ -903,7 +903,7 @@ public class Connect {
 				goodBy(cn);
 				return prodArr;
 			} catch (SQLException e) {
-				System.out.println(e);
+			//	System.out.println(e);
 				e.printStackTrace();
 				goodBy(cn);
 				return null;
@@ -938,7 +938,7 @@ public class Connect {
 				goodBy(cn);
 				return p;
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+			//	System.out.println(sqlE);
 				sqlE.printStackTrace();
 				goodBy(cn);
 				return p;
@@ -971,7 +971,7 @@ public class Connect {
 					int rs = stmt.executeUpdate();
 					if (rs == 1) {
 						// JOptionPane.showMessageDialog(null, "Ticket generado satisfactoriamente");
-						System.out.println("Ticket generado satisfactoriamente");
+						//System.out.println("Ticket generado satisfactoriamente");
 					}
 					try {
 						String sql2 = "Select * from tickets where email_comprador = ? and Importe = ? and idLocal = ? and fecha = ?";
@@ -989,12 +989,12 @@ public class Connect {
 						goodBy(cn);
 						return t;
 					} catch (SQLException sqlE2) {
-						System.out.println(sqlE2);
+					//	System.out.println(sqlE2);
 						sqlE2.printStackTrace();
 						goodBy(cn);
 					}
 				} catch (SQLException sqlE) {
-					System.out.println(sqlE);
+				//	System.out.println(sqlE);
 					sqlE.printStackTrace();
 					goodBy(cn);
 				}
@@ -1031,11 +1031,11 @@ public class Connect {
 					stmt.setInt(4, prL.get(i).getCantidad());
 					int rs = stmt.executeUpdate();
 					if (rs == 1) {
-						System.out.println("YAS");
+					//	System.out.println("YAS");
 					}
 					;
 				} catch (SQLException sqlE) {
-					System.out.println(sqlE);
+				//	System.out.println(sqlE);
 					sqlE.printStackTrace();
 					goodBy(cn);
 					return false;
@@ -1073,7 +1073,7 @@ public class Connect {
 					goodBy(cn);
 					return tL;
 				} catch (SQLException sqlE) {
-					System.out.println(sqlE);
+				//	System.out.println(sqlE);
 					sqlE.printStackTrace();
 					goodBy(cn);
 					return null;
@@ -1111,7 +1111,7 @@ public class Connect {
 					return false;
 				}
 			} catch (SQLException sqlE) {
-				System.out.println(sqlE);
+			//	System.out.println(sqlE);
 				sqlE.printStackTrace();
 				goodBy(cn);
 				return false;
@@ -1153,7 +1153,7 @@ public class Connect {
 					return false;
 				}
 			} catch (SQLException e) {
-				System.out.println(e);
+			//	System.out.println(e);
 				goodBy(cn);
 				return false;
 			}

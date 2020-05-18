@@ -35,10 +35,9 @@ public class PanelNorte extends JPanel {
 	 * @param fr
 	 * @param pt
 	 */
-	public PanelNorte(Users user , JFrame fr , ShowTickets pt) {
-		this.main_frame = fr;
+	public PanelNorte(Users user  , ShowTickets pt) {
 		this.main_user = user;
-		this.setBounds(0 , 0 , main_frame.getWidth() , 50);
+		this.setBounds(0 , 0 , 1024 , 50);
 		this.setLayout(null);
 		//this.setBorder( BorderFactory.createLineBorder(Color.green));
 		this.setBackground(Color.white);
@@ -46,7 +45,7 @@ public class PanelNorte extends JPanel {
 		
 		///Contenido
 		JButton exit = new JButton("Exit");
-		exit.setBounds( main_frame.getWidth()-75 , 0 , 75 , 50 );
+		exit.setBounds( 1024-75 , 0 , 75 , 50 );
 		
 		icon = new ImageIcon( "src/main/java/es/deusto/spq/Resources/icons/final/addLocal.jpg" );
 		JButton addLocal = new JButton(icon);
@@ -196,8 +195,7 @@ public class PanelNorte extends JPanel {
 	/**
 	 * Con este metodo el usuario puede cerrar la aplicación
 	 */
-	public void Exit() {
-		main_frame.dispose();		
+	public void Exit() {		
 		System.exit(0);
 	}
 }

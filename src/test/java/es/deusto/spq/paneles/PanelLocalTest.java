@@ -13,12 +13,10 @@ public class PanelLocalTest {
 	static Connect c = new Connect();
 	static Users u;
 	static PanelLocal pl;
-	static VentanaCalculaTUSII vt;
 	
 	@BeforeClass
 	public static void initialize() {
 		u = c.RecuperarUsuario("admin@root.es");
-		vt = new VentanaCalculaTUSII(u);
 	}
 	
 	@Test

@@ -33,10 +33,10 @@ public class VentanaCalculaTUSII{
 		main_frame.setResizable(false);
 		main_frame.setLocationRelativeTo(null);
 		String [] users = { "Aitor" , "Iratxe" , "Erik" , "Eneko" };
-		ps = new PanelSur(main_user , main_frame , users);
+		ps = new PanelSur(main_user , users);
 		pd = new PanelDatos();
 		pc = new PanelCentral(main_user , pd);
-		pn = new PanelNorte(main_user , this.main_frame , pc.getPanelTicket());
+		pn = new PanelNorte(main_user , pc.getPanelTicket());
 		
 		main_frame.add(pn);
 		main_frame.add(pc);
