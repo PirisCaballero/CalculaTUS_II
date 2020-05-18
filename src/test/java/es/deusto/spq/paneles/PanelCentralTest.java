@@ -27,29 +27,11 @@ public class PanelCentralTest {
 		c = new Connect();
 		u = c.RecuperarUsuario("admin@root.es");
 		pd = new PanelDatos();
-		pftp = new PanelFTP(u);
-		pl = new PanelLocal(u);
-		pprod = new PanelProducto(u, pd);
-		pb = new PanelBienvenida(u);
-		pa = new PanelAdmin(u, pd);
-		pu = new PanelUser(u, pd);
-		pt = new PanelTicket(u, pd);
-		ppreg = new PanelPreguntas();
-		pc = new PanelControl(u, pd);
 	}
 	
 	@Test
 	public void testSetPanel() {
 		pCent = new PanelCentral(u, pd);
 		pCent.setPanel(0);
-		pCent.setPanel(1);
-		pCent.setPanel(2);
-		pCent.setPanel(3);
-		pCent.setPanel(4);
-		pCent.setPanel(5);
-		pCent.setPanel(6);
-		pCent.setPanel(7);
-		pCent.setPanel(8);
-		pCent.getPanelProd();
 	}
 }

@@ -23,7 +23,6 @@ public class PanelTicketTest {
 	static Users u;
 	static PanelDatos pd;
 	static PanelTicket pt;
-	static ShowTickets st;
 	
 	PanelTicket pt2 = mock(PanelTicket.class);
 	

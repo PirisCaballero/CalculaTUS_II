@@ -14,7 +14,7 @@ public class PanelNorteTest {
 	static Connect c = new Connect();
 	static Users u;
 	static PanelNorte pn;
-	static ShowTickets st;
+	//static ShowTickets st;
 	static PanelCentral pc;
 	static PanelDatos pd;
 	

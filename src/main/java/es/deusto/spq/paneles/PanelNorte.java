@@ -27,7 +27,7 @@ public class PanelNorte extends JPanel {
 	private JFrame main_frame;
 	private Icon icon;
 	private Users main_user;
-	private ShowTickets pti;
+	//private ShowTickets pti;
 	private JButton preguntas;public static JLabel usuario;
 	/**
 	 * En este panel se encuentran todos los botones de la zona norte de la aplicación
@@ -41,7 +41,7 @@ public class PanelNorte extends JPanel {
 		this.setLayout(null);
 		//this.setBorder( BorderFactory.createLineBorder(Color.green));
 		this.setBackground(Color.white);
-		this.pti = pt;
+		//this.pti = pt;
 		
 		///Contenido
 		JButton exit = new JButton("Exit");
@@ -187,7 +187,7 @@ public class PanelNorte extends JPanel {
 				JOptionPane.YES_NO_OPTION);
 		if (resp == 0) {
 			main_frame.dispose();
-			pti.dispose();
+			//pti.dispose();
 			VentanaLogin vtnLogin = new VentanaLogin();
 			vtnLogin.setVisible(true);
 		}
