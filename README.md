@@ -1,7 +1,7 @@
 # CalculaTUS_II
 Second part of CalculaTUS
 
-[![Build Status](https://travis-ci.org/PirisCaballero/CalculaTUS_II.svg?branch=master)](https://travis-ci.com/PirisCaballero/CalculaTUS_II)
+[![Build Status](https://travis-ci.com/PirisCaballero/CalculaTUS_II.svg?branch=master)](https://travis-ci.com/PirisCaballero/CalculaTUS_II)
 
 ## Getting Started
 ### Prerequisites
