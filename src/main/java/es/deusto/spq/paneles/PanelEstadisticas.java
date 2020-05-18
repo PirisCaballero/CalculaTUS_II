@@ -1,9 +1,7 @@
 package es.deusto.spq.paneles;
 
-import java.awt.BorderLayout;
 import java.awt.Choice;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,17 +10,13 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import es.deusto.spq.Local;
 import es.deusto.spq.Producto;
-import es.deusto.spq.Ticket;
 import es.deusto.spq.Users;
 import es.deusto.spq.connection.Connect;
 
@@ -38,11 +32,10 @@ public class PanelEstadisticas extends JPanel {
 	Users u;
 	private PanelDatos pd;
 	private DefaultTableModel modelo;
+	private int row = 0, col = 0;
 	private ArrayList<Local> arrayLocal;
-	private ArrayList<Producto> arrayProducto, prMios;
+	private ArrayList<Producto> prMios;
 	private String localSel="";
-	private JTable tablaProductos;
-	private ArrayList<Ticket> tckArr ;
 	Local l;
 	
 	double contadorAlimentacion = 0.0;
@@ -67,8 +60,8 @@ public class PanelEstadisticas extends JPanel {
 	Choice chTienda;
 	Choice chTipoProducto;
 
-	Object[][] data = {};
-	String columnas []= {"Usuario", "Tienda", "Tipo", "Porcentaje"};
+	String data [][] = {{"", "", ""}};
+	String columnas []= {"Tienda", "Producto", "Tipo"};
 	
 	JButton btnBuscar, btnRefrescar;
 	JLabel lblTienda, lblTipoProducto;
@@ -81,6 +74,8 @@ public class PanelEstadisticas extends JPanel {
 		this.setVisible(true);
 		this.u = us;
 		this.pd = pdts;
+		
+		modelo = new DefaultTableModel(data, columnas);
 		
 		JLabel lblTitulo = new JLabel("Estadisticas");
 		lblTitulo.setBounds(50, 11, 433, 56);
@@ -197,6 +192,27 @@ public class PanelEstadisticas extends JPanel {
 	}
 	
 	public void refresh() {
+		contadorAlimentacion = 0;
+		contadorFacturas = 0;
+		contadorOcio = 0;
+		contadorRopa = 0;
+		contadorSalud = 0;
+		contadorTecnologia = 0;
+		
+		totalAlimentacion = 0;
+		totalFacturas = 0;
+		totalOcio = 0;
+		totalRopa = 0;
+		totalSalud = 0;
+		totalTecnologia = 0;
+		
+		pgbAlimentacion.setValue((int)totalAlimentacion);
+		pgbFacturas.setValue((int)totalFacturas);
+		pgbOcio.setValue((int)totalOcio);
+		pgbRopa.setValue((int)totalRopa);
+		pgbSalud.setValue((int)totalSalud);
+		pgbTecnologia.setValue((int)totalTecnologia);
+		
 		localSel = chTienda.getSelectedItem();
 		chTienda.removeAll();
 		Connect cn = new Connect();
@@ -207,62 +223,43 @@ public class PanelEstadisticas extends JPanel {
 		}
 		Local local = cn.getLocalByName(u, localSel);
 		cn.getProductsByLocal(u, local.getId());
+		
+		for (int i = 0; i <= modelo.getRowCount(); i++) {
+			modelo.removeRow(i);
+		}
+		pd.setData(modelo);
+		
 	}
+	
 	public void buscar() {
-//		double porcentajeAlimentación = 0.0;
-//		double porcentajeSalHig = 0.0;
-//		double porcentajeOcio = 0.0;
-//		double porcentajeTecnologia = 0.0;
-//		double porcentajeFacturas = 0.0;
-//		double porcentajeRopa = 0.0;
-//		ArrayList<Producto> pr = new ArrayList<Producto>();
-//		ArrayList<Ticket> arrayTicket = new ArrayList<Ticket>();
-//		arrayTicket = cn.getTicketsByUser(u);
-//		for(int i = 0; i < arrayTicket.size();i++) {
-//			int t = arrayTicket.get(i).getID_Lugar_Compra();
-//			pr = cn.getProductsByTicket(u, t);
-//			if(pr.get(i).getCategoria()=="Alimentacion") porcentajeAlimentación+=1;
-//			else if(pr.get(i).getCategoria()=="Salud/Higiene") porcentajeSalHig+=1;
-//			else if(pr.get(i).getCategoria()=="Ocio") porcentajeOcio+=1;
-//			else if(pr.get(i).getCategoria()=="Tecnologia") porcentajeTecnologia+=1;
-//			else if(pr.get(i).getCategoria()=="Facturas") porcentajeFacturas+=1;
-//			else if(pr.get(i).getCategoria()=="Ropa") porcentajeRopa+=1;
-//			else {
-//				JOptionPane.showConfirmDialog(null, "No hay tickets");
-//			}
-//			pr.get(i).getCategoria();
-//		}
-//		double total = porcentajeAlimentación+porcentajeFacturas+porcentajeOcio+ porcentajeRopa+porcentajeSalHig+porcentajeTecnologia;
-//		porcentajeAlimentación = porcentajeAlimentación/total*100;
-//		porcentajeSalHig = porcentajeSalHig/total*100;
-//		porcentajeOcio = porcentajeOcio/total*100;
-//		porcentajeTecnologia = porcentajeTecnologia/total*100;
-//		porcentajeFacturas = porcentajeFacturas/total*100;
-//		porcentajeRopa = porcentajeRopa/total*100;
-//		
-//		DefaultTableModel dtm = new DefaultTableModel(data, columnas);
-//		tablaProductos = new JTable(dtm);
-//		tablaProductos.setBounds(20, 240, 500, 180);
-//		tablaProductos.setSize(490, 100);
-//		tablaProductos.setPreferredScrollableViewportSize(new Dimension(490, 100));
-//		for(int i =0; i < total;i++) {
-//			data[i][0] = arrayTicket.get(i).getNombreUsuario();
-//			data[i][1] = arrayTicket.get(i).getID_Lugar_Compra();
-//			data[i][2] = pr.get(i).getCategoria();
-//			if(pr.get(i).getCategoria()=="Alimentacion") data[i][3] = porcentajeAlimentación;
-//			else if(pr.get(i).getCategoria()=="Salud/Higiene") data[i][3] = porcentajeSalHig;
-//			else if(pr.get(i).getCategoria()=="Ocio") data[i][3] = porcentajeOcio;
-//			else if(pr.get(i).getCategoria()=="Tecnologia") data[i][3] = porcentajeTecnologia;
-//			else if(pr.get(i).getCategoria()=="Facturas") data[i][3] = porcentajeFacturas;
-//			else if(pr.get(i).getCategoria()=="Ropa") data[i][3] = porcentajeRopa;
-//			
-//		}
-//		JScrollPane scrollPane = new JScrollPane(tablaProductos);
-//		this.add(scrollPane, BorderLayout.CENTER);
-//		pd.setData(dtm);
+		contadorAlimentacion = 0;
+		contadorFacturas = 0;
+		contadorOcio = 0;
+		contadorRopa = 0;
+		contadorSalud = 0;
+		contadorTecnologia = 0;
+		
+		totalAlimentacion = 0;
+		totalFacturas = 0;
+		totalOcio = 0;
+		totalRopa = 0;
+		totalSalud = 0;
+		totalTecnologia = 0;
+		
+	
+		
 		ArrayList<Producto> pr = cn.getProductsByLocal(u, cn.getLocalByName(u, chTienda.getSelectedItem()).getId());
 		for (int i = 0; i < pr.size(); i++) {
 			System.out.println(pr.get(i).getCategoria());
+			if(pr.get(i).getCategoria().equals(chTipoProducto.getSelectedItem())) {
+				modelo.setRowCount(modelo.getRowCount()+1);
+				modelo.setValueAt(chTienda.getSelectedItem(), row, col);
+				modelo.setValueAt(pr.get(i).getNombre(), row, col+1);
+				modelo.setValueAt(pr.get(i).getCategoria(), row, col+2);
+				row+=1;
+				pd.setData(modelo);
+				
+			}
 		}
 		
 		prMios = cn.getProductsByUser(u);
@@ -271,11 +268,11 @@ public class PanelEstadisticas extends JPanel {
 			System.out.println(prMios.get(i).getCategoria());
 			if(prMios.get(i).getCategoria().equals("Alimentacion"))
 				contadorAlimentacion = contadorAlimentacion + 1;
-			else if(prMios.get(i).getCategoria()=="Salud/Higiene") contadorSalud = contadorSalud + 1;
-			else if(prMios.get(i).getCategoria()=="Ocio") contadorOcio = contadorOcio + 1 ;
-			else if(prMios.get(i).getCategoria()=="Tecnologia") contadorTecnologia = contadorTecnologia + 1 ;
-			else if(prMios.get(i).getCategoria()=="Facturas") contadorFacturas = contadorFacturas + 1 ;
-			else if(prMios.get(i).getCategoria()=="Ropa") contadorRopa = contadorRopa + 1 ;
+			if(prMios.get(i).getCategoria().equals("Salud/Higiene")) contadorSalud = contadorSalud + 1;
+			if(prMios.get(i).getCategoria().equals("Ocio")) contadorOcio = contadorOcio + 1 ;
+			if(prMios.get(i).getCategoria().equals("Tecnologia")) contadorTecnologia = contadorTecnologia + 1 ;
+			if(prMios.get(i).getCategoria().equals("Facturas")) contadorFacturas = contadorFacturas + 1 ;
+			if(prMios.get(i).getCategoria().equals("Ropa")) contadorRopa = contadorRopa + 1 ;
 			
 		}
 		
@@ -293,8 +290,5 @@ public class PanelEstadisticas extends JPanel {
 		pgbSalud.setValue((int)totalSalud);
 		pgbTecnologia.setValue((int)totalTecnologia);
 		
-		
-//		System.out.println(chTienda.getSelectedItem());
-//		System.out.println(chTipoProducto.getSelectedItem());
 	}
 }
