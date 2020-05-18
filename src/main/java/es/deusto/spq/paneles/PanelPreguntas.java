@@ -24,11 +24,11 @@ public class PanelPreguntas extends JPanel{
 	 */
 	public PanelPreguntas() {
 
-		this.setBounds(0 , 0 , 574 , 470);
+		this.setBounds(0 , 0 , 574 , 490);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setBackground(Color.white);
 		this.setLayout(null);
-		this.setPreferredSize(new Dimension(500, 800));
+		this.setPreferredSize(new Dimension(500, 820));
 		
 		JLabel lblPreguntas = new JLabel("Preguntas frecuentes");
 		lblPreguntas.setBounds(50, 11, 433, 56);
@@ -111,5 +111,16 @@ public class PanelPreguntas extends JPanel{
 		lblR6.setBounds(25, lblP6.getY()+40, this.getWidth()-100, 56);
 		lblR6.setFont(fuente);
 		add(lblR6);
+		
+		JLabel lblP7 = new JLabel("¿Por qué no me aparece cambiado el nombre de usuario?");
+		lblP7.setBounds(25, lblR6.getY()+70, 450, 56);
+		lblP7.setFont(new Font(auxFont1.getFontName(), auxFont1.getStyle(), 12));
+		add(lblP7);
+		
+		JLabel lblR7 = new JLabel("<html><p>¡No te preocupes! El nombre de usuario se modificará la próxima vez "
+				+ "que ingreses en la cuenta.</p></html>");
+		lblR7.setBounds(25, lblP7.getY()+28, this.getWidth()-100, 56);
+		lblR7.setFont(fuente);
+		add(lblR7);
 	}
 }

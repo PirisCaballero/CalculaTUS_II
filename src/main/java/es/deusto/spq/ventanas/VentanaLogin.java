@@ -60,7 +60,7 @@ public class VentanaLogin extends JFrame {
 		btnRegistrar.setLocation(140, 250);
 
 		lblUser.setText("Introduce el nombre de usuario:");
-		lblPass.setText("Introduce la contrasena:");
+		lblPass.setText("Introduce la contraseña:");
 
 		lblUser.setBounds(20, 10, 300, 20);
 		lblUser.setLocation(100, 100);

@@ -304,5 +304,9 @@ public class ConnectTest{
 	public void testgetCategoriaById() {
 		assertEquals("Ropa", cn.getCategoriaByID(6));
 	}
+	@Test
+	public void testGetProductosByUsuario() {
+		
+	}
 }
 

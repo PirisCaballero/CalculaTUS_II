@@ -66,6 +66,12 @@ public class PanelEstadisticas extends JPanel {
 	JButton btnBuscar, btnRefrescar;
 	JLabel lblTienda, lblTipoProducto;
 	
+	
+	/**
+	 * Construye el panel en el que se mostraran las estadisticas del usuario registrado
+	 * @param us
+	 * @param pdts
+	 */
 	public PanelEstadisticas(Users us, PanelDatos pdts) {
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createEtchedBorder());
@@ -191,6 +197,9 @@ public class PanelEstadisticas extends JPanel {
 		});
 	}
 	
+	/**
+	 * Este metodo refresca los choices y las estadísticas
+	 */
 	public void refresh() {
 		contadorAlimentacion = 0;
 		contadorFacturas = 0;
@@ -231,6 +240,9 @@ public class PanelEstadisticas extends JPanel {
 		
 	}
 	
+	/**
+	 * Este metodo actualiza los progressbar en funcion de las compras hechas de cada categoria
+	 */
 	public void buscar() {
 		contadorAlimentacion = 0;
 		contadorFacturas = 0;

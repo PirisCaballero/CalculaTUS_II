@@ -17,6 +17,7 @@ import es.deusto.spq.Users;
 import es.deusto.spq.ventanas.ShowDescuentos;
 import es.deusto.spq.ventanas.VentanaOpinion;
 import es.deusto.spq.ventanas.VentanaCalculaTUSII;
+import es.deusto.spq.ventanas.VentanaModificar;
 
 /**
  * Panel que muestra botones que dan acceso a unas de las opciones
@@ -26,7 +27,7 @@ import es.deusto.spq.ventanas.VentanaCalculaTUSII;
 
 public class PanelUser extends JPanel {
 
-	JButton btnDescuento, btnEstadisticas;
+	JButton btnDescuento, btnEstadisticas, btnModificarCuenta;
 	int admin;
 	Users user;
 
@@ -68,13 +69,17 @@ public class PanelUser extends JPanel {
 		btnControl.setBounds(178, 135, 200, 23);
 		add(btnControl);
 		
-		JButton btnOpinanosd = new JButton("Opinanos :D");
+		JButton btnOpinanosd = new JButton("Opínanos :D");
 		btnOpinanosd.setBounds(178, 185, 200, 23);
 		add(btnOpinanosd);
 		
 		btnEstadisticas = new JButton("Ver estadísticas");
-		btnEstadisticas.setBounds(178, 235, 200, 23); //se puede mover donde querais, estaba aqui pork el panel esta vacio
+		btnEstadisticas.setBounds(178, 235, 200, 23); 
 		add(btnEstadisticas);
+		
+		btnModificarCuenta = new JButton("Modificar cuenta");
+		btnModificarCuenta.setBounds(178, 285, 200, 23); //se puede mover donde querais, estaba aqui pork el panel esta vacio
+		add(btnModificarCuenta);
 
 		
 		sd = new ShowDescuentos(main_user);
@@ -111,6 +116,14 @@ public class PanelUser extends JPanel {
 				estadisticas();				
 			}
 		});
+		
+		btnModificarCuenta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modificaCuenta();
+			}
+		});
 	}
 	/**
 	 * Abre una ventana que muestra las estadisticas
@@ -137,5 +150,12 @@ public class PanelUser extends JPanel {
 	 */
 	public void descuentoAccion() {
 		sd.setVisible(true);
+	}
+	/**
+	 * Abre una ventana para poder modificar tus ajustes de cuenta (usuario y contraseña)
+	 */
+	public void modificaCuenta() {
+		VentanaModificar vm = new VentanaModificar(user);
+		vm.setVisible(true);
 	}
 }

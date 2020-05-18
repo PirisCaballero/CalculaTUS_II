@@ -156,33 +156,29 @@ public class VentanaOpinion extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("BOTON SIUGIENTE");
-				// System.out.println("Valoracion: " +
-				// radioButtonsEstrellas.getSelection().getActionCommand());
-				System.out.println("Comentario: " + texto.getText());
-
+				
 				if (!radioButtonsEstrellas.isSelected(null) && !texto.getText().equals("")) {
-					System.out.println("TODO OK" + radioButtonsEstrellas.getSelection().getActionCommand());
+					//System.out.println("TODO OK" + radioButtonsEstrellas.getSelection().getActionCommand());
 					error.setVisible(false);
 					// CODIGO DE CONTINUAR, AQUI
 					if(texto.getText().length()<=500) {
 						Opinion op = new Opinion();
 						op.setComentario(texto.getText());
 						op.setValoracion(Integer.parseInt(radioButtonsEstrellas.getSelection().getActionCommand()));
-						System.out.println(main_User.getEmail());
+						//System.out.println(main_User.getEmail());
 						op.setEmail(main_User.getEmail());
 						Connect cn = new Connect();
 						if(cn.SaveOpinion(op)) {
-							JOptionPane.showMessageDialog(null, "Opinion enviada con exito!");
+							JOptionPane.showMessageDialog(null, "¡Opinión enviada con éxito!");
 						}else {
-							JOptionPane.showMessageDialog(null, "La opinin no se puedo enviar correctamente ");
+							JOptionPane.showMessageDialog(null, "La opinión no se puedo enviar correctamente ");
 						}
 					}else {
-						JOptionPane.showMessageDialog(null, "El mensaje debe de ser de 500 caracteres como maximo");
+						JOptionPane.showMessageDialog(null, "El mensaje debe de ser de 500 caracteres como máximo");
 					}
 					
 				} else if (radioButtonsEstrellas.isSelected(null) || texto.getText().equals("")) {
-					System.out.println("FALTA ALGO");
+					
 					error.setVisible(true);
 					// NO TIENE VALORACION U OPINION, NO DEBERIAMOS SEGUIR
 				}

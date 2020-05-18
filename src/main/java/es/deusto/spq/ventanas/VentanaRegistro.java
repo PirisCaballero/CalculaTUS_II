@@ -67,7 +67,7 @@ public class VentanaRegistro {
 		labelCorreo.setBounds(100, 150, 200, 30);
 
 		labelContrasena = new JLabel();
-		labelContrasena.setText("Introduzca su contrasena:");
+		labelContrasena.setText("Introduzca su contraseña:");
 		labelContrasena.setBounds(100, 200, 200, 30);
 
 		labelErrorNombre = new JLabel();
@@ -111,7 +111,7 @@ public class VentanaRegistro {
 		textContrasena.setBounds(400, 200, 250, 30);
 
 		botonAtras = new JButton();
-		botonAtras.setText("Atras");
+		botonAtras.setText("Atrás");
 		botonAtras.setBounds(10, 340, 200, 30);
 
 		botonSiguiente = new JButton();
