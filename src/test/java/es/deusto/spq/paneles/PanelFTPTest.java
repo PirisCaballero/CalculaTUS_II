@@ -27,7 +27,7 @@ public class PanelFTPTest {
 		u = c.RecuperarUsuario("admin@root.es");
 	}
 	
-	@Test(expected = NullPointerException.class) // ¡¡¡¡¡¡¡¡¡¡¡¡
+	@Test
 	public void testPanel_FTP() {
 		pftp = new PanelFTP(u);
 		assertFalse(pftp.equals(null));
