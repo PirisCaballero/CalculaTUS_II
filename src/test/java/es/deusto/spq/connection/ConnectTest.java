@@ -307,7 +307,7 @@ public class ConnectTest{
 	@Test
 	public void testGetProductosByUsuario() {
 		ArrayList<Producto> prA = new ArrayList<Producto>();
-		assertEquals(prA.getClass(), cn.getProductsByUser(usT));
+		assertEquals(prA.getClass(), cn.getProductsByUser(usT).getClass());
 	}
 }
 

@@ -34,6 +34,8 @@ public class Connect {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://83.213.204.144:3306/calculatus_root", "calculaTUS_root",
 					"Nevera98!");
+			boolean ok = sayHello(conn);
+			System.out.println(ok);
 			return conn;
 		} catch (SQLException sqlE) {
 			System.out.println(sqlE);
@@ -230,6 +232,7 @@ public class Connect {
 					us.setAdminEmail(rs.getString(6));
 					cont += 1;
 				}
+				System.out.println(cont);
 				if (cont > 0) {
 					if (us.getPass().equals(pass)) {
 						System.out.println("Usuario verificado");
@@ -308,6 +311,7 @@ public class Connect {
 		if (user != null && loc != null) {
 			if (!buscarLocal(user, loc)) {
 				if (buscarUsuario(user.getEmail())) {
+					System.out.println("El local no esta registrado");
 					String sql = "Insert into locales Values ( ? , ? , ? , ? , ? , ? )";
 					Connection cn = OpenConnection();
 					try {
@@ -319,6 +323,7 @@ public class Connect {
 						stmt.setString(5, loc.getDescripcion());
 						stmt.setString(6, user.getEmail());
 						////////
+						System.out.println(stmt.executeUpdate());
 						goodBy(cn);
 						return true;
 					} catch (SQLException sqlE) {
@@ -367,7 +372,9 @@ public class Connect {
 	public boolean RegisUser(Users us) {
 		if (us != null) {
 			if (!buscarUsuario(us.getEmail())) {
+				System.out.println("Usuario no registrado");
 				if (us.getAdminEmail() == "null") {
+					System.out.println("Administrador registrado");
 					String sql = "Insert Into users Values (? , ? , ? , ? , ? , ?)";
 					Connection cn = OpenConnection();
 					try {
@@ -379,6 +386,7 @@ public class Connect {
 						stmt.setInt(5, us.getAdmin());
 						stmt.setString(6, us.getAdminEmail());
 						/////
+						System.out.println(stmt.executeUpdate());
 						goodBy(cn);
 						JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 						return true;
@@ -402,6 +410,7 @@ public class Connect {
 							stmt.setInt(5, us.getAdmin());
 							stmt.setString(6, us.getAdminEmail());
 							/////
+							System.out.println(stmt.executeUpdate());
 							goodBy(cn);
 							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
 							return true;
@@ -552,6 +561,7 @@ public class Connect {
 				while (rs.next()) {
 					loc = new Local(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
 					loc.setId(rs.getInt(1));
+					System.out.println(rs.getInt(1));
 				}
 				goodBy(cn);
 				return loc;
@@ -589,6 +599,7 @@ public class Connect {
 				if (cont == 1) {
 					return cat;
 				} else {
+					System.out.println("El conteo es: " + cont);
 					goodBy(c);
 					return null;
 				}
@@ -816,6 +827,7 @@ public class Connect {
 					while (rs.next()) {
 						Users us = new Users(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 								rs.getInt(5), rs.getString(6));
+						System.out.println(us.toString());
 						userList.add(us);
 					}
 					goodBy(cn);
@@ -916,6 +928,7 @@ public class Connect {
 					int rs = stmt.executeUpdate();
 					if (rs == 1) {
 						// JOptionPane.showMessageDialog(null, "Ticket generado satisfactoriamente");
+						System.out.println("Ticket generado satisfactoriamente");
 					}
 					try {
 						String sql2 = "Select * from tickets where email_comprador = ? and Importe = ? and idLocal = ? and fecha = ?";
@@ -972,6 +985,7 @@ public class Connect {
 					stmt.setInt(4, prL.get(i).getCantidad());
 					int rs = stmt.executeUpdate();
 					if (rs == 1) {
+						System.out.println("YAS");
 					}
 					;
 				} catch (SQLException sqlE) {
