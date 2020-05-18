@@ -37,6 +37,7 @@ public class PanelProducto extends JPanel {
 	private String[] column_names = { "Nombre" , "Precio" , "Local" };
 	private String localSel = "";
 	private PanelDatos pd;Choice choice_cat;
+	private DefaultTableModel modelo = new DefaultTableModel();
 
 	/**
 	 * Este Panel permite la creacion y adición de productos
@@ -45,6 +46,8 @@ public class PanelProducto extends JPanel {
 	 */
 	public PanelProducto(Users us , PanelDatos pdts) {
 		this.setLayout(null);
+		String[] colnames = {"Nombre" , "Precio" , "Categoria"};
+		modelo.setColumnIdentifiers(colnames);
 		this.setBorder(BorderFactory.createEtchedBorder());
 		this.setBackground(Color.white);
 		this.setBounds(0, 0, 524, 470);
@@ -150,7 +153,6 @@ public class PanelProducto extends JPanel {
 	public DefaultTableModel dataToTable(int locID , JTable tabla) {
 		Connect cn = new Connect();
 		ArrayList<Producto> prList = cn.getProductsByLocal(user, locID);
-		DefaultTableModel modelo = new DefaultTableModel();
 		modelo.setRowCount(prList.size());
 		modelo.setColumnCount(3);
 		modelo.setColumnIdentifiers(column_names);
@@ -189,5 +191,8 @@ public class PanelProducto extends JPanel {
 		Producto prod = new Producto( Double.parseDouble(textField_1.getText()), textField.getText() , 0 , local.getId() ,user.getEmail() , choice_cat.getSelectedItem());
 		cn.anadirProducto(user, prod, local.getId());
 		textField.setText("");textField_1.setText("");
+		String[] rowData = { prod.getNombre() , ""+prod.getPrecio() , prod.getCategoria() };
+		modelo.addRow(rowData);
+		pd.setData(modelo);
 	}
 }

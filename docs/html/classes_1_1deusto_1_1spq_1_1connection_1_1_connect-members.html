@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -26,6 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalculaTUS_II
+   &#160;<span id="projectnumber">0.9</span>
    </div>
   </td>
  </tr>
@@ -49,23 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,6 +60,11 @@ $(document).ready(function(){initNavTree('classes_1_1deusto_1_1spq_1_1connection
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacees.html">es</a></li><li class="navelem"><a class="el" href="namespacees_1_1deusto.html">deusto</a></li><li class="navelem"><a class="el" href="namespacees_1_1deusto_1_1spq.html">spq</a></li><li class="navelem"><a class="el" href="namespacees_1_1deusto_1_1spq_1_1connection.html">connection</a></li><li class="navelem"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">Connect</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">es.deusto.spq.connection.Connect Member List</div>  </div>
@@ -101,31 +86,29 @@ $(document).ready(function(){initNavTree('classes_1_1deusto_1_1spq_1_1connection
   <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a09be9f7af638c403d3a6f371de2bf1f2">getProductByName</a>(Users user, String Nombre)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a047939e0733b1306caae402a7d1a1e62">getProductsByLocal</a>(Users us, int loc_ID)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a810add4fbbe8be06ed108613fee70cbb">getProductsByTicket</a>(Users user, int ticketID)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a4a1e9809958325575192a4df4b56a3f5">getTicketByTicketID</a>(int ID)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a45bec72554d801fd300453869a2af5b6">getTicketsByUser</a>(Users user)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a54cc5a92564b5f3d070ea506ea722411">getUsers</a>()</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a2bbe906ecba4c447cf23a7e3bd7cf2cb">getUsersByAdmin</a>(Users usAd)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a1956cbec3be479d6f6fa11caae7aafe8">goodBy</a>(Connection cn)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#aff2dff89393ae3e4d429a6c21c1397d2">introducirProductosComprador</a>(Users user, ArrayList&lt; Producto &gt; prL, Ticket t)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a5d3102c882a65b2e2295a1f9d1119152">isAdmin</a>(Users user)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a34c080e01e96438869b8dfc3f54b3a51">listUsers</a>()</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#ac24144f20ca3e4b4bebcb05cb6c7bfe4">OpenConnection</a>()</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#abc00af3a4a535ecee1f3d20df3e2cf15">RecuperarUsuario</a>(String user_email)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a2446e574928f38ae5e24f317de1dbf80">RegisLocal</a>(Users user, Local loc)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a1ab0ece4588feee9b6580fc099b8ee49">RegisUser</a>(Users us)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#aaacd8b9f41e60346877bd88edb01cb8d">SaveOpinion</a>(Opinion op)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#af92207c6c75c8c809c05ebaf05a08888">sayHello</a>(Connection cn)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a51174e2fb89c214803e937243ce90173">updateData</a>(Users us, String nombre, String pass)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a68af32bba292b765677a007abdceaabb">VerificarUsuario</a>(String email, String pass)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a9fec84906daaebaa5c8a31998edf2635">getProductsByUser</a>(Users u)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a4a1e9809958325575192a4df4b56a3f5">getTicketByTicketID</a>(int ID)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a45bec72554d801fd300453869a2af5b6">getTicketsByUser</a>(Users user)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a54cc5a92564b5f3d070ea506ea722411">getUsers</a>()</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a2bbe906ecba4c447cf23a7e3bd7cf2cb">getUsersByAdmin</a>(Users usAd)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a1956cbec3be479d6f6fa11caae7aafe8">goodBy</a>(Connection cn)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#aff2dff89393ae3e4d429a6c21c1397d2">introducirProductosComprador</a>(Users user, ArrayList&lt; Producto &gt; prL, Ticket t)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a5d3102c882a65b2e2295a1f9d1119152">isAdmin</a>(Users user)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a34c080e01e96438869b8dfc3f54b3a51">listUsers</a>()</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#ac24144f20ca3e4b4bebcb05cb6c7bfe4">OpenConnection</a>()</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#abc00af3a4a535ecee1f3d20df3e2cf15">RecuperarUsuario</a>(String user_email)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a2446e574928f38ae5e24f317de1dbf80">RegisLocal</a>(Users user, Local loc)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a1ab0ece4588feee9b6580fc099b8ee49">RegisUser</a>(Users us)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#aaacd8b9f41e60346877bd88edb01cb8d">SaveOpinion</a>(Opinion op)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#af92207c6c75c8c809c05ebaf05a08888">sayHello</a>(Connection cn)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a51174e2fb89c214803e937243ce90173">updateData</a>(Users us, String nombre, String pass)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html#a68af32bba292b765677a007abdceaabb">VerificarUsuario</a>(String email, String pass)</td><td class="entry"><a class="el" href="classes_1_1deusto_1_1spq_1_1connection_1_1_connect.html">es.deusto.spq.connection.Connect</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.18
+</small></address>
 </body>
 </html>
