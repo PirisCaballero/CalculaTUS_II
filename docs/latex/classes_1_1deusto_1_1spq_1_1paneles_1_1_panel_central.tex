@@ -22,10 +22,6 @@ void \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_central_ae40
 \doxysubsection{Detailed Description}
 Panel donde se superposicionan los paneles que dan opcion a registrar local, añadir ticket, añadir producto, y los paneles \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_admin}{Panel\+Admin}}, \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_user}{Panel\+User}} y \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_f_t_p}{Panel\+F\+TP}}. 
 
-Definition at line 17 of file Panel\+Central.\+java.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_central_a808096905dd3e0558c6acd1ed2418366}\label{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_central_a808096905dd3e0558c6acd1ed2418366}} 
 \index{es.deusto.spq.paneles.PanelCentral@{es.deusto.spq.paneles.PanelCentral}!PanelCentral@{PanelCentral}}
@@ -33,10 +29,13 @@ Definition at line 17 of file Panel\+Central.\+java.
 \doxysubsubsection{\texorpdfstring{PanelCentral()}{PanelCentral()}}
 {\footnotesize\ttfamily es.\+deusto.\+spq.\+paneles.\+Panel\+Central.\+Panel\+Central (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1_users}{Users}}}]{user,  }\item[{\mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_datos}{Panel\+Datos}}}]{pd }\end{DoxyParamCaption})}
 
-
-
-Definition at line 35 of file Panel\+Central.\+java.
-
+Este panel solo se usa de contenedor para otros paneles 
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em pd} & \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -46,30 +45,29 @@ Definition at line 35 of file Panel\+Central.\+java.
 \doxysubsubsection{\texorpdfstring{getPanelProd()}{getPanelProd()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_producto}{Panel\+Producto}} es.\+deusto.\+spq.\+paneles.\+Panel\+Central.\+get\+Panel\+Prod (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-
-
-Definition at line 181 of file Panel\+Central.\+java.
-
+Este metodo devuelve el opbjeto pp \begin{DoxyReturn}{Returns}
+el objeto tipo \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_producto}{Panel\+Producto}} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_central_a63cf2d3b605a59f418a533ec690c2498}\label{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_central_a63cf2d3b605a59f418a533ec690c2498}} 
 \index{es.deusto.spq.paneles.PanelCentral@{es.deusto.spq.paneles.PanelCentral}!getPanelTicket@{getPanelTicket}}
 \index{getPanelTicket@{getPanelTicket}!es.deusto.spq.paneles.PanelCentral@{es.deusto.spq.paneles.PanelCentral}}
 \doxysubsubsection{\texorpdfstring{getPanelTicket()}{getPanelTicket()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1ventanas_1_1_show_tickets}{Show\+Tickets}} es.\+deusto.\+spq.\+paneles.\+Panel\+Central.\+get\+Panel\+Ticket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-
-
-Definition at line 184 of file Panel\+Central.\+java.
-
+Este metodo devuelve un objeto estatico de la clase \mbox{\hyperlink{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_ticket}{Panel\+Ticket}} \begin{DoxyReturn}{Returns}
+el objeto tipo Panelticket 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_central_ae4005d238ec5f4df2ac499e9d49ef7ae}\label{classes_1_1deusto_1_1spq_1_1paneles_1_1_panel_central_ae4005d238ec5f4df2ac499e9d49ef7ae}} 
 \index{es.deusto.spq.paneles.PanelCentral@{es.deusto.spq.paneles.PanelCentral}!setPanel@{setPanel}}
 \index{setPanel@{setPanel}!es.deusto.spq.paneles.PanelCentral@{es.deusto.spq.paneles.PanelCentral}}
 \doxysubsubsection{\texorpdfstring{setPanel()}{setPanel()}}
 {\footnotesize\ttfamily void es.\+deusto.\+spq.\+paneles.\+Panel\+Central.\+set\+Panel (\begin{DoxyParamCaption}\item[{int}]{panel }\end{DoxyParamCaption})}
 
-
-
-Definition at line 59 of file Panel\+Central.\+java.
-
+Este metodo se usa para para cambiar el panel, recibe una variable que es un numero, y segun cual sea se activa un panel u otro 
+\begin{DoxyParams}{Parameters}
+{\em panel} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
