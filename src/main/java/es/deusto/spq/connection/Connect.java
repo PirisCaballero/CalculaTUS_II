@@ -111,15 +111,19 @@ public class Connect {
 					cont += 1;
 				}
 				if (cont == 0) {
+					goodBy(cn);
 					return false;
 				} else {
+					goodBy(cn);
 					return true;
 				}
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
+				goodBy(cn);
 				return false;
 			}
 		} else {
+			goodBy(cn);
 			return false;
 		}
 
@@ -147,18 +151,23 @@ public class Connect {
 						cont += 1;
 					}
 					if (cont == 1) {
+						goodBy(cn);
 						return true;
 					} else {
+						goodBy(cn);
 						return false;
 					}
 				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
+					goodBy(cn);
 					return false;
 				}
 			} else {
+				goodBy(cn);
 				return false;
 			}
 		} else {
+			goodBy(cn);
 			return false;
 		}
 
@@ -191,15 +200,19 @@ public class Connect {
 					cont += 1;
 				}
 				if (cont == 1) {
+					goodBy(cn);
 					return loc;
 				} else {
+					goodBy(cn);
 					return null;
 				}
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
+				goodBy(cn);
 				return null;
 			}
 		} else {
+			goodBy(cn);
 			return null;
 		}
 
@@ -236,23 +249,28 @@ public class Connect {
 				if (cont > 0) {
 					if (us.getPass().equals(pass)) {
 						System.out.println("Usuario verificado");
+						goodBy(cn);
 						return us;
 					} else {
 						System.out.println("Usuario no verificado");
 						Users user = null;
+						goodBy(cn);
 						return user;
 					}
 				} else {
 					Users user = null;
+					goodBy(cn);
 					return user;
 				}
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
 				Users user = null;
+				goodBy(cn);
 				return user;
 			}
 		} else {
+			goodBy(cn);
 			return null;
 		}
 
@@ -284,18 +302,22 @@ public class Connect {
 				}
 				if (cont == 1) {
 					System.out.println("Usuario recuperado");
+					goodBy(cn);
 					return us;
 				} else {
 					// JOptionPane.showMessageDialog(null, "Usuario no encontrado" + "-->"+cont);
 					System.out.println("Usuario no recuperado");
+					goodBy(cn);
 					return null;
 				}
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
+				goodBy(cn);
 				return null;
 			}
 		} else {
+			goodBy(cn);
 			return null;
 		}
 	}
@@ -329,6 +351,7 @@ public class Connect {
 					} catch (SQLException sqlE) {
 						System.out.println(sqlE);
 						sqlE.printStackTrace();
+						goodBy(cn);
 						return false;
 					}
 				} else {
@@ -393,6 +416,7 @@ public class Connect {
 					} catch (SQLException sqlE) {
 						System.out.println(sqlE);
 						sqlE.printStackTrace();
+						goodBy(cn);
 						return false;
 					}
 				} else {
@@ -417,6 +441,7 @@ public class Connect {
 						} catch (SQLException sqlE) {
 							System.out.println(sqlE);
 							sqlE.printStackTrace();
+							goodBy(cn);
 							return false;
 						}
 					} else {
@@ -461,6 +486,7 @@ public class Connect {
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
+				goodBy(cn);
 				return null;
 			}
 		} else {
@@ -494,6 +520,7 @@ public class Connect {
 		} catch (SQLException sqlE) {
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
+			goodBy(cn);
 			return null;
 		}
 	}
@@ -520,11 +547,13 @@ public class Connect {
 				us.setAdminEmail(rs.getString(6));
 				usersList.add(us);
 			}
+			goodBy(cn);
 			return usersList;
 		} catch (SQLException sqlE) {
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
 			ArrayList<Users> r = new ArrayList<Users>();
+			goodBy(cn);
 			return r;
 		}
 	}
@@ -568,6 +597,7 @@ public class Connect {
 			} catch (SQLException sqle) {
 				System.out.println(sqle);
 				sqle.printStackTrace();
+				goodBy(cn);
 				return null;
 			}
 		} else {
@@ -597,6 +627,7 @@ public class Connect {
 					cat = rs.getString(1);
 				}
 				if (cont == 1) {
+					goodBy(c);
 					return cat;
 				} else {
 					System.out.println("El conteo es: " + cont);
@@ -606,6 +637,7 @@ public class Connect {
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
+				goodBy(c);
 				return null;
 			}
 		} else {
@@ -633,6 +665,7 @@ public class Connect {
 		} catch (SQLException sqlE) {
 			System.out.println(sqlE);
 			sqlE.printStackTrace();
+			goodBy(c);
 			return null;
 		}
 	}
@@ -669,6 +702,7 @@ public class Connect {
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
+				goodBy(cn);
 				return null;
 			}
 		} else {
@@ -707,13 +741,16 @@ public class Connect {
 				goodBy(cn);
 				if (aniadido == 1) {
 					JOptionPane.showMessageDialog(null, "Producto Añadido");
+					goodBy(cn);
 					return true;
 				} else {
 					JOptionPane.showMessageDialog(null, "El producto no ha podido ser añadido");
+					goodBy(cn);
 					return false;
 				}
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
+				goodBy(cn);
 				sqlE.printStackTrace();
 				return false;
 			}
@@ -758,6 +795,7 @@ public class Connect {
 						return true;
 					} catch (SQLException sqlE) {
 						// System.out.println(sqlE);
+						goodBy(cn);
 						return false;
 					}
 				} else {
@@ -795,11 +833,13 @@ public class Connect {
 					localesList.add(loc);
 					// System.out.println(loc.toString());
 				}
+				goodBy(cn);
 				return localesList;
 			} catch (SQLException sqlE) {
 				localesList = null;
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
+				goodBy(cn);
 				return localesList;
 			}
 		} else {
@@ -835,6 +875,7 @@ public class Connect {
 				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
+					goodBy(cn);
 					return null;
 				}
 			} else {
@@ -864,6 +905,7 @@ public class Connect {
 			} catch (SQLException e) {
 				System.out.println(e);
 				e.printStackTrace();
+				goodBy(cn);
 				return null;
 			}
 		}
@@ -898,6 +940,7 @@ public class Connect {
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
+				goodBy(cn);
 				return p;
 			}
 		} else {
@@ -948,11 +991,14 @@ public class Connect {
 					} catch (SQLException sqlE2) {
 						System.out.println(sqlE2);
 						sqlE2.printStackTrace();
+						goodBy(cn);
 					}
 				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
+					goodBy(cn);
 				}
+				goodBy(cn);
 				return t;
 			} else {
 				return null;
@@ -991,8 +1037,10 @@ public class Connect {
 				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
+					goodBy(cn);
 					return false;
 				}
+				goodBy(cn);
 			}
 			return true;
 		} else {
@@ -1022,10 +1070,12 @@ public class Connect {
 						ti.setID(rs.getInt(1));
 						tL.add(ti);
 					}
+					goodBy(cn);
 					return tL;
 				} catch (SQLException sqlE) {
 					System.out.println(sqlE);
 					sqlE.printStackTrace();
+					goodBy(cn);
 					return null;
 				}
 			} else {
@@ -1054,13 +1104,16 @@ public class Connect {
 				stmt.setString(4, op.getEmail());
 				int r = stmt.executeUpdate();
 				if (r == 1) {
+					goodBy(cn);
 					return true;
 				} else {
+					goodBy(cn);
 					return false;
 				}
 			} catch (SQLException sqlE) {
 				System.out.println(sqlE);
 				sqlE.printStackTrace();
+				goodBy(cn);
 				return false;
 			}
 		} else {
@@ -1093,12 +1146,15 @@ public class Connect {
 				int R1 = stmt1.executeUpdate();
 				int R2 = stmt2.executeUpdate();
 				if (R1 == 1 && R2 == 1) {
+					goodBy(cn);
 					return true;
 				} else {
+					goodBy(cn);
 					return false;
 				}
 			} catch (SQLException e) {
 				System.out.println(e);
+				goodBy(cn);
 				return false;
 			}
 		} else {
