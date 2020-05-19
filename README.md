@@ -9,6 +9,39 @@ Second part of CalculaTUS
 * MySQL Workbench Server
 * Maven
 
+### Creating a schema in MySQL
+1. Open a connection and run the following commands:
+```
+drop schema if exists calculatusdb;
+
+create schema calculatusdb;
+
+CREATE TABLE categoria(ID_Categoria INTEGER PRIMARY KEY,Nombre varchar(250) NOT NULL) ;
+
+
+CREATE TABLE elementoscompra ( idTicket INTEGER,Nombre varchar(250) NOT NULL,Precio double NOT NULL,Cantidad int(11) NOT NULL);
+
+CREATE TABLE locales (idLocales INTEGER PRIMARY KEY ,Nombre varchar(250) NOT NULL,Direccion varchar(250) NOT NULL,Codigo_postal int(11) NOT NULL,Opinion varchar(500) DEFAULT null,email_duenio varchar(250) NOT NULL);
+
+CREATE TABLE opiniones ( idopinion INTEGER  PRIMARY KEY ,numEstrellas int(11) NOT NULL,opinion varchar(750) NOT NULL,emailUsuario varchar(250) NOT NULL);
+
+CREATE TABLE productos (idproductos INTEGER PRIMARY KEY ,Nombre varchar(250),Precio double NOT NULL,idLocal int(11) NOT NULL,email_comprador varchar(250) NOT NULL,Categoria varchar(250) DEFAULT NULL);
+
+CREATE TABLE tickets (idtickets INTEGER PRIMARY KEY ,email_comprador varchar(250) NOT NULL,Importe double NOT NULL,idLocal int(11) NOT NULL,fecha varchar(250) NOT NULL);
+
+CREATE TABLE users (name varchar(250) NOT NULL,surname varchar(250) NOT NULL,email varchar(250) PRIMARY KEY,password varchar(250) NOT NULL,admin tinyint(4) NOT NULL DEFAULT 0,admin_email varchar(250) DEFAULT null);
+
+```
+2. Insert fixed rows
+```
+INSERT INTO categoria VALUES ( 0, "Alimentacion");
+INSERT INTO categoria VALUES ( 1, "Salud/Higiene");
+INSERT INTO categoria VALUES ( 2, "Ocio");
+INSERT INTO categoria VALUES ( 3, "Tecnologia");
+INSERT INTO categoria VALUES ( 4, "Facturas");
+INSERT INTO categoria VALUES ( 5, "Ropa");
+```
+
 ### Building and running the project
 These are the steps that need to be followed in order to succesfully build and run the project on Windows:
 
