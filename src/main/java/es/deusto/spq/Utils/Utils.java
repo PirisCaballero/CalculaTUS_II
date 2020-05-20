@@ -97,9 +97,5 @@ public class Utils {
 			}
 		
 	}
-	public static void main(String[] args) {
-		Utils u = new Utils();
-		
-	}
 
 }
