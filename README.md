@@ -10,6 +10,7 @@ Second part of CalculaTUS
 * Maven
 
 ### Creating a schema in MySQL
+If you want to use a remote Data Base, you must change de data in the .properties File, or if you want to use your local Data Base, you must change the configuration in the .properties file too.
 1. Open a connection and run the following commands:
 ```
 drop schema if exists calculatusdb;
