@@ -6,9 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.swing.*;
 import javax.swing.JOptionPane;
 
+import es.deusto.spq.Utils.Utils;
 import es.deusto.spq.Local;
 import es.deusto.spq.Opinion;
 import es.deusto.spq.Producto;
@@ -18,30 +21,17 @@ import es.deusto.spq.Users;
 public class Connect {
 
 	Connection conn;
-
+	Utils u = new Utils();
+	HashMap<String , String> SD = u.getServerData();
+	boolean remoto = u.BaseRemota();
 	/**
 	 * Crea la conexion a la Base de Datos
 	 * 
 	 * @return conn
 	 */
 	public Connection OpenConnection() {
-		conn = null;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException ex) {
-			System.out.println("Error al registrar el driver de MySQL: " + ex);
-		}
-		try {
-			conn = DriverManager.getConnection("jdbc:mysql://83.213.204.144:3306/calculatus_root", "calculaTUS_root",
-					"Nevera98!");
-			boolean ok = sayHello(conn);
-			//System.out.println(ok);
-			return conn;
-		} catch (SQLException sqlE) {
-			//System.out.println(sqlE);
-			sqlE.printStackTrace();
-			return conn;
-		}
+		conn = u.crearConexion();
+		return conn;
 	}
 
 	/**
@@ -334,7 +324,7 @@ public class Connect {
 			if (!buscarLocal(user, loc)) {
 				if (buscarUsuario(user.getEmail())) {
 					System.out.println("El local no esta registrado");
-					String sql = "Insert into locales Values ( ? , ? , ? , ? , ? , ? )";
+					String sql = "Insert into locales Values ( ?, ? , ? , ? , ? , ? )";
 					Connection cn = OpenConnection();
 					try {
 						PreparedStatement stmt = cn.prepareStatement(sql);
@@ -345,7 +335,7 @@ public class Connect {
 						stmt.setString(5, loc.getDescripcion());
 						stmt.setString(6, user.getEmail());
 						////////
-					//	System.out.println(stmt.executeUpdate());
+						System.out.println(stmt.executeUpdate());
 						goodBy(cn);
 						return true;
 					} catch (SQLException sqlE) {

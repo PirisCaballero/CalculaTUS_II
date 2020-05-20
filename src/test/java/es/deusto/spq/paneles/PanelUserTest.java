@@ -11,14 +11,14 @@ public class PanelUserTest {
 	static Users u;
 	static PanelDatos pd;
 	static PanelUser pu;
-	static ShowDescuentos sd;
+	//static ShowDescuentos sd;
 	static PanelControl pc;
 	
 	@BeforeClass
 	public static void initialize() {
 		u = new Users("Admin", "Root", "admin@root.es", "root", 1, "null");
 		pd = new PanelDatos();
-		sd = new ShowDescuentos(u);
+		//sd = new ShowDescuentos(u);
 		pc = new PanelControl(u, pd);
 	}
 	
